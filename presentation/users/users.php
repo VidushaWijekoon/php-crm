@@ -9,7 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 	header('Location: ../../index.php');
 }
 
-?><div class="row page-titles">
+?>
+<div class="row page-titles">
     <div class="col-md-5"><a href="./admin_dashboard.php">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
         </a>
@@ -20,7 +21,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <div class="mt-2">Users</div>
+                    <h5 class="">Users</h5>
                     <div class=""><input type="text" class="mx-2" placeholder="Search Users"></div>
                 </div>
             </div>

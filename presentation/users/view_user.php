@@ -37,11 +37,9 @@ input[type="text"] {
                                 <p class="card-text">Employee ID</p>
                             </div>
                             <div class="col-md-9">
-                                <select class="" id="" style="width: 340px; padding: 3px;">
-                                    <option selected>Choose...</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select name="emp_id" id="emp_id" class="w-100">
+                                    <option selected>--Select Employee ID--</option>
+
                                 </select>
                             </div>
                         </div>
@@ -53,7 +51,7 @@ input[type="text"] {
                                 <p class="card-text">First Name</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="First Name" name="first_name">
+                                <input type="text" class="w-100" placeholder="First Name" name="first_name">
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -64,7 +62,7 @@ input[type="text"] {
                                 <p class="card-text">Last Name</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="Last Name" name="last_name">
+                                <input type="text" class="w-100" placeholder="Last Name" name="last_name">
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -75,7 +73,7 @@ input[type="text"] {
                                 <p class="card-text">Departmentt</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="Deprtment" name="department">
+                                <input type="text" class="w-100" placeholder="Deprtment" name="department">
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -86,7 +84,7 @@ input[type="text"] {
                                 <p class="card-text">Role</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="Role" name="role">
+                                <input type="text" class="w-100" placeholder="Role" name="role">
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -97,7 +95,7 @@ input[type="text"] {
                                 <p class="card-text">Username</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="Username" name="username">
+                                <input type="text" class="w-100" placeholder="Username" name="username">
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -108,7 +106,7 @@ input[type="text"] {
                                 <p class="card-text">Password</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="Password" name="password_1">
+                                <input type="text" class="w-100" placeholder="Password" name="password_1">
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -119,7 +117,7 @@ input[type="text"] {
                                 <p class="card-text">Confirm Password</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" placeholder="Confirm Password" name="password_2">
+                                <input type="text" class="w-100" placeholder="Confirm Password" name="password_2">
                             </div>
                         </div>
                     </div>

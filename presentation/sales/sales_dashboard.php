@@ -12,14 +12,16 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <div class="row">
-    <div class="col-12 mt-3">
-        <a class="btn btn-xs bg-gradient-info mx-2 text-white" type="button"
-            href="./sales_assistant_daily_task.php"><span class="mx-1">Daily
-                Task</span></a>
-        <a class="btn btn-xs bg-gradient-primary mx-2 text-white" type="button" href="./create_customer.php"><span
-                class="mx-1">Create Customer</span></a>
-        <a class="btn btn-xs bg-gradient-success mx-2 text-white" type="button" href="./create_order.php"><span
-                class="mx-1">Create Order</span></a>
+    <div class="col-12 mt-1">
+        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./sales_assistant_daily_task.php">
+            <i class="fa fa-plus"></i><span class="mx-1">Daily Task</span>
+        </a>
+        <a class="btn btn-xs mr-2  text-text-black dahsboard_btn px-2 py-1" href="./create_customer.php">
+            <i class="fa-solid fa-bars"></i><span class="mx-1">Create Customer</span>
+        </a>
+        <a class="btn btn-xs mr-2  text-text-black dahsboard_btn px-2 py-1" href="./create_order.php">
+            <i class="fa-solid fa-bars"></i><span class="mx-1">Create Order</span>
+        </a>
     </div>
 </div>
 

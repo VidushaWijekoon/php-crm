@@ -40,17 +40,7 @@ input[type="text"] {
                             <div class="col-md-9">
                                 <select name="emp_id" id="emp_id" class="w-75">
                                     <option selected>--Select Employee ID--</option>
-                                    <?php
-                                        $query = "SELECT employees.emp_id FROM employees LEFT JOIN users ON employees.emp_id = users.emp_id 
-                                                    WHERE users.emp_id IS NULL ORDER BY employees.emp_id ASC";
-                                        $result = mysqli_query($connection, $query);
 
-                                        while ($emp_id = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
-                                    ?>
-                                    <option value="<?php echo $emp_id["emp_id"]; ?>">
-                                        <?php echo strtoupper($emp_id["emp_id"]); ?>
-                                    </option>
-                                    <?php endwhile; ?>
                                 </select>
                             </div>
                         </div>

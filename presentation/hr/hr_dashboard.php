@@ -11,23 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 
 ?>
 
-<style>
-.fas,
-.fa {
-    font-size: 14px !important;
-}
-
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 5px;
-}
-
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-}
-</style>
-
 <div class="row page-titles">
     <div class="col-md-5 align-self-center d-flex">
         <i class="pageNameIcon fa-solid fa-users"></i>
@@ -37,13 +20,16 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <div class="row">
-    <div class="col-12">
-        <a class="btn dashboard-btn btn-xs" href="./create_employee.php"><span class="mx-1">Create New
-                Employee</span></a>
-        <a class="btn dashboard-btn mx-2 btn-xs" href="./employees.php"><span class="mx-1">All
-                Employees</span></a>
-        <a class="btn dashboard-btn mx-2 btn-xs" href="./employees.php"><span class="mx-1">HR
-                Assistant</span></a>
+    <div class="col-12 mt-1">
+        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./create_employee.php">
+            <i class="fa fa-plus"></i><span class="mx-1">Create New Employee</span>
+        </a>
+        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="./employees.php">
+            <i class="fa-solid fa-bars"></i><span class="mx-1">All Employees</span>
+        </a>
+        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="#">
+            <i class="fa-solid fa-bars"></i><span class="mx-1">HR Assistant</span>
+        </a>
     </div>
 </div>
 <?php require_once('../includes/footer.php') ?>
