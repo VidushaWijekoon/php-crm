@@ -1,13 +1,15 @@
 <?php 
 ob_start();
 session_start();  
+require_once('../includes/header.php');
+require_once("../../functions/db_connection.php");
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
 	header('Location: ../../index.php');
 }
-require_once('../includes/header.php');
-require_once("../../functions/db_connection.php");
+
+// $username = 
 $username = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -165,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             </fieldset>
 
-                            <fieldset class="mt-2 mb-2">
+                            <fieldset class="mt-2 mb-3">
                                 <legend class="reset">Living Information</legend>
                                 <div class="row">
                                     <label class="col-sm-4 col-form-label">Current Address</label>
@@ -285,8 +287,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="mt-3 mb-3 text-center">
                                 <button type="submit" name="submit" class="btn btn-xs btn-success mx-2"><i
                                         class="fa-solid fa-floppy-disk mx-1"></i>Save</button>
-                                <button class="btn btn-xs btn-warning mx-2"><i
-                                        class="fa-solid fa-broom mx-1"></i>Clear</button>
                                 <a href="hr_dashboard.php" class="btn btn-xs btn-danger mx-2"><i
                                         class="fa-solid fa-xmark mx-1"></i>Close</a>
                             </div>

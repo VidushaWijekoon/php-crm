@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$user = mysqli_fetch_assoc($result_set);
 				$_SESSION['user_id'] = $user['user_id'];
 				$_SESSION['emp_id'] = $user['emp_id'];
+				$_SESSION['username'] = $user['username'];
 				// updating last login
 				$query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} LIMIT 1";
 				$result_set = mysqli_query($connection, $query);

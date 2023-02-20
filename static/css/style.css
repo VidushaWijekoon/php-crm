@@ -12,6 +12,7 @@
   --btn-blue: #168eb4;
   --regular-white: #ffffff;
   --regular-black: #000000;
+  --gray: #a1a3a8;
 }
 
 fieldset,
@@ -38,7 +39,19 @@ body {
 }
 
 .content-header {
-  padding: 0.5rem !important;
+  padding: 0 !important;
+}
+
+input,
+select,
+fieldset,
+textarea {
+  border: 1px solid #a1a3a8;
+  border-radius: 5px;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 400;
 }
 
 @media screen and (max-width: 1366px) {
