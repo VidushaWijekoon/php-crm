@@ -1,4 +1,15 @@
-<?php require_once('../includes/header.php'); ?>
+<?php 
+
+ob_start();
+session_start();
+require_once('../includes/header.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+	header('Location: ../../index.php');
+}
+
+?>
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-5">
         <button class="btn btn-xs btn-primary">Download Excel File</button>

@@ -1,15 +1,55 @@
 <?php 
+session_start(); 
+require_once('functions/db_connection.php');
+require_once('functions/functions.php'); 
 
-require_once("./functions/db_connection.php");
-
+	// check for form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // $username = mysqli_real_escape_string();
-    
-}
+		$errors = array();
 
+		// check if the username and password has been entered
+		if (!isset($_POST['username']) || strlen(trim($_POST['username'])) < 1 ) {
+			$errors[] = 'Username is Missing / Invalid';
+		}
+
+		if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1 ) {
+			$errors[] = 'Password is Missing / Invalid';
+		}
+
+		// check if there are any errors in the form
+		if (empty($errors)) {
+			// save username and password into variables
+			$username 	= mysqli_real_escape_string($connection, $_POST['username']);
+			$password 	= mysqli_real_escape_string($connection, $_POST['password']);
+			// $hashed_password = sha1($password);
+
+			// prepare database query
+			$query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' AND is_active = 0 LIMIT 1";
+			$result_set = mysqli_query($connection, $query);
+
+			verify_query($result_set);
+
+			if (mysqli_num_rows($result_set) == 1) {
+				// valid user found
+				$user = mysqli_fetch_assoc($result_set);
+				$_SESSION['user_id'] = $user['user_id'];
+				$_SESSION['emp_id'] = $user['emp_id'];
+				// updating last login
+				$query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} LIMIT 1";
+				$result_set = mysqli_query($connection, $query);
+
+				verify_query($result_set);
+
+				// redirect to users.php
+				header('Location: presentation/includes/main.php');
+			} else {
+				// user name and password invalid
+				$errors[] = 'Invalid Username / Password';
+			}
+		}
+	}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alsakb Computer | ERP</title>
-    <link rel="icon" type="image/x-icon" href="./../../dist/img/alsakb logo.png">
+    <title>Document</title>
     <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
 </head>
 
@@ -76,8 +115,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 </style>
 
-
-
 <body>
     <!-- Section: Design Block -->
     <section class="loginBody background-radial-gradient overflow-hidden">
@@ -120,13 +157,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         placeholder="Password" />
                                 </div>
 
-                                <!-- Submit button -->
-                                <a href="./presentation/includes/main.php" type="submit"
-                                    class="btn btn-primary btn-block">
-                                    Log In
-                                </a>
+                                <div class="d-flex">
+                                    <div class="">
+                                        <button type="submit" name="submit" class="btn btn-primary btn-block">
+                                            Log In
+                                        </button>
+                                    </div>
+                                    <div class="">
+                                        <?php 
+                                            if (isset($errors) && !empty($errors)) {
+                                                echo '<p class="error text-danger mx-3">Invalid Username / Password</p>';
+                                            }
+                                        ?>
+                                    </div>
 
-                                <!-- Register buttons -->
+                                </div>
+                                <!-- Submit button -->
 
                             </form>
                         </div>
@@ -139,3 +185,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+
+<?php mysqli_close($connection); ?>

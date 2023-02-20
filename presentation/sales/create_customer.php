@@ -1,5 +1,15 @@
-<?php require_once('../includes/header.php'); ?>
-<div class="row">
+<?php 
+
+ob_start();
+session_start();
+require_once('../includes/header.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+	header('Location: ../../index.php');
+}
+
+?><div class="row">
     <div class="col">
         <div class="row">
             <div class="col-lg-12 justify-content-center mx-auto bg-white p-2">

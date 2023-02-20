@@ -1,5 +1,15 @@
-<?php require_once('../includes/header.php'); ?>
-<div class="row page-titles">
+<?php 
+
+ob_start();
+session_start();
+require_once('../includes/header.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+	header('Location: ../../index.php');
+}
+
+?><div class="row page-titles">
     <div class="col-md-5"><a href="./admin_dashboard.php">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
         </a>

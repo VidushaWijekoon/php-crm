@@ -2,7 +2,7 @@
 ob_start();
 session_start();    
 require_once('../includes/header.php');
-require_once("../../dataAccess/db_authentication.php");
+require_once("../../functions/db_connection.php");
 $username = $_SESSION['user_name'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

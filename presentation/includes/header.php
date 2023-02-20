@@ -1,3 +1,13 @@
+<?php 
+
+require_once("footer.php"); 
+require_once("../../functions/db_connection.php"); 
+
+if (!isset($_SESSION['user_id'])) {
+	header('Location: ../../index.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

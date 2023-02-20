@@ -1,13 +1,12 @@
 <?php 
-session_start();    
-require_once("../../dataAccess/db_authentication.php");
-require_once("../includes/header.php"); 
+ob_start();
+session_start();
+require_once('../includes/header.php');
 
-// checking if a user is logged in
+// Check User Login  
 if (!isset($_SESSION['user_id'])) {
 	header('Location: ../../index.php');
 }
-
 ?>
 
 <style>

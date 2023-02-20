@@ -1,4 +1,15 @@
-<?php require_once('../includes/header.php'); ?>
+<?php 
+
+ob_start();
+session_start();
+require_once('../includes/header.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+	header('Location: ../../index.php');
+}
+
+?>
 <div class="row page-titles">
     <div class="col-md-5">
         <a href="laptop_inventory.php">
