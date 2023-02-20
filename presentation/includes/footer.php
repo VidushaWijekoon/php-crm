@@ -2,7 +2,6 @@
 </div>
 <!-- ./wrapper -->
 
-
 </body>
 
 <!-- jQuery -->

@@ -1,3 +1,15 @@
+<?php 
+
+require_once("./functions/db_connection.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // $username = mysqli_real_escape_string();
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +17,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alsakb Computer | ERP</title>
+    <link rel="icon" type="image/x-icon" href="./../../dist/img/alsakb logo.png">
     <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
 </head>
 
@@ -91,18 +104,19 @@
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
-                            <form>
+                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
                                 <!-- Login input -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example3">Login ID</label>
-                                    <input type="text" id="form3Example3" class="form-control" placeholder="Username" />
+                                    <label class="form-label" for="form3Example3">Username</label>
+                                    <input type="text" name="username" id="form3Example3" class="form-control"
+                                        placeholder="Username" />
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Password</label>
-                                    <input type="password" id="form3Example4" class="form-control"
+                                    <input type="password" name="password" id="form3Example4" class="form-control"
                                         placeholder="Password" />
                                 </div>
 

@@ -30,3 +30,9 @@ body {
   background-color: var(--heavy-blue) !important;
   color: var(--regular-white) !important;
 }
+
+@media screen and (max-width: 1366px) {
+}
+
+@media (min-width: 1920px) and (max-width: 2560px) {
+}
