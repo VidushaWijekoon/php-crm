@@ -1,0 +1,32 @@
+@import url("../fonts/Poppins-Regular.ttf");
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  src: url("../fonts/Poppins-Black.ttf") format("truetype");
+}
+
+:root {
+  --heavy-blue: #071a34;
+  --sky-blue: #28c3ef;
+  --btn-blue: #168eb4;
+  --regular-white: #ffffff;
+  --regular-black: #000000;
+}
+
+fieldset,
+legend {
+  all: revert;
+  font-size: 12px;
+}
+
+body {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 12px;
+  color: var(--regular-black) !important;
+}
+
+.main-sidebar {
+  background-color: var(--heavy-blue) !important;
+  color: var(--regular-white) !important;
+}
