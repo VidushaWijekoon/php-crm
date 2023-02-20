@@ -31,8 +31,51 @@ body {
   color: var(--regular-white) !important;
 }
 
+/* btn card Styles */
+.dahsboard_btn {
+  background-color: #ffffff;
+  box-shadow: 1px 1px 3px rgb(0 0 0 / 25%);
+}
+
+.content-header {
+  padding: 0.5rem !important;
+}
+
 @media screen and (max-width: 1366px) {
+  td {
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  thead {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #168eb4;
+  }
+  .nav-link {
+    font-size: 10px;
+  }
+  select {
+    height: 24px !important;
+  }
+  input {
+    height: 24px !important;
+  }
 }
 
 @media (min-width: 1920px) and (max-width: 2560px) {
+  td {
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  thead {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #168eb4;
+  }
+  .nav-link {
+    font-size: 12px;
+  }
+  select {
+    height: 20px !important;
+  }
 }
