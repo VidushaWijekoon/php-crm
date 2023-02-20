@@ -1,30 +1,14 @@
 <?php 
 ob_start();
-session_start();
+session_start();  
 require_once('../includes/header.php');
+require_once("../../functions/db_connection.php");
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
 	header('Location: ../../index.php');
 }
 ?>
-
-<style>
-.fas,
-.fa {
-    font-size: 14px !important;
-}
-
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 5px;
-}
-
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-}
-</style>
 
 <div class="row page-titles">
     <div class="col-md-5 align-self-center d-flex">

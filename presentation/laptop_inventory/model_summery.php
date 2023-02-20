@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 <div class="row">
-    <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2">
+    <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2 mb-4">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">

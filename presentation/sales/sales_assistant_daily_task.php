@@ -10,22 +10,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 ?>
-
-<style>
-.fas,
-.fa {
-    font-size: 14px !important;
-}
-
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 5px;
-}
-
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-}
 </style>
 
 <div class="row page-titles">
@@ -273,132 +257,135 @@ if (!isset($_SESSION['user_id'])) {
                                 </select>
                             </div>
                         </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Whatsapp Number</th>
-                                    <th scope="col" style="width: 5%">Platform</th>
-                                    <th scope="col">Model He Selling/ Buying</th>
-                                    <th scope="col">Posted Model 1</th>
-                                    <th scope="col">Posted Model 2</th>
-                                    <th scope="col">Customer Asking Model</th>
-                                    <th scope="col">Customer Asking Price</th>
-                                    <th scope="col">He Can Pick Up From UAE?</th>
-                                    <th scope="col">Posted Time</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody">
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                                <tr>
-                                    <td>1IRN Topnet</td>
-                                    <td>989395401832</td>
-                                    <td>instgram</td>
-                                    <td>folio</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td>Yes</td>
-                                    <td>02/18/2023</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Customer Name</th>
+                                        <th scope="col">Whatsapp Number</th>
+                                        <th scope="col" style="width: 5%">Platform</th>
+                                        <th scope="col">Model He Selling/ Buying</th>
+                                        <th scope="col">Posted Model 1</th>
+                                        <th scope="col">Posted Model 2</th>
+                                        <th scope="col">Customer Asking Model</th>
+                                        <th scope="col">Customer Asking Price</th>
+                                        <th scope="col">He Can Pick Up From UAE?</th>
+                                        <th scope="col">Posted Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1IRN Topnet</td>
+                                        <td>989395401832</td>
+                                        <td>instgram</td>
+                                        <td>folio</td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td><input type="text"></td>
+                                        <td>Yes</td>
+                                        <td>02/18/2023</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="">
                             <button class="btn btn-xs btn-success float-right">Submit</button>
                         </div>
@@ -410,5 +397,9 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
-
+<style>
+thead {
+    font-size: 8px;
+}
+</style>
 <?php require_once('../includes/footer.php') ?>
