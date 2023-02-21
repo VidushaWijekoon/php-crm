@@ -81,7 +81,7 @@ if (!isset($_SESSION['user_id'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -127,7 +127,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -150,7 +150,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -197,7 +197,7 @@ if (!isset($_SESSION['user_id'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -220,7 +220,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -268,7 +268,7 @@ if (!isset($_SESSION['user_id'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -291,7 +291,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -314,7 +314,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -337,7 +337,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -384,7 +384,7 @@ if (!isset($_SESSION['user_id'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -407,7 +407,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -430,7 +430,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -453,7 +453,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -500,7 +500,7 @@ if (!isset($_SESSION['user_id'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -523,7 +523,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -546,7 +546,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -569,7 +569,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -616,7 +616,7 @@ if (!isset($_SESSION['user_id'])) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -639,7 +639,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -662,7 +662,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>
@@ -685,7 +685,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>5 Days 25Minutes</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
                                     <td>02/18/2023</td>
                                     <td>OD-12345</td>
                                     <td>WH1-12334</td>

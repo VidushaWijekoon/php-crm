@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row">
     <div class="col-md-5 align-self-center d-flex">
         <i class="fa-solid fa-users fa-2x"></i>
-        <h6 class="text-themecolor mx-2" style="margin-top: auto; font-weight: bold;"> All Users</h6>
+        <h6 class="mx-2" style="margin-top: auto; font-weight: bold;"> All Users</h6>
     </div>
 </div>
 

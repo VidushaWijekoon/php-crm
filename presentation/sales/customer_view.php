@@ -152,55 +152,118 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="tab-pane fade" id="custom-content-below-order" role="tabpanel"
                     aria-labelledby="custom-content-below-order-tab">
                     <div class="row">
-                        <div class="col-sm-9 mx-auto justify-content-center">
+                        <div class="col mx-auto justify-content-center">
                             <div class="table-responsive">
-                                <table class="table table-hover mt-3 ">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Device</th>
-                                            <th scope="col">Brand</th>
-                                            <th scope="col">Model</th>
-                                            <th scope="col">Processor</th>
-                                            <th scope="col">Core</th>
-                                            <th scope="col">Generation</th>
-                                            <th scope="col">Speed</th>
-                                            <th scope="col">QTY</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Sales Order</th>
+                                            <th scope="col">Reference</th>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Order Status</th>
+                                            <th scope="col">Shipping Date</th>
+                                            <th scope="col">Packed</th>
+                                            <th scope="col">Invoiced</th>
+                                            <th scope="col">Payment</th>
+                                            <th scope="col">Shipped</th>
+                                            <th scope="col">Shipping Method</th>
+                                            <th scope="col">Remaining Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Laptop</td>
-                                            <td>Dell</td>
-                                            <td>Latitude E7470</td>
-                                            <td>Intel</td>
-                                            <td>i5-6300u</td>
-                                            <td>6</td>
-                                            <td>2.30Ghz</td>
-                                            <td><span class="badge badge-success px-2 py-1">35</span></td>
+                                            <td scope="row"><a href="order_view.php">1</a></td>
+                                            <td>02/18/2023</td>
+                                            <td>OD-12345</td>
+                                            <td>WH1-12334</td>
+                                            <td>John Doe</td>
+                                            <td>Waiting for Approval</td>
+                                            <td>02/25/2023</td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>Local Pickup</td>
+                                            <td>5 Days 25Minutes</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Laptop</td>
-                                            <td>Dell</td>
-                                            <td>Precision M5530</td>
-                                            <td>Intel</td>
-                                            <td>i9-8950HQ</td>
-                                            <td>8</td>
-                                            <td>2.60Ghz</td>
-                                            <td><span class="badge badge-success px-2 py-1">25</span></td>
+                                            <td scope="row"><a href="order_view.php">1</a></td>
+                                            <td>02/18/2023</td>
+                                            <td>OD-12345</td>
+                                            <td>WH1-12334</td>
+                                            <td>John Doe</td>
+                                            <td>Waiting for Approval</td>
+                                            <td>02/25/2023</td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>Local Pickup</td>
+                                            <td>5 Days 25Minutes</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Laptop</td>
-                                            <td>HP</td>
-                                            <td>Elitebook 1030 G3</td>
-                                            <td>Intel</td>
-                                            <td>i5-7600u</td>
-                                            <td>7</td>
-                                            <td>1.90Ghz</td>
-                                            <td><span class="badge badge-success px-2 py-1">5</span></td>
+                                            <td scope="row"><a href="order_view.php">1</a></td>
+                                            <td>02/18/2023</td>
+                                            <td>OD-12345</td>
+                                            <td>WH1-12334</td>
+                                            <td>John Doe</td>
+                                            <td>Waiting for Approval</td>
+                                            <td>02/25/2023</td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>Local Pickup</td>
+                                            <td>5 Days 25Minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"><a href="order_view.php">1</a></td>
+                                            <td>02/18/2023</td>
+                                            <td>OD-12345</td>
+                                            <td>WH1-12334</td>
+                                            <td>John Doe</td>
+                                            <td>Waiting for Approval</td>
+                                            <td>02/25/2023</td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </td>
+                                            <td>Local Pickup</td>
+                                            <td>5 Days 25Minutes</td>
                                         </tr>
                                     </tbody>
                                 </table>
