@@ -13,9 +13,10 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row page-titles">
     <div class="col-md-5 align-self-center d-flex">
         <i class="pageNameIcon fa-solid fa-receipt m-2"></i>
-        <h6 class="text-themecolor" style="margin-top: auto; font-weight: bold;"> All Orders</h6>
+        <h6 class="text-themecolor" style="margin-top: auto; font-weight: bold;">Orders</h6>
     </div>
 </div>
+
 <div class="row">
     <div class="col">
         <div class="card card-primary card-outline">
@@ -30,6 +31,11 @@ if (!isset($_SESSION['user_id'])) {
                         <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill"
                             href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all"
                             aria-selected="true">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill"
+                            href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve"
+                            aria-selected="false">Waiting for Approve</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill"
@@ -169,6 +175,77 @@ if (!isset($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
+                    <div class="tab-pane fade show" id="custom-content-below-approve" role="tabpanel"
+                        aria-labelledby="custom-content-below-approve-tab">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Sales Order</th>
+                                    <th scope="col">Reference</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Order Status</th>
+                                    <th scope="col">Shipping Date</th>
+                                    <th scope="col">Packed</th>
+                                    <th scope="col">Invoiced</th>
+                                    <th scope="col">Payment</th>
+                                    <th scope="col">Shipped</th>
+                                    <th scope="col">Shipping Method</th>
+                                    <th scope="col">Remaining Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td>02/18/2023</td>
+                                    <td>OD-12345</td>
+                                    <td>WH1-12334</td>
+                                    <td>John Doe</td>
+                                    <td>Waiting for Approval</td>
+                                    <td>02/25/2023</td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>Local Pickup</td>
+                                    <td>5 Days 25Minutes</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td>02/18/2023</td>
+                                    <td>OD-12345</td>
+                                    <td>WH1-12334</td>
+                                    <td>John Doe</td>
+                                    <td>Waiting for Approval</td>
+                                    <td>02/25/2023</td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>Local Pickup</td>
+                                    <td>5 Days 25Minutes</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel"
                         aria-labelledby="custom-content-below-packing-tab">
                         <table class="table">
@@ -202,36 +279,13 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
@@ -248,13 +302,13 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
@@ -271,13 +325,36 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>Local Pickup</td>
+                                    <td>5 Days 25Minutes</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td>02/18/2023</td>
+                                    <td>OD-12345</td>
+                                    <td>WH1-12334</td>
+                                    <td>John Doe</td>
+                                    <td>Waiting for Approval</td>
+                                    <td>02/25/2023</td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
@@ -321,33 +398,10 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
@@ -367,10 +421,10 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
@@ -390,10 +444,33 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>Local Pickup</td>
+                                    <td>5 Days 25Minutes</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row"><a href="order_view.php">1</a></td>
+                                    <td>02/18/2023</td>
+                                    <td>OD-12345</td>
+                                    <td>WH1-12334</td>
+                                    <td>John Doe</td>
+                                    <td>Waiting for Approval</td>
+                                    <td>02/25/2023</td>
+                                    <td>
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
@@ -638,11 +715,5 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 </div>
-
-<style>
-td {
-    font-size: 10px;
-}
-</style>
 
 <?php require_once('../includes/footer.php'); ?>

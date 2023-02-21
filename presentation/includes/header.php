@@ -253,7 +253,7 @@
                          <!-- ============================================================== -->
                          <li class="nav-item">
                              <a href="#" class="nav-link">
-                                 <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
+                                 <i class="nav-icon fa fa-screwdriver-wrench"></i>
                                  <p> Part Warehouse <i class="right fas fa-angle-left"></i> </p>
                              </a>
                              <ul class="nav nav-treeview">
@@ -421,6 +421,25 @@
                                      <a href="../packing/packing_dashboard.php" class="nav-link">
                                          <i class="fa fa-boxes nav-icon" style="font-size: 12px;"></i>
                                          <p> Packing </p>
+                                     </a>
+                                 </li>
+
+                             </ul>
+                         </li>
+                         <!-- ============================================================== -->
+                         <!-- Management  -->
+                         <!-- ============================================================== -->
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+                                 <i class="nav-icon fa fa-right-to-bracket"></i>
+                                 <p> Management <i class="right fas fa-angle-left"></i> </p>
+                             </a>
+                             <ul class="nav nav-treeview">
+
+                                 <li class="nav-item">
+                                     <a href="../management/manager_dashboard.php" class="nav-link">
+                                         <i class="fa-solid fa-right-to-bracket nav-icon" style="font-size: 12px;"></i>
+                                         <p> Manager </p>
                                      </a>
                                  </li>
 
