@@ -13,14 +13,14 @@ if (!isset($_SESSION['user_id'])) {
 </style>
 
 <div class="row page-titles">
-    <div class="col-md-5 align-self-center d-flex">
+    <div class="col-md-5 align-self-center d-flex p-2">
         <i class="pageNameIcon fa-solid fa-users"></i>
         <h6 class="text-themecolor" style="margin-top: auto; font-weight: bold;">Daily Sales Person Task</h6>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-lg-12 col-sm-12 grid-margin stretch-card justify-content-center mx-auto mt-2">
+    <div class="col-lg-12 col-sm-12 grid-margin stretch-card justify-content-center mx-auto">
         <div class="card">
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
@@ -153,10 +153,15 @@ if (!isset($_SESSION['user_id'])) {
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
                                             <th scope="col">Day</th>
-                                            <th scope="col">Platform</th>
-                                            <th scope="col">Search by Keyword</th>
+                                            <th scope="col">Morning
+                                                9.00A.M-2.00P.M</th>
+                                            <th scope="col">Afternoon
+                                                3.00A.M-6.15P.M</th>
+                                            <th scope="col">
+                                                Evening
+                                                6.45A.M-9.00P.M
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -201,15 +206,22 @@ if (!isset($_SESSION['user_id'])) {
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Day</th>
                                             <th scope="col">Platform</th>
-                                            <th scope="col">Search by Keyword</th>
+                                            <th scope="col">Morning
+                                                9.00A.M-2.00P.M</th>
+                                            <th scope="col">Afternoon
+                                                3.00A.M-6.15P.M</th>
+                                            <th scope="col">
+                                                Evening
+                                                6.45A.M-9.00P.M
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Monday</td>
+                                            <td>
+                                                Facebook
+                                            </td>
                                             <td>
                                                 <div style="display: grid">
                                                     <input type="text" placeholder="Search Keyword 1" class="mb-1"

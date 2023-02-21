@@ -32,6 +32,7 @@ if (!isset($_SESSION['user_id'])) {
                         <th>First name</th>
                         <th>Last name</th>
                         <th>Username</th>
+                        <th>Department</th>
                         <th>Role</th>
                         <th>Status</th>
                         <th>&nbsp;</th>
