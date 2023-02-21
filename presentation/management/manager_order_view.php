@@ -29,14 +29,27 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="row mt-4 mb-2">
                     <div class="col-sm-5">
                         <div style="line-height: 5px;">
-                            <p>Billing Address</p>
-                            <a href="" data-toggle="modal" data-target="#billing_address">Add Billing Address</a>
+                            <p class="text-bold">Billing Address</p>
+                            <p>Bluum Technology</p>
+                            <p>951 Valley View Lane,</p>
+                            <p>Suite 180</p>
+                            <p>Irving</p>
+                            <p>TX 75061</p>
+                            <p>Jennifer Deshazer</p>
+                            <p>Contact: 501-288-1898</p>
+                            <p>USA</p>
                         </div>
                     </div>
                     <div class="col-sm-5">
                         <div style="line-height: 5px;">
-                            <p>Shipping Address</p>
-                            <a href="" data-toggle="modal" data-target="#shipping_address">Add Shipping Address</a>
+                            <p class="text-bold">Shipping Address</p>
+                            <p>Bluum Technology</p>
+                            <p>951 Valley View Lane,</p>
+                            <p>Suite 180</p>
+                            <p>Irving</p>
+                            <p>TX 75061</p>
+                            <p>Jennifer Deshazer</p>
+                            <p>Contact: 501-288-1898</p>
                         </div>
                     </div>
                 </div>
@@ -204,54 +217,9 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row p-2" style="box-shadow: 0px 0 0px #888, 0px 0 6px #888;">
     <button class="btn btn-xs btn-danger">Back</button>
+    <button class="btn btn-xs btn-success mx-2">Approve</button>
 </div>
 
-<!-- ============================================================== -->
-<!-- Billing Address  -->
-<!-- ============================================================== -->
-<div class="modal fade" id="billing_address">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Large Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================== -->
-<!-- Shipping Address  -->
-<!-- ============================================================== -->
-<div class="modal fade" id="shipping_address">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Large Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-
-            </div>
-        </div>
-    </div>
-</div>
 <style>
 .select2-selection__rendered {
     line-height: 17px !important;

@@ -744,7 +744,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row p-2" style="box-shadow: 0px 0 0px #888, 0px 0 6px #888;">
     <button class="btn btn-xs btn-primary">Save Order</button>
-    <button class="btn btn-xs btn-light">Cancel</button>
+    <button class="btn btn-xs btn-danger mx-2">Cancel</button>
 </div>
 
 <!-- ============================================================== -->

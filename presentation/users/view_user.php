@@ -16,8 +16,9 @@ input[type="text"] {
 }
 </style>
 
-<div class="row page-titles">
-    <div class="col-md-5"><a href="./users.php">
+<div class="row">
+    <div class="col-md-5">
+        <a href="./users.php">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
         </a>
     </div>

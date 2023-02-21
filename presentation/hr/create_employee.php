@@ -60,10 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 </style>
 
-<div class="row page-titles">
+<div class="row">
     <div class="col-md-5 align-self-center d-flex">
-        <i class="pageNameIcon fa-solid fa-user-plus"></i>
-        <h6 class="text-themecolor" style="margin-top: auto; font-weight: bold;"> Create New Employee</h6>
+        <i class="fa-solid fa-user-plus"></i>
+        <h6 class="" style="margin-top: auto; font-weight: bold;"> Create New Employee</h6>
     </div>
 </div>
 
