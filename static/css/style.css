@@ -69,9 +69,12 @@ label:not(.form-check-label):not(.custom-file-label) {
   }
   select {
     height: 24px !important;
+    border: 1px soild#a1a3a8 !important;
   }
   input {
     height: 24px !important;
+    border: 1px soild#a1a3a8 !important;
+    padding: 0 8px;
   }
 }
 
@@ -90,5 +93,11 @@ label:not(.form-check-label):not(.custom-file-label) {
   }
   select {
     height: 20px !important;
+    border: 1px soild#a1a3a8 !important;
+  }
+  input {
+    height: 24px !important;
+    border: 1px soild#a1a3a8 !important;
+    padding: 0 8px;
   }
 }

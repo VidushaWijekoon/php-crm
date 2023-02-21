@@ -9,7 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 	header('Location: ../../index.php');
 }
 
-?><div class="row">
+?>
+<div class="row">
     <div class="col">
         <div class="row">
             <div class="col-lg-12 justify-content-center mx-auto bg-white p-2">
@@ -163,8 +164,6 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="tab-pane fade show active" id="custom-content-below-other-details" role="tabpanel"
                     aria-labelledby="custom-content-below-other-details-tab">
                     <div class="m-2">
-
-
                         <div class="row mt-2">
                             <div class="col-sm-2">
                                 <p>Currency</p>
@@ -240,6 +239,7 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="mb-3 text-center">
                         <button class="btn btn-xs btn-primary">Submit</button>
                         <button class="btn btn-xs btn-danger">Cancel</button>
