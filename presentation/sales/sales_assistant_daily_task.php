@@ -414,4 +414,5 @@ thead {
     font-size: 8px;
 }
 </style>
+
 <?php require_once('../includes/footer.php') ?>

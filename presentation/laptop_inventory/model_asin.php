@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 <div class="row page-titles">
     <div class="col-md-5">
-        <a href="model_summery.php">
+        <a href="model_view.php">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
         </a>
     </div>
@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_id'])) {
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
+                                <th class="text-center">Asin</th>
                                 <th>Brand</th>
                                 <th>Model</th>
                                 <th>core</th>
@@ -43,39 +43,33 @@ if (!isset($_SESSION['user_id'])) {
                                 <th>Touch Wholesale Price</th>
                                 <th>Non Touch Wholesale Price</th>
                                 <th>No Battery Count</th>
-                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for($a = 1; $a <= 10; $a++) { ?>
-
+                            <?php for($i = 1; $i <= 10; $i++) { ?>
                             <tr>
-                                <td>1</td>
-                                <td>dell</td>
-                                <td>latitude e5480</td>
-                                <td>i3-7100u</td>
+                                <td><a href="./model_spec_view.php">B07NYTMHQS</a></td>
+                                <td>Dell</td>
+                                <td>LATITUDE E5480</td>
+                                <td>I3-7100U</td>
                                 <td>7</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0
-                                </td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td></td>
-                                <td> </td>
-                                <td>0 </td>
-                                <td class="text-center">
-                                    <a class="" href="./model_asin.php">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </td>
+                                <td>100</td>
+                                <td>90</td>
+                                <td>10</td>
+                                <td>45</td>
+                                <td>55</td>
+                                <td>$150</td>
+                                <td>$165</td>
+                                <td>12</td>
                             </tr>
                             <?php } ?>
                         </tbody>
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <?php require_once('../includes/footer.php'); ?>
