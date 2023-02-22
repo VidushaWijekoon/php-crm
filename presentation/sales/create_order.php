@@ -111,7 +111,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Device</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown">
+                    <select name="" id="" class="DropDown select2">
                         <option value="" selected>--Select Device--</option>
                         <option value="laptop">Laptop</option>
                     </select>
@@ -127,7 +127,8 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Brand</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown" aria-label="Default select example" name="brand" id="brand" required>
+                    <select class="DropDown select2" aria-label="Default select example" name="brand" id="brand"
+                        required>
                         <option value="" selected>--Select brand--</option>
 
                     </select>
@@ -142,7 +143,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Model</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown">
+                    <select name="" id="" class="DropDown select2">
                         <option value="" selected>--Select Model--</option>
                         <option value="">Thinkpad</option>
                     </select>
@@ -158,7 +159,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Processor</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown" aria-label="Default select example" name="processor" id="processor"
+                    <select class="DropDown select2" aria-label="Default select example" name="processor" id="processor"
                         required>
                         <option value="" selected>--Select Processor--</option>
 
@@ -174,7 +175,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Core</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown">
+                    <select name="" id="" class="DropDown select2">
                         <option value="" selected>--Select Core--</option>
                         <option value=""></option>
                     </select>
@@ -190,7 +191,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Generation</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown" aria-label="Default select example" name="gen" id="gen" required>
+                    <select class="DropDown select2" aria-label="Default select example" name="gen" id="gen" required>
                         <option value="" selected>--Select Gen--</option>
 
                     </select>
@@ -205,7 +206,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Speed</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown">
+                    <select name="" id="" class="DropDown select2">
                         <option value="" selected>--Select Speed--</option>
                         <option value="">1.80GHz</option>
                     </select>
@@ -754,17 +755,70 @@ if (!isset($_SESSION['user_id'])) {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Large Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h6 class="modal-title">Add Billing Address</h6>
             </div>
             <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <div class="row">
+                    <div class="col-sm-8 justify-content-center mx-auto">
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Attention</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="text" class=" w-100" name="shipping_attention">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Country/
+                                Region</label>
+                            <div class="col-sm-8 d-flex">
+                                <select name="shipping_country" class="info_select w-100" style="border-radius: 5px;">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Address</label>
+                            <div class="col-sm-8 d-flex">
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
+                                    name="shipping_address_1" style="width: 100%;"></textarea>
+
+                            </div>
+                            <label class="col-sm-4 col-form-label"></label>
+                            <div class="col-sm-8 d-flex">
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">City</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="text" class=" w-100" name="shipping_city" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">State</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="text" class=" w-100" name="shipping_state" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Zip
+                                Code</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="number" class=" w-100" name="shipping_zip_code" placeholder="Zip Code">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Phone</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="number" class=" w-100" name="shipping_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-xs btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -777,17 +831,70 @@ if (!isset($_SESSION['user_id'])) {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Large Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h6 class="modal-title">Add Shipping Address</h6>
             </div>
             <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <div class="row">
+                    <div class="col-sm-8 justify-content-center mx-auto">
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Attention</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="text" class=" w-100" name="shipping_attention">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Country/
+                                Region</label>
+                            <div class="col-sm-8 d-flex">
+                                <select name="shipping_country" class="info_select w-100" style="border-radius: 5px;">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Address</label>
+                            <div class="col-sm-8 d-flex">
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
+                                    name="shipping_address_1" style="width: 100%;"></textarea>
+
+                            </div>
+                            <label class="col-sm-4 col-form-label"></label>
+                            <div class="col-sm-8 d-flex">
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">City</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="text" class=" w-100" name="shipping_city" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">State</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="text" class=" w-100" name="shipping_state" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Zip
+                                Code</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="number" class=" w-100" name="shipping_zip_code" placeholder="Zip Code">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label">Phone</label>
+                            <div class="col-sm-8 d-flex">
+                                <input type="number" class=" w-100" name="shipping_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-xs btn-primary">Save changes</button>
             </div>
         </div>
     </div>
