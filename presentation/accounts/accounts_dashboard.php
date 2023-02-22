@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -28,44 +28,29 @@ if (!isset($_SESSION['user_id'])) {
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill"
-                            href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all"
-                            aria-selected="true">All</a>
+                        <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill" href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all" aria-selected="true">All</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill"
-                            href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve"
-                            aria-selected="false">Approved</a>
+                        <a class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill" href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve" aria-selected="false">Approved</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill"
-                            href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve"
-                            aria-selected="false">Opened</a>
+                        <a class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill" href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve" aria-selected="false">Opened</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill"
-                            href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing"
-                            aria-selected="false">Packing</a>
+                        <a class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill" href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing" aria-selected="false">Packing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-invoiced-tab" data-toggle="pill"
-                            href="#custom-content-below-invoiced" role="tab"
-                            aria-controls="custom-content-below-invoiced" aria-selected="false">Invoiced</a>
+                        <a class="nav-link" id="custom-content-below-invoiced-tab" data-toggle="pill" href="#custom-content-below-invoiced" role="tab" aria-controls="custom-content-below-invoiced" aria-selected="false">Invoiced</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-shipping-tab" data-toggle="pill"
-                            href="#custom-content-below-shipping" role="tab"
-                            aria-controls="custom-content-below-shipping" aria-selected="false">Shipping</a>
+                        <a class="nav-link" id="custom-content-below-shipping-tab" data-toggle="pill" href="#custom-content-below-shipping" role="tab" aria-controls="custom-content-below-shipping" aria-selected="false">Shipping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-shipped-tab" data-toggle="pill"
-                            href="#custom-content-below-shipped" role="tab" aria-controls="custom-content-below-shipped"
-                            aria-selected="false">Shipped</a>
+                        <a class="nav-link" id="custom-content-below-shipped-tab" data-toggle="pill" href="#custom-content-below-shipped" role="tab" aria-controls="custom-content-below-shipped" aria-selected="false">Shipped</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="custom-content-below-tabContent">
-                    <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel"
-                        aria-labelledby="custom-content-below-all-tab">
+                    <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel" aria-labelledby="custom-content-below-all-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -181,8 +166,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade show" id="custom-content-below-approve" role="tabpanel"
-                        aria-labelledby="custom-content-below-approve-tab">
+                    <div class="tab-pane fade show" id="custom-content-below-approve" role="tabpanel" aria-labelledby="custom-content-below-approve-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -252,8 +236,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel"
-                        aria-labelledby="custom-content-below-packing-tab">
+                    <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel" aria-labelledby="custom-content-below-packing-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -368,8 +351,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="custom-content-below-invoiced" role="tabpanel"
-                        aria-labelledby="custom-content-below-invoiced-tab">
+                    <div class="tab-pane fade" id="custom-content-below-invoiced" role="tabpanel" aria-labelledby="custom-content-below-invoiced-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -484,8 +466,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="custom-content-below-shipping" role="tabpanel"
-                        aria-labelledby="custom-content-below-shipping-tab">
+                    <div class="tab-pane fade" id="custom-content-below-shipping" role="tabpanel" aria-labelledby="custom-content-below-shipping-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -600,8 +581,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="custom-content-below-shipped" role="tabpanel"
-                        aria-labelledby="custom-content-below-shipped-tab">
+                    <div class="tab-pane fade" id="custom-content-below-shipped" role="tabpanel" aria-labelledby="custom-content-below-shipped-tab">
                         <table class="table">
                             <thead>
                                 <tr>

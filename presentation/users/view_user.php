@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,14 +6,15 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
 <style>
-input[type="text"] {
-    width: 340px;
-}
+    input[type="text"] {
+        width: 340px;
+        padding: 0 5px;
+    }
 </style>
 
 <div class="row">
@@ -109,25 +110,14 @@ input[type="text"] {
                             <input type="text" class="w-100" placeholder="Password" name="password_1">
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- Confirm Password  -->
-                    <!-- ============================================================== -->
-                    <div class="row mb-2">
-                        <div class="col-md-3">
-                            <p class="card-text">Confirm Password</p>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="w-100" placeholder="Confirm Password" name="password_2">
-                        </div>
-                    </div>
+
                 </div>
                 <div class="row">
-                    <a href="./edit_user.php" class="btn btn-sm btn-info mx-auto mb-3">Edit</a>
+                    <a href="./edit_user.php" class="btn btn-xs btn-info mx-auto mb-3">Update User</a>
                 </div>
             </form>
         </div>
     </div>
-</div>
 </div>
 
 <?php require_once('../includes/footer.php'); ?>

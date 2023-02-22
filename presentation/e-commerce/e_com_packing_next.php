@@ -1,41 +1,32 @@
-<?php 
-
-ob_start();
-session_start();
-require_once('../includes/header.php');
-
-// Check User Login  
-if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
-}
-
+<?php
+require_once('../includes/header.php')
 ?>
 
 <style>
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.cardContainer {
-    width: 99%;
-    background-color: #ffffff;
-    padding: 10px 5px;
-}
+    .cardContainer {
+        width: 99%;
+        background-color: #ffffff;
+        padding: 10px 5px;
+    }
 
-.packingStartContentSec {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    .packingStartContentSec {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 
-}
+    }
 </style>
 
 <div class="row mb-4">

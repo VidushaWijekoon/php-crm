@@ -1,13 +1,6 @@
 <?php 
 
-ob_start();
-session_start();
-require_once('../includes/header.php');
-
-// Check User Login  
-if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
-}
+require_once('../includes/header.php')
 
 ?>
 
@@ -521,7 +514,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="viewOrderDetailCardSec">
                 <div class="row">
                     <!--Today Order Details Card -->
-                    <a href="./e_com_view_orders.php">
+                    <a href="./e_com_view_today_orders.php">
                         <div class="orderDetailsCard m-3">
                             <div class="orderDetailsHead">
                                 <span style="color: #168EB4;">Today</span> &nbsp;Orders
@@ -539,52 +532,60 @@ if (!isset($_SESSION['user_id'])) {
                     </a>
                     <!-- //////////// -->
                     <!--All Order Details Card -->
-                    <div class="orderDetailsCard m-3">
-                        <div class="orderDetailsHead">
-                            <span style="color: #168EB4;">All</span> &nbsp;Orders
-                        </div>
-                        <div class="orderDetailsCount">
-                            50
-                        </div>
+                    <a href="./e_com_view_all_orders.php">
+                        <div class="orderDetailsCard m-3">
+                            <div class="orderDetailsHead">
+                                <span style="color: #168EB4;">All</span> &nbsp;Orders
+                            </div>
+                            <div class="orderDetailsCount">
+                                50
+                            </div>
 
-                        <div class="directPlatformCount">
-                            <div class="dirAmazon">Direct Amazon <span><br> 50</span></div>
-                            <div class="dirNoon">Direct Noon <span><br>50</span></div>
-                            <div class="dirCartlow">Direct Cartlow <span><br>50</span></div>
+                            <div class="directPlatformCount">
+                                <div class="dirAmazon">Direct Amazon <span><br> 50</span></div>
+                                <div class="dirNoon">Direct Noon <span><br>50</span></div>
+                                <div class="dirCartlow">Direct Cartlow <span><br>50</span></div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- //////////// -->
                     <!--FBN Order Details Card -->
-                    <div class="orderDetailsCard m-3">
-                        <div class="orderDetailsHead">
-                            <span style="color: #168EB4;">FBN</span> &nbsp;Orders
+                    <a href="./e_com_view_fbn_orders.php">
+                        <div class="orderDetailsCard m-3">
+                            <div class="orderDetailsHead">
+                                <span style="color: #168EB4;">FBN</span> &nbsp;Orders
+                            </div>
+                            <div class="orderDetailsCount">
+                                50
+                            </div>
                         </div>
-                        <div class="orderDetailsCount">
-                            50
-                        </div>
-                    </div>
+                    </a>
                     <!-- //////////// -->
                     <!--FBA Order Details Card -->
-                    <div class="orderDetailsCard m-3">
-                        <div class="orderDetailsHead">
-                            <span style="color: #168EB4;">FBA</span> &nbsp;Orders
-                        </div>
-                        <div class="orderDetailsCount">
-                            50
-                        </div>
+                    <a href="./e_com_view_fba_orders.php">
+                        <div class="orderDetailsCard m-3">
+                            <div class="orderDetailsHead">
+                                <span style="color: #168EB4;">FBA</span> &nbsp;Orders
+                            </div>
+                            <div class="orderDetailsCount">
+                                50
+                            </div>
 
-                    </div>
+                        </div>
+                    </a>
                     <!-- //////////// -->
                     <!--FBC Order Details Card -->
-                    <div class="orderDetailsCard m-3">
-                        <div class="orderDetailsHead">
-                            <span style="color: #168EB4;">FBC</span> &nbsp;Orders
-                        </div>
-                        <div class="orderDetailsCount">
-                            50
-                        </div>
+                    <a href="./e_com_view_fbc_orders.php">
+                        <div class="orderDetailsCard m-3">
+                            <div class="orderDetailsHead">
+                                <span style="color: #168EB4;">FBC</span> &nbsp;Orders
+                            </div>
+                            <div class="orderDetailsCount">
+                                50
+                            </div>
 
-                    </div>
+                        </div>
+                    </a>
                     <!-- //////////// -->
 
                 </div>

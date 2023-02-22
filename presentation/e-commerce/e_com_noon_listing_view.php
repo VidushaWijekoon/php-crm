@@ -1,294 +1,285 @@
-<?php 
-
-ob_start();
-session_start();
-require_once('../includes/header.php');
-
-// Check User Login  
-if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
-}
-
+<?php
+require_once('../includes/header.php')
 ?>
 
 
 
 <style>
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
 
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.cardContainer {
-    width: 99%;
-    background-color: #ffffff;
-    padding: 10px 5px;
-}
+    .cardContainer {
+        width: 99%;
+        background-color: #ffffff;
+        padding: 10px 5px;
+    }
 
-/* Card 1 --Count showing Styles */
-.dashCard {
-    width: 180px;
-    height: 100px;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    color: black;
-    padding: 10px 15px;
-}
+    /* Card 1 --Count showing Styles */
+    .dashCard {
+        width: 180px;
+        height: 100px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        color: black;
+        padding: 10px 15px;
+    }
 
-.dashCardTop {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
+    .dashCardTop {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 
-.cardIcon {
-    width: 20%;
-    /* padding: 5px 15px; */
-}
+    .cardIcon {
+        width: 20%;
+        /* padding: 5px 15px; */
+    }
 
-.cardTitle {
-    width: 80%;
-    /* padding: 8px 15px; */
-    margin-left: 5px;
-    margin-top: 2px;
-    font-weight: 500;
-    font-size: 20px;
-    color: #000000;
-}
+    .cardTitle {
+        width: 80%;
+        /* padding: 8px 15px; */
+        margin-left: 5px;
+        margin-top: 2px;
+        font-weight: 500;
+        font-size: 20px;
+        color: #000000;
+    }
 
-.cardValue {
-    font-weight: 600;
-    font-size: 23px;
-    color: #000000;
-    margin-top: 10px;
-    margin-left: 8px;
+    .cardValue {
+        font-weight: 600;
+        font-size: 23px;
+        color: #000000;
+        margin-top: 10px;
+        margin-left: 8px;
 
-}
-
-
-/* //////////////////////// */
-
-.viewListingHeading {
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.sectionUnderline {
-    border-top: 2px solid #DBDBDB;
-    margin-top: 0px;
-}
-
-/* table sec styles */
-.sampleTable {
-    color: black;
-    width: 100%;
-}
-
-.titleHeader {
-    color: #168EB4;
-    font-weight: 600;
-    font-size: 24px;
-}
-
-.containerCard {
-    background: #FFFFFF;
-    border: 1px solid #FFFFFF;
-    border-radius: 5px;
-}
-
-.tableName {
-    font-weight: 600;
-    font-size: 24px;
-    color: #000000;
-
-}
+    }
 
 
+    /* //////////////////////// */
 
-.tableSec table {
-    width: 100%;
-    text-align: center;
-}
+    .viewListingHeading {
+        font-weight: 600;
+        font-size: 20px;
+    }
 
-.tableSec table th {
-    color: #168EB4;
-    font-weight: 700;
+    .sectionUnderline {
+        border-top: 2px solid #DBDBDB;
+        margin-top: 0px;
+    }
 
-}
+    /* table sec styles */
+    .sampleTable {
+        color: black;
+        width: 100%;
+    }
 
-.tableSpec {
-    display: flex;
-    justify-content: space-between;
-    height: 40px;
-    /* width: 100%; */
-}
+    .titleHeader {
+        color: #168EB4;
+        font-weight: 600;
+        font-size: 24px;
+    }
 
-/* .tableSpec .leftSec {
+    .containerCard {
+        background: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        border-radius: 5px;
+    }
+
+    .tableName {
+        font-weight: 600;
+        font-size: 24px;
+        color: #000000;
+
+    }
+
+
+
+    .tableSec table {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tableSec table th {
+        color: #168EB4;
+        font-weight: 700;
+
+    }
+
+    .tableSpec {
+        display: flex;
+        justify-content: space-between;
+        height: 40px;
+        /* width: 100%; */
+    }
+
+    /* .tableSpec .leftSec {
     width: 30%;
 } */
 
-.tableSpec .rightSec {
-    /* padding-top: 5px; */
-    /* width: 70%; */
-    display: flex;
-    justify-content: flex-end;
-
-}
-
-.filterSec {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-}
-
-.searchSec {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-}
-
-.searchSec input {
-    background: #FFFFFF;
-    border: 1px solid #A1A3A8;
-    border-radius: 5px;
-    height: 30px;
-    width: 200px;
-
-}
-
-.searchSec i:hover {
-    cursor: pointer;
-}
-
-.dateSec {
-    display: flex;
-    align-items: center;
-    margin-right: 5px;
-
-}
-
-.dateSec input[type="date"] {
-    border: 1px solid #A1A3A8;
-    border-radius: 5px;
-    height: 30px;
-}
-
-.dateSec i:hover {
-    cursor: pointer;
-}
-
-.tablePagination {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-
-}
-
-.page-item.active .page-link {
-    background-color: #168EB4;
-    border-color: #168EB4;
-}
-
-@media screen and (max-width:1024px) {
-    .tableSpec .leftSec {
-        /* width: 20%; */
-        /* display: none; */
-        order: 1;
-    }
-
-    .dateSec {
-        display: none;
-    }
-
     .tableSpec .rightSec {
-        width: 80%;
-        order: 2;
-    }
-
-
-
-}
-
-@media screen and (max-width:426px) {
-    .tableSpec {
-        flex-direction: column;
-        height: 150px;
-    }
-
-    .tableSpec .leftSec {
-        display: none;
-        order: 2;
+        /* padding-top: 5px; */
+        /* width: 70%; */
+        display: flex;
+        justify-content: flex-end;
 
     }
 
-    .tableSpec .rightSec {
-        order: 1;
-        margin-bottom: 5px;
-
+    .filterSec {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
     }
 
     .searchSec {
-        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .searchSec input {
+        background: #FFFFFF;
+        border: 1px solid #A1A3A8;
+        border-radius: 5px;
+        height: 30px;
+        width: 200px;
+
+    }
+
+    .searchSec i:hover {
+        cursor: pointer;
     }
 
     .dateSec {
-        display: block;
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+
     }
 
-    .btnDownloadSec {
-        margin-top: 5px;
+    .dateSec input[type="date"] {
+        border: 1px solid #A1A3A8;
+        border-radius: 5px;
+        height: 30px;
     }
 
-}
+    .dateSec i:hover {
+        cursor: pointer;
+    }
 
-.tableWindow {
-    height: 50vh;
-}
+    .tablePagination {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
 
-/* //////////////// */
+    }
 
-.DropDown {
-    height: 30px;
-    width: 83%;
-    border-radius: 5px;
-    border: 1px solid #A1A3A8;
-    /* padding: 0px 10px; */
-}
+    .page-item.active .page-link {
+        background-color: #168EB4;
+        border-color: #168EB4;
+    }
 
-.modal-content {
-    width: 70vw;
-    margin-left: -300px;
-}
+    @media screen and (max-width:1024px) {
+        .tableSpec .leftSec {
+            /* width: 20%; */
+            /* display: none; */
+            order: 1;
+        }
 
-.modal-content .tableSec {
-    width: 100%;
-    overflow-x: scroll;
-    overflow-y: auto;
-}
+        .dateSec {
+            display: none;
+        }
 
-.modal-content td input[type="text"] {
-    width: 100%;
-    border: 1px solid #A1A3A8;
-    border-radius: 5px;
-}
+        .tableSpec .rightSec {
+            width: 80%;
+            order: 2;
+        }
 
-.editModel {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-}
+
+
+    }
+
+    @media screen and (max-width:426px) {
+        .tableSpec {
+            flex-direction: column;
+            height: 150px;
+        }
+
+        .tableSpec .leftSec {
+            display: none;
+            order: 2;
+
+        }
+
+        .tableSpec .rightSec {
+            order: 1;
+            margin-bottom: 5px;
+
+        }
+
+        .searchSec {
+            margin-bottom: 5px;
+        }
+
+        .dateSec {
+            display: block;
+        }
+
+        .btnDownloadSec {
+            margin-top: 5px;
+        }
+
+    }
+
+    .tableWindow {
+        height: 50vh;
+    }
+
+    /* //////////////// */
+
+    .DropDown {
+        height: 30px;
+        width: 83%;
+        border-radius: 5px;
+        border: 1px solid #A1A3A8;
+        /* padding: 0px 10px; */
+    }
+
+    .modal-content {
+        width: 70vw;
+        margin-left: -300px;
+    }
+
+    .modal-content .tableSec {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: auto;
+    }
+
+    .modal-content td input[type="text"] {
+        width: 100%;
+        border: 1px solid #A1A3A8;
+        border-radius: 5px;
+    }
+
+    .editModel {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
 </style>
 
 <div class="row pageNavigation">
@@ -309,8 +300,7 @@ if (!isset($_SESSION['user_id'])) {
             <!-- Card 1 -->
             <div class="dashCard m-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
-                            style="color: #168EB4;font-size: 25px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 25px;"></i>
                     </div>
                     <div class="cardTitle">All Listings</div>
                 </div>
@@ -322,8 +312,7 @@ if (!isset($_SESSION['user_id'])) {
 
             <div class="dashCard m-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
-                            style="color: #168EB4;font-size: 25px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 25px;"></i>
                     </div>
                     <div class="cardTitle">Approved</div>
                 </div>
@@ -334,8 +323,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="dashCard m-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
-                            style="color: #168EB4;font-size: 25px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 25px;"></i>
                     </div>
                     <div class="cardTitle">Waiting</div>
                 </div>
@@ -346,8 +334,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="dashCard m-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
-                            style="color: #168EB4;font-size: 25px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 25px;"></i>
                     </div>
                     <div class="cardTitle">FBN Done</div>
                 </div>
@@ -358,8 +345,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="dashCard m-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
-                            style="color: #168EB4;font-size: 25px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 25px;"></i>
                     </div>
                     <div class="cardTitle">Promotion</div>
                 </div>
@@ -400,9 +386,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="leftSec">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                                data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                                aria-selected="true">ALL</button>
+                                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">ALL</button>
                                         </li>
 
                                     </ul>
@@ -463,21 +447,18 @@ if (!isset($_SESSION['user_id'])) {
                                         <!-- Search section -->
                                         <div class="searchSec">
                                             <input type="text">
-                                            <i class="fa-solid fa-magnifying-glass ml-2"
-                                                style="color: #168EB4; font-size:20px"></i>
+                                            <i class="fa-solid fa-magnifying-glass ml-2" style="color: #168EB4; font-size:20px"></i>
                                         </div>
                                         <!-- Filter date Section -->
                                         <div class="dateSec">
                                             <input type="date" name="" id="" placeholder="date">
                                             <input type="date" name="" id="">
-                                            <i class="fa-solid fa-calendar ml-2"
-                                                style="color: #168EB4; font-size:20px"></i>
+                                            <i class="fa-solid fa-calendar ml-2" style="color: #168EB4; font-size:20px"></i>
                                             <!-- <div><i class="fa-solid fa-calender  ml-2" style="color: #168EB4; font-size:20px"></i> -->
                                         </div>
                                         <!-- download Btn Sec -->
                                         <div class="btnDownloadSec">
-                                            <button class=" btn btn-info"><i
-                                                    class="fa-solid fa-cloud-arrow-down"></i></button>
+                                            <button class=" btn btn-info"><i class="fa-solid fa-cloud-arrow-down"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -572,10 +553,8 @@ if (!isset($_SESSION['user_id'])) {
                                                         </i>
                                                     </button>
 
-                                                    <button class=" btn"><i
-                                                            class="text-danger fa-solid fa-trash"></i></button>
-                                                    <button class="btn"><i
-                                                            class="text-success fa-solid fa-eye"></i></button>
+                                                    <button class=" btn"><i class="text-danger fa-solid fa-trash"></i></button>
+                                                    <button class="btn"><i class="text-success fa-solid fa-eye"></i></button>
                                                 </div>
                                             </td>
 
@@ -710,8 +689,7 @@ if (!isset($_SESSION['user_id'])) {
 
                                                             <td>
                                                                 <div>
-                                                                    <select class="DropDown"
-                                                                        aria-label="Default select example">
+                                                                    <select class="DropDown" aria-label="Default select example">
                                                                         <!-- <option selected>--Select Status--</option> -->
                                                                         <option value="prepared for listing">
                                                                             <?php echo 'Prepared for listing'; ?>
@@ -739,8 +717,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             </td>
                                                             <td>
                                                                 <div>
-                                                                    <select class="DropDown"
-                                                                        aria-label="Default select example">
+                                                                    <select class="DropDown" aria-label="Default select example">
                                                                         <!-- <option option selected>--Select Promotion Type--</option> -->
                                                                         <option selected value="None">
                                                                             <?php echo 'None'; ?>

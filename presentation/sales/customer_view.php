@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -20,24 +20,17 @@ if (!isset($_SESSION['user_id'])) {
         <div class="">
             <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="custom-content-below-overview-tab" data-toggle="pill"
-                        href="#custom-content-below-overview" role="tab" aria-controls="custom-content-below-overview"
-                        aria-selected="true">Overview</a>
+                    <a class="nav-link active" id="custom-content-below-overview-tab" data-toggle="pill" href="#custom-content-below-overview" role="tab" aria-controls="custom-content-below-overview" aria-selected="true">Overview</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="custom-content-below-order-tab" data-toggle="pill"
-                        href="#custom-content-below-order" role="tab" aria-controls="custom-content-below-order"
-                        aria-selected="false">Orders</a>
+                    <a class="nav-link" id="custom-content-below-order-tab" data-toggle="pill" href="#custom-content-below-order" role="tab" aria-controls="custom-content-below-order" aria-selected="false">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="custom-content-below-common-models-tab" data-toggle="pill"
-                        href="#custom-content-below-common-models" role="tab"
-                        aria-controls="custom-content-below-common-models" aria-selected="false">Common Modals</a>
+                    <a class="nav-link" id="custom-content-below-common-models-tab" data-toggle="pill" href="#custom-content-below-common-models" role="tab" aria-controls="custom-content-below-common-models" aria-selected="false">Common Modals</a>
                 </li>
             </ul>
             <div class="tab-content" id="custom-content-below-tabContent">
-                <div class="tab-pane fade show active" id="custom-content-below-overview" role="tabpanel"
-                    aria-labelledby="custom-content-below-overview-tab">
+                <div class="tab-pane fade show active" id="custom-content-below-overview" role="tabpanel" aria-labelledby="custom-content-below-overview-tab">
                     <div class="row">
                         <div class="col-sm-5 pl-3" style="background-color: #ffffff;">
                             <div class="mt-3 mx-1">
@@ -46,10 +39,8 @@ if (!isset($_SESSION['user_id'])) {
                             <hr>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <div class=""
-                                        style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                                        <img src="../../dist/img/avatar.png" style="width: 20%;" class="rounded-circle"
-                                            alt="">
+                                    <div class="" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                        <img src="../../dist/img/avatar.png" style="width: 20%;" class="rounded-circle" alt="">
                                     </div>
                                 </div>
                                 <div class="col-sm-7 mt-2 mb-3">
@@ -149,8 +140,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="custom-content-below-order" role="tabpanel"
-                    aria-labelledby="custom-content-below-order-tab">
+                <div class="tab-pane fade" id="custom-content-below-order" role="tabpanel" aria-labelledby="custom-content-below-order-tab">
                     <div class="row">
                         <div class="col mx-auto justify-content-center">
                             <div class="table-responsive">
@@ -173,31 +163,31 @@ if (!isset($_SESSION['user_id'])) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for($i = 1; $i <= 5; $i++) { ?>
-                                        <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td>02/18/2023</td>
-                                            <td><a href="./order_view.php">SO-12345</a></td>
-                                            <td>WH1-12334</td>
-                                            <td>John Doe</td>
-                                            <td><a href="./sales_order_map.php">Processing</a></td>
-                                            <td>02/25/2023</td>
-                                            <td>
-                                                <i class="fa-solid fa-circle"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fa-solid fa-circle"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fa-solid fa-circle"></i>
-                                            </td>
-                                            <td>
-                                                <i class="fa-solid fa-circle"></i>
-                                            </td>
-                                            <td>Local Pickup</td>
-                                            <td>5 Days 25Minutes</td>
-                                            <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
-                                        </tr>
+                                        <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td>02/18/2023</td>
+                                                <td><a href="./order_view.php">SO-12345</a></td>
+                                                <td>WH1-12334</td>
+                                                <td>John Doe</td>
+                                                <td><a href="./sales_order_map.php">Processing</a></td>
+                                                <td>02/25/2023</td>
+                                                <td>
+                                                    <i class="fa-solid fa-circle"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-circle"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-circle"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-circle"></i>
+                                                </td>
+                                                <td>Local Pickup</td>
+                                                <td>5 Days 25Minutes</td>
+                                                <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -205,8 +195,7 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="custom-content-below-common-models" role="tabpanel"
-                    aria-labelledby="custom-content-below-common-models-tab">
+                <div class="tab-pane fade" id="custom-content-below-common-models" role="tabpanel" aria-labelledby="custom-content-below-common-models-tab">
                     <div class="row">
                         <div class="col-sm-9 mx-auto justify-content-center">
                             <div class="table-responsive">
@@ -299,14 +288,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="row">
                             <label class="col-sm-4 col-form-label">Address</label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                    name="shipping_address_1" style="width: 100%;"></textarea>
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1" name="shipping_address_1" style="width: 100%;"></textarea>
 
                             </div>
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3" placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -375,14 +362,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="row">
                             <label class="col-sm-4 col-form-label">Address</label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                    name="shipping_address_1" style="width: 100%;"></textarea>
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1" name="shipping_address_1" style="width: 100%;"></textarea>
 
                             </div>
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3" placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -422,27 +407,27 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <script>
-const address = () => {
-    var y = document.getElementById("address");
-    if (y.style.display === "none") {
-        y.style.display = "block";
-    } else {
-        y.style.display = "none";
+    const address = () => {
+        var y = document.getElementById("address");
+        if (y.style.display === "none") {
+            y.style.display = "block";
+        } else {
+            y.style.display = "none";
+        }
     }
-}
 
-const otherDetails = () => {
-    var x = document.getElementById("other_details");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
+    const otherDetails = () => {
+        var x = document.getElementById("other_details");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
-}
 
-const deleteThisUser = () => {
-    alert("Are you sure you want to delete this customer?");
-}
+    const deleteThisUser = () => {
+        alert("Are you sure you want to delete this customer?");
+    }
 </script>
 
 <?php require_once('../includes/footer.php'); ?>

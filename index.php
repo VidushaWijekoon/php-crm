@@ -1,55 +1,63 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 require_once('functions/db_connection.php');
-require_once('functions/functions.php'); 
+require_once('functions/functions.php');
 
-	// check for form submission
+
+// check for form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $is_not_active = 0;
+    $errors = array();
 
-		$errors = array();
+    $username     = mysqli_real_escape_string($connection, $_POST['username']);
+    $password     = mysqli_real_escape_string($connection, $_POST['password']);
 
-		// check if the username and password has been entered
-		if (!isset($_POST['username']) || strlen(trim($_POST['username'])) < 1 ) {
-			$errors[] = 'Username is Missing / Invalid';
-		}
+    // check if the username and password has been entered
+    if (!isset($_POST['username']) || strlen(trim($_POST['username'])) < 1) {
+        $errors[] = 'Username is Missing / Invalid';
+    }
+    if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1) {
+        $errors[] = 'Password is Missing / Invalid';
+    }
+    // check if there are any errors in the form
+    if (empty($errors)) {
+        // save username and password into variables
 
-		if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1 ) {
-			$errors[] = 'Password is Missing / Invalid';
-		}
+        // $hashed_password = sha1($password);
+        // prepare database query
+        $query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' AND is_active = 0 LIMIT 1";
+        $result_set = mysqli_query($connection, $query);
+        verify_query($result_set);
+        if (mysqli_num_rows($result_set) == 1) {
+            // valid user found
+            $user = mysqli_fetch_assoc($result_set);
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['emp_id'] = $user['emp_id'];
+            $_SESSION['username'] = $user['username'];
 
-		// check if there are any errors in the form
-		if (empty($errors)) {
-			// save username and password into variables
-			$username 	= mysqli_real_escape_string($connection, $_POST['username']);
-			$password 	= mysqli_real_escape_string($connection, $_POST['password']);
-			// $hashed_password = sha1($password);
-
-			// prepare database query
-			$query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' AND is_active = 0 LIMIT 1";
-			$result_set = mysqli_query($connection, $query);
-
-			verify_query($result_set);
-
-			if (mysqli_num_rows($result_set) == 1) {
-				// valid user found
-				$user = mysqli_fetch_assoc($result_set);
-				$_SESSION['user_id'] = $user['user_id'];
-				$_SESSION['emp_id'] = $user['emp_id'];
-				$_SESSION['username'] = $user['username'];
-				// updating last login
-				$query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} LIMIT 1";
-				$result_set = mysqli_query($connection, $query);
-
-				verify_query($result_set);
-
-				// redirect to users.php
-				header('Location: presentation/includes/main.php');
-			} else {
-				// user name and password invalid
-				$errors[] = 'Invalid Username / Password';
-			}
-		}
-	}
+            // updating last login
+            $query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} LIMIT 1";
+            $result_set = mysqli_query($connection, $query);
+            verify_query($result_set);
+            // redirect to users.php
+            header('Location: presentation/includes/main.php');
+        } else {
+            // user name and password invalid
+            $errors[] = 'Invalid Username / Password';
+        }
+    }
+    // Get in_active user
+    $d = "SELECT is_active, username, password FROM users WHERE username = '{$username}' AND password = '{$password}' AND is_active = 1 LIMIT 1";
+    $run = mysqli_query($connection, $d);
+    while ($row = mysqli_fetch_assoc($run)) {
+        $is_not_active = $row['is_active'];
+    }
+    if ($is_not_active == 1) {
+        echo "<script type='text/javascrip'>
+    alert('GeeksforGeeks!');
+</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,62 +66,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alsakb Computer | ERP</title>
+    <link rel="icon" type="image/x-icon" href="dist/img/alsakb logo.png">
     <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
 </head>
 
 
 <style>
-.background-radial-gradient {
-    background-color: hsl(218, 41%, 15%);
-    background-image: radial-gradient(650px circle at 0% 0%,
-            hsl(218, 41%, 35%) 15%,
-            hsl(218, 41%, 30%) 35%,
-            hsl(218, 41%, 20%) 75%,
-            hsl(218, 41%, 19%) 80%,
-            transparent 100%),
-        radial-gradient(1250px circle at 100% 100%,
-            hsl(218, 41%, 45%) 15%,
-            hsl(218, 41%, 30%) 35%,
-            hsl(218, 41%, 20%) 75%,
-            hsl(218, 41%, 19%) 80%,
-            transparent 100%);
-}
+    .background-radial-gradient {
+        background-color: hsl(218, 41%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(218, 41%, 35%) 15%,
+                hsl(218, 41%, 30%) 35%,
+                hsl(218, 41%, 20%) 75%,
+                hsl(218, 41%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(218, 41%, 45%) 15%,
+                hsl(218, 41%, 30%) 35%,
+                hsl(218, 41%, 20%) 75%,
+                hsl(218, 41%, 19%) 80%,
+                transparent 100%);
+    }
 
-#radius-shape-1 {
-    height: 220px;
-    width: 220px;
-    top: -20px;
-    left: -130px;
-    background: radial-gradient(#44006b, #ad1fff);
-    overflow: hidden;
-}
+    #radius-shape-1 {
+        height: 220px;
+        width: 220px;
+        top: -20px;
+        left: -130px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+    }
 
-#radius-shape-2 {
-    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-    bottom: -60px;
-    right: -110px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(#44006b, #ad1fff);
-    overflow: hidden;
-}
+    #radius-shape-2 {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+        bottom: -60px;
+        right: -110px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+    }
 
-.bg-glass {
-    background-color: hsla(0, 0%, 100%, 0.9) !important;
-    backdrop-filter: saturate(200%) blur(25px);
-}
+    .bg-glass {
+        background-color: hsla(0, 0%, 100%, 0.9) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+    }
 
-.loginBody {
-    height: 100vh;
-}
+    .loginBody {
+        height: 100vh;
+    }
 
-.LoginSec {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
+    .LoginSec {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
 </style>
 
 <body>
@@ -142,20 +151,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
-                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
                                 <!-- Login input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3">Username</label>
-                                    <input type="text" name="username" id="form3Example3" class="form-control"
-                                        placeholder="Username" />
+                                    <input type="text" name="username" id="form3Example3" class="form-control" placeholder="Username" />
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Password</label>
-                                    <input type="password" name="password" id="form3Example4" class="form-control"
-                                        placeholder="Password" />
+                                    <input type="password" name="password" id="form3Example4" class="form-control" placeholder="Password" />
                                 </div>
 
                                 <div class="d-flex">
@@ -165,10 +172,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </button>
                                     </div>
                                     <div class="">
-                                        <?php 
-                                            if (isset($errors) && !empty($errors)) {
-                                                echo '<p class="error text-danger mx-3">Invalid Username / Password</p>';
-                                            }
+                                        <?php
+
+                                        if (isset($errors) && !empty($errors)) {
+                                            echo '<p class="error text-center">Invalid Username OR Password</p>';
+                                        }
                                         ?>
                                     </div>
 

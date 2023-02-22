@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -26,19 +26,14 @@ if (!isset($_SESSION['user_id'])) {
     <div class="col-sm-12 grid-margin stretch-card justify-content-center mx-auto mt-3">
         <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill"
-                    href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all"
-                    aria-selected="true">Customer Information</a>
+                <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill" href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all" aria-selected="true">Customer Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill"
-                    href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing"
-                    aria-selected="false">Post to Customer</a>
+                <a class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill" href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing" aria-selected="false">Post to Customer</a>
             </li>
         </ul>
         <div class="tab-content" id="custom-content-below-tabContent">
-            <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel"
-                aria-labelledby="custom-content-below-all-tab">
+            <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel" aria-labelledby="custom-content-below-all-tab">
                 <div class="">
                     <table class="table">
                         <thead>
@@ -57,22 +52,16 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>Facebook</td>
                                 <td>
                                     <div style="display: grid">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 1"
-                                            name="search_keyword_1">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 2"
-                                            name="search_keyword_2">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 3"
-                                            name="search_keyword_3">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 4"
-                                            name="search_keyword_4">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 5"
-                                            name="search_keyword_5">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 1" name="search_keyword_1">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 2" name="search_keyword_2">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 3" name="search_keyword_3">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 4" name="search_keyword_4">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 5" name="search_keyword_5">
                                     </div>
 
                                 </td>
                                 <td>
-                                    <div class=""
-                                        style="display: flex; justify-content: center; align-items: center; height: 100px; font-size: 75px; font-weight: bold;">
+                                    <div class="" style="display: flex; justify-content: center; align-items: center; height: 100px; font-size: 75px; font-weight: bold;">
                                         5
                                     </div>
                                 </td>
@@ -138,8 +127,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="submit" name="add_customer"
-                                        style="background: transparent; border:none;" fdprocessedid="4ckj3h">
+                                    <button type="submit" name="add_customer" style="background: transparent; border:none;" fdprocessedid="4ckj3h">
                                         <i class="fa-solid fa-circle-plus fa-2x text-primary"></i>
                                     </button>
                                 </td>
@@ -164,24 +152,23 @@ if (!isset($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for($i = 1; $i <= 10; $i++) { ?>
-                            <tr>
-                                <td>Nigeria</td>
-                                <td>1IRN TOPNET</td>
-                                <td>+989395401832</td>
-                                <td>Facebook</td>
-                                <td>HP 1030 G3</td>
-                                <td>No</td>
-                                <td>02/21/2023 20:17</td>
-                            </tr>
+                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                <tr>
+                                    <td>Nigeria</td>
+                                    <td>1IRN TOPNET</td>
+                                    <td>+989395401832</td>
+                                    <td>Facebook</td>
+                                    <td>HP 1030 G3</td>
+                                    <td>No</td>
+                                    <td>02/21/2023 20:17</td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
 
             </div>
-            <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel"
-                aria-labelledby="custom-content-below-packing-tab">
+            <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel" aria-labelledby="custom-content-below-packing-tab">
                 <div class="row">
                     <div class="col-md-6">
                         <table class="table">
@@ -203,30 +190,20 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>Monday</td>
                                     <td>
                                         <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
                                         <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
@@ -258,30 +235,20 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>
                                         <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
                                         <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
@@ -443,9 +410,9 @@ if (!isset($_SESSION['user_id'])) {
 
 
 <style>
-thead {
-    font-size: 8px;
-}
+    thead {
+        font-size: 8px;
+    }
 </style>
 
 <?php require_once('../includes/footer.php') ?>

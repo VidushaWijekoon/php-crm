@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -140,29 +140,20 @@ if (!isset($_SESSION['user_id'])) {
         <div class="">
             <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                 <li class="nav-item">
-                    <div class="nav-link active" id="custom-content-below-other-details-tab" data-toggle="pill"
-                        href="#custom-content-below-other-details" role="tab"
-                        aria-controls="custom-content-below-other-details" aria-selected="true">Other Details</div>
+                    <div class="nav-link active" id="custom-content-below-other-details-tab" data-toggle="pill" href="#custom-content-below-other-details" role="tab" aria-controls="custom-content-below-other-details" aria-selected="true">Other Details</div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" id="custom-content-below-address-tab" data-toggle="pill"
-                        href="#custom-content-below-address" role="tab" aria-controls="custom-content-below-address"
-                        aria-selected="false">Address</dvi>
+                    <div class="nav-link" id="custom-content-below-address-tab" data-toggle="pill" href="#custom-content-below-address" role="tab" aria-controls="custom-content-below-address" aria-selected="false">Address</dvi>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" id="custom-content-below-contact-person-tab" data-toggle="pill"
-                        href="#custom-content-below-contact-person" role="tab"
-                        aria-controls="custom-content-below-contact-person" aria-selected="false">Contact Persons</div>
+                    <div class="nav-link" id="custom-content-below-contact-person-tab" data-toggle="pill" href="#custom-content-below-contact-person" role="tab" aria-controls="custom-content-below-contact-person" aria-selected="false">Contact Persons</div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" id="custom-content-below-remark-tab" data-toggle="pill"
-                        href="#custom-content-below-remark" role="tab" aria-controls="custom-content-below-remark"
-                        aria-selected="false">Remark</div>
+                    <div class="nav-link" id="custom-content-below-remark-tab" data-toggle="pill" href="#custom-content-below-remark" role="tab" aria-controls="custom-content-below-remark" aria-selected="false">Remark</div>
                 </li>
             </ul>
             <div class="tab-content" id="custom-content-below-tabContent">
-                <div class="tab-pane fade show active" id="custom-content-below-other-details" role="tabpanel"
-                    aria-labelledby="custom-content-below-other-details-tab">
+                <div class="tab-pane fade show active" id="custom-content-below-other-details" role="tabpanel" aria-labelledby="custom-content-below-other-details-tab">
                     <div class="m-2">
                         <div class="row mt-2">
                             <div class="col-sm-2">
@@ -245,8 +236,7 @@ if (!isset($_SESSION['user_id'])) {
                         <button class="btn btn-xs btn-danger">Cancel</button>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="custom-content-below-address" role="tabpanel"
-                    aria-labelledby="custom-content-below-address-tab">
+                <div class="tab-pane fade" id="custom-content-below-address" role="tabpanel" aria-labelledby="custom-content-below-address-tab">
                     <div class="row">
                         <div class="col-sm-6">
                             <h6 class="text-uppercase mt-4 mb-3">Billing Address</h6>
@@ -279,16 +269,14 @@ if (!isset($_SESSION['user_id'])) {
                                     <p>Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control w-75" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Remarks" name="remarks"></textarea>
+                                    <textarea class="form-control w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Remarks" name="remarks"></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3">
                                 </div>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control mt-1 w-75" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Remarks" name="remarks"></textarea>
+                                    <textarea class="form-control mt-1 w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Remarks" name="remarks"></textarea>
                                 </div>
                             </div>
                             <div class="row mt-1">
@@ -374,16 +362,14 @@ if (!isset($_SESSION['user_id'])) {
                                     <p>Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control w-75" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Remarks" name="remarks"></textarea>
+                                    <textarea class="form-control w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Remarks" name="remarks"></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3">
                                 </div>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control mt-1 w-75" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Remarks" name="remarks"></textarea>
+                                    <textarea class="form-control mt-1 w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Remarks" name="remarks"></textarea>
                                 </div>
                             </div>
                             <div class="row mt-1">
@@ -450,8 +436,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="custom-content-below-contact-person" role="tabpanel"
-                    aria-labelledby="custom-content-below-contact-person-tab">
+                <div class="tab-pane fade" id="custom-content-below-contact-person" role="tabpanel" aria-labelledby="custom-content-below-contact-person-tab">
                     <div class="col-sm-8">
                         <table class="table table-bordered">
                             <thead>
@@ -478,11 +463,9 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="custom-content-below-remark" role="tabpanel"
-                    aria-labelledby="custom-content-below-remark-tab">
+                <div class="tab-pane fade" id="custom-content-below-remark" role="tabpanel" aria-labelledby="custom-content-below-remark-tab">
                     <div class="form-group">
-                        <textarea class="form-control mt-4" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Remarks" name="remarks" style="width: 50%;"></textarea>
+                        <textarea class="form-control mt-4" id="exampleFormControlTextarea1" rows="3" placeholder="Remarks" name="remarks" style="width: 50%;"></textarea>
                     </div>
                 </div>
             </div>

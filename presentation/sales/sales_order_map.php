@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -91,110 +91,110 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <style>
-.main-timeline-section {
-    position: relative;
-    width: 100%;
-    margin: auto;
-    height: 300px;
-}
-
-.main-timeline-section .timeline-start,
-.main-timeline-section .timeline-end {
-    position: absolute;
-    background: #168eb4;
-    border-radius: 100px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-}
-
-.main-timeline-section .timeline-end {
-    right: 0px;
-}
-
-.main-timeline-section .conference-center-line {
-    position: absolute;
-    width: 100%;
-    height: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #168eb4;
-}
-
-.timeline-article {
-    width: 9%;
-    position: relative;
-    min-height: 300px;
-    float: right;
-}
-
-.timeline-article .content-date {
-    position: absolute;
-    top: 35%;
-    left: -30px;
-    font-size: 18px;
-}
-
-.timeline-article .meta-date {
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-    background: #fff;
-    border: 1px solid #168eb4;
-}
-
-.timeline-article-top .content-box:before {
-    content: " ";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -20px;
-    border: 10px solid transparent;
-    border-bottom-color: #168eb4;
-}
-
-.timeline-article-bottom .content-date {
-    top: 59%;
-}
-
-.timeline-article-bottom .content-box {
-    top: 0%;
-}
-
-.timeline-article-bottom .content-box:before {
-    content: " ";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -20px;
-    border: 10px solid transparent;
-    border-top-color: #168eb4;
-}
-
-@media screen and (max-width: 1366px) {
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80vh;
-        padding: 0 20px;
+    .main-timeline-section {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        height: 300px;
     }
-}
 
-@media (min-width: 1920px) and (max-width: 2560px) {
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90vh;
-        padding: 0 30px;
+    .main-timeline-section .timeline-start,
+    .main-timeline-section .timeline-end {
+        position: absolute;
+        background: #168eb4;
+        border-radius: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
     }
-}
 
-<?php include_once('../includes/footer.php');
-?>
+    .main-timeline-section .timeline-end {
+        right: 0px;
+    }
+
+    .main-timeline-section .conference-center-line {
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #168eb4;
+    }
+
+    .timeline-article {
+        width: 9%;
+        position: relative;
+        min-height: 300px;
+        float: right;
+    }
+
+    .timeline-article .content-date {
+        position: absolute;
+        top: 35%;
+        left: -30px;
+        font-size: 18px;
+    }
+
+    .timeline-article .meta-date {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        background: #fff;
+        border: 1px solid #168eb4;
+    }
+
+    .timeline-article-top .content-box:before {
+        content: " ";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+        border: 10px solid transparent;
+        border-bottom-color: #168eb4;
+    }
+
+    .timeline-article-bottom .content-date {
+        top: 59%;
+    }
+
+    .timeline-article-bottom .content-box {
+        top: 0%;
+    }
+
+    .timeline-article-bottom .content-box:before {
+        content: " ";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -20px;
+        border: 10px solid transparent;
+        border-top-color: #168eb4;
+    }
+
+    @media screen and (max-width: 1366px) {
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 0 20px;
+        }
+    }
+
+    @media (min-width: 1920px) and (max-width: 2560px) {
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            padding: 0 30px;
+        }
+    }
+
+    <?php include_once('../includes/footer.php');
+    ?>
