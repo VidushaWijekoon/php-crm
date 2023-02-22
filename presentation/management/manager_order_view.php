@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -189,8 +189,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row">
     <div class="col-sm-6 mt-4 mb-3 px-3">
         <p>Customer Note</p>
-        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Customer Note"
-            name="note"></textarea>
+        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Customer Note" name="note"></textarea>
     </div>
     <div class="col-sm-6" style="background-color:#3494b333;">
         <div class="d-flex justify-content-between">
@@ -210,8 +209,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row">
     <div class="col-sm-6 mt-4 mb-3 px-3">
         <p>Term and Conditions</p>
-        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Term and Condition"
-            name="note"></textarea>
+        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Term and Condition" name="note"></textarea>
     </div>
 </div>
 
@@ -221,95 +219,95 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <style>
-.select2-selection__rendered {
-    line-height: 17px !important;
-    padding-left: 0px !important;
-}
+    .select2-selection__rendered {
+        line-height: 17px !important;
+        padding-left: 0px !important;
+    }
 
-.select2 {
-    width: 220px;
-}
+    .select2 {
+        width: 220px;
+    }
 
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
 
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.ecomOrderFormSec {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .ecomOrderFormSec {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-}
+    }
 
-.cardContainer {
-    width: 99%;
-    background-color: #ffffff;
-    padding: 10px 5px;
-}
+    .cardContainer {
+        width: 99%;
+        background-color: #ffffff;
+        padding: 10px 5px;
+    }
 
-.createListingHeading {
-    font-weight: 600;
-    font-size: 20px;
-}
+    .createListingHeading {
+        font-weight: 600;
+        font-size: 20px;
+    }
 
-.sectionUnderline {
-    border-top: 2px solid #DBDBDB;
-    margin-top: 0px;
-}
+    .sectionUnderline {
+        border-top: 2px solid #DBDBDB;
+        margin-top: 0px;
+    }
 
-.formSec {
-    padding: 0px 20px;
-}
+    .formSec {
+        padding: 0px 20px;
+    }
 
-.platformes {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+    .platformes {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 
-.DropDown {
-    height: 30px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    /* padding: 0px 10px; */
-}
+    .DropDown {
+        height: 30px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        /* padding: 0px 10px; */
+    }
 
-.lableSec {
-    font-weight: 500;
-    font-size: 12px;
-}
+    .lableSec {
+        font-weight: 500;
+        font-size: 12px;
+    }
 
-.inputSec input[type="text"] {
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    width: 100%;
-}
+    .inputSec input[type="text"] {
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        width: 100%;
+    }
 
-.required:after {
-    content: " *";
-    color: red;
-}
+    .required:after {
+        content: " *";
+        color: red;
+    }
 </style>
 
 <?php require_once('../includes/footer.php'); ?>
 <style>
-td {
-    font-size: 10px;
-}
+    td {
+        font-size: 10px;
+    }
 </style>
 
 <?php require_once('../includes/footer.php'); ?>

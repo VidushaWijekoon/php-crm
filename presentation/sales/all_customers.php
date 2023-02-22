@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -27,14 +27,11 @@ if (!isset($_SESSION['user_id'])) {
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill"
-                            href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all"
-                            aria-selected="true">Customers</a>
+                        <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill" href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all" aria-selected="true">Customers</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="custom-content-below-tabContent">
-                    <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel"
-                        aria-labelledby="custom-content-below-all-tab">
+                    <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel" aria-labelledby="custom-content-below-all-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -84,9 +81,9 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <style>
-td {
-    font-size: 10px;
-}
+    td {
+        font-size: 10px;
+    }
 </style>
 
 <?php require_once('../includes/footer.php'); ?>

@@ -1,12 +1,16 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
 require_once('../includes/header.php');
+require_once('../../functions/db_connection.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
@@ -14,6 +18,7 @@ if (!isset($_SESSION['user_id'])) {
 <style>
 input[type="text"] {
     width: 340px;
+    padding: 0 5px;
 }
 </style>
 
@@ -28,7 +33,7 @@ input[type="text"] {
 <div class="row">
     <div class="col-lg-6 grid-margin stretch-card justify-content-center mx-auto mt-2">
         <div class="card">
-            <form action="">
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="card-body">
                     <!-- ============================================================== -->
                     <!-- Emp ID  -->
@@ -40,7 +45,16 @@ input[type="text"] {
                         <div class="col-md-9">
                             <select name="emp_id" id="emp_id" class="w-75">
                                 <option selected>--Select Employee ID--</option>
+                                <?php
+                                $query = "SELECT users.emp_id, employees.emp_id FROM employees LEFT JOIN users  ON users.emp_id = employees.emp_id WHERE users.emp_id IS NULL;";
+                                $result = mysqli_query($connection, $query);
 
+                                while ($emp_id = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
+                                ?>
+                                <option value="<?php echo $emp_id["emp_id"]; ?>">
+                                    <?php echo strtoupper($emp_id["emp_id"]); ?>
+                                </option>
+                                <?php endwhile; ?>
                             </select>
                         </div>
                     </div>
@@ -52,8 +66,7 @@ input[type="text"] {
                             <p class="card-text">First Name</p>
                         </div>
                         <div class="col-md-9">
-                            <select name="first_name" id="first_name" class="w-75"></select>
-
+                            <select name="first_name" id="first_name" class="w-75"> </select>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -115,21 +128,21 @@ input[type="text"] {
                             <p class="card-text">Password</p>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="w-75" placeholder="Password" name="password_1">
+                            <input type="password" id="password" class="w-75" placeholder="Password" name="password_1">
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- Confirm Password  -->
-                    <!-- ============================================================== -->
-                    <div class="row mb-2">
-                        <div class="col-md-3">
-                            <p class="card-text">Confirm Password</p>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="w-75" placeholder="Confirm Password" name="password_2">
+
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-8">
+                            <div class="d-flex">
+                                <input type="checkbox" onclick="showPassword()" style="width:20px;height:20px">
+                                <p class="mt-1 mx-2">Show Password</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <button class="btn btn-sm btn-success mx-auto mb-3">Submit</button>
                 </div>
@@ -137,3 +150,14 @@ input[type="text"] {
         </div>
     </div>
 </div>
+
+<script>
+function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>

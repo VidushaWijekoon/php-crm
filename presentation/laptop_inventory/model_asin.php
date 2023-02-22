@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -46,22 +46,22 @@ if (!isset($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for($i = 1; $i <= 10; $i++) { ?>
-                            <tr>
-                                <td><a href="./model_spec_view.php">B07NYTMHQS</a></td>
-                                <td>Dell</td>
-                                <td>LATITUDE E5480</td>
-                                <td>I3-7100U</td>
-                                <td>7</td>
-                                <td>100</td>
-                                <td>90</td>
-                                <td>10</td>
-                                <td>45</td>
-                                <td>55</td>
-                                <td>$150</td>
-                                <td>$165</td>
-                                <td>12</td>
-                            </tr>
+                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                <tr>
+                                    <td><a href="./model_spec_view.php">B07NYTMHQS</a></td>
+                                    <td>Dell</td>
+                                    <td>LATITUDE E5480</td>
+                                    <td>I3-7100U</td>
+                                    <td>7</td>
+                                    <td>100</td>
+                                    <td>90</td>
+                                    <td>10</td>
+                                    <td>45</td>
+                                    <td>55</td>
+                                    <td>$150</td>
+                                    <td>$165</td>
+                                    <td>12</td>
+                                </tr>
                             <?php } ?>
                         </tbody>
 
