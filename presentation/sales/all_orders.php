@@ -27,29 +27,29 @@ if (!isset($_SESSION['user_id'])) {
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill"
+                        <div class="nav-link active" id="custom-content-below-all-tab" data-toggle="pill"
                             href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all"
-                            aria-selected="true">All</a>
+                            aria-selected="true">All</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill"
+                        <div class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill"
                             href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing"
-                            aria-selected="false">Packing</a>
+                            aria-selected="false">Packing</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-invoiced-tab" data-toggle="pill"
+                        <div class="nav-link" id="custom-content-below-invoiced-tab" data-toggle="pill"
                             href="#custom-content-below-invoiced" role="tab"
-                            aria-controls="custom-content-below-invoiced" aria-selected="false">Invoiced</a>
+                            aria-controls="custom-content-below-invoiced" aria-selected="false">Invoiced</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-shipping-tab" data-toggle="pill"
+                        <div class="nav-link" id="custom-content-below-shipping-tab" data-toggle="pill"
                             href="#custom-content-below-shipping" role="tab"
-                            aria-controls="custom-content-below-shipping" aria-selected="false">Shipping</a>
+                            aria-controls="custom-content-below-shipping" aria-selected="false">Shipping</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-content-below-shipped-tab" data-toggle="pill"
+                        <div class="nav-link" id="custom-content-below-shipped-tab" data-toggle="pill"
                             href="#custom-content-below-shipped" role="tab" aria-controls="custom-content-below-shipped"
-                            aria-selected="false">Shipped</a>
+                            aria-selected="false">Shipped</div>
                     </li>
                 </ul>
                 <div class="tab-content" id="custom-content-below-tabContent">
@@ -97,6 +97,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -146,6 +147,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -195,6 +197,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -244,6 +247,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -293,6 +297,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

@@ -80,13 +80,14 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php for($i = 1; $i <= 5; $i++) { ?>
                                 <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
+                                    <td><?php echo $i ?></td>
                                     <td>02/18/2023</td>
-                                    <td>OD-12345</td>
+                                    <td><a href="#">SO-12345</a></td>
                                     <td>WH1-12334</td>
                                     <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
+                                    <td><a href="./sales_order_map.php">Processing</a></td>
                                     <td>02/25/2023</td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
@@ -102,76 +103,10 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="../sales/sales_order_map.php"><i class="fa-solid fa-bullseye"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -196,53 +131,33 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php for($j = 1; $j <= 5; $j++) { ?>
                                 <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
+                                    <td><?php echo $j ?></td>
                                     <td>02/18/2023</td>
-                                    <td>OD-12345</td>
+                                    <td><a href="#">SO-12345</a></td>
                                     <td>WH1-12334</td>
                                     <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
+                                    <td><a href="./sales_order_map.php">Processing</a></td>
                                     <td>02/25/2023</td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="../sales/sales_order_map.php"><i class="fa-solid fa-bullseye"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -267,98 +182,33 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php for($k = 1; $k <= 5; $k++) { ?>
                                 <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
+                                    <td><?php echo $k ?></td>
                                     <td>02/18/2023</td>
-                                    <td>OD-12345</td>
+                                    <td><a href="#">SO-12345</a></td>
                                     <td>WH1-12334</td>
                                     <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
+                                    <td><a href="./sales_order_map.php">Shipped</a></td>
                                     <td>02/25/2023</td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="../sales/sales_order_map.php"><i class="fa-solid fa-bullseye"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -383,13 +233,14 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php for($l = 1; $l <= 5; $l++) { ?>
                                 <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
+                                    <td><?php echo $l ?></td>
                                     <td>02/18/2023</td>
-                                    <td>OD-12345</td>
+                                    <td><a href="#">SO-12345</a></td>
                                     <td>WH1-12334</td>
                                     <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
+                                    <td><a href="./sales_order_map.php">Shipped</a></td>
                                     <td>02/25/2023</td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
@@ -398,83 +249,17 @@ if (!isset($_SESSION['user_id'])) {
                                         <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle"></i>
                                     </td>
                                     <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
+                                        <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="../sales/sales_order_map.php"><i class="fa-solid fa-bullseye"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -499,13 +284,14 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php for($m = 1; $m <= 5; $m++) { ?>
                                 <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
+                                    <td><?php echo $l ?></td>
                                     <td>02/18/2023</td>
-                                    <td>OD-12345</td>
+                                    <td><a href="#">SO-12345</a></td>
                                     <td>WH1-12334</td>
                                     <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
+                                    <td><a href="./sales_order_map.php">Shipped</a></td>
                                     <td>02/25/2023</td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
@@ -521,76 +307,10 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="../sales/sales_order_map.php"><i class="fa-solid fa-bullseye"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -615,13 +335,14 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php for($m = 1; $m <= 5; $m++) { ?>
                                 <tr>
-                                    <td scope="row"><a href="manager_manager_order_view.php">1</a></td>
+                                    <td><?php echo $l ?></td>
                                     <td>02/18/2023</td>
-                                    <td>OD-12345</td>
+                                    <td><a href="#">SO-12345</a></td>
                                     <td>WH1-12334</td>
                                     <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
+                                    <td><a href="./sales_order_map.php">Shipped</a></td>
                                     <td>02/25/2023</td>
                                     <td>
                                         <i class="fa-solid fa-circle"></i>
@@ -637,76 +358,10 @@ if (!isset($_SESSION['user_id'])) {
                                     </td>
                                     <td>Local Pickup</td>
                                     <td>5 Days 25Minutes</td>
+                                    <td><a href="../sales/sales_order_map.php"><i class="fa-solid fa-bullseye"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><a href="manager_order_view.php">1</a></td>
-                                    <td>02/18/2023</td>
-                                    <td>OD-12345</td>
-                                    <td>WH1-12334</td>
-                                    <td>John Doe</td>
-                                    <td>Waiting for Approval</td>
-                                    <td>02/25/2023</td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>
-                                        <i class="fa-solid fa-circle"></i>
-                                    </td>
-                                    <td>Local Pickup</td>
-                                    <td>5 Days 25Minutes</td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
