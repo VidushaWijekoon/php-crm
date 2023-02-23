@@ -5,85 +5,85 @@ require_once('../includes/header.php')
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .ecomOrderFormSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.ecomOrderFormSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 
-    .scanSec {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.scanSec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .sectionUnderlineModel {
-        margin-top: 0px;
-    }
+.sectionUnderlineModel {
+    margin-top: 0px;
+}
 
-    .detailsSec {
-        justify-content: center;
+.detailsSec {
+    justify-content: center;
 
-    }
+}
 
-    input[type=text] {
-        background: #FFFFFF;
-        border: 1px solid #D1CDCD;
-        border-radius: 5px;
-        height: 24px;
-        width: 100%;
-        padding: 0 10px;
-    }
+input[type=text] {
+    background: #FFFFFF;
+    border: 1px solid #D1CDCD;
+    border-radius: 5px;
+    height: 24px;
+    width: 100%;
+    padding: 0 10px;
+}
 
-    .DropDown {
-        /* height: 24px; */
-        width: 100%;
-        border-radius: 5px;
-        border: 1px solid #D1CDCD;
-        padding: 0px 10px;
-    }
+.DropDown {
+    /* height: 24px; */
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    padding: 0px 10px;
+}
 
-    .btnT {
-        background: #FFFFFF;
-        border: 1px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 10px;
-        padding: 5px 10px;
-    }
+.btnT {
+    background: #FFFFFF;
+    border: 1px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 5px 10px;
+}
 
-    .select2-selection__rendered {
-        line-height: 17px !important;
-        padding-left: 0px !important;
-    }
+.select2-selection__rendered {
+    line-height: 17px !important;
+    padding-left: 0px !important;
+}
 </style>
 
 
@@ -280,16 +280,16 @@ require_once('../includes/header.php')
 <script src="../../plugins/jquery/jquery.min.js"></script>
 
 <script>
-    $(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2()
+$(function() {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
-
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
     })
+
+})
 </script>
 
 <?php

@@ -5,56 +5,56 @@ require_once('../includes/header.php')
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .ecomOrderFormSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.ecomOrderFormSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 
-    .btnT {
-        background: #FFFFFF;
-        border: 1px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 10px;
-        padding: 5px 10px;
-    }
+.btnT {
+    background: #FFFFFF;
+    border: 1px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 5px 10px;
+}
 
-    .tableSecSupSheet table {
-        height: 75vh;
-    }
+.tableSecSupSheet table {
+    height: 75vh;
+}
 
-    .tableSecSupSheet table th {
-        color: #168EB4;
-    }
+.tableSecSupSheet table th {
+    color: #168EB4;
+}
 </style>
 
 
