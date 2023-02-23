@@ -9,22 +9,94 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
 
-// $username = 
+$first_name = '';
+$last_name = '';
+$full_name = '';
+$email = '';
+$gender = '';
+$birthday = '';
+$old_passport = '';
+$current_passport = '';
+$passport_expiring_date = '';
+$visa_expiring_date = '';
+$contact_number = '';
+$current_address = '';
+$country_name = '';
+$emergency_contact = '';
+$profile_photo = '';
+$department = '';
+$role = '';
+$join_date = '';
+$note = '';
+
 $username = $_SESSION['username'];
+$emp_id = mysqli_real_escape_string($connection, $_GET['emp_id']);
+
+$query = "SELECT 
+    emp_id,
+    first_name,
+    last_name 
+    full_name,
+    email,
+    gender,
+    birthday,
+    old_passport,
+    current_passport,
+    passport_expiring_date,
+    resident_country,
+    join_date,
+    visa_expiring_date,
+    contact_number,
+    current_address,
+    resident_country,
+    emergency_contact,
+    profile_photo,
+    join_date,
+    note,
+    departments.department_id,
+    department_name,
+    user_roles.role_id,
+    role_name
+FROM
+    employees
+LEFT JOIN departments ON employees.department_id = departments.department_id
+LEFT JOIN user_roles ON employees.role_id = user_roles.role_id;";
+$run = mysqli_query($connection, $query);
+while ($x = mysqli_fetch_array($run)) {
+    $first_name = $x['first_name'];
+    $last_name = $x['last_name'];
+    $full_name = $x['full_name'];
+    $email = $x['email'];
+    $gender = $x['gender'];
+    $birthday = $x['birthday'];
+    $old_passport = $x['old_passport'];
+    $current_passport = $x['current_passport'];
+    $passport_expiring_date = $x['passport_expiring_date'];
+    $visa_expiring_date = $x['visa_expiring_date'];
+    $contact_number = $x['contact_number'];
+    $current_address = $x['current_address'];
+    $country_name = $x['resident_country'];
+    $emergency_contact = $x['emergency_contact'];
+    $profile_photo = $x['profile_photo'];
+    $department = $x['department_id'];
+    $role = $x['role_id'];
+    $join_date = $x['join_date'];
+    $note = $x['note'];
+}
 
 ?>
 
 <div class="row">
     <div class="col-md-5 align-self-center d-flex">
         <i class="fa-solid fa-user-plus"></i>
-        <h6 style="margin-top: auto; font-weight: bold;"> Create New Employee</h6>
+        <h6 class="" style="margin-top: auto; font-weight: bold;"> Create New Employee</h6>
     </div>
 </div>
 
 <div class="row">
     <div class="col-lg-11 grid-margin stretch-card justify-content-center mx-auto mt-2">
         <div class="card">
-            <form action="./addNew/insert_employee.php" method="POST">
+            <form action="./addQuery/insert_employee.php" method="POST">
                 <div class="row mx-2">
                     <div class="col-md-6">
 
@@ -33,84 +105,73 @@ $username = $_SESSION['username'];
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">First Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" required placeholder="First Name" name="first_name">
+                                    <input type="text" class="" value="<?php echo $first_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Last Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" required placeholder="Last Name" name="last_name">
+                                    <input type="text" class="" value="<?php echo $last_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Full Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" required placeholder="Full Name" name="full_name">
+                                    <input type="text" class="" value="<?php echo $full_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="email" placeholder="Email" name="email">
+                                    <input type="text" class="" value="<?php echo $email; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Gender</label>
                                 <div class="col-sm-8">
-                                    <select name="gender" required>
-                                        <option selected>--Please Select Gender--</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
+                                    <input type="text" class="" value="<?php echo $gender; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Birthday</label>
                                 <div class="col-sm-8">
-                                    <input name="birthday" type="date" />
+                                    <input type="text" class="" value="<?php echo $birthday; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Old Passport</label>
                                 <div class="col-sm-8">
-                                    <input type="text" placeholder="Old Passport if necessory" name="old_passport">
+                                    <input type="text" class="" value="<?php echo $old_passport; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Passport</label>
                                 <div class="col-sm-8">
-                                    <input type="text" required placeholder="Current Passport" name="current_passport">
+                                    <input type="text" class="" value="<?php echo $current_passport; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Passport Expiring</label>
                                 <div class="col-sm-8">
-                                    <input type="date" id="passport_expiring_date" name="passport_expiring_date" required />
+                                    <input type="text" class="" value="<?php echo $passport_expiring_date; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Type</label>
                                 <div class="col-sm-8">
-                                    <select name="visa_type" required>
-                                        <option selected>--Please Select Visa Type--</option>
-                                        <option value="visit">Visit Visa</option>
-                                        <option value="own">Own Visa</option>
-                                        <option value="company">Company Visa</option>
-                                        <option value="cancel">Cancel Visa</option>
-                                        <option value="student">Student Visa</option>
-                                    </select>
+                                    <input type="text" class="" value="<?php echo $passport_expiring_date; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Expiring</label>
                                 <div class="col-sm-8">
-                                    <input type="date" id="visa_expiring_date" name="visa_expiring_date" required />
+                                    <input type="date" id="visa_expiring_date" name="visa_expiring_date" class="" />
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Contact Number</label>
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" placeholder="Contact Number" name="contact_number">
+                                    <input type="number" min="0" class="" placeholder="Contact Number" name="contact_number">
                                 </div>
                             </div>
 
@@ -121,21 +182,21 @@ $username = $_SESSION['username'];
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" placeholder="Current Address" name="current_address">
+                                    <input type="text" class="" placeholder="Current Address" name="current_address">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Permanent Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" placeholder="Permanent Address" name="permanent_address">
+                                    <input type="text" class="" placeholder="Permanent Address" name="permanent_address">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Resident Country</label>
                                 <div class="col-sm-8">
-                                    <select name="resident_country" required style="border-radius: 5px;">
+                                    <select name="resident_country" class="" style="border-radius: 5px;">
                                         <option selected>--Select Resident Country--</option>
                                         <?php
                                         $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
@@ -153,7 +214,7 @@ $username = $_SESSION['username'];
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Emergency</label>
                                 <div class="col-sm-8">
-                                    <input type="number" min="1" placeholder="Emergency Contact Number" name="emergency_contact">
+                                    <input type="number" min="1" class="" placeholder="Emergency Contact Number" name="emergency_contact">
                                 </div>
                             </div>
                         </fieldset>
@@ -177,7 +238,7 @@ $username = $_SESSION['username'];
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Department</label>
                                 <div class="col-sm-8">
-                                    <select name="department" required style="border-radius: 5px;">
+                                    <select name="department" class="" style="border-radius: 5px;">
                                         <option selected>--Select Resident Country--</option>
                                         <?php
                                         $query = "SELECT * FROM departments ORDER BY department_name ASC";
@@ -195,7 +256,7 @@ $username = $_SESSION['username'];
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Labour Category</label>
                                 <div class="col-sm-8">
-                                    <select name="role" required style="border-radius: 5px;">
+                                    <select name="role" class="" style="border-radius: 5px;">
                                         <option selected>--Select Resident Country--</option>
                                         <?php
                                         $query = "SELECT * FROM user_roles ORDER BY role_name ASC";
@@ -214,7 +275,7 @@ $username = $_SESSION['username'];
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Join Date</label>
                                 <div class="col-sm-8">
-                                    <input type="date" required name="join_date" />
+                                    <input class="" type="date" name="join_date" />
                                 </div>
                             </div>
 
