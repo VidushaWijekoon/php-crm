@@ -49,27 +49,27 @@ if (!isset($_SESSION['user_id'])) {
                         <tbody>
                             <?php for ($a = 1; $a <= 10; $a++) { ?>
 
-                                <tr>
-                                    <td>1</td>
-                                    <td>dell</td>
-                                    <td>latitude e5480</td>
-                                    <td>i3-7100u</td>
-                                    <td>7</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0
-                                    </td>
-                                    <td>0</td>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td> </td>
-                                    <td>0 </td>
-                                    <td class="text-center">
-                                        <a class="" href="./model_asin.php">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>dell</td>
+                                <td>latitude e5480</td>
+                                <td>i3-7100u</td>
+                                <td>7</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0
+                                </td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td></td>
+                                <td> </td>
+                                <td>0 </td>
+                                <td class="text-center">
+                                    <a class="" href="./model_asin.php">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>

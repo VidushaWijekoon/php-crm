@@ -58,29 +58,29 @@ if (!isset($_SESSION['user_id'])) {
                         </thead>
                         <tbody>
                             <?php for ($d = 1; $d <= 10; $d++) { ?>
-                                <tr>
-                                    <td>Laptop</td>
-                                    <td>dell</td>
-                                    <td>latitude e5480</td>
-                                    <td>intel</td>
-                                    <td>i5-6300u</td>
-                                    <td>6</td>
-                                    <td>2.40ghz</td>
-                                    <td>14.00</td>
-                                    <td>no</td>
-                                    <td>no</td>
-                                    <td>8GB</td>
-                                    <td>256GB</td>
-                                    <td>wh4-6-latitude e5480 </td>
-                                    <td>6v6tnq2</td>
-                                    <td>B07NYTMHQS</td>
-                                    <td>ALSAKB225111</td>
-                                    <td>
-                                        <div class="text-success">yes</div>
-                                    </td>
-                                    <td>$165.00</td>
+                            <tr>
+                                <td>Laptop</td>
+                                <td>dell</td>
+                                <td>latitude e5480</td>
+                                <td>intel</td>
+                                <td>i5-6300u</td>
+                                <td>6</td>
+                                <td>2.40ghz</td>
+                                <td>14.00</td>
+                                <td>no</td>
+                                <td>no</td>
+                                <td>8GB</td>
+                                <td>256GB</td>
+                                <td>wh4-6-latitude e5480 </td>
+                                <td>6v6tnq2</td>
+                                <td>B07NYTMHQS</td>
+                                <td>ALSAKB225111</td>
+                                <td>
+                                    <div class="text-success">yes</div>
+                                </td>
+                                <td>$165.00</td>
 
-                                </tr>
+                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -91,11 +91,11 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <style>
-    @media (max-width: 1370px) {
-        .core {
-            width: 65px;
-        }
+@media (max-width: 1370px) {
+    .core {
+        width: 65px;
     }
+}
 </style>
 
 <?php require_once('../includes/footer.php'); ?>

@@ -3,175 +3,175 @@ require_once('../includes/header.php')
 ?>
 
 <style>
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .ecomViewOrdersBodySec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.ecomViewOrdersBodySec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
 
-    }
+}
 
-    .tableSec table {
-        width: 100%;
-    }
+.tableSec table {
+    width: 100%;
+}
 
-    .tableSec table th {
-        color: #168EB4;
-        font-weight: 700;
-    }
+.tableSec table th {
+    color: #168EB4;
+    font-weight: 700;
+}
 
-    .tableSpec {
-        display: flex;
-        justify-content: space-between;
-        height: 40px;
-        /* width: 100%; */
-    }
+.tableSpec {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    /* width: 100%; */
+}
 
+.tableSpec .leftSec {
+    display: flex;
+}
+
+.tableSpec .rightSec {
+    /* padding-top: 5px; */
+
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.searchSec {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.searchSec input {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+
+}
+
+
+.searchSec i:hover {
+    cursor: pointer;
+}
+
+.dateSec {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+
+}
+
+.dateSec input[type="date"] {
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.dateSec i:hover {
+    cursor: pointer;
+}
+
+.tablePagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.page-item.active .page-link {
+    background-color: #168EB4;
+    border-color: #168EB4;
+}
+
+@media screen and (max-width:1024px) {
     .tableSpec .leftSec {
-        display: flex;
+        width: 40%;
+        order: 1;
     }
 
     .tableSpec .rightSec {
-        /* padding-top: 5px; */
+        width: 60%;
+        order: 2;
+    }
 
+    .searchSec input {
+        width: 100px;
+    }
+
+
+
+}
+
+@media screen and (max-width:426px) {
+    .tableSpec {
+        flex-direction: column;
+        height: 110px;
+    }
+
+    .tableSpec .leftSec {
+        order: 2;
         display: flex;
-        justify-content: flex-end;
+        flex-direction: row;
+        width: 100%;
+
+    }
+
+    .tableSpec .rightSec {
+        order: 1;
+        margin-bottom: 5px;
+        width: 100%;
 
     }
 
     .searchSec {
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
+        margin-bottom: 5px;
     }
 
     .searchSec input {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 30px;
         width: 200px;
-
     }
 
+}
 
-    .searchSec i:hover {
-        cursor: pointer;
-    }
+.tableSec1 {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+}
 
-    .dateSec {
-        display: flex;
-        align-items: center;
-        margin-right: 5px;
-
-    }
-
-    .dateSec input[type="date"] {
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 30px;
-    }
-
-    .dateSec i:hover {
-        cursor: pointer;
-    }
-
-    .tablePagination {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-
-    }
-
-    .page-item.active .page-link {
-        background-color: #168EB4;
-        border-color: #168EB4;
-    }
-
-    @media screen and (max-width:1024px) {
-        .tableSpec .leftSec {
-            width: 40%;
-            order: 1;
-        }
-
-        .tableSpec .rightSec {
-            width: 60%;
-            order: 2;
-        }
-
-        .searchSec input {
-            width: 100px;
-        }
-
-
-
-    }
-
-    @media screen and (max-width:426px) {
-        .tableSpec {
-            flex-direction: column;
-            height: 110px;
-        }
-
-        .tableSpec .leftSec {
-            order: 2;
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-
-        }
-
-        .tableSpec .rightSec {
-            order: 1;
-            margin-bottom: 5px;
-            width: 100%;
-
-        }
-
-        .searchSec {
-            margin-bottom: 5px;
-        }
-
-        .searchSec input {
-            width: 200px;
-        }
-
-    }
-
-    .tableSec1 {
-        height: 500px;
-        overflow-y: auto;
-        overflow-x: auto;
-        width: 100%;
-    }
-
-    .dropdownFilter {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 30px;
-    }
+.dropdownFilter {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 30px;
+}
 </style>
 
 <div class="row pageNavigation">
@@ -198,17 +198,20 @@ require_once('../includes/header.php')
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                         <li class="nav-item">
-                            <div class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab" aria-controls="profile" aria-selected="false">
+                            <div class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab"
+                                aria-controls="profile" aria-selected="false">
                                 <span style="color: #7a7575; font-weight: 700">Open </span>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="contact" aria-selected="false">
+                            <div class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab"
+                                aria-controls="contact" aria-selected="false">
                                 <span style="color: #7a7575; font-weight: 700">Packed </span>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="home" aria-selected="true">
+                            <div class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab"
+                                aria-controls="home" aria-selected="true">
                                 <span style="color: #7a7575; font-weight: 700;">All </span>
                             </div>
                         </li>
