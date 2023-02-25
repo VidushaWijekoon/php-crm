@@ -51,7 +51,7 @@ require_once('../includes/header.php')
 
 
 
-<div class="row mb-4">
+<div class="row mb-4 ml-1 pt-2">
 
     <i class="pageNameIcon fa-regular fa-users-medical"></i>
     <h6 class="pageName pt-1">Team Members</h6>
@@ -59,7 +59,7 @@ require_once('../includes/header.php')
 
 <div class="row ecomOrderFormSec">
     <div class="cardContainer">
-        <div class="">
+        <div class="ml-2">
             <div class="createListingHeading">
                 <span>
                     Team Member Details

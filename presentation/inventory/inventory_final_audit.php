@@ -27,6 +27,12 @@ require_once('../includes/header.php')
     font-size: 15px;
 }
 
+<<<<<<< HEAD .sectionUnderline {
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-top: 2px solid #DBDBDB;
+}
+
 .sectionUnderlineModel {
     margin-top: 0px;
 }
@@ -34,79 +40,110 @@ require_once('../includes/header.php')
 /* model styles */
 .modelInput input[type=text] {
     background: #FFFFFF;
-    border: 1px solid #A1A3A8;
+    border: 1px solid #D1CDCD;
     border-radius: 5px;
     height: 24px;
     width: 100%;
 
+    =======.sectionUnderlineModel {
+        margin-top: 0px;
+    }
 
-}
+    /* model styles */
+    .modelInput input[type=text] {
+        background: #FFFFFF;
+        border: 1px solid #A1A3A8;
+        border-radius: 5px;
+        height: 24px;
+        width: 100%;
+        >>>>>>>9ffa91be4071bc31c239e77c210a5d732b9ab3e3
+    }
 
-/* LCD */
+    /* LCD */
 
-.lcdSec {
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    width: 80%;
-}
+    .lcdSec {
+        /* display: flex; */
+        /* align-items: center; */
+        /* justify-content: center; */
+        width: 80%;
+    }
 
-.lcdLable {
-    font-size: 15px;
-    font-weight: 500;
-}
+    .lcdLable {
+        font-size: 15px;
+        font-weight: 500;
+    }
 
-.lcdCheq input[type='checkbox'] {
-    height: 20px;
-    width: 20px;
-}
+    .lcdCheq input[type='checkbox'] {
+        height: 20px;
+        width: 20px;
+    }
 
-.motherboedSec,
-.batterySec {
-    display: flex;
-    flex-direction: column;
-    /* width: 80%; */
-    /* justify-content: center; */
-    align-items: center;
-}
+    .motherboedSec,
+    .batterySec {
+        display: flex;
+        flex-direction: column;
+        /* width: 80%; */
+        /* justify-content: center; */
+        align-items: center;
+    }
 
-.mbLable,
-.btryLbl {
-    font-size: 15px;
-    font-weight: 500;
-}
+    .mbLable,
+    .btryLbl {
+        font-size: 15px;
+        font-weight: 500;
+    }
 
-.mbCheq input[type='radio'] {
-    height: 15px;
-    width: 15px;
-}
+    .mbCheq input[type='radio'] {
+        height: 15px;
+        width: 15px;
+    }
 
-.btryLbl input[type='radio'] {
-    height: 15px;
-    width: 15px;
-    margin-right: 5px;
-}
+    .btryLbl input[type='radio'] {
+        height: 15px;
+        width: 15px;
+        margin-right: 5px;
+    }
 
-.DropDown {
-    height: 30px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    /* padding: 0px 10px; */
-}
+    .DropDown {
+        height: 30px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        /* padding: 0px 10px; */
+    }
 
-/*  */
-/*  */
+    /*  */
+    .btnT {
+        background: #FFFFFF;
+        border: 2px solid #168EB4;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+
+    .btnT2 {
+        background: #FFFFFF;
+        border: 2px solid #168EB4;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    /*  */
 </style>
 
-<div class="row mb-4">
-    <i class="pageNameIcon fa-solid fa-store"></i>
+<div class="row mb-4 ml-1 pt-2">
+
+
+    <i class="pageNameIcon fa-solid fa-check-to-slot"></i>
     <h6 class="pageName">Final Audit</h6>
 </div>
 
 <div class="row laptopAuditBodySec">
     <div class="cardContainer">
-        <div class="">
+        <div class="ml-2">
             <div class="createListingHeading">
                 <span>
                     Scan Laptop
@@ -116,12 +153,13 @@ require_once('../includes/header.php')
             </div>
         </div>
         <hr class="sectionUnderline">
-        <div class="row justify-content-center">
-            <div class="col-4">
+        <div class="row justify-content-center w-100 mt-4">
+            <div class="">
                 Scan Alsakb Number
-                <input type="text">
+                <input class="ml-2" type="text">
+                <button class="btnT2" data-toggle="modal" data-target="#myModal"> scan</button>
             </div>
-            <button data-toggle="modal" data-target="#myModal"> scan</button>
+
         </div>
 
 
@@ -725,7 +763,19 @@ require_once('../includes/header.php')
                                                         <div class="col-6 btryLbl">Weak</div>
                                                     </div>
                                                 </div>
+
                                             </div>
+
+                                        </div>
+                                        <div class="row batterySec">
+                                            <div class="mt-3">
+                                                Scan PN &nbsp;
+                                                <input type="text" id="btryPN">
+                                            </div>
+                                            <br>
+                                            <div style="color: #BB0000; font-size:15px; font-weight:700">Remove Battery
+                                                And
+                                                Confirm</div>
                                         </div>
 
                                     </div>
@@ -743,18 +793,10 @@ require_once('../includes/header.php')
                                     </div>
                                 </div>
 
-                                <div class="row batterySec">
-                                    <div class="mt-3">
-                                        Scan PN &nbsp;
-                                        <input type="text" id="btryPN">
-                                    </div>
-                                    <br>
-                                    <div style="color: #BB0000; font-size:15px; font-weight:700">Remove Battery And
-                                        Confirm</div>
-                                </div>
+
 
                                 <div class="row batterySec my-2">
-                                    <div class="btn btn-tig">Confirm</div>
+                                    <div class="btn btnT">Confirm</div>
                                 </div>
 
                             </div>

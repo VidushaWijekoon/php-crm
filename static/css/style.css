@@ -46,12 +46,38 @@ input,
 select,
 fieldset,
 textarea {
-  border: 1px solid #a1a3a8;
+  border: 1px solid #d1cdcd;
   border-radius: 5px;
+}
+
+.nav-link p {
+  color: #ffffff !important;
+}
+body {
+  color: #071a34;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: #071a34 !important;
 }
 
 label:not(.form-check-label):not(.custom-file-label) {
   font-weight: 400;
+}
+
+.btnTB {
+  background: #168eb4;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 10px;
+  padding: 5px 10px;
+  border: none;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 1366px) {
@@ -69,12 +95,11 @@ label:not(.form-check-label):not(.custom-file-label) {
   }
   select {
     height: 24px !important;
-    border: 1px soild#a1a3a8 !important;
-    width: 285px
+    border: 1px soild#D1CDCD !important;
   }
   input {
     height: 24px !important;
-    border: 1px soild#a1a3a8 !important;
+    border: 1px soild#D1CDCD !important;
     padding: 0 8px;
     width: 285px
   }
@@ -95,12 +120,16 @@ label:not(.form-check-label):not(.custom-file-label) {
   }
   select {
     height: 20px !important;
+<<<<<<< HEAD
+    border: 1px soild#D1CDCD !important;
+=======
     border: 1px soild#a1a3a8 !important;
     width: 420px;
+>>>>>>> 9ffa91be4071bc31c239e77c210a5d732b9ab3e3
   }
   input {
     height: 24px !important;
-    border: 1px soild#a1a3a8 !important;
+    border: 1px soild#D1CDCD !important;
     padding: 0 8px;
     width: 420px;
   }
