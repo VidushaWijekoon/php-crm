@@ -1,9 +1,11 @@
 <?php
+session_start();
 
 session_start();
 require_once('../includes/header.php')
 
 ?>
+
 
 <style>
     .pageNameIcon {

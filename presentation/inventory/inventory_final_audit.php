@@ -27,7 +27,7 @@ require_once('../includes/header.php')
     font-size: 15px;
 }
 
-<<<<<<< HEAD .sectionUnderline {
+.sectionUnderline {
     margin-top: 0px;
     margin-bottom: 0;
     border-top: 2px solid #DBDBDB;
@@ -44,94 +44,94 @@ require_once('../includes/header.php')
     border-radius: 5px;
     height: 24px;
     width: 100%;
+}
 
-    =======.sectionUnderlineModel {
-        margin-top: 0px;
-    }
+.sectionUnderlineModel {
+    margin-top: 0px;
+}
 
-    /* model styles */
-    .modelInput input[type=text] {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 24px;
-        width: 100%;
-        >>>>>>>9ffa91be4071bc31c239e77c210a5d732b9ab3e3
-    }
+/* model styles */
+.modelInput input[type=text] {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 24px;
+    width: 100%;
+}
 
-    /* LCD */
+/* LCD */
 
-    .lcdSec {
-        /* display: flex; */
-        /* align-items: center; */
-        /* justify-content: center; */
-        width: 80%;
-    }
+.lcdSec {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 80%;
+}
 
-    .lcdLable {
-        font-size: 15px;
-        font-weight: 500;
-    }
+.lcdLable {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-    .lcdCheq input[type='checkbox'] {
-        height: 20px;
-        width: 20px;
-    }
+.lcdCheq input[type='checkbox'] {
+    height: 20px;
+    width: 20px;
+}
 
-    .motherboedSec,
-    .batterySec {
-        display: flex;
-        flex-direction: column;
-        /* width: 80%; */
-        /* justify-content: center; */
-        align-items: center;
-    }
+.motherboedSec,
+.batterySec {
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    /* justify-content: center; */
+    align-items: center;
+}
 
-    .mbLable,
-    .btryLbl {
-        font-size: 15px;
-        font-weight: 500;
-    }
+.mbLable,
+.btryLbl {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-    .mbCheq input[type='radio'] {
-        height: 15px;
-        width: 15px;
-    }
+.mbCheq input[type='radio'] {
+    height: 15px;
+    width: 15px;
+}
 
-    .btryLbl input[type='radio'] {
-        height: 15px;
-        width: 15px;
-        margin-right: 5px;
-    }
+.btryLbl input[type='radio'] {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
 
-    .DropDown {
-        height: 30px;
-        width: 100%;
-        border-radius: 5px;
-        border: 1px solid #D1CDCD;
-        /* padding: 0px 10px; */
-    }
+.DropDown {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    /* padding: 0px 10px; */
+}
 
-    /*  */
-    .btnT {
-        background: #FFFFFF;
-        border: 2px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 15px;
-        padding: 5px 10px;
-    }
+/*  */
+.btnT {
+    background: #FFFFFF;
+    border: 2px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 5px 10px;
+}
 
-    .btnT2 {
-        background: #FFFFFF;
-        border: 2px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 10px;
-        padding: 5px 10px;
-    }
+.btnT2 {
+    background: #FFFFFF;
+    border: 2px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 5px 10px;
+}
 
-    /*  */
+/*  */
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
