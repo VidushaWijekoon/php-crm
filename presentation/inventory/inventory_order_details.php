@@ -225,7 +225,7 @@ require_once('../includes/header.php')
     margin-bottom: 5px;
 }
 
-}
+
 
 
 /*  */
