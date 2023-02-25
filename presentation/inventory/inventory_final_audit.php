@@ -27,7 +27,7 @@ require_once('../includes/header.php')
     font-size: 15px;
 }
 
-<<<<<<< HEAD .sectionUnderline {
+.sectionUnderline {
     margin-top: 0px;
     margin-bottom: 0;
     border-top: 2px solid #DBDBDB;
@@ -44,94 +44,100 @@ require_once('../includes/header.php')
     border-radius: 5px;
     height: 24px;
     width: 100%;
+}
 
-    =======.sectionUnderlineModel {
-        margin-top: 0px;
-    }
+.sectionUnderlineModel {
+    margin-top: 0px;
+}
 
-    /* model styles */
-    .modelInput input[type=text] {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 24px;
-        width: 100%;
-        >>>>>>>9ffa91be4071bc31c239e77c210a5d732b9ab3e3
-    }
+/* model styles */
+.modelInput input[type=text] {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 24px;
+    width: 100%;
+}
 
-    /* LCD */
+/* LCD */
 
-    .lcdSec {
-        /* display: flex; */
-        /* align-items: center; */
-        /* justify-content: center; */
-        width: 80%;
-    }
+.lcdSec {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 80%;
+}
 
-    .lcdLable {
-        font-size: 15px;
-        font-weight: 500;
-    }
+.lcdLable {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-    .lcdCheq input[type='checkbox'] {
-        height: 20px;
-        width: 20px;
-    }
+.lcdCheq input[type='checkbox'] {
+    height: 20px;
+    width: 20px;
+}
 
-    .motherboedSec,
-    .batterySec {
-        display: flex;
-        flex-direction: column;
-        /* width: 80%; */
-        /* justify-content: center; */
-        align-items: center;
-    }
+.motherboedSec,
+.batterySec {
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    /* justify-content: center; */
+    align-items: center;
+}
 
-    .mbLable,
-    .btryLbl {
-        font-size: 15px;
-        font-weight: 500;
-    }
+.mbLable,
+.btryLbl {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-    .mbCheq input[type='radio'] {
-        height: 15px;
-        width: 15px;
-    }
+.mbCheq input[type='radio'] {
+    height: 15px;
+    width: 15px;
+}
 
-    .btryLbl input[type='radio'] {
-        height: 15px;
-        width: 15px;
-        margin-right: 5px;
-    }
+.btryLbl input[type='radio'] {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
 
-    .DropDown {
-        height: 30px;
-        width: 100%;
-        border-radius: 5px;
-        border: 1px solid #D1CDCD;
-        /* padding: 0px 10px; */
-    }
+.DropDown {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    /* padding: 0px 10px; */
+}
 
-    /*  */
-    .btnT {
-        background: #FFFFFF;
-        border: 2px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 15px;
-        padding: 5px 10px;
-    }
+/*  */
+.btnT {
+    background: #FFFFFF;
+    border: 2px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 5px 10px;
+}
 
-    .btnT2 {
-        background: #FFFFFF;
-        border: 2px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 10px;
-        padding: 5px 10px;
-    }
+.btnT2 {
+    background: #FFFFFF;
+    border: 2px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 5px 10px;
+}
 
-    /*  */
+.radioSec {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/*  */
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
@@ -203,7 +209,7 @@ require_once('../includes/header.php')
                                     <div class="row">
                                         <div class="col-4 modelLable">ASIN</div>
                                         <div class="col-7 modelInput">
-                                            <input type="text">
+                                            <input class="w-100" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +217,7 @@ require_once('../includes/header.php')
                                     <div class="row">
                                         <div class="col-4 modelLable">Backlight</div>
                                         <div class="col-7 modelInput">
-                                            <input type="text">
+                                            <input class="w-100" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -447,12 +453,12 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Bios Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="hpBiosLock" id="hpBiosLock">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="hpBiosLock" id="hpBiosUnLock">
                                                             <span style="font-size: 15px;">OK</span>
                                                         </div>
@@ -464,12 +470,12 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Computrace / Absolute Software Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="hpSoftLock" id="hpSoftLockActive">
                                                             <span style="font-size: 15px;">Activate</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="hpSoftLock"
                                                                 id="hpSoftLockInActiive">
                                                             <span style="font-size: 15px;">Inactive</span>
@@ -482,12 +488,12 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Me Region Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="hpRegionLock" id="hpRegionLock">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="hpRegionLock" id="hpRegionUnLock">
                                                             <span style="font-size: 15px;">OK</span>
                                                         </div>
@@ -507,12 +513,12 @@ require_once('../includes/header.php')
                                                 <div class="col-5 mbLable">Bios Lock</div>
                                                 <div class="col-7 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="dellBiosLock" id="dellBiosLock">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="dellBiosLock" id="dellBiosUnLock">
                                                             <span style="font-size: 15px;">OK</span>
                                                         </div>
@@ -524,18 +530,18 @@ require_once('../includes/header.php')
                                                 <div class="col-5 mbLable">Computrace Lock</div>
                                                 <div class="col-7 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-lg-4 col-sm-6 radioSec">
                                                             <input type="radio" name="dellSoftLock"
                                                                 id="dellsoftLockActive">
                                                             <span style="font-size: 15px;">Active</span>
                                                         </div>
 
-                                                        <div class="col-4">
+                                                        <div class="col-lg-4 col-sm-6 radioSec">
                                                             <input type="radio" name="dellSoftLock"
                                                                 id="dellsoftLockDisable">
                                                             <span style="font-size: 15px;">Disable</span>
                                                         </div>
-                                                        <div class="col-4">
+                                                        <div class="col-lg-4 col-sm-6 radioSec">
                                                             <input type="radio" name="dellSoftLock"
                                                                 id="dellsoftLockDeactive">
                                                             <span style="font-size: 15px;">Deactive</span>
@@ -548,13 +554,13 @@ require_once('../includes/header.php')
                                                 <div class="col-5 mbLable">TPM Lock</div>
                                                 <div class="col-7 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="dellRegionLock"
                                                                 id="dellRegionLock">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="dellRegionLock"
                                                                 id="dellRegionUnLock">
                                                             <span style="font-size: 15px;">OK</span>
@@ -573,13 +579,13 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Bios Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="lenovoBiosLock"
                                                                 id="lenovoBiosLock">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="lenovoBiosLock"
                                                                 id="lenovoBiosUnLock">
                                                             <span style="font-size: 15px;">OK</span>
@@ -592,13 +598,13 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Computrace Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="lenovoSoftLock"
                                                                 id="lenovoSoftLockActive">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="lenovoSoftLock"
                                                                 id="lenovoSoftLockUnLock">
                                                             <span style="font-size: 15px;">OK</span>
@@ -611,13 +617,13 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Any Other Error</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="lenovoOtherErr"
                                                                 id="lenovoOtherErr">
                                                             <span style="font-size: 15px;">Have</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="lenovoOtherErr"
                                                                 id="lenovoNoOtherErr">
                                                             <span style="font-size: 15px;">No Have</span>
@@ -637,12 +643,12 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Bios Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="otherBiosLock" id="otherBiosLock">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="otherBiosLock"
                                                                 id="otherBiosUnLock">
                                                             <span style="font-size: 15px;">OK</span>
@@ -655,13 +661,13 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Computrace Lock</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="otherSoftLock"
                                                                 id="otherSoftLockActive">
                                                             <span style="font-size: 15px;">Lock</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="otherSoftLock"
                                                                 id="otherSoftLockUnLock">
                                                             <span style="font-size: 15px;">OK</span>
@@ -674,12 +680,12 @@ require_once('../includes/header.php')
                                                 <div class="col-7 mbLable">Any Other Error</div>
                                                 <div class="col-5 mbCheq">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="otherErr" id="otherErr">
                                                             <span style="font-size: 15px;">Have</span>
                                                         </div>
 
-                                                        <div class="col-6">
+                                                        <div class="col-6 radioSec">
                                                             <input type="radio" name="otherErr" id="otherNoErr">
                                                             <span style="font-size: 15px;">No Have</span>
                                                         </div>
@@ -732,8 +738,8 @@ require_once('../includes/header.php')
                                             <div class="row btryLbl my-2" style="width: 70%;">Battery Health</div>
                                             <div class="row" style="width: 70%;">
                                                 <div class="col-6">
-                                                    <div class="row">
-                                                        <div class="col-6 btryLbl">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-6 btryLbl radioSec">
                                                             <input class="" type="radio" name="battery"
                                                                 id="excellent">100 -
                                                             80
@@ -747,7 +753,7 @@ require_once('../includes/header.php')
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="row">
-                                                        <div class="col-6 btryLbl">
+                                                        <div class="col-6 btryLbl radioSec">
                                                             <input class="" type="radio" name="battery" id="Good">80
                                                             - 55
                                                         </div>
@@ -756,7 +762,7 @@ require_once('../includes/header.php')
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="row">
-                                                        <div class="col-6 btryLbl">
+                                                        <div class="col-6 btryLbl radioSec">
                                                             <input class="" type="radio" name="battery" id="weak">50
                                                             - 0
                                                         </div>
