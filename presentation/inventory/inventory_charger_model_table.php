@@ -51,7 +51,17 @@ if (!isset($_SESSION['user_id'])) {
     color: #168EB4;
     font-weight: 700;
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
+
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./inventory_other_inventory.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Inventory</a>
+</div>
 
 <div class="row mb-4 ml-1 pt-2">
     <i class="pageNameIcon fa-solid fa-filter-list"></i>

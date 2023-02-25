@@ -140,11 +140,18 @@ require_once('../includes/header.php')
 }
 
 /*  */
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
 
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Dashboard</a>
+</div>
+
 <div class="row mb-4 ml-1 pt-2">
-
-
     <i class="pageNameIcon fa-solid fa-check-to-slot"></i>
     <h6 class="pageName">Final Audit</h6>
 </div>

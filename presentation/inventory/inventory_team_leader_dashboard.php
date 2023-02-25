@@ -320,7 +320,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="./inventory_remove_parts.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid fa-wrench" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
                     <div class="btnCardLable">Remove Parts</div>
                 </div>
@@ -341,7 +341,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="./inventory_final_audit.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid fa-check-to-slot" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
                     <div class="btnCardLable">Laptop Final Audit</div>
                 </div>
@@ -362,7 +362,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="./inventory_add_items_to_pallet.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
                     <div class="btnCardLable">Add Items to Pallet</div>
                 </div>
@@ -372,7 +372,8 @@ if (!isset($_SESSION['user_id'])) {
             <a href="./inventory_other_inventory.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid  fa-warehouse-full" style="color: #168EB4;font-size: 15px;"></i>
+
                     </div>
                     <div class="btnCardLable">Other Inventory</div>
                 </div>
@@ -382,7 +383,7 @@ if (!isset($_SESSION['user_id'])) {
             <a href="./inventory_battery_qr_printing.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid fa-battery-bolt" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
                     <div class="btnCardLable">Battery QR Print</div>
                 </div>
@@ -392,8 +393,9 @@ if (!isset($_SESSION['user_id'])) {
             <a href="">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid fa-battery-exclamation" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
+
                     <div class="btnCardLable">Battery Checking</div>
                 </div>
             </a>
