@@ -59,15 +59,16 @@ require_once('../includes/header.php')
 
 
 
-<div class="row mb-4">
+<div class="row mb-4 ml-1 pt-2">
 
-    <i class="pageNameIcon fa-regular fa-users-medical"></i>
+
+    <i class="pageNameIcon fa-solid fa-cloud-arrow-up"></i>
     <h6 class="pageName pt-1">Upload Shipment</h6>
 </div>
 
 <div class="rowuploadShipmentBodySec">
     <div class="cardContainer">
-        <div class="">
+        <div class="ml-2">
             <div class="createListingHeading">
                 <span>
                     Upload Supplier Sheet
@@ -80,7 +81,7 @@ require_once('../includes/header.php')
 
             <div class="w-100 d-flex flex-row-reverse mr-2">
                 <button class="btnT">
-                    Download Master
+                    <i class="fa-solid fa-download"></i> Download Master
                 </button>
             </div>
 
@@ -98,7 +99,7 @@ require_once('../includes/header.php')
 
             <!-- uploaded details -->
 
-            <div class="mt-3">
+            <div class="ml-2 mt-4">
                 <div class="createListingHeading">
                     <span>
                         Uploaded Supplier Sheet Details
@@ -113,9 +114,8 @@ require_once('../includes/header.php')
                     <table class="table mx-3 table-hover table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Order Number</th>
-                                <th scope="col">ASIN/SKU</th>
+                                <th scope="col">Suppler Name</th>
+                                <th scope="col">Customer Name</th>
                                 <th scope="col">Device</th>
                                 <th scope="col">Brand</th>
                                 <th scope="col">Model</th>
@@ -130,24 +130,14 @@ require_once('../includes/header.php')
                                 <th scope="col">HDD Capacity</th>
                                 <th scope="col">Ram</th>
                                 <th scope="col">OS</th>
-                                <th scope="col">Inventory Location</th>
                                 <th scope="col">Graphic Brand</th>
                                 <th scope="col">Graphic Capacity</th>
-                                <th scope="col">Condition</th>
-                                <th scope="col">Charger Watt</th>
-                                <th scope="col">Charger Type</th>
-                                <th scope="col">Charger Pin</th>
-                                <th scope="col">Packing Type</th>
-                                <th scope="col">Shipping Method</th>
-                                <th scope="col">QTY</th>
-                                <th scope="col">DeadLine</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th style="color:black">1</th>
-                                <td>abcd123</td>
-                                <td>AS123</td>
+                                <td>b20</td>
+                                <td>John Doe</td>
                                 <td>Laptop</td>
                                 <td>Lenovo</td>
                                 <td>Thinkpad t460</td>
@@ -162,18 +152,11 @@ require_once('../includes/header.php')
                                 <td>256GB</td>
                                 <td>8GB</td>
                                 <td>Original Windows 10 pro</td>
-                                <td>E-Commerce</td>
+
                                 <td>Nvidia</td>
                                 <td>4GB</td>
-                                <td>Refurbished</td>
-                                <td>65W</td>
-                                <td>Uk</td>
-                                <td>Blue</td>
-                                <td>Single Box</td>
-                                <td>FBN</td>
-                                <td>10</td>
 
-                                <td>2022-10-31</td>
+
                             </tr>
 
                         </tbody>

@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once('../includes/header.php')
 ?>
 
@@ -29,6 +29,12 @@ require_once('../includes/header.php')
     width: 99%;
     background-color: #ffffff;
     padding: 10px 5px;
+
+}
+
+.scanPackingSec {
+
+    /* align-items: center; */
 
 }
 

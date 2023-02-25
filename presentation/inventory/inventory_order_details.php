@@ -222,16 +222,25 @@ require_once('../includes/header.php')
     }
 
     /*  */
+
+    .btnT {
+        background: #FFFFFF;
+        border: 2px solid #168EB4;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 5px 10px;
+    }
 </style>
 
-<div class="row mb-4">
+<div class="row mb-4 ml-1 pt-2">
     <i class="pageNameIcon fa-solid fa-store"></i>
     <h6 class="pageName">Order Details</h6>
 </div>
 
 <div class="row invOrderDetailsBodySec">
     <div class="cardContainer">
-        <div class="">
+        <div class="ml-2">
             <div class="createListingHeading">
                 <span>
                     Sales Order: SO123
@@ -1023,6 +1032,16 @@ require_once('../includes/header.php')
                                                 </div>
                                             </div>
 
+                                            <div class="row batterySec">
+                                                <div class="mt-3">
+                                                    Scan PN &nbsp;
+                                                    <input type="text" id="btryPN">
+                                                </div>
+                                                <br>
+                                                <div style="color: #BB0000; font-size:15px; font-weight:700">Remove Battery And
+                                                    Confirm</div>
+                                            </div>
+
                                         </div>
                                         <div class="tab-pane fade show " id="nav-lenovoBattery" role="tabpanel" aria-labelledby="nav-hpBattery-tab">
                                             <div class="row" style="justify-content: center;">
@@ -1036,18 +1055,10 @@ require_once('../includes/header.php')
                                         </div>
                                     </div>
 
-                                    <div class="row batterySec">
-                                        <div class="mt-3">
-                                            Scan PN &nbsp;
-                                            <input type="text" id="btryPN">
-                                        </div>
-                                        <br>
-                                        <div style="color: #BB0000; font-size:15px; font-weight:700">Remove Battery And
-                                            Confirm</div>
-                                    </div>
+
 
                                     <div class="row batterySec my-2">
-                                        <div class="btn btn-tig">Confirm</div>
+                                        <div class="btn btnT">Confirm</div>
                                     </div>
 
                                 </div>

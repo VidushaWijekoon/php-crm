@@ -1,71 +1,72 @@
-<?php
+<?php 
 require_once('../includes/header.php')
 ?>
 
 <style>
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .ecomNoonListingBodySec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.ecomNoonListingBodySec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 20px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 20px;
+}
 
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 
-    .DropDown {
-        height: 30px;
-        width: 83%;
-        border-radius: 5px;
-        border: 1px solid #f1f1f1;
-        /* padding: 0px 10px; */
-    }
+.DropDown {
+    height: 30px;
+    width: 83%;
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    /* padding: 0px 10px; */
+}
 
-    input[type="text"] {
-        border-radius: 5px;
-        border: 1px solid #f1f1f1;
-        height: 30px;
-    }
+input[type="text"] {
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    height: 30px;
+}
 
-    .required:after {
-        content: " *";
-        color: red;
-    }
+.required:after {
+    content: " *";
+    color: red;
+}
 </style>
 
 <div class="row pageNavigation">
     <!-- <i class="pageNameIcon fa-solid fa-left"></i> -->
-    <a href="./e_com_dashboard.php"><i class="fa-solid fa-house"></i>&nbsp;Dashboard</a>/ <a href="./e_com_create_listing_noon.php">Noon Listing</a>
+    <a href="./e_com_dashboard.php"><i class="fa-solid fa-house"></i>&nbsp;Dashboard</a>/ <a
+        href="./e_com_create_listing_noon.php">Noon Listing</a>
 </div>
 <br>
 
@@ -129,7 +130,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="">Partner SKU Unique :</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="partner_sku" name="" value="" style="height: 30px;" placeholder="Enter SKU" required>
+                                <input class="col-md-10" type="text" id="partner_sku" name="" value=""
+                                    style="height: 30px;" placeholder="Enter SKU" required>
                             </div>
                         </div>
                         <!-- Brand -->
@@ -139,7 +141,8 @@ require_once('../includes/header.php')
                             </div>
                             <div class="col-md-7">
 
-                                <select class="DropDown" aria-label="Default select example" name="brand" id="brand" onchange="getProductTitle()" required>
+                                <select class="DropDown" aria-label="Default select example" name="brand" id="brand"
+                                    onchange="getProductTitle()" required>
                                     <option value="" selected>--Select brand--</option>
                                 </select>
                             </div>
@@ -152,7 +155,8 @@ require_once('../includes/header.php')
                             </div>
                             <div class="col-md-7">
                                 <!-- <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="Thinkpad">                    -->
-                                <select name="model" id="model" class="DropDown" style="border-radius: 5px;" onchange="getProductTitle()" required>
+                                <select name="model" id="model" class="DropDown" style="border-radius: 5px;"
+                                    onchange="getProductTitle()" required>
                                     <option value="" selected>--Select Model--</option>
                                     <option value="thinkpad">Thinkpad</option>
                                 </select>
@@ -164,7 +168,9 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">Model Number </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="model_Number" name="" value="" style="height: 30px;" placeholder="X1 Yoga G1" onchange="getProductTitle()" required>
+                                <input class="col-md-10" type="text" id="model_Number" name="" value=""
+                                    style="height: 30px;" placeholder="X1 Yoga G1" onchange="getProductTitle()"
+                                    required>
                             </div>
                         </div>
 
@@ -207,7 +213,8 @@ require_once('../includes/header.php')
                             </div>
                             <div class="col-md-7">
                                 <!-- <select name="model" id="model" class="DropDown select2" style="border-radius: 5px;"> -->
-                                <select name="model" id="processor_brand" class="DropDown" style="border-radius: 5px;" onchange="getProductTitle()" required>
+                                <select name="model" id="processor_brand" class="DropDown" style="border-radius: 5px;"
+                                    onchange="getProductTitle()" required>
                                     <option value="Intel">Intel</option>
                                     <option value="AMD">AMD</option>
                                 </select>
@@ -220,7 +227,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="fname">Processor Version (Core) </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="i5-6300U" required>
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="i5-6300U" required>
                             </div>
                         </div>
 
@@ -229,7 +237,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">Processor Type</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="processor_type" name="" value="" style="height: 30px;" placeholder="core i5" onchange="getProductTitle()" required>
+                                <input class="col-md-10" type="text" id="processor_type" name="" value=""
+                                    style="height: 30px;" placeholder="core i5" onchange="getProductTitle()" required>
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -237,7 +246,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">Processor Generation</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="6th generation" required>
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="6th generation" required>
                             </div>
                         </div>
 
@@ -246,7 +256,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="">Processor Speed (GHz) </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -271,7 +282,9 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">Graphic Card</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="graphic_card" name="" value="" style="height: 30px;" placeholder="Nvidia GeForce GTX Series" onclick="getProductTitle()" required>
+                                <input class="col-md-10" type="text" id="graphic_card" name="" value=""
+                                    style="height: 30px;" placeholder="Nvidia GeForce GTX Series"
+                                    onclick="getProductTitle()" required>
                             </div>
                         </div>
 
@@ -280,7 +293,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">Graphic Memory (GB) </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="6" required>
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="6" required>
                             </div>
                         </div>
 
@@ -334,7 +348,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Pixel Per Inch</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -413,7 +428,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="fname"> Family </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="" name="" value="" style="height: 30px;" placeholder="laptop" required>
+                                <input class="col-md-10" type="text" id="" name="" value="" style="height: 30px;"
+                                    placeholder="laptop" required>
                             </div>
                         </div>
 
@@ -474,7 +490,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">Internal Memory-HDD (GB)</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="hdd" name="" value="" style="height: 30px;" onchange="getProductTitle()" required>
+                                <input class="col-md-10" type="text" id="hdd" name="" value="" style="height: 30px;"
+                                    onchange="getProductTitle()" required>
                             </div>
                         </div>
 
@@ -499,7 +516,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">HDD Rotation </div>
                             </div>
                             <div class="col-md-7" style="height: 30px;">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -543,7 +561,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Graphics Card Version</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="Nvidia GTX-960">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="Nvidia GTX-960">
                             </div>
                         </div>
 
@@ -553,7 +572,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname"></div>
                             </div>
                             <div class="col-md-7">
-                                <div class="col-md-10" type="" id="formInput" name="" value="" style="height: 30px;" placeholder=""> </div>
+                                <div class="col-md-10" type="" id="formInput" name="" value="" style="height: 30px;"
+                                    placeholder=""> </div>
                             </div>
                         </div>
                         <!-- Empty -->
@@ -616,7 +636,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="">QTY</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="Enter Listing Qty" required>
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="Enter Listing Qty" required>
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -624,7 +645,8 @@ require_once('../includes/header.php')
                                 <div class="" id="formLable" for="">E-commerce Inventory Qty</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" required>
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" required>
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -632,17 +654,20 @@ require_once('../includes/header.php')
                                 <div class="" id="formLable" for="">Big Inventory Qty</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" required>
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" required>
                             </div>
                         </div>
 
                         <div class="row col-md-12 mb-1">
                             <div class="col-md-5">
-                                <div class="" id="formLable" for="">Our Wholesale Price <span style="font-size: small;">(
+                                <div class="" id="formLable" for="">Our Wholesale Price <span
+                                        style="font-size: small;">(
                                         AED )</span></div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -651,7 +676,8 @@ require_once('../includes/header.php')
                                         )</span> </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -661,7 +687,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -670,7 +697,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -679,7 +707,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -688,7 +717,8 @@ require_once('../includes/header.php')
                                         )</span> </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -698,7 +728,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -707,7 +738,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -717,7 +749,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -726,7 +759,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -736,7 +770,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mb-1">
@@ -744,7 +779,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="">Profit Percentage </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -759,7 +795,8 @@ require_once('../includes/header.php')
                                     <div id="formLable" for="">Recommended Retail Price AE</div>
                                 </div>
                                 <div class="col-md-7">
-                                    <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                    <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                        style="height: 30px;">
                                 </div>
                             </div>
                             <div class="row col-md-12 mt-2">
@@ -767,7 +804,8 @@ require_once('../includes/header.php')
                                     <div id="formLable" for="fname">Recommended Retail Price SA</div>
                                 </div>
                                 <div class="col-md-7">
-                                    <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                    <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                        style="height: 30px;">
                                 </div>
                             </div>
                             <div class="row col-md-12 mt-2">
@@ -775,7 +813,8 @@ require_once('../includes/header.php')
                                     <div id="formLable" for="fname">Recommended Retail Price EG</div>
                                 </div>
                                 <div class="col-md-7">
-                                    <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                    <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                        style="height: 30px;">
                                 </div>
                             </div>
 
@@ -827,7 +866,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="fname">Product Type</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="Laptop" style="height: 30px;" placeholder="White">
+                                <input class="col-md-10" type="text" id="formInput" name="" value="Laptop"
+                                    style="height: 30px;" placeholder="White">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -835,7 +875,8 @@ require_once('../includes/header.php')
                                 <div class="required" id="formLable" for="fname">What's In The Box</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="AC Adapter">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="AC Adapter">
                             </div>
                         </div>
 
@@ -954,7 +995,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Battery Size</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="">
                             </div>
                         </div>
 
@@ -966,7 +1008,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="Wireless">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="Wireless">
                             </div>
                         </div>
 
@@ -1033,7 +1076,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Feature 1</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1041,7 +1085,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Feature 2</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1049,7 +1094,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Feature 3</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1057,7 +1103,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Feature 4</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1065,7 +1112,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Feature 5</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1078,7 +1126,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1088,7 +1137,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1100,7 +1150,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1109,7 +1160,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1118,7 +1170,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1127,7 +1180,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1140,7 +1194,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
 
                         </div>
@@ -1151,7 +1206,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1162,7 +1218,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Monitor Response time</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1170,7 +1227,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">HS Code</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1179,7 +1237,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">End Date </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1195,7 +1254,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Product Sub Type</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="sub_type" name="" value="" style="height: 30px;" placeholder="notebook" onchange="getProductTitle()">
+                                <input class="col-md-10" type="text" id="sub_type" name="" value=""
+                                    style="height: 30px;" placeholder="notebook" onchange="getProductTitle()">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1203,7 +1263,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">GTIN</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1227,7 +1288,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Colour Family</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="Black">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="Black">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1235,7 +1297,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Usage Type</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1293,7 +1356,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Battery Type</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;" placeholder="Lithium Ion">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;" placeholder="Lithium Ion">
                             </div>
                         </div>
 
@@ -1305,7 +1369,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1314,7 +1379,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1322,7 +1388,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Adobe Flash Compatible</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1330,7 +1397,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">SIM Type</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1358,7 +1426,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1367,7 +1436,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1376,7 +1446,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="formInput" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="formInput" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1405,7 +1476,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="" name="" value="" style="height: 30px;" placeholder="cm">
+                                <input class="col-md-10" type="text" id="" name="" value="" style="height: 30px;"
+                                    placeholder="cm">
                             </div>
                         </div>
                         <div class="row col-md-12 mt-2">
@@ -1416,7 +1488,8 @@ require_once('../includes/header.php')
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="" name="" value="" style="height: 30px;" placeholder="kg">
+                                <input class="col-md-10" type="text" id="" name="" value="" style="height: 30px;"
+                                    placeholder="kg">
                             </div>
                         </div>
 
@@ -1489,7 +1562,8 @@ require_once('../includes/header.php')
                                 <div id="formLable" for="fname">Refresh Rate</div>
                             </div>
                             <div class="col-md-7">
-                                <input class="col-md-10" type="text" id="refreshRate" name="" value="" style="height: 30px;">
+                                <input class="col-md-10" type="text" id="refreshRate" name="" value=""
+                                    style="height: 30px;">
                             </div>
                         </div>
 
@@ -1501,7 +1575,8 @@ require_once('../includes/header.php')
                             <div id="formLable" for="fname">Product Title </div>
                         </div>
                         <div class="col-md-9" id="productTitle">
-                            <input class="col-md-12" type="text" id="product_title" name="" value="" style="height: 40px;">
+                            <input class="col-md-12" type="text" id="product_title" name="" value=""
+                                style="height: 40px;">
                         </div>
                     </div>
                     <div class="row col-md-12 mt-3">
@@ -1509,7 +1584,8 @@ require_once('../includes/header.php')
                             <div id="formLable" for="fname">Long Description </div>
                         </div>
                         <div class="col-md-9">
-                            <textarea class="form-control" id="" rows="3" placeholder="Add Comments of product"></textarea>
+                            <textarea class="form-control" id="" rows="3"
+                                placeholder="Add Comments of product"></textarea>
                         </div>
                     </div>
                     <br>
@@ -1528,40 +1604,40 @@ require_once('../includes/header.php')
 </div>
 
 <script>
-    const getProductTitle = () => {
-        // var processor_brand = document.getElementById('processor_brand').value;
+const getProductTitle = () => {
+    // var processor_brand = document.getElementById('processor_brand').value;
 
-        var item_condition = $('#item_condition').val();
-
-
-
-        var brand = $('#brand').val();
+    var item_condition = $('#item_condition').val();
 
 
-        var model = $('#model').val();
 
-        var modelNumber = $('#model_Number').val();
-        var subType = $('#sub_type').val();
-        var screenSize = $('#screen_size').val();
+    var brand = $('#brand').val();
 
 
-        var processor_type = $('#processor_type').val();
-        var ram = $('#ram').val();
-        var hdd = $('#hdd').val();
-        var hdd_type = $('#hdd_type').val();
-        var graphic_card = $('#graphic_card').val();
-        var os_version = $('#os_version').val();
-        var color = $('#color').val();
+    var model = $('#model').val();
 
-        console.log(processor_brand);
-
-        $('#product_title').val(item_condition + " " + brand + " " + model + " " + modelNumber + " " + subType +
-            " laptop with " + screenSize + " inch display, " +
-            processor_brand + " " + processor_type + " processor " + ram + " RAM " + hdd + "GB " + hdd_type + " " +
-            graphic_card + " " + os_version + " " + color);
+    var modelNumber = $('#model_Number').val();
+    var subType = $('#sub_type').val();
+    var screenSize = $('#screen_size').val();
 
 
-    }
+    var processor_type = $('#processor_type').val();
+    var ram = $('#ram').val();
+    var hdd = $('#hdd').val();
+    var hdd_type = $('#hdd_type').val();
+    var graphic_card = $('#graphic_card').val();
+    var os_version = $('#os_version').val();
+    var color = $('#color').val();
+
+    console.log(processor_brand);
+
+    $('#product_title').val(item_condition + " " + brand + " " + model + " " + modelNumber + " " + subType +
+        " laptop with " + screenSize + " inch display, " +
+        processor_brand + " " + processor_type + " processor " + ram + " RAM " + hdd + "GB " + hdd_type + " " +
+        graphic_card + " " + os_version + " " + color);
+
+
+}
 </script>
 
 

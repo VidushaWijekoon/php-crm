@@ -88,14 +88,14 @@ require_once('../includes/header.php')
 
 
 
-<div class="row mb-4">
+<div class="row mb-4 ml-1 pt-2">
     <i class="pageNameIcon fa-solid fa-store"></i>
     <h6 class="pageName pt-1">Add Item</h6>
 </div>
 
 <div class="row ecomOrderFormSec">
     <div class="cardContainer">
-        <div class="">
+        <div class="ml-2">
             <div class="createListingHeading">
                 <span>
                     Add inventory Details

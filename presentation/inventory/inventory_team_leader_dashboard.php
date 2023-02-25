@@ -301,6 +301,16 @@ require_once('../includes/header.php')
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
+            <a href="./inventory_remove_parts.php">
+                <div class="btnCard mr-3 mt-2 mb-1">
+                    <div class="btnCardIcon">
+                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                    </div>
+                    <div class="btnCardLable">Remove Parts</div>
+                </div>
+            </a>
+            <!-- ////////////// -->
+            <!-- Btn Card -->
             <a href="./inventory_team_member.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
@@ -322,7 +332,7 @@ require_once('../includes/header.php')
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
-            <a href="">
+            <a href="./inventory_shipment_sorting.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
                         <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
@@ -342,7 +352,7 @@ require_once('../includes/header.php')
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
-            <a href="">
+            <a href="./inventory_add_items_to_pallet.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
                         <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
@@ -352,7 +362,7 @@ require_once('../includes/header.php')
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
-            <a href="">
+            <a href="./inventory_battery_qr_printing.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
                         <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
@@ -371,6 +381,7 @@ require_once('../includes/header.php')
                 </div>
             </a>
             <!-- ////////////// -->
+
         </div>
 
         <hr class="sectionUnderline">
