@@ -1,6 +1,11 @@
 <?php
+session_start();
+require_once('../includes/header.php');
 
-require_once('../includes/header.php')
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
 ?>
 
 <style>
@@ -71,6 +76,14 @@ require_once('../includes/header.php')
 input[type='text'] {
     height: 26px;
 
+}
+
+.formSec {
+    margin-right: 50px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 </style>
 
@@ -152,115 +165,142 @@ input[type='text'] {
                     <br>
                     <hr class="sectionUnderline">
                     <br>
-                    <div class="row justify-content-center">
+                    <!-- <div class="row">
 
                         <div class="col-8 text-bold" id="supplierName">
                             Supplier Name
                             <input class="ml-2 w-75" type="text" id="supName">
                         </div>
 
-                    </div>
-                    <div class="row my-2 justify-content-center">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        Core
+                    </div> -->
+                    <div class="formSec">
+                        <div class="row my-2 justify-content-center">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold" id="supplierName">
+                                            Supplier Name
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <input class="w-100" type="text" id="core">
+                                    <div class="col-6">
+                                        <input class="w-100" type="text" id="supName">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        Graphic Brand
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <input class="w-100" type="text" id="graphicBrand">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row my-2 justify-content-center">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        Touch
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <input class="w-100" type="text" id="touch">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        Graphic Capacity
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <input class="w-100" type="text" id="graphicCapacity">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row my-2 justify-content-center">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        Battery
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <input class="w-100" type="text" id="battery">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        OS
-                                    </div>
-                                </div>
-                                <div class="col-6">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
 
-                                    <input class="w-100" type="text" id="os">
-                                    <!-- <textarea id="remarks"> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row my-2 justify-content-center">
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center text-bold">
-                                        Remarks
+                                    </div>
+                                    <div class="col-6">
+
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <textarea class="form-control" name="" id="remarks" cols="40" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="row my-2 justify-content-center">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            Core
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="w-100" type="text" id="core">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            Graphic Brand
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="w-100" type="text" id="graphicBrand">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-12">
+                        <div class="row my-2 justify-content-center">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            Touch
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="w-100" type="text" id="touch">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            Graphic Capacity
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="w-100" type="text" id="graphicCapacity">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-2 justify-content-center">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            Battery
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="w-100" type="text" id="battery">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            OS
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
 
+                                        <input class="w-100" type="text" id="os">
+                                        <!-- <textarea id="remarks"> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-2 justify-content-center">
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="text-center text-bold">
+                                            Remarks
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <textarea class="form-control" name="" id="remarks" cols="40"
+                                            rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

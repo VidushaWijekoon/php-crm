@@ -1,256 +1,259 @@
 <?php
 session_start();
+require_once('../includes/header.php');
 
-session_start();
-require_once('../includes/header.php')
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
 
 ?>
 
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    /* btn card Styles */
-    .btnCard {
-        /* width: 112px; */
-        padding: 0px 5px;
-        height: 28px;
-        background: #FFFFFF;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-        border-radius: 5px;
-        display: flex;
-        color: #000000;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
+/* btn card Styles */
+.btnCard {
+    /* width: 112px; */
+    padding: 0px 5px;
+    height: 28px;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    display: flex;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 
-    }
+}
 
-    .btnCardLable {
-        font-weight: 600;
-        font-size: 10px;
-    }
+.btnCardLable {
+    font-weight: 600;
+    font-size: 10px;
+}
 
-    /* //////// */
+/* //////// */
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-        margin-right: 20px;
-        margin-left: 20px;
-        margin-bottom: 0;
-    }
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
 
 
-    /* Card 1 --Count showing Styles */
-    .dashCard {
-        /* width: 180px;
+/* Card 1 --Count showing Styles */
+.dashCard {
+    /* width: 180px;
     height: 80px; */
-        background: #FFFFFF;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-        border-radius: 5px;
-        color: black;
-        padding: 10px 12px;
-    }
+    background: #FFFFFF;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: black;
+    padding: 10px 12px;
+}
 
-    .dashCardTop {
-        /* width: 100%; */
-        display: flex;
-        justify-content: space-between;
-    }
+.dashCardTop {
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+}
 
-    /* 
+/* 
 .cardIcon {
     width: 20%;
     padding: 5px 15px;
 } */
 
-    .cardTitle {
-        width: 100%;
-        /* padding: 8px 15px; */
-        margin-left: 10px;
-        margin-top: 2px;
-        font-weight: 500;
-        font-size: 12px;
-        color: #000000;
-    }
+.cardTitle {
+    width: 100%;
+    /* padding: 8px 15px; */
+    margin-left: 10px;
+    margin-top: 2px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #000000;
+}
 
-    .cardValue {
-        font-weight: 550;
-        font-size: 15px;
-        color: #000000;
-        margin-top: 2px;
-        margin-left: 5px;
+.cardValue {
+    font-weight: 550;
+    font-size: 15px;
+    color: #000000;
+    margin-top: 2px;
+    margin-left: 5px;
 
-    }
+}
 
-    /* //////////////////////// */
+/* //////////////////////// */
 
-    /* table styles */
-    .sampleTable {
-        color: black;
-        width: 100%;
-    }
+/* table styles */
+.sampleTable {
+    color: black;
+    width: 100%;
+}
 
-    .titleHeader {
-        color: #168EB4;
-        font-weight: 600;
-        font-size: 24px;
-    }
+.titleHeader {
+    color: #168EB4;
+    font-weight: 600;
+    font-size: 24px;
+}
 
-    .containerCard {
-        background: #FFFFFF;
-        border: 1px solid #FFFFFF;
-        border-radius: 5px;
-    }
+.containerCard {
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
 
-    .tableName {
-        font-weight: 600;
-        font-size: 24px;
-        color: #000000;
+.tableName {
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
 
-    }
+}
 
-    .tableDataSec {
-        overflow-x: scroll;
-        -webkit-overflow-scrolling: scroll;
-        width: 100%;
-    }
+.tableDataSec {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: scroll;
+    width: 100%;
+}
 
 
-    .tableSec table {
-        width: 100%;
-    }
+.tableSec table {
+    width: 100%;
+}
 
-    .tableSec table th {
-        color: #168EB4;
-        font-weight: 700;
-    }
+.tableSec table th {
+    color: #168EB4;
+    font-weight: 700;
+}
 
-    .tableSpec {
-        display: flex;
-        justify-content: space-between;
-        height: 40px;
-        /* width: 100%; */
-    }
+.tableSpec {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    /* width: 100%; */
+}
 
-    /* .tableSpec .leftSec {
+/* .tableSpec .leftSec {
     width: 30%;
 } */
 
+.tableSpec .rightSec {
+    /* padding-top: 5px; */
+    /* width: 70%; */
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.searchSec {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.searchSec input {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+
+}
+
+.searchSec i:hover {
+    cursor: pointer;
+}
+
+.dateSec {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+
+}
+
+.dateSec input[type="date"] {
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.dateSec i:hover {
+    cursor: pointer;
+}
+
+.tablePagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.page-item.active .page-link {
+    background-color: #168EB4;
+    border-color: #168EB4;
+}
+
+@media screen and (max-width:1024px) {
+    .tableSpec .leftSec {
+        width: 20%;
+        order: 1;
+    }
+
     .tableSpec .rightSec {
-        /* padding-top: 5px; */
-        /* width: 70%; */
-        display: flex;
-        justify-content: flex-end;
+        width: 80%;
+        order: 2;
+    }
+
+
+
+}
+
+@media screen and (max-width:426px) {
+    .tableSpec {
+        flex-direction: column;
+        height: 110px;
+    }
+
+    .tableSpec .leftSec {
+        order: 2;
+
+    }
+
+
+
+    .tableSpec .rightSec {
+        order: 1;
+        margin-bottom: 5px;
 
     }
 
     .searchSec {
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
+        margin-bottom: 5px;
     }
 
-    .searchSec input {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 30px;
-        width: 200px;
-
-    }
-
-    .searchSec i:hover {
-        cursor: pointer;
-    }
-
-    .dateSec {
-        display: flex;
-        align-items: center;
-        margin-right: 5px;
-
-    }
-
-    .dateSec input[type="date"] {
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 30px;
-    }
-
-    .dateSec i:hover {
-        cursor: pointer;
-    }
-
-    .tablePagination {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-
-    }
-
-    .page-item.active .page-link {
-        background-color: #168EB4;
-        border-color: #168EB4;
-    }
-
-    @media screen and (max-width:1024px) {
-        .tableSpec .leftSec {
-            width: 20%;
-            order: 1;
-        }
-
-        .tableSpec .rightSec {
-            width: 80%;
-            order: 2;
-        }
+}
 
 
-
-    }
-
-    @media screen and (max-width:426px) {
-        .tableSpec {
-            flex-direction: column;
-            height: 110px;
-        }
-
-        .tableSpec .leftSec {
-            order: 2;
-
-        }
-
-
-
-        .tableSpec .rightSec {
-            order: 1;
-            margin-bottom: 5px;
-
-        }
-
-        .searchSec {
-            margin-bottom: 5px;
-        }
-
-    }
-
-
-    /* /// */
+/* /// */
 </style>
 
 <div class="row mb-4">
@@ -304,6 +307,16 @@ require_once('../includes/header.php')
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
+            <a href="./inventory_shipment_sorting.php">
+                <div class="btnCard mr-3 mt-2 mb-1">
+                    <div class="btnCardIcon">
+                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                    </div>
+                    <div class="btnCardLable">Shipment Sorting</div>
+                </div>
+            </a>
+            <!-- ////////////// -->
+            <!-- Btn Card -->
             <a href="./inventory_remove_parts.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
@@ -334,16 +347,7 @@ require_once('../includes/header.php')
                 </div>
             </a>
             <!-- ////////////// -->
-            <!-- Btn Card -->
-            <a href="./inventory_shipment_sorting.php">
-                <div class="btnCard mr-3 mt-2 mb-1">
-                    <div class="btnCardIcon">
-                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
-                    </div>
-                    <div class="btnCardLable">Shipment Sorting</div>
-                </div>
-            </a>
-            <!-- ////////////// -->
+
             <!-- Btn Card -->
             <a href="">
                 <div class="btnCard mr-3 mt-2 mb-1">
@@ -361,6 +365,16 @@ require_once('../includes/header.php')
                         <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
                     <div class="btnCardLable">Add Items to Pallet</div>
+                </div>
+            </a>
+            <!-- ////////////// -->
+            <!-- Btn Card -->
+            <a href="./inventory_other_inventory.php">
+                <div class="btnCard mr-3 mt-2 mb-1">
+                    <div class="btnCardIcon">
+                        <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>
+                    </div>
+                    <div class="btnCardLable">Other Inventory</div>
                 </div>
             </a>
             <!-- ////////////// -->
@@ -385,6 +399,7 @@ require_once('../includes/header.php')
             </a>
             <!-- ////////////// -->
 
+
         </div>
 
         <hr class="sectionUnderline">
@@ -394,7 +409,8 @@ require_once('../includes/header.php')
             <!-- Card 1 -->
             <div class="dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 16px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
                     </div>
                     <div class="cardTitle">Total Inventory</div>
                 </div>
@@ -409,7 +425,8 @@ require_once('../includes/header.php')
             <!-- Card 1 -->
             <div class="dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 16px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
                     </div>
                     <div class="cardTitle">Production</div>
                 </div>
@@ -424,7 +441,8 @@ require_once('../includes/header.php')
             <!-- Card 1 -->
             <div class="dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 16px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
                     </div>
                     <div class="cardTitle">Dispatch</div>
                 </div>
@@ -439,7 +457,8 @@ require_once('../includes/header.php')
             <!-- Card 1 -->
             <div class="dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 16px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
                     </div>
                     <div class="cardTitle">Team Members</div>
                 </div>
@@ -454,7 +473,8 @@ require_once('../includes/header.php')
             <!-- Card 1 -->
             <div class="dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 16px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
                     </div>
                     <div class="cardTitle">Received Motherboard</div>
                 </div>
@@ -469,7 +489,8 @@ require_once('../includes/header.php')
             <!-- Card 1 -->
             <div class="dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
-                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced" style="color: #168EB4;font-size: 16px;"></i>
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
                     </div>
                     <div class="cardTitle">Send to MotherBord</div>
                 </div>
@@ -506,7 +527,9 @@ require_once('../includes/header.php')
                             <div class="leftSec">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">ALL</button>
+                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                            data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                            aria-selected="true">ALL</button>
                                     </li>
 
                                 </ul>
@@ -516,7 +539,8 @@ require_once('../includes/header.php')
                                     <!-- Search section -->
                                     <div class="searchSec">
                                         <input type="text">
-                                        <i class="fa-solid fa-magnifying-glass ml-2" style="color: #168EB4; font-size:20px"></i>
+                                        <i class="fa-solid fa-magnifying-glass ml-2"
+                                            style="color: #168EB4; font-size:20px"></i>
 
                                     </div>
                                     <!-- Filter Section -->
