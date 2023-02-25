@@ -27,6 +27,6 @@ if (!isset($_SESSION['user_id'])) {
             <i class="fa-solid fa-bars"></i><span class="mx-1">Disciplinary List</span>
         </a>
     </div>
-    </div>
+</div>
 
 <?php require_once('../includes/footer.php') ?>

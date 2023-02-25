@@ -22,7 +22,7 @@ $role = '';
 $join_date = '';
 $note = '';
 
-$username = $_SESSION['user_name'];
+$username = $_SESSION['username'];
 $emp_id = mysqli_real_escape_string($connection, $_GET['emp_id']);
 
 $query = "SELECT 
@@ -74,8 +74,8 @@ while ($x = mysqli_fetch_array($run)) {
     $resident_country = $x['resident_country'];
     $emergency_contact = $x['emergency_contact'];
     $profile_photo = $x['profile_photo'];
-    $department = $x['department_id'];
-    $role = $x['role_id'];
+    $department = $x['department_name'];
+    $role = $x['role_name'];
     $join_date = $x['join_date'];
     $note = $x['note'];
 }

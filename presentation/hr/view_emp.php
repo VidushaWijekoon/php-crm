@@ -13,9 +13,9 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <div class="row">
-    <div class="col-md-5 align-self-center d-flex">
+    <div class="col-md-5 align-self-center d-flex p-1 px-2">
         <i class="fa-solid fa-user-plus"></i>
-        <h6 class="" style="margin-top: auto; font-weight: bold;"> Create New Employee</h6>
+        <h6 class="mx-2" style="margin-top: auto; font-weight: bold;"> View <?php echo $first_name . " " . $last_name; ?></h6>
     </div>
 </div>
 
@@ -31,73 +31,87 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">First Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $first_name; ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $first_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Last Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $last_name; ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $last_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Full Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly values="<?php echo $full_name; ?>">
+                                    <input type="text" class="w-100" readonly values="<?php echo $full_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $email ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $email ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Gender</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $gender ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $gender ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Birthday</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $birthday ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $birthday ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Old Passport</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $old_passport ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $old_passport ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Passport</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $current_passport ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $current_passport ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Passport Expiring</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $passport_expiring_date ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $passport_expiring_date ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Type</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $visa_type . "Visa" ?>">
+                                    <?php if ($visa_type == 1) { ?>
+                                        <input type="text" class="w-100" readonly value="Visit Visa">
+                                    <?php }
+                                    if ($visa_type == 2) { ?>
+                                        <input type="text" class="w-100" readonly value="Own Visa">
+                                    <?php }
+                                    if ($visa_type == 3) { ?>
+                                        <input type="text" class="w-100" readonly value="Company Visa">
+                                    <?php }
+                                    if ($visa_type == 4) { ?>
+                                        <input type="text" class="w-100" readonly value="Cancel Visa">
+                                    <?php }
+                                    if ($visa_type == 5) { ?>
+                                        <input type="text" class="w-100" readonly value="Student Visa">
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Expiring</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $visa_expiring_date ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $visa_expiring_date ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Contact Number</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $contact_number ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $contact_number ?>">
                                 </div>
                             </div>
 
@@ -108,27 +122,27 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $current_address ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $current_address ?>">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Permanent Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $permanent_address ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $permanent_address ?>">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Resident Country</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $resident_country ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $resident_country ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Emergency</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $emergency_contact ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $emergency_contact ?>">
                                 </div>
                             </div>
                         </fieldset>
@@ -151,20 +165,20 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Department</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $department ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $department ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Labour Category</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $role ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $role ?>">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Join Date</label>
                                 <div class="col-sm-8">
-                                    <input type="text" readonly value="<?php echo $join_date ?>">
+                                    <input type="text" class="w-100" readonly value="<?php echo $join_date ?>">
                                 </div>
                             </div>
 
@@ -173,7 +187,7 @@ if (!isset($_SESSION['user_id'])) {
                         <fieldset class="reset">
                             <legend class="reset">Special Note</legend>
                             <div class="mb-3">
-                                <input type="text" readonly rows="3" value="<?php echo $note ?>">
+                                <input type="text" class="w-100" readonly rows="3" value="<?php echo $note ?>">
                             </div>
                         </fieldset>
 
@@ -184,7 +198,7 @@ if (!isset($_SESSION['user_id'])) {
                                         Update Employee
                                     </a>";
                             ?>
-                            <a href="./employees.php" class="btn btn-xs btn-danger mx-2"><i class="fa-solid fa-xmark mx-1"></i>Close</a>
+                            <a href="./employees.php" class="btn btn-xs btn-danger mx-2"><i class="fa-solid fa-xmark mx-1"></i>Back</a>
                         </div>
                     </div>
 

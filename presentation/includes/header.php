@@ -1,6 +1,8 @@
  <?php
+    require_once("footer.php");
     $username = $_SESSION['username'];
-
+    $department_id = $_SESSION['department_id'];
+    $role_id = $_SESSION['role_id'];
     ?>
 
  <!DOCTYPE html>
@@ -50,6 +52,16 @@
              </nav>
              <!-- /.navbar -->
 
+<<<<<<< HEAD
+         <!-- Main Sidebar Container -->
+         <aside class="main-sidebar sidebar-dark-primary elevation-4">
+             <!-- Brand Logo -->
+             <?php if ($department_id == 1 && $role_id == 1) { ?>
+                 <a href="./main.php" class="brand-link text-center mx-auto d-flex justify-content-center">
+                     <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
+                 </a>
+             <?php } ?>
+=======
              <!-- Main Sidebar Container -->
              <aside class="main-sidebar sidebar-dark-primary elevation-4">
                  <!-- Brand Logo -->
@@ -57,22 +69,43 @@
                      <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3"
                          style="opacity: .8">
                  </a>
+>>>>>>> 455261bbd7fa014bbea637e82b6e369b5f013f46
 
                  <!-- Sidebar -->
                  <div class="sidebar">
                      <!-- Sidebar user panel (optional) -->
                      <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
 
+<<<<<<< HEAD
+                 <!-- Sidebar Menu -->
+                 <nav class="mt-2">
+                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                         <?php if ($department_id == 1 && $role_id == 1) { ?>
+                             <li class="nav-item menu-open">
+                                 <a href="./main.php" class="nav-link active">
+=======
                      <!-- Sidebar Menu -->
                      <nav class="mt-2">
                          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                              data-accordion="false">
                              <li class="nav-item menu-open">
                                  <a href="#" class="nav-link active">
+>>>>>>> 455261bbd7fa014bbea637e82b6e369b5f013f46
                                      <i class="nav-icon fas fa-home"></i>
                                      <p> Home Page </p>
                                  </a>
                              </li>
+<<<<<<< HEAD
+                         <?php } ?>
+                         <!-- ============================================================== -->
+                         <!-- Admin & User Department  -->
+                         <!-- ============================================================== -->
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+                                 <i class="nav-icon fas fa-lock"></i>
+                                 <p> Users <i class="right fas fa-angle-left"></i> </p>
+                             </a>
+=======
                              <!-- ============================================================== -->
                              <!-- Admin & User Department  -->
                              <!-- ============================================================== -->
@@ -81,6 +114,7 @@
                                      <i class="nav-icon fas fa-lock"></i>
                                      <p> Users <i class="right fas fa-angle-left"></i> </p>
                                  </a>
+>>>>>>> 455261bbd7fa014bbea637e82b6e369b5f013f46
 
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
