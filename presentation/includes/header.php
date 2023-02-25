@@ -1,3 +1,8 @@
+ <?php
+    $username = $_SESSION['username'];
+
+    ?>
+
  <!DOCTYPE html>
  <html lang="en">
 
@@ -17,11 +22,11 @@
  </head>
 
  <style>
-.fas,
-.fa,
-.brands {
-    font-size: 10px !important;
-}
+     .fas,
+     .fa,
+     .brands {
+         font-size: 10px !important;
+     }
  </style>
 
  <body class="hold-transition sidebar-mini layout-fixed">
@@ -37,10 +42,11 @@
                  </li>
              </ul>
 
+
              <!-- Right navbar links -->
              <ul class="navbar-nav ml-auto">
-                 <span class="mt-auto">Welcome Vidusha! <a href="../../index.php">Logout</a></span>
-
+                 <span class="mt-auto">Welcome <?php echo $username; ?>! <a href="../../logout.php">Logout</a>
+                 </span>
          </nav>
          <!-- /.navbar -->
 
@@ -48,8 +54,7 @@
          <aside class="main-sidebar sidebar-dark-primary elevation-4">
              <!-- Brand Logo -->
              <a href="#" class="brand-link text-center mx-auto d-flex justify-content-center">
-                 <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3"
-                     style="opacity: .8">
+                 <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
              </a>
 
              <!-- Sidebar -->
@@ -59,8 +64,7 @@
 
                  <!-- Sidebar Menu -->
                  <nav class="mt-2">
-                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                         data-accordion="false">
+                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                          <li class="nav-item menu-open">
                              <a href="#" class="nav-link active">
                                  <i class="nav-icon fas fa-home"></i>
@@ -138,6 +142,7 @@
                                                  <p>Customers</p>
                                              </a>
                                          </li>
+
                                          <li class="nav-item">
                                              <a href="../sales/sales_assistant_daily_task.php" class="nav-link">
                                                  <i class="fa-solid fa-list nav-icon" style="font-size: 12px;"></i>
@@ -146,8 +151,7 @@
                                          </li>
                                          <li class="nav-item">
                                              <a href="../sales/sales_dashboard.php" class="nav-link">
-                                                 <i class="fa-solid fa-universal-access nav-icon"
-                                                     style="font-size: 12px;"></i>
+                                                 <i class="fa-solid fa-universal-access nav-icon" style="font-size: 12px;"></i>
                                                  <p>Sales Dashboard</p>
                                              </a>
                                          </li>

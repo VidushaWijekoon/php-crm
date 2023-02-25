@@ -101,6 +101,7 @@ label:not(.form-check-label):not(.custom-file-label) {
     height: 24px !important;
     border: 1px soild#D1CDCD !important;
     padding: 0 8px;
+    width: 285px
   }
 }
 
@@ -119,11 +120,17 @@ label:not(.form-check-label):not(.custom-file-label) {
   }
   select {
     height: 20px !important;
+<<<<<<< HEAD
     border: 1px soild#D1CDCD !important;
+=======
+    border: 1px soild#a1a3a8 !important;
+    width: 420px;
+>>>>>>> 9ffa91be4071bc31c239e77c210a5d732b9ab3e3
   }
   input {
     height: 24px !important;
     border: 1px soild#D1CDCD !important;
     padding: 0 8px;
+    width: 420px;
   }
 }

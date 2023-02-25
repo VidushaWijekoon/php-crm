@@ -4,233 +4,300 @@ require_once('../includes/header.php')
 
 ?>
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
 
-    /* table sec */
+/* table sec */
 
-    /* table styles */
-    .sampleTable {
-        color: black;
-        width: 100%;
-    }
+/* table styles */
+.sampleTable {
+    color: black;
+    width: 100%;
+}
 
-    .titleHeader {
-        color: #168EB4;
-        font-weight: 600;
-        font-size: 24px;
-    }
+.titleHeader {
+    color: #168EB4;
+    font-weight: 600;
+    font-size: 24px;
+}
 
-    .containerCard {
-        background: #FFFFFF;
-        border: 1px solid #FFFFFF;
-        border-radius: 5px;
-    }
+.containerCard {
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
 
-    .tableName {
-        font-weight: 600;
-        font-size: 24px;
-        color: #000000;
+.tableName {
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
 
-    }
+}
 
-    .tableDataSec {
-        overflow-x: scroll;
-        -webkit-overflow-scrolling: scroll;
-        width: 100%;
-    }
+.tableDataSec {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: scroll;
+    width: 100%;
+}
 
 
-    .tableSec table {
-        width: 100%;
-    }
+.tableSec table {
+    width: 100%;
+}
 
-    .tableSec table th {
-        color: #168EB4;
-        font-weight: 700;
-    }
+.tableSec table th {
+    color: #168EB4;
+    font-weight: 700;
+}
 
-    .tableSpec {
-        display: flex;
-        justify-content: space-between;
-        height: 40px;
-        /* width: 100%; */
-    }
+.tableSpec {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    /* width: 100%; */
+}
 
-    /* .tableSpec .leftSec {
+/* .tableSpec .leftSec {
     width: 30%;
 } */
 
+.tableSpec .rightSec {
+    /* padding-top: 5px; */
+    /* width: 70%; */
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.searchSec {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.searchSec input {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+
+}
+
+.searchSec i:hover {
+    cursor: pointer;
+}
+
+
+.tablePagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.page-item.active .page-link {
+    background-color: #168EB4;
+    border-color: #168EB4;
+}
+
+@media screen and (max-width:1024px) {
+    .tableSpec .leftSec {
+        width: 20%;
+        order: 1;
+    }
+
     .tableSpec .rightSec {
-        /* padding-top: 5px; */
-        /* width: 70%; */
-        display: flex;
-        justify-content: flex-end;
+        width: 80%;
+        order: 2;
+    }
+
+
+
+}
+
+@media screen and (max-width:426px) {
+    .tableSpec {
+        flex-direction: column;
+        height: 110px;
+    }
+
+    .tableSpec .leftSec {
+        order: 2;
+
+    }
+
+
+
+    .tableSpec .rightSec {
+        order: 1;
+        margin-bottom: 5px;
 
     }
 
     .searchSec {
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
+        margin-bottom: 5px;
     }
 
-    .searchSec input {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 30px;
-        width: 200px;
-
-    }
-
-    .searchSec i:hover {
-        cursor: pointer;
-    }
+}
 
 
-    .tablePagination {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
+/*  */
+.sectionUnderlineModel {
+    margin-top: 0px;
+}
 
-    }
-
-    .page-item.active .page-link {
-        background-color: #168EB4;
-        border-color: #168EB4;
-    }
-
-    @media screen and (max-width:1024px) {
-        .tableSpec .leftSec {
-            width: 20%;
-            order: 1;
-        }
-
-        .tableSpec .rightSec {
-            width: 80%;
-            order: 2;
-        }
+.modelInput input[type=text] {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 24px;
+    width: 100%;
 
 
+}
 
-    }
+/* LCD */
 
-    @media screen and (max-width:426px) {
-        .tableSpec {
-            flex-direction: column;
-            height: 110px;
-        }
+.lcdSec {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 80%;
+}
 
-        .tableSpec .leftSec {
-            order: 2;
+.lcdLable {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-        }
+.lcdCheq input[type='checkbox'] {
+    height: 20px;
+    width: 20px;
+}
+
+.motherboedSec,
+.batterySec {
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.mbLable,
+.btryLbl {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.mbCheq input[type='radio'] {
+    height: 15px;
+    width: 15px;
+}
+
+.btryLbl input[type='radio'] {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
+
+.searchSec {
+    margin-bottom: 5px;
+}
+
+}
 
 
+/*  */
+.sectionUnderlineModel {
+    margin-top: 0px;
+}
 
-        .tableSpec .rightSec {
-            order: 1;
-            margin-bottom: 5px;
-
-        }
-
-        .searchSec {
-            margin-bottom: 5px;
-        }
-
-    }
-
-
-    /*  */
-    .sectionUnderlineModel {
-        margin-top: 0px;
-    }
-
-    .modelInput input[type=text] {
-        background: #FFFFFF;
-        border: 1px solid #A1A3A8;
-        border-radius: 5px;
-        height: 24px;
-        width: 100%;
+.modelInput input[type=text] {
+    background: #FFFFFF;
+    border: 1px solid #A1A3A8;
+    border-radius: 5px;
+    height: 24px;
+    width: 100%;
 
 
-    }
+}
 
-    /* LCD */
+/* LCD */
 
-    .lcdSec {
-        /* display: flex; */
-        /* align-items: center; */
-        /* justify-content: center; */
-        width: 80%;
-    }
+.lcdSec {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 80%;
+}
 
-    .lcdLable {
-        font-size: 15px;
-        font-weight: 500;
-    }
+.lcdLable {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-    .lcdCheq input[type='checkbox'] {
-        height: 20px;
-        width: 20px;
-    }
+.lcdCheq input[type='checkbox'] {
+    height: 20px;
+    width: 20px;
+}
 
-    .motherboedSec,
-    .batterySec {
-        display: flex;
-        flex-direction: column;
-        /* width: 80%; */
-        /* justify-content: center; */
-        align-items: center;
-    }
+.motherboedSec,
+.batterySec {
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    /* justify-content: center; */
+    align-items: center;
+}
 
-    .mbLable,
-    .btryLbl {
-        font-size: 15px;
-        font-weight: 500;
-    }
+.mbLable,
+.btryLbl {
+    font-size: 15px;
+    font-weight: 500;
+}
 
-    .mbCheq input[type='radio'] {
-        height: 15px;
-        width: 15px;
-    }
+.mbCheq input[type='radio'] {
+    height: 15px;
+    width: 15px;
+}
 
-    .btryLbl input[type='radio'] {
-        height: 15px;
-        width: 15px;
-        margin-right: 5px;
-    }
+.btryLbl input[type='radio'] {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
 
-    /*  */
+/*  */
 
-    .btnT {
-        background: #FFFFFF;
-        border: 2px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 15px;
-        padding: 5px 10px;
-    }
+.btnT {
+    background: #FFFFFF;
+    border: 2px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 5px 10px;
+}
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
@@ -260,7 +327,8 @@ require_once('../includes/header.php')
                 <div class="leftSec">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">ALL</button>
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                type="button" role="tab" aria-controls="home" aria-selected="true">ALL</button>
                         </li>
 
                     </ul>
@@ -345,7 +413,8 @@ require_once('../includes/header.php')
                             <td>DHL</td>
                             <td>100</td>
                             <td>
-                                <button class="btn" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-hourglass-start text-info"></i></button>
+                                <button class="btn" data-toggle="modal" data-target="#myModal"><i
+                                        class="fa-solid fa-hourglass-start text-info"></i></button>
                             </td>
                         </tr>
                         <tr>
@@ -376,7 +445,8 @@ require_once('../includes/header.php')
                             <td>DHL</td>
                             <td>100</td>
                             <td>
-                                <button class="btn" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-hourglass-start text-info"></i></button>
+                                <button class="btn" data-toggle="modal" data-target="#myModal"><i
+                                        class="fa-solid fa-hourglass-start text-info"></i></button>
                             </td>
                         </tr>
 
@@ -387,7 +457,8 @@ require_once('../includes/header.php')
             </div>
 
             <!-- ///model-- Start  Order//// -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <!-- <div class="modal-header">
@@ -728,15 +799,23 @@ require_once('../includes/header.php')
                                 <div class="row motherboedSec">
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <div class="nav-item nav-link active" id="nav-hp-tab" data-toggle="tab" href="#nav-hp" role="tab" aria-controls="nav-hp" aria-selected="true">HP
+                                            <div class="nav-item nav-link active" id="nav-hp-tab" data-toggle="tab"
+                                                href="#nav-hp" role="tab" aria-controls="nav-hp" aria-selected="true">HP
                                             </div>
-                                            <div class="nav-item nav-link" id="nav-dell-tab" data-toggle="tab" href="#nav-dell" role="tab" aria-controls="nav-dell" aria-selected="false">Dell</div>
-                                            <div class="nav-item nav-link" id="nav-lenovo-tab" data-toggle="tab" href="#nav-lenovo" role="tab" aria-controls="nav-lenovo" aria-selected="false">Lenovo</div>
-                                            <div class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#nav-other" role="tab" aria-controls="nav-other" aria-selected="false">Other Brand</div>
+                                            <div class="nav-item nav-link" id="nav-dell-tab" data-toggle="tab"
+                                                href="#nav-dell" role="tab" aria-controls="nav-dell"
+                                                aria-selected="false">Dell</div>
+                                            <div class="nav-item nav-link" id="nav-lenovo-tab" data-toggle="tab"
+                                                href="#nav-lenovo" role="tab" aria-controls="nav-lenovo"
+                                                aria-selected="false">Lenovo</div>
+                                            <div class="nav-item nav-link" id="nav-other-tab" data-toggle="tab"
+                                                href="#nav-other" role="tab" aria-controls="nav-other"
+                                                aria-selected="false">Other Brand</div>
                                         </div>
                                     </nav>
                                     <div class="tab-content w-100" id="nav-tabContent">
-                                        <div class="tab-pane fade show active" id="nav-hp" role="tabpanel" aria-labelledby="nav-hp-tab">
+                                        <div class="tab-pane fade show active" id="nav-hp" role="tabpanel"
+                                            aria-labelledby="nav-hp-tab">
                                             <div class="row" style="justify-content: center;">
                                                 <div class="row mt-2" style="width: 70%;">
                                                     <div class="col-7 mbLable">Bios Lock</div>
@@ -760,12 +839,14 @@ require_once('../includes/header.php')
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="hpSoftLock" id="hpSoftLockActive">
+                                                                <input type="radio" name="hpSoftLock"
+                                                                    id="hpSoftLockActive">
                                                                 <span style="font-size: 15px;">Activate</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="hpSoftLock" id="hpSoftLockInActiive">
+                                                                <input type="radio" name="hpSoftLock"
+                                                                    id="hpSoftLockInActiive">
                                                                 <span style="font-size: 15px;">Inactive</span>
                                                             </div>
 
@@ -777,12 +858,14 @@ require_once('../includes/header.php')
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="hpRegionLock" id="hpRegionLock">
+                                                                <input type="radio" name="hpRegionLock"
+                                                                    id="hpRegionLock">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="hpRegionLock" id="hpRegionUnLock">
+                                                                <input type="radio" name="hpRegionLock"
+                                                                    id="hpRegionUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -793,7 +876,8 @@ require_once('../includes/header.php')
 
 
                                         </div>
-                                        <div class="tab-pane fade" id="nav-dell" role="tabpanel" aria-labelledby="nav-dell-tab">
+                                        <div class="tab-pane fade" id="nav-dell" role="tabpanel"
+                                            aria-labelledby="nav-dell-tab">
 
                                             <div class="row" style="justify-content: center;">
                                                 <div class="row mt-2" style="width: 70%;">
@@ -801,12 +885,14 @@ require_once('../includes/header.php')
                                                     <div class="col-7 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="dellBiosLock" id="dellBiosLock">
+                                                                <input type="radio" name="dellBiosLock"
+                                                                    id="dellBiosLock">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="dellBiosLock" id="dellBiosUnLock">
+                                                                <input type="radio" name="dellBiosLock"
+                                                                    id="dellBiosUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -818,16 +904,19 @@ require_once('../includes/header.php')
                                                     <div class="col-7 mbCheq">
                                                         <div class="row">
                                                             <div class="col-4">
-                                                                <input type="radio" name="dellSoftLock" id="dellsoftLockActive">
+                                                                <input type="radio" name="dellSoftLock"
+                                                                    id="dellsoftLockActive">
                                                                 <span style="font-size: 15px;">Active</span>
                                                             </div>
 
                                                             <div class="col-4">
-                                                                <input type="radio" name="dellSoftLock" id="dellsoftLockDisable">
+                                                                <input type="radio" name="dellSoftLock"
+                                                                    id="dellsoftLockDisable">
                                                                 <span style="font-size: 15px;">Disable</span>
                                                             </div>
                                                             <div class="col-4">
-                                                                <input type="radio" name="dellSoftLock" id="dellsoftLockDeactive">
+                                                                <input type="radio" name="dellSoftLock"
+                                                                    id="dellsoftLockDeactive">
                                                                 <span style="font-size: 15px;">Deactive</span>
                                                             </div>
 
@@ -839,12 +928,14 @@ require_once('../includes/header.php')
                                                     <div class="col-7 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="dellRegionLock" id="dellRegionLock">
+                                                                <input type="radio" name="dellRegionLock"
+                                                                    id="dellRegionLock">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="dellRegionLock" id="dellRegionUnLock">
+                                                                <input type="radio" name="dellRegionLock"
+                                                                    id="dellRegionUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -854,19 +945,22 @@ require_once('../includes/header.php')
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane fade" id="nav-lenovo" role="tabpanel" aria-labelledby="nav-lenovo-tab">
+                                        <div class="tab-pane fade" id="nav-lenovo" role="tabpanel"
+                                            aria-labelledby="nav-lenovo-tab">
                                             <div class="row" style="justify-content: center;">
                                                 <div class="row mt-2" style="width: 70%;">
                                                     <div class="col-7 mbLable">Bios Lock</div>
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="lenovoBiosLock" id="lenovoBiosLock">
+                                                                <input type="radio" name="lenovoBiosLock"
+                                                                    id="lenovoBiosLock">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="lenovoBiosLock" id="lenovoBiosUnLock">
+                                                                <input type="radio" name="lenovoBiosLock"
+                                                                    id="lenovoBiosUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -878,12 +972,14 @@ require_once('../includes/header.php')
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="lenovoSoftLock" id="lenovoSoftLockActive">
+                                                                <input type="radio" name="lenovoSoftLock"
+                                                                    id="lenovoSoftLockActive">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="lenovoSoftLock" id="lenovoSoftLockUnLock">
+                                                                <input type="radio" name="lenovoSoftLock"
+                                                                    id="lenovoSoftLockUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -895,12 +991,14 @@ require_once('../includes/header.php')
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="lenovoOtherErr" id="lenovoOtherErr">
+                                                                <input type="radio" name="lenovoOtherErr"
+                                                                    id="lenovoOtherErr">
                                                                 <span style="font-size: 15px;">Have</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="lenovoOtherErr" id="lenovoNoOtherErr">
+                                                                <input type="radio" name="lenovoOtherErr"
+                                                                    id="lenovoNoOtherErr">
                                                                 <span style="font-size: 15px;">No Have</span>
                                                             </div>
 
@@ -910,7 +1008,8 @@ require_once('../includes/header.php')
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane fade" id="nav-other" role="tabpanel" aria-labelledby="nav-other-tab">
+                                        <div class="tab-pane fade" id="nav-other" role="tabpanel"
+                                            aria-labelledby="nav-other-tab">
 
                                             <div class="row" style="justify-content: center;">
                                                 <div class="row mt-2" style="width: 70%;">
@@ -918,12 +1017,14 @@ require_once('../includes/header.php')
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="otherBiosLock" id="otherBiosLock">
+                                                                <input type="radio" name="otherBiosLock"
+                                                                    id="otherBiosLock">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="otherBiosLock" id="otherBiosUnLock">
+                                                                <input type="radio" name="otherBiosLock"
+                                                                    id="otherBiosUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -935,12 +1036,14 @@ require_once('../includes/header.php')
                                                     <div class="col-5 mbCheq">
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <input type="radio" name="otherSoftLock" id="otherSoftLockActive">
+                                                                <input type="radio" name="otherSoftLock"
+                                                                    id="otherSoftLockActive">
                                                                 <span style="font-size: 15px;">Lock</span>
                                                             </div>
 
                                                             <div class="col-6">
-                                                                <input type="radio" name="otherSoftLock" id="otherSoftLockUnLock">
+                                                                <input type="radio" name="otherSoftLock"
+                                                                    id="otherSoftLockUnLock">
                                                                 <span style="font-size: 15px;">OK</span>
                                                             </div>
 
@@ -980,28 +1083,39 @@ require_once('../includes/header.php')
                                 <div class="batterySec row">
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <div class="nav-item nav-link" id="nav-hpBattery-tab" data-toggle="tab" href="#nav-hpBattery" role="tab" aria-controls="nav-hpBattery" aria-selected="true">HP
+                                            <div class="nav-item nav-link" id="nav-hpBattery-tab" data-toggle="tab"
+                                                href="#nav-hpBattery" role="tab" aria-controls="nav-hpBattery"
+                                                aria-selected="true">HP
                                             </div>
-                                            <div class="nav-item nav-link active" id="nav-dellBattery-tab" data-toggle="tab" href="#nav-dellBattery" role="tab" aria-controls="nav-dellBattery" aria-selected="false">Dell</div>
-                                            <div class="nav-item nav-link" id="nav-lenovoBattery-tab" data-toggle="tab" href="#nav-lenovoBattery" role="tab" aria-controls="nav-lenovoBattery" aria-selected="false">Lenovo</div>
-                                            <div class="nav-item nav-link" id="nav-otherBattery-tab" data-toggle="tab" href="#nav-otherBattery" role="tab" aria-controls="nav-otherBattery" aria-selected="false">Other Brand</div>
+                                            <div class="nav-item nav-link active" id="nav-dellBattery-tab"
+                                                data-toggle="tab" href="#nav-dellBattery" role="tab"
+                                                aria-controls="nav-dellBattery" aria-selected="false">Dell</div>
+                                            <div class="nav-item nav-link" id="nav-lenovoBattery-tab" data-toggle="tab"
+                                                href="#nav-lenovoBattery" role="tab" aria-controls="nav-lenovoBattery"
+                                                aria-selected="false">Lenovo</div>
+                                            <div class="nav-item nav-link" id="nav-otherBattery-tab" data-toggle="tab"
+                                                href="#nav-otherBattery" role="tab" aria-controls="nav-otherBattery"
+                                                aria-selected="false">Other Brand</div>
                                         </div>
                                     </nav>
 
                                     <div class="tab-content w-100" id="nav-tabContent">
-                                        <div class="tab-pane fade show " id="nav-hpBattery" role="tabpanel" aria-labelledby="nav-hpBattery-tab">
+                                        <div class="tab-pane fade show " id="nav-hpBattery" role="tabpanel"
+                                            aria-labelledby="nav-hpBattery-tab">
                                             <div class="row" style="justify-content: center;">
                                                 hp
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade show active" id="nav-dellBattery" role="tabpanel" aria-labelledby="nav-dellBattery-tab">
+                                        <div class="tab-pane fade show active" id="nav-dellBattery" role="tabpanel"
+                                            aria-labelledby="nav-dellBattery-tab">
                                             <div class="row" style="justify-content: center;">
                                                 <div class="row btryLbl my-2" style="width: 70%;">Battery Health</div>
                                                 <div class="row" style="width: 70%;">
                                                     <div class="col-6">
                                                         <div class="row">
                                                             <div class="col-6 btryLbl">
-                                                                <input class="" type="radio" name="battery" id="excellent">100 -
+                                                                <input class="" type="radio" name="battery"
+                                                                    id="excellent">100 -
                                                                 80
                                                             </div>
                                                             <div class="col-6 btryLbl">
@@ -1038,17 +1152,20 @@ require_once('../includes/header.php')
                                                     <input type="text" id="btryPN">
                                                 </div>
                                                 <br>
-                                                <div style="color: #BB0000; font-size:15px; font-weight:700">Remove Battery And
+                                                <div style="color: #BB0000; font-size:15px; font-weight:700">Remove
+                                                    Battery And
                                                     Confirm</div>
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane fade show " id="nav-lenovoBattery" role="tabpanel" aria-labelledby="nav-hpBattery-tab">
+                                        <div class="tab-pane fade show " id="nav-lenovoBattery" role="tabpanel"
+                                            aria-labelledby="nav-hpBattery-tab">
                                             <div class="row" style="justify-content: center;">
                                                 lenovo
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade show " id="nav-otherBattery" role="tabpanel" aria-labelledby="nav-hpBattery-tab">
+                                        <div class="tab-pane fade show " id="nav-otherBattery" role="tabpanel"
+                                            aria-labelledby="nav-hpBattery-tab">
                                             <div class="row" style="justify-content: center;">
                                                 other
                                             </div>

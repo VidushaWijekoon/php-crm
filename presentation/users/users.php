@@ -49,26 +49,26 @@ if (!isset($_SESSION['user_id'])) {
                         $username = $row['username'];
                         $is_active = $row['is_active'];
                     ?>
-                        <tr>
-                            <td>
-                                <a href="<?php echo "view_user.php?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
-                                </a>
-                            </td>
-                            <td> <?php echo $row['first_name'] ?> </td>
-                            <td><?php echo $row['last_name'] ?></td>
-                            <td><?php echo $row['username'] ?></td>
-                            <td><?php echo $row['department_id'] ?></td>
-                            <td><?php echo $row['role_id'] ?></td>
-                            <td>
-                                <?php if ($is_active == 0) { ?>
-                                    <span class="badge badge-success">Active User</span>
-                                <?php }
+                    <tr>
+                        <td>
+                            <a href="<?php echo "view_user.php?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
+                            </a>
+                        </td>
+                        <td> <?php echo $row['first_name'] ?> </td>
+                        <td><?php echo $row['last_name'] ?></td>
+                        <td><?php echo $row['username'] ?></td>
+                        <td><?php echo $row['department_id'] ?></td>
+                        <td><?php echo $row['role_id'] ?></td>
+                        <td>
+                            <?php if ($is_active == 0) { ?>
+                            <span class="badge badge-success">Active User</span>
+                            <?php }
                                 if ($is_active == 1) { ?>
-                                    <span class="badge badge-danger">In-Active User</span>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <?php
+                            <span class="badge badge-danger">In-Active User</span>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <?php
                                 if ($is_active == 0) {
                                     echo "<a class='btn btn-xs mx-1' href=\"deactivate_user.php?user_id={$row['user_id']}\" 
                                         onclick=\"return confirm('Are you sure $username want inactive this user?');\">
@@ -82,8 +82,8 @@ if (!isset($_SESSION['user_id'])) {
                                     </a>";
                                 };
                                 ?>
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     <?php } ?>
                 </tbody>
             </table>

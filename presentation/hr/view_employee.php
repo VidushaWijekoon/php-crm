@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ob_start();
 session_start();
@@ -6,7 +6,7 @@ require_once('../includes/header.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
-	header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 
 ?>
@@ -25,7 +25,26 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row mt-2">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">February Monthly Report</div>
+            <div class="card-header">
+                <div class="d-flex justify-content-between mt-1">
+                    <h6>February Monthly Report</h6>
+                    <select name="" id="" style="width: 200px; padding: 0 20px; ">
+                        <option selected>--Select Month--</option>
+                        <option value="visit">January</option>
+                        <option value="own">February</option>
+                        <option value="company">March</option>
+                        <option value="cancel">April</option>
+                        <option value="student">May</option>
+                        <option value="student">June</option>
+                        <option value="student">July</option>
+                        <option value="student">August</option>
+                        <option value="student">September</option>
+                        <option value="student">October</option>
+                        <option value="student">November</option>
+                        <option value="student">December</option>
+                    </select>
+                </div>
+            </div>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -40,7 +59,7 @@ if (!isset($_SESSION['user_id'])) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td><a href="daily_performance.php">1</a></td>
                             <td><span class="badge badge-success">Present</span></td>
                             <td>50</td>
                             <td>45</td>
@@ -48,7 +67,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td><span class="badge badge-danger">90%</span></td>
                         </tr>
                         <tr>
-                            <td>2</td>
+                            <td><a href="daily_performance.php">2</a></td>
                             <td><span class="badge badge-success">Present</span></td>
                             <td>50</td>
                             <td>55</td>
@@ -56,7 +75,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td><span class="badge badge-success">110%</span></td>
                         </tr>
                         <tr>
-                            <td>3</td>
+                            <td><a href="daily_performance.php">3</a></td>
                             <td><span class="badge badge-warning">Day Off</span></td>
                             <td>0</td>
                             <td>0</td>
@@ -64,7 +83,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td><span class="badge badge-warning">0</span></td>
                         </tr>
                         <tr>
-                            <td>4</td>
+                            <td><a href="daily_performance.php">3</a></td>
                             <td><span class="badge badge-success">Present</span></td>
                             <td>50</td>
                             <td>56</td>
@@ -72,7 +91,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td><span class="badge badge-success">112%</span></td>
                         </tr>
                         <tr>
-                            <td>5</td>
+                            <td><a href="daily_performance.php">5</a></td>
                             <td><span class="badge badge-danger">Absent</span></td>
                             <td>0</td>
                             <td>0</td>
@@ -80,7 +99,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td><span class="badge badge-danger">Absent</span></td>
                         </tr>
                         <tr>
-                            <td>6</td>
+                            <td><a href="daily_performance.php">6</a></td>
                             <td><span class="badge badge-success">Present</span></td>
                             <td>50</td>
                             <td>37</td>
@@ -88,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td><span class="badge badge-danger">74%</span></td>
                         </tr>
                         <tr>
-                            <td>7</td>
+                            <td><a href="daily_performance.php">7</a></td>
                             <td><span class="badge badge-success">Present</span></td>
                             <td>50</td>
                             <td>65</td>
@@ -227,6 +246,5 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 </div>
-
 
 <?php require_once('../includes/footer.php') ?>
