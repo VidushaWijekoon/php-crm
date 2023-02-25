@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <div class="mt-2">Employees</div>
-                    <div class=""><input type="text" class="mx-2" placeholder="Search Employee ID"></div>
+                    <div class=""><input type="text" class="w-75 px-2" placeholder="Search Employee ID"></div>
                 </div>
             </div>
             <table class="table table-hover">
@@ -72,8 +72,7 @@ if (!isset($_SESSION['user_id'])) {
                             <td>
                                 <?php
 
-                                echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee.php?emp_id={$row['emp_id']}\" 
-                                        onclick=\"return confirm('Are you sure $first_name remove this employee?');\">
+                                echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee.php?emp_id={$row['emp_id']}\">
                                         <i class='fa-sharp fa-solid fa-circle-xmark' style='font-size: 15px;'></i>
                                     </a>";
 

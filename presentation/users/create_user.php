@@ -10,16 +10,13 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-}
-
 ?>
 
 <style>
-input[type="text"] {
-    width: 340px;
-    padding: 0 5px;
-}
+    input[type="text"] {
+        width: 340px;
+        padding: 0 5px;
+    }
 </style>
 
 <div class="row">
@@ -33,7 +30,7 @@ input[type="text"] {
 <div class="row">
     <div class="col-lg-6 grid-margin stretch-card justify-content-center mx-auto mt-2">
         <div class="card">
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <form action="./addNew/create_user.php" method="POST">
                 <fieldset class="mx-3 mb-3 mt-2">
                     <legend>Create New User</legend>
                     <div class="card-body">
@@ -42,7 +39,7 @@ input[type="text"] {
                         <!-- ============================================================== -->
                         <div class="row mb-2">
                             <div class="col-md-3">
-                                <p class="card-text">Employee ID</p>
+                                <p class="card-text">Employee ID <span style="color: red">*</span></p>
                             </div>
                             <div class="col-md-9">
                                 <select name="emp_id" id="emp_id" class="w-75">
@@ -52,12 +49,10 @@ input[type="text"] {
                                                 FROM employees LEFT JOIN users  ON users.emp_id = employees.emp_id WHERE users.emp_id IS NULL;";
                                     $result = mysqli_query($connection, $query);
 
-                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-
-                                    ?>
-                                    <option value="<?php echo $row["emp_id"]; ?>">
-                                        <?php echo strtoupper($row["emp_id"]); ?>
-                                    </option>
+                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                        <option value="<?php echo $row["emp_id"]; ?>">
+                                            <?php echo strtoupper($row["emp_id"]); ?>
+                                        </option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -65,38 +60,47 @@ input[type="text"] {
                         <!-- ============================================================== -->
                         <!-- First Name  -->
                         <!-- ============================================================== -->
-                        <div class="row mb-2">
+                        <!-- <div class="row mb-2">
                             <div class="col-md-3">
                                 <p class="card-text">First Name</p>
                             </div>
                             <div class="col-md-9">
                                 <select name="first_name" id="first_name" class="w-75"> </select>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- ============================================================== -->
                         <!-- Last Name  -->
                         <!-- ============================================================== -->
-                        <div class="row mb-2">
+                        <!-- <div class="row mb-2">
                             <div class="col-md-3">
                                 <p class="card-text">Last Name</p>
                             </div>
                             <div class="col-md-9">
-                                <select name="last_name" id="last_name" class="w-75"></select>
+                                <select name="last_name" id="last_name" class="w-75"></select> -->
 
-                                <!-- <input type="text" class="w-75" placeholder="Last Name" id="last_name" name="last_name"> -->
-                            </div>
-                        </div>
+                        <!-- <input type="text" class="w-75" placeholder="Last Name" id="last_name" name="last_name"> -->
+                        <!-- </div>
+                        </div> -->
                         <!-- ============================================================== -->
                         <!-- Department  -->
                         <!-- ============================================================== -->
                         <div class="row mb-2">
                             <div class="col-md-3">
-                                <p class="card-text">Departmentt</p>
+                                <p class="card-text">Department <span style="color: red">*</span></p>
                             </div>
                             <div class="col-md-9">
-                                <select name="department" id="department" class="w-75"></select>
+                                <select name="department" class="w-75" required style="border-radius: 5px;">
+                                    <option selected>--Select Department--</option>
+                                    <?php
+                                    $query = "SELECT * FROM departments ORDER BY department_name ASC";
+                                    $result = mysqli_query($connection, $query);
 
-                                <!-- <input type="text" class="w-75" placeholder="Deprtment" id="department" name="department"> -->
+                                    while ($x = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                        <option value="<?php echo $x["department_id"]; ?>">
+                                            <?php echo strtoupper($x["department_name"]); ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -104,11 +108,21 @@ input[type="text"] {
                         <!-- ============================================================== -->
                         <div class="row mb-2">
                             <div class="col-md-3">
-                                <p class="card-text">Role</p>
+                                <p class="card-text">Role <span style="color: red">*</span></p>
                             </div>
                             <div class="col-md-9">
-                                <select name="role_id" id="role_id" class="w-75"></select>
-                                <!-- <input type="text" class="w-75" placeholder="Role" id="role" name="role"> -->
+                                <select name="role" class="w-75" required style="border-radius: 5px;">
+                                    <option selected>--Select Role--</option>
+                                    <?php
+                                    $query = "SELECT * FROM user_roles ORDER BY role_name ASC";
+                                    $result = mysqli_query($connection, $query);
+
+                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                        <option value="<?php echo $row["role_id"]; ?>">
+                                            <?php echo strtoupper($row["role_name"]); ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -116,7 +130,7 @@ input[type="text"] {
                         <!-- ============================================================== -->
                         <div class="row mb-2">
                             <div class="col-md-3">
-                                <p class="card-text">Username</p>
+                                <p class="card-text">Username <span style="color: red">*</span></p>
                             </div>
                             <div class="col-md-9">
                                 <input type="text" class="w-75" placeholder="Username" name="username">
@@ -127,11 +141,10 @@ input[type="text"] {
                         <!-- ============================================================== -->
                         <div class="row mb-2">
                             <div class="col-md-3">
-                                <p class="card-text">Password</p>
+                                <p class="card-text">Password <span style="color: red">*</span></p>
                             </div>
                             <div class="col-md-9">
-                                <input type="password" id="password" class="w-75" placeholder="Password"
-                                    name="password_1">
+                                <input type="password" id="password" class="w-75" placeholder="Password" name="password">
                             </div>
                         </div>
 
@@ -147,7 +160,7 @@ input[type="text"] {
                     </div>
 
                     <div class="row">
-                        <button class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
+                        <button type="submit" class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
                     </div>
                 </fieldset>
             </form>
@@ -155,27 +168,13 @@ input[type="text"] {
     </div>
 </div>
 
-<script src="../../plugins/jquery/jquery.min.js"></script>
-
 <script>
-function showPassword() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
+    function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
-}
-
-$(document).ready(function() {
-    $("#emp_id").on("change", function() {
-        var emp_id = $("#emp_id").val();
-        console.log(emp_id);
-        var getURL = "get_user_details.php?emp_id=" + emp_id;
-        console.log(getURL);
-        $.get(getURL, function(data, status) {
-            $("#first_name").html(data);
-        });
-    });
-});
 </script>
