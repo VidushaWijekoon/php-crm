@@ -2,7 +2,7 @@
 session_start();
 require_once('functions/db_connection.php');
 require_once('functions/functions.php');
-
+require_once('functions/login.php');
 
 // check for form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,26 +20,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // check if there are any errors in the form
     if (empty($errors)) {
-        // save username and password into variables
 
-        // $hashed_password = sha1($password);
+        $hashed_password = sha1($password);
+
         // prepare database query
-        $query = "SELECT * FROM users WHERE user_name = '{$username}' AND user_password = '{$password}' AND is_active = 1";
+        $query = "SELECT user_id, users.emp_id AS emp, employees.emp_id, user_name, user_password, is_active, department_id, role_id FROM users
+                INNER JOIN employees ON users.emp_id = employees.emp_id
+                WHERE user_name = '{$username}' AND user_password = '{$hashed_password}' AND is_active = 1";
         $result_set = mysqli_query($connection, $query);
         verify_query($result_set);
         if (mysqli_num_rows($result_set) == 1) {
             // valid user found
             $user = mysqli_fetch_assoc($result_set);
             $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['emp_id'] = $user['emp_id'];
+            $_SESSION['department_id'] = $user['department_id'];
+            $_SESSION['role_id'] = $user['role_id'];
             $_SESSION['username'] = $user['user_name'];
+            $_SESSION['emp'] = $user['emp'];
+
+            $user_id = $_SESSION['user_id'];
+            $emp_id = $_SESSION['emp'];
 
             // updating last login
             $query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} ";
             $result_set = mysqli_query($connection, $query);
             verify_query($result_set);
+
+            $set_time = "INSERT INTO users_logged_in_time(user_id, emp_id, log_in_time) VALUES ('$user_id', '$emp_id', NOW())";
+            $set_run = mysqli_query($connection, $set_time);
+
             // redirect to users.php
-            header('Location: presentation/includes/main.php');
+            login($_SESSION['role_id'], $_SESSION['department_id']);
         } else {
             // user name and password invalid
             $errors[] = 'Invalid Username / Password';
@@ -125,12 +136,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         Welcome to <br />
                         <span style="color: hsl(218, 81%, 75%)">Alsakb ERP System</span>
                     </h1>
-                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                        <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Temporibus, expedita iusto veniam atque, magni tempora mollitia
-                        dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-                        ab ipsum nisi dolorem modi. Quos? -->
-                    </p>
                 </div>
 
                 <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
