@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('../includes/header.php')
 ?>
 <style>
@@ -18,7 +20,7 @@ require_once('../includes/header.php')
     width: 99%;
     background-color: #ffffff;
     padding: 10px 5px;
-    height: 75vh;
+    /* height: 75vh; */
 }
 
 .createListingHeading {
@@ -31,6 +33,32 @@ require_once('../includes/header.php')
     margin-bottom: 0;
     border-top: 2px solid #DBDBDB;
 }
+
+.DropDown {
+    height: 26px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    padding: 0px 10px;
+}
+
+.tableSec {
+    height: 45vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tableSec table {
+    width: 100%;
+    font-size: 10px;
+
+}
+
+.tableSec table th {
+    color: #168EB4;
+    font-weight: 700;
+    font-size: 10px;
+}
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
@@ -38,18 +66,99 @@ require_once('../includes/header.php')
     <h6 class="pageName">Remove Parts</h6>
 </div>
 
-<div class="row addItemPalletBodySec">
-    <div class="cardContainer">
+<div class="row removeItemsBodySec">
+    <div class="cardContainer col-12">
         <div class="ml-2">
             <div class="createListingHeading">
                 <span>
-                    Remove Parts
+                    Update Supplier Sheet
                 </span>
-
-
             </div>
         </div>
         <hr class="sectionUnderline">
+        <div class="row justify-content-center mt-4">
+            <div class="row w-50">
+                <div class="col-4">Select Removed Part</div>
+                <div class="col-8">
+                    <select class="w-100 DropDown" name="removedPart" id="removedPart">
+                        <option value="ram">RAM</option>
+                        <option value="hdd">HDD</option>
+                        <option value="ram_hdd">RAM + HDD</option>
+                    </select>
+                </div>
+                <hr class="col-12">
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="row w-50">
+                <div class="col-4">Scan MFG / Supplier Barcode</div>
+                <div class="col-8">
+                    <input type="text" class="w-100">
+                </div>
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="teamDetailsSec px-5" style="width: 100%;">
+                <div class="tableSec">
+                    <table class="table mx-3 table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>MFG/Suppler Barcode</th>
+                                <th>Removed Part</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>SDD342342</td>
+                                <td>HDD</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 </div>
 <?php
