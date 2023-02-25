@@ -31,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <div class="row">
-    <div class="col-md-5 align-self-center d-flex">
+    <div class="col-md-5 align-self-center d-flex p-1 px-2">
         <i class="fa-solid fa-user-plus"></i>
-        <h6 style="margin-top: auto; font-weight: bold;"> Update <?php echo $first_name . " " . $last_name ?></h6>
+        <h6 class="text-capitalize mx-2" style="margin-top: auto; font-weight: bold;"> Update <?php echo $first_name . " " . $last_name ?></h6>
     </div>
 </div>
 
