@@ -49,6 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $set_time = "INSERT INTO users_logged_in_time(user_id, emp_id, log_in_time) VALUES ('$user_id', '$emp_id', NOW())";
             $set_run = mysqli_query($connection, $set_time);
 
+            $query_d = "SELECT id FROM users_logged_in_time ORDER BY id DESC LIMIT 1";
+            $r = mysqli_query($connection, $query_d);
+            foreach ($r as $r) {
+                $_SESSION['log_time_id'] = $r['id'];
+            }
+
             // redirect to users.php
             login($_SESSION['role_id'], $_SESSION['department_id']);
         } else {
@@ -61,17 +67,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Alsakb Computer | ERP</title>
-        <link rel="icon" type="image/x-icon" href="dist/img/alsakb logo.png">
-        <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alsakb Computer | ERP</title>
+    <link rel="icon" type="image/x-icon" href="dist/img/alsakb logo.png">
+    <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
+</head>
 
 
-    <style>
+<style>
     .background-radial-gradient {
         background-color: hsl(218, 41%, 15%);
         background-image: radial-gradient(650px circle at 0% 0%,
@@ -122,14 +128,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         justify-content: center;
         height: 100%;
     }
-    </style>
+</style>
 
-    <body>
-        <!-- Section: Design Block -->
-        <section class="loginBody background-radial-gradient overflow-hidden">
+<body>
+    <!-- Section: Design Block -->
+    <section class="loginBody background-radial-gradient overflow-hidden">
 
 
-<<<<<<< HEAD
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start LoginSec">
             <div class="row gx-lg-5 align-items-center mb-5" style="width: 90%;">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -138,72 +143,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span style="color: hsl(218, 81%, 75%)">Alsakb ERP System</span>
                     </h1>
                 </div>
-=======
-            <div class="container px-4 py-5 px-md-5 text-center text-lg-start LoginSec">
-                <div class="row gx-lg-5 align-items-center mb-5" style="width: 90%;">
-                    <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-                        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                            Welcome to <br />
-                            <span style="color: hsl(218, 81%, 75%)">Alsakb ERP System</span>
-                        </h1>
-                        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                            <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Temporibus, expedita iusto veniam atque, magni tempora mollitia
-                        dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-                        ab ipsum nisi dolorem modi. Quos? -->
-                        </p>
-                    </div>
->>>>>>> 455261bbd7fa014bbea637e82b6e369b5f013f46
 
-                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-                        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
-                        <div class="card bg-glass">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-                                    <!-- Login input -->
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example3">Username</label>
-                                        <input type="text" name="username" id="form3Example3" class="form-control"
-                                            placeholder="Username" />
+                                <!-- Login input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example3">Username</label>
+                                    <input type="text" name="username" id="form3Example3" class="form-control" placeholder="Username" />
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4">Password</label>
+                                    <input type="password" name="password" id="form3Example4" class="form-control" placeholder="Password" />
+                                </div>
+
+                                <div class="d-flex">
+                                    <div class="">
+                                        <button type="submit" name="submit" class="btn btn-primary btn-block">
+                                            Log In
+                                        </button>
                                     </div>
-
-                                    <!-- Password input -->
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example4">Password</label>
-                                        <input type="password" name="password" id="form3Example4" class="form-control"
-                                            placeholder="Password" />
-                                    </div>
-
-                                    <div class="d-flex">
-                                        <div class="">
-                                            <button type="submit" name="submit" class="btn btn-primary btn-block">
-                                                Log In
-                                            </button>
-                                        </div>
-                                        <div class="">
-                                            <?php
+                                    <div class="">
+                                        <?php
 
                                         if (isset($errors) && !empty($errors)) {
                                             echo '<p class="error text-center">Invalid Username OR Password</p>';
                                         }
                                         ?>
-                                        </div>
-
                                     </div>
-                                    <!-- Submit button -->
 
-                                </form>
-                            </div>
+                                </div>
+                                <!-- Submit button -->
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Section: Design Block -->
-    </body>
+        </div>
+    </section>
+    <!-- Section: Design Block -->
+</body>
 
 </html>
 

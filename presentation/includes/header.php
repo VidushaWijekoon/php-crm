@@ -1,8 +1,15 @@
  <?php
     require_once("footer.php");
+    require_once('../../functions/db_connection.php');
     $username = $_SESSION['username'];
     $department_id = $_SESSION['department_id'];
     $role_id = $_SESSION['role_id'];
+    $log_in_id = $_SESSION['log_time_id'];
+    $user_id = $_SESSION['user_id'];
+
+    $query = "UPDATE users_logged_in_time SET log_out_time = NOW() WHERE user_id = '$user_id' AND id = '$log_in_id' LIMIT 1";
+    $run = mysqli_query($connection, $query);
+
     ?>
 
  <!DOCTYPE html>
@@ -56,7 +63,7 @@
          <aside class="main-sidebar sidebar-dark-primary elevation-4">
              <!-- Brand Logo -->
              <?php if ($department_id == 1 && $role_id == 1) { ?>
-                 <a href="./main.php" class="brand-link text-center mx-auto d-flex justify-content-center">
+                 <a href="../includes/main.php" class="brand-link text-center mx-auto d-flex justify-content-center">
                      <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
                  </a>
              <?php } ?>
@@ -71,7 +78,7 @@
                      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                          <?php if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item menu-open">
-                                 <a href="./main.php" class="nav-link active">
+                                 <a href="../includes/main.php" class="nav-link active">
                                      <i class="nav-icon fas fa-home"></i>
                                      <p> Home Page </p>
                                  </a>
