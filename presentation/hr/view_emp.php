@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row">
     <div class="col-md-5 align-self-center d-flex p-1 px-2">
         <i class="fa-solid fa-user-plus"></i>
-        <h6 class="mx-2" style="margin-top: auto; font-weight: bold;"> View <?php echo $first_name . " " . $last_name; ?></h6>
+        <h6 class="mx-2 text-capitalize" style="margin-top: auto; font-weight: bold;"> View <?php echo $first_name . " " . $last_name; ?></h6>
     </div>
 </div>
 

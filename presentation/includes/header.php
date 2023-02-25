@@ -4,11 +4,9 @@
     $username = $_SESSION['username'];
     $department_id = $_SESSION['department_id'];
     $role_id = $_SESSION['role_id'];
-    $log_in_id = $_SESSION['log_time_id'];
+    $log_time_id = $_SESSION['log_time_id'];
     $user_id = $_SESSION['user_id'];
 
-    $query = "UPDATE users_logged_in_time SET log_out_time = NOW() WHERE user_id = '$user_id' AND id = '$log_in_id' LIMIT 1";
-    $run = mysqli_query($connection, $query);
 
     ?>
 
@@ -54,7 +52,8 @@
 
                  <!-- Right navbar links -->
                  <ul class="navbar-nav ml-auto">
-                     <span class="mt-auto">Welcome <?php echo $username; ?>! <a href="../../logout.php">Logout</a>
+                     <span class="mt-auto">Welcome <?php echo $username; ?>! <a
+                             href="../../logout.php?<?php echo "user_id='$user_id'&log_time_id='$log_time_id'"  ?>">Logout</a>
                      </span>
              </nav>
              <!-- /.navbar -->
