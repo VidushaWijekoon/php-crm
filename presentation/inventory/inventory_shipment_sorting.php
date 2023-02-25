@@ -4,74 +4,74 @@ require_once('../includes/header.php')
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-        height: 75vh;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+    height: 75vh;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
 
-    .sectionUnderline {
-        margin-top: 0px;
-        margin-bottom: 0;
-        border-top: 2px solid #DBDBDB;
-    }
+.sectionUnderline {
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-top: 2px solid #DBDBDB;
+}
 
-    .scanSec {
-        justify-content: center;
-    }
+.scanSec {
+    justify-content: center;
+}
 
-    .btnT {
-        background: #FFFFFF;
-        border: 2px solid #168EB4;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 10px;
-        padding: 5px 10px;
-    }
+.btnT {
+    background: #FFFFFF;
+    border: 2px solid #168EB4;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 5px 10px;
+}
 
-    .modelID {
-        width: 800px;
-    }
+.modelID {
+    width: 800px;
+}
 
-    .cusName {
-        font-weight: 700;
-        font-size: 5rem;
-        color: #168EB4;
-    }
+.cusName {
+    font-weight: 700;
+    font-size: 5rem;
+    color: #168EB4;
+}
 
-    .modelName {
-        font-weight: 700;
-        font-size: 3rem;
-        color: #071a34;
-    }
+.modelName {
+    font-weight: 700;
+    font-size: 3rem;
+    color: #071a34;
+}
 
-    .modelGen {
-        font-weight: 700;
-        font-size: 2rem;
-        color: #071a34;
-    }
+.modelGen {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #071a34;
+}
 
-    input[type='text'] {
-        height: 26px;
+input[type='text'] {
+    height: 26px;
 
-    }
+}
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
@@ -124,7 +124,8 @@ require_once('../includes/header.php')
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="p-3">
@@ -168,7 +169,7 @@ require_once('../includes/header.php')
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" id="core">
+                                    <input class="w-100" type="text" id="core">
                                 </div>
                             </div>
                         </div>
@@ -180,7 +181,7 @@ require_once('../includes/header.php')
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" id="graphicBrand">
+                                    <input class="w-100" type="text" id="graphicBrand">
                                 </div>
                             </div>
                         </div>
@@ -194,7 +195,7 @@ require_once('../includes/header.php')
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" id="touch">
+                                    <input class="w-100" type="text" id="touch">
                                 </div>
                             </div>
                         </div>
@@ -206,7 +207,7 @@ require_once('../includes/header.php')
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" id="graphicCapacity">
+                                    <input class="w-100" type="text" id="graphicCapacity">
                                 </div>
                             </div>
                         </div>
@@ -220,7 +221,7 @@ require_once('../includes/header.php')
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" id="battery">
+                                    <input class="w-100" type="text" id="battery">
                                 </div>
                             </div>
                         </div>
@@ -233,7 +234,7 @@ require_once('../includes/header.php')
                                 </div>
                                 <div class="col-6">
 
-                                    <input type="text" id="os">
+                                    <input class="w-100" type="text" id="os">
                                     <!-- <textarea id="remarks"> -->
                                 </div>
                             </div>
