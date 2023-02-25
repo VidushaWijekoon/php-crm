@@ -21,6 +21,7 @@ $passport_expiring_date = '';
 $visa_expiring_date = '';
 $contact_number = '';
 $current_address = '';
+$permanent_address = '';
 $country_name = '';
 $emergency_contact = '';
 $profile_photo = '';
@@ -34,19 +35,19 @@ $emp_id = mysqli_real_escape_string($connection, $_GET['emp_id']);
 
 $query = "SELECT 
     emp_id, 
-    full_name,
-    resident_country,
-    join_date,
     first_name,
     last_name,
+    full_name,
     email,
     gender,
     birthday,
     old_passport,
     current_passport,
-    passport_expiring_date visa_expiring_date,
+    passport_expiring_date,
+    visa_expiring_date,
     contact_number,
     current_address,
+    permanent_address,
     resident_country,
     emergency_contact,
     profile_photo,
@@ -59,7 +60,7 @@ $query = "SELECT
 FROM
     employees
 LEFT JOIN departments ON employees.department_id = departments.department_id
-LEFT JOIN user_roles ON employees.role_id = user_roles.role_id;";
+LEFT JOIN user_roles ON employees.role_id = user_roles.role_id";
 $run = mysqli_query($connection, $query);
 while ($x = mysqli_fetch_array($run)) {
     $first_name = $x['first_name'];
@@ -74,7 +75,8 @@ while ($x = mysqli_fetch_array($run)) {
     $visa_expiring_date = $x['visa_expiring_date'];
     $contact_number = $x['contact_number'];
     $current_address = $x['current_address'];
-    $country_name = $x['country_name'];
+    $permanent_address = $x['permanent_address'];
+    $resident_country = $x['resident_country'];
     $emergency_contact = $x['emergency_contact'];
     $profile_photo = $x['profile_photo'];
     $department = $x['department_id'];
@@ -104,84 +106,73 @@ while ($x = mysqli_fetch_array($run)) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">First Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="First Name" name="first_name">
+                                    <input type="text" value="<?php echo $first_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Last Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="Last Name" name="last_name">
+                                    <input type="text" value="<?php echo $last_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Full Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="Full Name" name="full_name">
+                                    <input type="text" values="<?php echo $full_name; ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="" placeholder="Email" name="email">
+                                    <input type="text" value="<?php echo $email ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Gender</label>
                                 <div class="col-sm-8">
-                                    <select name="gender" id="">
-                                        <option selected>--Please Select Gender--</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
+                                    <input type="text" value="<?php echo $gender ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Birthday</label>
                                 <div class="col-sm-8">
-                                    <input name="birthday" class="" type="date" />
+                                    <input type="text" value="<?php echo $birthday ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Old Passport</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="Old Passport if necessory" name="old_passport">
+                                    <input type="text" value="<?php echo $old_passport ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Passport</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="Current Passport" name="current_passport">
+                                    <input type="text" value="<?php echo $current_passport ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Passport Expiring</label>
                                 <div class="col-sm-8">
-                                    <input type="date" id="passport_expiring_date" name="passport_expiring_date" class="" />
+                                    <input type="text" value="<?php echo $passport_expiring_date ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Type</label>
                                 <div class="col-sm-8">
-                                    <select name="visa_type" id="">
-                                        <option selected>--Please Select Visa Type--</option>
-                                        <option value="visit">Visit Visa</option>
-                                        <option value="own">Own Visa</option>
-                                        <option value="company">Company Visa</option>
-                                        <option value="cancel">Cancel Visa</option>
-                                        <option value="student">Student Visa</option>
-                                    </select>
+                                    <input type="text" value="<?php echo $visa_type ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Expiring</label>
                                 <div class="col-sm-8">
-                                    <input type="date" id="visa_expiring_date" name="visa_expiring_date" class="" />
+                                    <input type="text" value="<?php echo $visa_expiring_date ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Contact Number</label>
                                 <div class="col-sm-8">
-                                    <input type="number" min="0" class="" placeholder="Contact Number" name="contact_number">
+                                    <input type="text" value="<?php echo $contact_number ?>">
                                 </div>
                             </div>
 
@@ -192,14 +183,14 @@ while ($x = mysqli_fetch_array($run)) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="Current Address" name="current_address">
+                                    <input type="text" value="<?php echo $current_address ?>">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Permanent Address</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="" placeholder="Permanent Address" name="permanent_address">
+                                    <input type="text" value="<?php echo $permanent_address ?>">
                                 </div>
                             </div>
 
