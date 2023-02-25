@@ -1,41 +1,47 @@
 <?php
-require_once('../includes/header.php')
+session_start();
+require_once('../includes/header.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-        height: 75vh;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+    height: 75vh;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
 
-    .sectionUnderline {
-        margin-top: 0px;
-        margin-bottom: 0;
-        border-top: 2px solid #DBDBDB;
-    }
+.sectionUnderline {
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-top: 2px solid #DBDBDB;
+}
 
-    .btryLbl {
-        font-weight: 600;
-        font-size: 12px;
-    }
+.btryLbl {
+    font-weight: 600;
+    font-size: 12px;
+}
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
