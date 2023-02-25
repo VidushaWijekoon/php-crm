@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // $hashed_password = sha1($password);
         // prepare database query
-        $query = "SELECT * FROM users WHERE user_name = '{$username}' AND user_password = '{$password}' AND is_active = 0 LIMIT 1";
+        $query = "SELECT * FROM users WHERE user_name = '{$username}' AND user_password = '{$password}' AND is_active = 1";
         $result_set = mysqli_query($connection, $query);
         verify_query($result_set);
         if (mysqli_num_rows($result_set) == 1) {
@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = mysqli_fetch_assoc($result_set);
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['emp_id'] = $user['emp_id'];
-            $_SESSION['user_name'] = $user['user_name'];
+            $_SESSION['username'] = $user['user_name'];
 
             // updating last login
-            $query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} LIMIT 1";
+            $query = "UPDATE users SET user_last_login = NOW() WHERE user_id = {$_SESSION['user_id']} ";
             $result_set = mysqli_query($connection, $query);
             verify_query($result_set);
             // redirect to users.php
