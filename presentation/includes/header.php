@@ -1,5 +1,5 @@
  <?php
-    $username = $_SESSION['username'];
+    $username = $_SESSION['user_name'];
 
     ?>
 

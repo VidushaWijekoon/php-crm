@@ -22,6 +22,7 @@ $visa_expiring_date = '';
 $contact_number = '';
 $current_address = '';
 $permanent_address = '';
+$visa_type = '';
 $country_name = '';
 $emergency_contact = '';
 $profile_photo = '';
@@ -44,6 +45,7 @@ $query = "SELECT
     old_passport,
     current_passport,
     passport_expiring_date,
+    visa_type,
     visa_expiring_date,
     contact_number,
     current_address,
@@ -63,6 +65,7 @@ LEFT JOIN departments ON employees.department_id = departments.department_id
 LEFT JOIN user_roles ON employees.role_id = user_roles.role_id";
 $run = mysqli_query($connection, $query);
 while ($x = mysqli_fetch_array($run)) {
+    $emp_id = $x['emp_id'];
     $first_name = $x['first_name'];
     $last_name = $x['last_name'];
     $full_name = $x['full_name'];
@@ -72,6 +75,7 @@ while ($x = mysqli_fetch_array($run)) {
     $old_passport = $x['old_passport'];
     $current_passport = $x['current_passport'];
     $passport_expiring_date = $x['passport_expiring_date'];
+    $visa_type = $x['visa_type'];
     $visa_expiring_date = $x['visa_expiring_date'];
     $contact_number = $x['contact_number'];
     $current_address = $x['current_address'];
@@ -160,7 +164,7 @@ while ($x = mysqli_fetch_array($run)) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Visa Type</label>
                                 <div class="col-sm-8">
-                                    <input type="text" value="<?php echo $visa_type ?>">
+                                    <input type="text" value="<?php echo $visa_type . "Visa" ?>">
                                 </div>
                             </div>
                             <div class="row">
@@ -197,25 +201,13 @@ while ($x = mysqli_fetch_array($run)) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Resident Country</label>
                                 <div class="col-sm-8">
-                                    <select name="resident_country" class="" style="border-radius: 5px;">
-                                        <option selected>--Select Resident Country--</option>
-                                        <?php
-                                        $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
-                                        $result = mysqli_query($connection, $query);
-
-                                        while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
-                                        ?>
-                                            <option value="<?php echo $resident_country["country_name"]; ?>">
-                                                <?php echo strtoupper($resident_country["country_name"]); ?>
-                                            </option>
-                                        <?php endwhile; ?>
-                                    </select>
+                                    <input type="text" value="<?php echo $resident_country ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Emergency</label>
                                 <div class="col-sm-8">
-                                    <input type="number" min="1" class="" placeholder="Emergency Contact Number" name="emergency_contact">
+                                    <input type="text" value="<?php echo $emergency_contact ?>">
                                 </div>
                             </div>
                         </fieldset>
@@ -239,44 +231,20 @@ while ($x = mysqli_fetch_array($run)) {
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Department</label>
                                 <div class="col-sm-8">
-                                    <select name="department" class="" style="border-radius: 5px;">
-                                        <option selected>--Select Resident Country--</option>
-                                        <?php
-                                        $query = "SELECT * FROM departments ORDER BY department_name ASC";
-                                        $result = mysqli_query($connection, $query);
-
-                                        while ($x = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
-                                        ?>
-                                            <option value="<?php echo $x["department_id"]; ?>">
-                                                <?php echo strtoupper($x["department_name"]); ?>
-                                            </option>
-                                        <?php endwhile; ?>
-                                    </select>
+                                    <input type="text" value="<?php echo $department ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Labour Category</label>
                                 <div class="col-sm-8">
-                                    <select name="role" class="" style="border-radius: 5px;">
-                                        <option selected>--Select Resident Country--</option>
-                                        <?php
-                                        $query = "SELECT * FROM user_roles ORDER BY role_name ASC";
-                                        $result = mysqli_query($connection, $query);
-
-                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
-                                        ?>
-                                            <option value="<?php echo $row["role_id"]; ?>">
-                                                <?php echo strtoupper($row["role_name"]); ?>
-                                            </option>
-                                        <?php endwhile; ?>
-                                    </select>
+                                    <input type="text" value="<?php echo $role ?>">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Join Date</label>
                                 <div class="col-sm-8">
-                                    <input class="" type="date" name="join_date" />
+                                    <input type="text" value="<?php echo $join_date ?>">
                                 </div>
                             </div>
 
@@ -285,14 +253,14 @@ while ($x = mysqli_fetch_array($run)) {
                         <fieldset class="reset">
                             <legend class="reset">Special Note</legend>
                             <div class="mb-3">
-                                <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="About Employee " name="note"></textarea>
+                                <input type="text" rows="3" value="<?php echo $note ?>">
                             </div>
                         </fieldset>
 
 
                         <div class="mt-3 mb-3 text-center">
-                            <button type="submit" name="submit" class="btn btn-xs btn-success mx-2"><i class="fa-solid fa-floppy-disk mx-1"></i>Save</button>
-                            <a href="hr_dashboard.php" class="btn btn-xs btn-danger mx-2"><i class="fa-solid fa-xmark mx-1"></i>Close</a>
+                            <a href="./update_employee.php?<?php echo $emp_id; ?>" class="btn btn-xs btn-success mx-2"><i class="fa-solid fa-floppy-disk mx-1"></i>Update User</a>
+                            <a href="./employees.php" class="btn btn-xs btn-danger mx-2"><i class="fa-solid fa-xmark mx-1"></i>Close</a>
                         </div>
                     </div>
 
