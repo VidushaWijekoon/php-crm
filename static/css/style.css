@@ -70,6 +70,15 @@ label:not(.form-check-label):not(.custom-file-label) {
   font-weight: 400;
 }
 
+.btnT {
+  background: #ffffff;
+  border: 1px solid #168eb4;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 10px;
+  padding: 5px 10px;
+}
+
 .btnTB {
   background: #168eb4;
   border-radius: 5px;
@@ -78,6 +87,13 @@ label:not(.form-check-label):not(.custom-file-label) {
   padding: 5px 10px;
   border: none;
   color: #ffffff;
+}
+thead th {
+  font-size: 11px;
+}
+
+td {
+  font-size: 10px;
 }
 
 @media screen and (max-width: 1366px) {

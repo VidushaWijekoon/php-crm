@@ -50,14 +50,12 @@ require_once('../includes/header.php')
 
 .tableSec table {
     width: 100%;
-    font-size: 10px;
 
 }
 
 .tableSec table th {
     color: #168EB4;
     font-weight: 700;
-    font-size: 10px;
 }
 </style>
 
