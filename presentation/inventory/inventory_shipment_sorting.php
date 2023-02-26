@@ -85,7 +85,16 @@ input[type='text'] {
     /* justify-content: center; */
     /* align-items: center; */
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Dashboard</a>
+</div>
 
 <div class="row mb-4 ml-1 pt-2">
     <i class="pageNameIcon fa-solid fa-filter-list"></i>

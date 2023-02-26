@@ -48,13 +48,20 @@ require_once('../includes/header.php')
     font-weight: 700;
     font-size: 10px;
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
 
-
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Dashboard</a>
+</div>
 
 <div class="row mb-4 ml-1 pt-2">
-
-    <i class="pageNameIcon fa-regular fa-users-medical"></i>
+    <i class="pageNameIcon fa-solid fa-user-group"></i>
     <h6 class="pageName pt-1">Team Members</h6>
 </div>
 
