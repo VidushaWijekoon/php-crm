@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2023 at 07:58 AM
+-- Generation Time: Feb 26, 2023 at 06:22 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new_wms`
+-- Database: `main_project`
 --
 
 -- --------------------------------------------------------
@@ -478,7 +478,7 @@ CREATE TABLE `employees` (
   `old_passport` varchar(20) DEFAULT NULL,
   `current_passport` varchar(20) NOT NULL,
   `passport_expiring_date` date NOT NULL,
-  `visa_type` varchar(15) NOT NULL,
+  `visa_type` int(15) NOT NULL COMMENT '1=visit, 2=own, 3=company, 4=cancel, 5=student',
   `visa_expiring_date` date NOT NULL,
   `contact_number` varchar(25) DEFAULT NULL,
   `current_address` varchar(50) DEFAULT NULL,
@@ -499,11 +499,8 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`emp_id`, `first_name`, `last_name`, `full_name`, `email`, `gender`, `birthday`, `old_passport`, `current_passport`, `passport_expiring_date`, `visa_type`, `visa_expiring_date`, `contact_number`, `current_address`, `permanent_address`, `resident_country`, `emergency_contact`, `profile_photo`, `department_id`, `role_id`, `join_date`, `note`, `created_by`, `created_time`) VALUES
-(1, '', '', '', NULL, '', NULL, NULL, '', '0000-00-00', '', '0000-00-00', NULL, NULL, NULL, '', NULL, NULL, 1, 1, '0000-00-00', NULL, '', '2023-02-23 19:31:57'),
-(18, 'vidusha', 'wijekoon', 'athapaththu wijekoon mudiyasenlage vidusha pulasht', '', 'male', '1990-05-11', '', '2313123', '2030-02-06', 'company', '2024-09-14', '00971588250962', 'abu shagara', '52/a, mariyawaththe, gampola', 'Sri Lanka', '0094812353489', 'approved.png', 1, 11, '2022-07-21', '', 'admin', '2023-02-23 19:57:56'),
-(37, 'vidusha', 'wijekoon', 'vidusha wijekoon', '', 'female', '2023-02-08', '', '2313123', '2023-02-24', 'own', '2023-02-27', '12313', 'dddad', 'wqweqwe', 'Sri Lanka', '21313123', '3840x1080-Wallpaper-043.jpg', 2, 2, '2023-02-15', 'adasd', 'admin', '2023-02-23 20:37:35'),
-(61, 'vidusha', 'wijekoon', 'vidusha wijekoon', '', 'female', '2023-02-01', '', '2313123', '2023-02-16', 'visit', '2023-02-16', '123213', 'dddad', 'asdasd', 'Sri Lanka', '23123', '3840x1080-Wallpaper-043.jpg', 12, 9, '2023-02-08', '', 'admin', '2023-02-23 20:44:05'),
-(62, 'vidusha', 'wijekoon', 'vidusha wijekoon', '', 'male', '2023-02-08', '', '2313123', '2023-02-16', 'own', '2023-02-08', '2313123', 'adasd', 'adasd', 'Sri Lanka', '213123213', '7868580.jpg', 10, 7, '2023-02-16', '', 'admin', '2023-02-23 20:45:34');
+(1, '', '', '', NULL, '', NULL, NULL, '', '0000-00-00', 3, '0000-00-00', NULL, NULL, NULL, '', NULL, NULL, 1, 1, '0000-00-00', NULL, '', '2023-02-23 19:31:57'),
+(18, 'vidusha', 'wijekoon', 'athapaththu wijekoon mudiyasenlage vidusha pulasht', '', 'male', '1990-05-11', '', '2313123', '2030-02-06', 0, '2024-09-14', '00971588250962', 'abu shagara', '52/a, mariyawaththe, gampola', 'Sri Lanka', '0094812353489', 'approved.png', 11, 10, '2022-07-21', '', 'admin', '2023-02-23 19:57:56');
 
 -- --------------------------------------------------------
 
@@ -1028,16 +1025,54 @@ CREATE TABLE `users` (
   `user_password` varchar(100) DEFAULT NULL,
   `user_location` varchar(100) DEFAULT NULL,
   `user_last_login` varchar(100) DEFAULT NULL,
+  `is_active` int(1) NOT NULL,
   `user_created_date` date NOT NULL,
-  `is_active` int(1) NOT NULL
+  `created_by` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `emp_id`, `user_name`, `user_password`, `user_location`, `user_last_login`, `user_created_date`, `is_active`) VALUES
-(1, 1, 'admin', 'admin', NULL, '2023-02-25 10:57:17', '0000-00-00', 0);
+INSERT INTO `users` (`user_id`, `emp_id`, `user_name`, `user_password`, `user_location`, `user_last_login`, `is_active`, `user_created_date`, `created_by`) VALUES
+(11, 1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', NULL, '2023-02-25 19:54:09', 1, '2023-02-25', 'admin'),
+(13, 18, 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', NULL, NULL, 0, '2023-02-25', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_logged_in_time`
+--
+
+CREATE TABLE `users_logged_in_time` (
+  `id` int(11) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `emp_id` int(5) NOT NULL,
+  `log_in_time` datetime NOT NULL,
+  `log_out_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_logged_in_time`
+--
+
+INSERT INTO `users_logged_in_time` (`id`, `user_id`, `emp_id`, `log_in_time`, `log_out_time`) VALUES
+(2, 11, 1, '2023-02-25 18:04:03', '0000-00-00 00:00:00'),
+(3, 11, 1, '2023-02-25 18:05:08', '0000-00-00 00:00:00'),
+(4, 11, 1, '2023-02-25 18:05:10', '0000-00-00 00:00:00'),
+(5, 11, 1, '2023-02-25 18:05:12', '0000-00-00 00:00:00'),
+(6, 11, 1, '2023-02-25 18:14:13', '0000-00-00 00:00:00'),
+(7, 11, 1, '2023-02-25 19:12:38', '0000-00-00 00:00:00'),
+(8, 11, 1, '2023-02-25 19:23:12', '0000-00-00 00:00:00'),
+(9, 11, 1, '2023-02-25 19:23:43', '2023-02-25 19:24:56'),
+(10, 11, 1, '2023-02-25 19:32:01', '2023-02-25 19:46:39'),
+(11, 11, 1, '2023-02-25 19:49:12', '2023-02-25 19:49:12'),
+(12, 11, 1, '2023-02-25 19:49:21', '2023-02-25 19:49:21'),
+(13, 11, 1, '2023-02-25 19:49:30', '2023-02-25 19:49:30'),
+(14, 11, 1, '2023-02-25 19:49:43', '2023-02-25 19:51:26'),
+(15, 11, 1, '2023-02-25 19:51:27', NULL),
+(16, 11, 1, '2023-02-25 19:53:42', '2023-02-25 19:53:53'),
+(17, 11, 1, '2023-02-25 19:54:09', '2023-02-25 19:55:41');
 
 -- --------------------------------------------------------
 
@@ -1098,7 +1133,10 @@ ALTER TABLE `combine_requests`
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
-  ADD PRIMARY KEY (`country_id`);
+  ADD PRIMARY KEY (`country_id`),
+  ADD KEY `country_name` (`country_name`),
+  ADD KEY `country_code` (`country_code`),
+  ADD KEY `phone_code` (`phone_code`);
 
 --
 -- Indexes for table `customer_informations`
@@ -1130,7 +1168,8 @@ ALTER TABLE `distributor_tasks`
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`emp_id`),
   ADD KEY `FK_employee_department` (`department_id`),
-  ADD KEY `FK_employee_user_role` (`role_id`);
+  ADD KEY `FK_employee_user_role` (`role_id`),
+  ADD KEY `resident_country` (`resident_country`);
 
 --
 -- Indexes for table `e_com_inventory_informations`
@@ -1294,6 +1333,14 @@ ALTER TABLE `sales_order_items`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `FK_users_employee` (`emp_id`);
+
+--
+-- Indexes for table `users_logged_in_time`
+--
+ALTER TABLE `users_logged_in_time`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`,`emp_id`),
+  ADD KEY `emp_id` (`emp_id`);
 
 --
 -- Indexes for table `user_roles`
@@ -1483,7 +1530,13 @@ ALTER TABLE `sales_order_items`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `users_logged_in_time`
+--
+ALTER TABLE `users_logged_in_time`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
@@ -1658,6 +1711,13 @@ ALTER TABLE `sales_order_items`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `FK_users_employee` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`);
+
+--
+-- Constraints for table `users_logged_in_time`
+--
+ALTER TABLE `users_logged_in_time`
+  ADD CONSTRAINT `users_logged_in_time_ibfk_1` FOREIGN KEY (`emp_id`) REFERENCES `users` (`emp_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_logged_in_time_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
