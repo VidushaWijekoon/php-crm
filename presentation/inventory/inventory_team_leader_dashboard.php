@@ -362,7 +362,8 @@ if (!isset($_SESSION['user_id'])) {
             <a href="./inventory_add_items_to_pallet.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
-                        <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
+                        <i class="fa-solid fa-books-medical" style="color: #168EB4;font-size: 15px;"></i>
+
                     </div>
                     <div class="btnCardLable">Add Items to Pallet</div>
                 </div>
@@ -523,7 +524,8 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="dashCardBody">
                     <div class="cardValue">20
-                        <span style="font-size: 12px;">/38</span></span>
+                        <span style="font-size: 12px;cursor:pointer; color:#168eb4;" data-toggle="modal"
+                            data-target="#motherboardModel">/38</span>
                     </div>
                 </div>
             </div>
@@ -531,7 +533,7 @@ if (!isset($_SESSION['user_id'])) {
             <!-- ////////////// -->
             <!-- ////////////// -->
             <!-- Card 1 -->
-            <div class="dashCard mt-2 mb-1 mr-3">
+            <div class=" dashCard mt-2 mb-1 mr-3">
                 <div class="dashCardTop">
                     <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
                             style="color: #168EB4;font-size: 16px;"></i>
@@ -558,7 +560,8 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="dashCardBody">
                     <div class="cardValue">20
-                        <span style="font-size: 12px;">/38</span></span>
+                        <span style="font-size: 12px; cursor:pointer; color:#168eb4;" data-toggle="modal"
+                            data-target="#lcdModel">/38</span>
                     </div>
                 </div>
             </div>
@@ -740,6 +743,121 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
         </div>
+
+        <!-- Model Sec -->
+
+        <!-- Modal for LCD -->
+        <div class="modal fade" id="lcdModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">LCD Send Items Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+
+                            <div class="tableSec">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ASIN Nu</th>
+                                            <th>Model</th>
+                                            <th>Finished Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                12345
+                                            </td>
+                                            <td>Latitude e5430</td>
+                                            <td>13</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>34535</td>
+                                            <td>Latitude e7280</td>
+                                            <td>22</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+        <!-- Modal for MotherBoard -->
+        <div class="modal fade" id="motherboardModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Motherboard Send Items Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+
+                            <div class="tableSec">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ASIN Nu</th>
+                                            <th>Model</th>
+                                            <th>Finished Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                12345
+                                            </td>
+                                            <td>Latitude e5430</td>
+                                            <td>13</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>34535</td>
+                                            <td>Latitude e7280</td>
+                                            <td>22</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
 
 
     </div>
