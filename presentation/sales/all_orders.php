@@ -10,11 +10,23 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 ?>
-<div class="row page-titles">
-    <div class="col-md-5 align-self-center d-flex">
-        <i class="pageNameIcon fa-solid fa-receipt m-2"></i>
-        <h6 class="text-themecolor" style="margin-top: auto; font-weight: bold;"> All Orders</h6>
-    </div>
+<style>
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
+
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+</style>
+
+<div class="row mb-4 ml-1 pt-2">
+    <!-- <i class="pageNameIcon fa-solid fa-store"></i> -->
+    <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
+    <h6 class="pageName">All Orders</h6>
 </div>
 <div class="row">
     <div class="col">
