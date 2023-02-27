@@ -2,11 +2,6 @@
 session_start();
 require_once('../../../functions/db_connection.php');
 
-// checking if a user is logged in
-if (!isset($_SESSION['user_id'])) {
-	header('Location: index.php');
-}
-
 if (isset($_GET['user_id'])) {
 	// getting the user information
 	$user_id = mysqli_real_escape_string($connection, $_GET['user_id']);

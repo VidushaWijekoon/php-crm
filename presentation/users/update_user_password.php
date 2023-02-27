@@ -2,8 +2,8 @@
 
 ob_start();
 session_start();
-require_once('../includes/header.php');
-require_once('../../functions/db_connection.php');
+require_once("../includes/header.php");
+require_once("../../functions/db_connection.php");
 
 
 // Check User Login  
@@ -18,35 +18,35 @@ $last_name = '';
 $department = '';
 $role = '';
 
-$user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
 
-$query = "SELECT user_id, first_name, last_name, user_name, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
+    $query = "SELECT user_id, first_name, last_name, user_name, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
                     departments.department_id, departments.department_name, user_roles.role_id, user_roles.role_name 
                     FROM users 
             INNER JOIN employees ON users.emp_id = employees.emp_id
             LEFT JOIN departments ON employees.department_id = departments.department_id
             LEFT JOIN user_roles ON employees.role_id = user_roles.role_id
             WHERE user_id = '$user_id'";
-$run = mysqli_query($connection, $query);
-while ($row = mysqli_fetch_array($run)) {
-    $user_id = $row['user_id'];
-    $username = $row['user_name'];
-    $first_name = $row['first_name'];
-    $last_name = $row['last_name'];
-    $department = $row['department_name'];
-    $role = $row['role_name'];
-}
+    $run = mysqli_query($connection, $query);
+    while ($row = mysqli_fetch_array($run)) {
+        $user_id = $row['user_id'];
+        $username = $row['user_name'];
+        $first_name = $row['first_name'];
+        $last_name = $row['last_name'];
+        $department = $row['department_name'];
+        $role = $row['role_name'];
 
-if (isset($_POST['submit'])) {
+        $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
+        $password = mysqli_real_escape_string($connection, $_POST['password']);
+        $hashed_password = sha1($password);
 
-    $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
-    $password = mysqli_real_escape_string($connection, $_POST['password']);
-
-    $update_query = "UPDATE users SET user_password = '$password' WHERE user_id = '$user_id' ";
-    echo $update_query;
-    $run = mysqli_query($connection, $update_query);
-    if ($run) {
-        // header("Location: users.php");
+        $update_query = "UPDATE users SET user_password = '$hashed_password' WHERE user_id = '$user_id' ";
+        echo $update_query;
+        $run = mysqli_query($connection, $update_query);
+        if ($run) {
+            header("Location: users.php");
+        }
     }
 }
 ?>
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
 <div class="row">
     <div class="col-md-5">
         <a href="./users.php">
-            <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
+            <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>
 </div>
@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
 <div class="row">
     <div class="col-lg-6 grid-margin stretch-card justify-content-center mx-auto mt-2">
         <div class="card">
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <form method="POST" action="">
                 <fieldset class="mx-3 mb-3 mt-2">
                     <legend>Create New User</legend>
                     <div class="card-body">
@@ -182,4 +182,4 @@ if (isset($_POST['submit'])) {
     }
 </script>
 
-<?php require_once('../includes/footer.php'); ?>
+<?php require_once('../includes/footer.php') ?>
