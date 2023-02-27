@@ -116,7 +116,7 @@ input[type='text'] {
         <div class="row scanSec mt-4">
             <div class="col-2">Scan Supplier Barcode</div>
             <div class="col-4">
-                <input class="w-100" type="text">
+                <input class="w-100" type="text" id="name" name="supplier">
             </div>
         </div>
 
@@ -125,17 +125,16 @@ input[type='text'] {
             OR
 
         </div>
-
         <div class="row scanSec">
             <div class="col-2">Scan MFG</div>
             <div class="col-4">
-                <input class="w-100" type="text">
+                <input class="w-100" type="text" id="mfg">
             </div>
         </div>
-
         <div class="row scanSec my-2">
 
-            <button class="btnT" data-toggle="modal" data-target="#exampleModal">Scan</button>
+            <button class="btnT d-none" id="myBtn1" onclick="getSortingData()" data-toggle="modal"
+                data-target="#exampleModal1">Scan</button>
 
         </div>
 
@@ -146,172 +145,10 @@ input[type='text'] {
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="p-3">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <div class="cusName" id="customerName"> Customer 1</div>
-
-
-                    </div>
-                    <div class="row justify-content-center">
-
-                        <div class="modelName" id="modelName"> Latitude e5470</div>
-
-                    </div>
-                    <div class="row justify-content-center">
-
-                        <div class="modelGen" id="modelGen"> 6th Gen</div>
-
-                    </div>
-                    <br>
-                    <hr class="sectionUnderline">
-                    <br>
-                    <!-- <div class="row">
-
-                        <div class="col-8 text-bold" id="supplierName">
-                            Supplier Name
-                            <input class="ml-2 w-75" type="text" id="supName">
-                        </div>
-
-                    </div> -->
-                    <div class="formSec">
-                        <div class="row my-2 justify-content-center">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold" id="supplierName">
-                                            Supplier Name
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <input class="w-100" type="text" id="supName">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-
-                                    </div>
-                                    <div class="col-6">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-2 justify-content-center">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            Core
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <input class="w-100" type="text" id="core">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            Graphic Brand
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <input class="w-100" type="text" id="graphicBrand">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-2 justify-content-center">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            Touch
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <input class="w-100" type="text" id="touch">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            Graphic Capacity
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <input class="w-100" type="text" id="graphicCapacity">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-2 justify-content-center">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            Battery
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <input class="w-100" type="text" id="battery">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            OS
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-
-                                        <input class="w-100" type="text" id="os">
-                                        <!-- <textarea id="remarks"> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-2 justify-content-center">
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-center text-bold">
-                                            Remarks
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <textarea class="form-control" name="" id="remarks" cols="40"
-                                            rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div> -->
-                </div>
-            </div>
+            <div id="txtHint"></div>
         </div>
     </div>
 
@@ -320,3 +157,53 @@ input[type='text'] {
     require_once('../includes/footer.php')
 
     ?>
+
+    <script>
+    var input1 = document.getElementById("name");
+    input1.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn1").click();
+        }
+    });
+    var input = document.getElementById("mfg");
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn1").click();
+        }
+    });
+
+    const getSortingData = () => {
+        var name = 0;
+        var mfg = 0;
+        name = $('#name').val();
+        mfg = $('#mfg').val();
+        if (name != 0) {
+            mfg = name;
+        }
+        console.log(mfg);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "sorting_model.php?q=" + mfg, true);
+        xmlhttp.send();
+        var getValue = 0;
+        var getValue2 = 0;
+        getValue = document.getElementById("name");
+        getValue2 = document.getElementById("mfg");
+        if (getValue2 != 0) {
+            getValue2.value = "";
+        }
+        if (getValue.value != "") {
+            getValue.value = "";
+        }
+
+    }
+    let searchbar = document.querySelector('input[name="supplier"]');
+    searchbar.focus();
+    search.value = '';
+    </script>
