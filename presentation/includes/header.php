@@ -1,5 +1,4 @@
  <?php
-    require_once("footer.php");
     require_once('../../functions/db_connection.php');
     $username = $_SESSION['username'];
     $department_id = $_SESSION['department_id'];
@@ -524,3 +523,6 @@
                  <!-- Content Header (Page header) -->
                  <div class="content-header">
                      <div class="container-fluid">
+
+                         <?php require_once("footer.php");
+                        ?>
