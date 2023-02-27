@@ -20,7 +20,7 @@ $role = '';
 
 $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
 
-$query = "SELECT user_id, first_name, last_name, username, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
+$query = "SELECT user_id, first_name, last_name, user_name, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
                     departments.department_id, departments.department_name, user_roles.role_id, user_roles.role_name 
                     FROM users 
             INNER JOIN employees ON users.emp_id = employees.emp_id
@@ -30,26 +30,31 @@ $query = "SELECT user_id, first_name, last_name, username, users.emp_id, employe
 $run = mysqli_query($connection, $query);
 while ($row = mysqli_fetch_array($run)) {
     $user_id = $row['user_id'];
-    $username = $row['username'];
+    $username = $row['user_name'];
     $first_name = $row['first_name'];
     $last_name = $row['last_name'];
     $department = $row['department_name'];
     $role = $row['role_name'];
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit'])) {
 
-    $department_id = mysqli_real_escape_string($connection, $_POST['department_id']);
-    $role_id = mysqli_real_escape_string($connection, $_POST['role_id']);
+    $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-    // $update_query = "UPDATE employees SET employees WHERE department_id = 'department_id' AND role_id = '$role_id' AND  ";
+    $update_query = "UPDATE users SET user_password = '$password' WHERE user_id = '$user_id' ";
+    echo $update_query;
+    $run = mysqli_query($connection, $update_query);
+    if ($run) {
+        // header("Location: users.php");
+    }
 }
 ?>
 <style>
-input[type="text"] {
-    width: 240px;
-    padding: 0 5px;
-}
+    input[type="text"] {
+        width: 240px;
+        padding: 0 5px;
+    }
 </style>
 
 <div class="row">
@@ -75,8 +80,7 @@ input[type="text"] {
                                 <p class="card-text">Employee ID</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $user_id; ?>" name="first_name"
-                                    readonly>
+                                <input type="text" class="w-75" value="<?php echo $user_id; ?>" name="first_name" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -87,8 +91,7 @@ input[type="text"] {
                                 <p class="card-text">First Name</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $first_name ?>" name="first_name"
-                                    readonly>
+                                <input type="text" class="w-75" value="<?php echo $first_name ?>" name="first_name" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -99,8 +102,7 @@ input[type="text"] {
                                 <p class="card-text">Last Name</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $last_name ?>" name="last_name"
-                                    readonly>
+                                <input type="text" class="w-75" value="<?php echo $last_name ?>" name="last_name" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -111,26 +113,7 @@ input[type="text"] {
                                 <p class="card-text">Departmentt</p>
                             </div>
                             <div class="col-md-9">
-                                <select name="department" class="mt-1 w-75 text-capitalize" style="border-radius: 5px;">
-                                    <?php if ($department != 0) { ?>
-                                    <option value="<?php echo $department ?>" selected>
-                                        <?php echo $department ?></option>
-                                    <?php } else { ?>
-                                    <option value="" selected><?php echo "Please select" ?>
-                                    </option>
-                                    <?php } ?>
-
-                                    <?php
-                                    $query = "SELECT * FROM departments ORDER BY 'department_name' ASC";
-                                    $result = mysqli_query($connection, $query);
-
-                                    while ($x = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
-                                    ?>
-                                    <option value="<?php echo $x["department_id"]; ?>">
-                                        <?php echo $x["department_name"]; ?>
-                                    </option>
-                                    <?php endwhile; ?>
-                                </select>
+                                <input type="text" class="w-75" value="<?php echo $department ?>" name="last_name" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -141,26 +124,8 @@ input[type="text"] {
                                 <p class="card-text">Role</p>
                             </div>
                             <div class="col-md-9">
-                                <select name="role" class="mt-1 w-75 text-capitalize" style="border-radius: 5px;">
-                                    <?php if ($role != 0) { ?>
-                                    <option value="<?php echo $role ?>" selected>
-                                        <?php echo $role ?></option>
-                                    <?php } else { ?>
-                                    <option value="" selected><?php echo "Please select" ?>
-                                    </option>
-                                    <?php } ?>
+                                <input type="text" class="w-75 text-capitalize" value="<?php echo $role ?>" name="last_name" readonly>
 
-                                    <?php
-                                    $query = "SELECT * FROM user_roles ORDER BY 'role_name' ASC";
-                                    $result = mysqli_query($connection, $query);
-
-                                    while ($x = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
-                                    ?>
-                                    <option value="<?php echo $x["role_id"]; ?>">
-                                        <?php echo $x["role_name"]; ?>
-                                    </option>
-                                    <?php endwhile; ?>
-                                </select>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -171,8 +136,7 @@ input[type="text"] {
                                 <p class="card-text">Username</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $username; ?>" name="username"
-                                    readonly>
+                                <input type="text" class="w-75 text-capitalize" value="<?php echo $username; ?>" name="username" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -183,8 +147,7 @@ input[type="text"] {
                                 <p class="card-text">Password</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="password" id="password" class="w-75" placeholder="Password"
-                                    name="password_1">
+                                <input type="password" id="password" class="w-75" placeholder="Create New Password" name="password">
                             </div>
                         </div>
 
@@ -200,7 +163,7 @@ input[type="text"] {
 
                     </div>
                     <div class="row">
-                        <button type="submit" class="btn btn-xs btn-info mx-auto mb-3">Update User</button>
+                        <button type="submit" name="submit" class="btn btn-xs btn-info mx-auto mb-3">Update User</button>
                     </div>
                 </fieldset>
             </form>
@@ -209,14 +172,14 @@ input[type="text"] {
 </div>
 
 <script>
-function showPassword() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
+    function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
-}
 </script>
 
 <?php require_once('../includes/footer.php'); ?>
