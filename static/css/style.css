@@ -11,7 +11,8 @@
   --sky-blue: #28c3ef;
   --btn-blue: #168eb4;
   --regular-white: #ffffff;
-  --regular-black: #000000;
+  --regular-black: #0c2e5b;
+  /* --regular-black: #000000; */
   --gray: #a1a3a8;
 }
 
@@ -54,7 +55,7 @@ textarea {
   color: #ffffff !important;
 }
 body {
-  color: #071a34;
+  color: #0c2e5b;
 }
 
 h1,
@@ -63,7 +64,7 @@ h3,
 h4,
 h5,
 p {
-  color: #071a34 !important;
+  color: #0c2e5b !important;
 }
 
 label:not(.form-check-label):not(.custom-file-label) {
@@ -117,7 +118,7 @@ td {
     height: 24px !important;
     border: 1px soild#D1CDCD !important;
     padding: 0 8px;
-    width: 285px;
+    /* width: 285px; */
   }
 }
 
@@ -135,13 +136,13 @@ td {
     font-size: 12px;
   }
   select {
-    height: 20px !important;
+    height: 24px !important;
     border: 1px soild#D1CDCD !important;
   }
   input {
     height: 24px !important;
     border: 1px soild#D1CDCD !important;
     padding: 0 8px;
-    width: 420px;
+    /* width: 420px; */
   }
 }

@@ -2,7 +2,7 @@
 
 ob_start();
 session_start();
-require_once('../includes/header.php');
+require_once("../includes/header.php");
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
@@ -12,9 +12,9 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <div class="row">
-    <div class="col-md-5 mx-3">
+    <div class="col-md-5 mx-1">
         <a href="./admin_dashboard.php">
-            <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
+            <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>
 </div>
@@ -85,7 +85,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
-
 <script>
     // Show password
     const showPassword = () => {
@@ -145,6 +144,5 @@ if (!isset($_SESSION['user_id'])) {
         }
     }
 </script>
-</body>
 
-</html>
+<?php require_once('../includes/footer.php') ?>

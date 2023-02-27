@@ -397,7 +397,7 @@ if (!isset($_SESSION['user_id'])) {
                         <i class="fa-solid fa-battery-exclamation" style="color: #168EB4;font-size: 15px;"></i>
                     </div>
 
-                    <div class="btnCardLable">Battery Checking</div>
+                    <div class="btnCardLable">Battery Issues</div>
                 </div>
             </a>
             <!-- ////////////// -->
@@ -421,6 +421,17 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
 
                     <div class="btnCardLable">LCD Issues</div>
+                </div>
+            </a>
+            <!-- ////////////// -->
+            <!-- Btn Card -->
+            <a href="./inventory_fixed_incoming.php">
+                <div class="btnCard mr-3 mt-2 mb-1">
+                    <div class="btnCardIcon">
+                        <i class="fa-solid fa-tv" style="color: #168EB4;font-size: 15px;"></i>
+                    </div>
+
+                    <div class="btnCardLable">Fixed Incoming</div>
                 </div>
             </a>
             <!-- ////////////// -->
@@ -765,9 +776,9 @@ if (!isset($_SESSION['user_id'])) {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>ASIN Nu</th>
+                                            <th>ASIN No</th>
                                             <th>Model</th>
-                                            <th>Finished Qty</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -777,13 +788,13 @@ if (!isset($_SESSION['user_id'])) {
                                                 12345
                                             </td>
                                             <td>Latitude e5430</td>
-                                            <td>13</td>
+                                            <td>On Going</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>34535</td>
                                             <td>Latitude e7280</td>
-                                            <td>22</td>
+                                            <td>Completed</td>
                                         </tr>
 
 
@@ -821,9 +832,9 @@ if (!isset($_SESSION['user_id'])) {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>ASIN Nu</th>
+                                            <th>ASIN No</th>
                                             <th>Model</th>
-                                            <th>Finished Qty</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -833,13 +844,13 @@ if (!isset($_SESSION['user_id'])) {
                                                 12345
                                             </td>
                                             <td>Latitude e5430</td>
-                                            <td>13</td>
+                                            <td>Not Completed</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>34535</td>
                                             <td>Latitude e7280</td>
-                                            <td>22</td>
+                                            <td>Completed</td>
                                         </tr>
 
 

@@ -2,7 +2,7 @@
 
 ob_start();
 session_start();
-require_once('../includes/header.php');
+require_once("../includes/header.php");
 require_once("../../functions/db_connection.php");
 
 // Check User Login  
@@ -11,38 +11,86 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 ?>
+
+<style>
+    .pagination {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+    .page-item .active .page-link {
+        background-color: #168EB4;
+        border-color: #168EB4;
+    }
+
+    .pagination a {
+        font-weight: bold;
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        /* border: 1px solid black; */
+    }
+
+    .pagination a.active {
+        background-color: #168EB4;
+        color: #fff;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: skyblue;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-5">
         <a href="./admin_dashboard.php">
-            <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
+            <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-10 grid-margin stretch-card justify-content-center mx-auto mt-2">
+    <div class="col-lg-10 justify-content-center mx-auto mt-2">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <h5 class="">Users</h5>
-                    <div class=""><input type="text" class="mx-2" placeholder="Search Users"></div>
+                    <div class="">
+                        <input type="text" class="mx-2 w-75" placeholder="Search Users">
+                    </div>
                 </div>
             </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Emp ID</th>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Username</th>
-                        <th>Department</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $query = "SELECT
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Emp ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Username</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        $user_id = 0;
+                        $per_page_record = 10;
+
+                        if (isset($_GET["page"])) {
+                            $page  = $_GET["page"];
+                        } else {
+                            $page = 1;
+                        }
+
+                        $start_from = ($page - 1) * $per_page_record;
+
+                        $query = "SELECT
                                 users.user_name,
                                 users.is_active,
                                 employees.first_name,
@@ -60,52 +108,127 @@ if (!isset($_SESSION['user_id'])) {
                             INNER JOIN employees ON users.emp_id = employees.emp_id
                             LEFT JOIN departments ON employees.department_id = departments.department_id
                             LEFT JOIN user_roles ON employees.role_id = user_roles.role_id
-                            ORDER BY users.emp_id ASC";
-                    $run = mysqli_query($connection, $query);
-                    while ($row = mysqli_fetch_assoc($run)) {
-                        $username = $row['user_name'];
-                        $is_active = $row['is_active'];
-                    ?>
-                        <tr>
-                            <td>
-                                <a href="<?php echo "view_user.php?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
-                                </a>
-                            </td>
-                            <td> <?php echo $row['first_name'] ?> </td>
-                            <td><?php echo $row['last_name'] ?></td>
-                            <td><?php echo $row['user_name'] ?></td>
-                            <td><?php echo $row['department_name'] ?></td>
-                            <td><?php echo $row['role_name'] ?></td>
-                            <td>
-                                <?php if ($is_active == 0) { ?>
-                                    <span class="badge badge-danger">In-Active User</span>
-                                <?php }
-                                if ($is_active == 1) { ?>
-                                    <span class="badge badge-success">Active User</span>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <?php
-                                if ($is_active == 0) {
-                                    echo "<a class='btn btn-xs mx-1' href=\"./addNew/activate_user.php?user_id={$row['user_id']}\" 
+                            ORDER BY users.emp_id ASC
+                            LIMIT $start_from, $per_page_record";
+                        $run = mysqli_query($connection, $query);
+                        while ($row = mysqli_fetch_assoc($run)) {
+                            $username = $row['user_name'];
+                            $is_active = $row['is_active'];
+                        ?>
+                            <tr>
+                                <td>
+                                    <a href="<?php echo "update_user_password.php?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
+                                    </a>
+                                </td>
+                                <td> <?php echo $row['first_name'] ?> </td>
+                                <td><?php echo $row['last_name'] ?></td>
+                                <td><?php echo $row['user_name'] ?></td>
+                                <td><?php echo $row['department_name'] ?></td>
+                                <td><?php echo $row['role_name'] ?></td>
+                                <td>
+                                    <?php if ($is_active == 0) { ?>
+                                        <span class="badge badge-danger">In-Active User</span>
+                                    <?php }
+                                    if ($is_active == 1) { ?>
+                                        <span class="badge badge-success">Active User</span>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if ($is_active == 0) {
+                                        echo "<a class='btn btn-xs mx-1' href=\"./addNew/activate_user.php?user_id={$row['user_id']}\" 
                                         onclick=\"return confirm('Are you sure $username want active this user?');\">
                                         <i class='fa-solid fa-circle-check' style='color: #218838;'></i>
                                     </a>";
-                                };
-                                if ($is_active == 1) {
-                                    echo "<a class='btn btn-xs mx-1' href=\"./addNew/deactivate_user.php?user_id={$row['user_id']}\" 
+                                    };
+                                    if ($is_active == 1) {
+                                        echo "<a class='btn btn-xs mx-1' href=\"./addNew/deactivate_user.php?user_id={$row['user_id']}\" 
                                         onclick=\"return confirm('Are you sure $username want inactive this user?');\">
                                         <i class='fa-solid fa-trash' style='color: red;'></i>
                                   </a>";
-                                };
-                                ?>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                                    };
+                                    echo "<a class='btn btn-xs mx-1' href=\"./login_logout_monitor.php?user_id={$row['user_id']}\">
+                                        <i class='fa-solid fa-eye' style='color: #168eb4;'></i>
+                                  </a>";
+                                    ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <?php
+
+                $query = "SELECT COUNT(*) FROM users";
+                $rs_result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
+
+                echo "</br>";
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $per_page_record);
+                $pagLink = "";
+                $query = "SELECT COUNT(*) FROM users";
+                $rs_result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
+
+                echo "</br>";
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $per_page_record);
+                $pagLink = "";
+
+                ?>
+                <div class="row">
+                    <div class="col">
+                        <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?> Entries</p>
+                    </div>
+                    <div class="col">
+                        <div class="pagination">
+                            <?php
+                            $query = "SELECT COUNT(*) FROM users";
+                            $rs_result = mysqli_query($connection, $query);
+                            $row = mysqli_fetch_row($rs_result);
+                            $total_records = $row[0];
+
+                            echo "</br>";
+                            // Number of pages required.   
+                            $total_pages = ceil($total_records / $per_page_record);
+                            $pagLink = "";
+
+                            if ($page >= 2) {
+                                echo "<a class='page-link' href='users.php?page=" . ($page - 1) . "'>  Prev </a>";
+                            }
+
+                            for ($i = 1; $i <= $total_pages; $i++) {
+
+                                if ($i == $page) {
+                                    $pagLink .= "<a class='active'href='users.php?page=" . $i . "'>" . $i . " </a>";
+                                } else {
+                                    $pagLink .= "<a class='page-item page-link' href='users.php?page=" . $i . "'> " . $i . " </a>";
+                                }
+                            };
+                            echo $pagLink;
+
+                            if ($page < $total_pages) {
+                                echo "<a class='page-link' href='users.php?page=" . ($page + 1) . "'>  Next </a>";
+                            }
+
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<?php require_once('../includes/footer.php'); ?>
+<script>
+    function go2Page() {
+        var page = document.getElementById("page").value;
+        var user_id = document.getElementById("page").value;
+        page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
+        window.location.href = 'users.php?page=' + page;
+    }
+</script>
+
+<?php require_once('../includes/footer.php') ?>
