@@ -117,7 +117,8 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>
                                     <?php
 
-                                    echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee.php?emp_id={$row['emp_id']}\">
+                                    echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee.php?emp_id={$row['emp_id']}\"
+                                    onclick=\"return confirm('Are you sure you want to remove this $emp_id employee?');\">
                                         <i class='fa-sharp fa-solid fa-circle-xmark' style='font-size: 15px;'></i>
                                     </a>";
 

@@ -126,7 +126,7 @@ td {
                         <input type="text" value="Uchechukwu Obualo">
                     </div>
                     <div class="row mt-4 mb-2">
-                        <div class="col-sm-5">
+                        <div class="col-sm-5 mb-3">
                             <div style="line-height: 5px;">
                                 <p>Billing Address</p>
                                 <p>Billing Address</p>
