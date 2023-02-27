@@ -70,8 +70,9 @@ require_once('../includes/header.php')
         <div class="ml-2">
             <div class="createListingHeading">
                 <span>
-                    Team Member Details
+                    INV202
                 </span>
+                Scanned Details
             </div>
         </div>
         <hr class="sectionUnderline">
@@ -83,30 +84,40 @@ require_once('../includes/header.php')
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Team Member</th>
-                                <th>Target</th>
-                                <th>Completed Qty</th>
+                                <th>Job Description</th>
+                                <th>AlSakb QR</th>
+                                <th>MFG</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Core</th>
+                                <th>Processor</th>
+                                <th>Generation</th>
+                                <th>Speed</th>
+                                <th>Screen Size</th>
+                                <th>Screen Type</th>
+                                <th>Opticle</th>
+                                <th>Scanned Date</th>
+                                <th>Scanned Time</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>
-                                    <a href="./inventory_team_member_details.php">
-
-                                        INV 202
-                                    </a>
-                                </td>
-                                <td>50</td>
-                                <td>27</td>
+                                <td></td>
+                                <td>alsakb12312</td>
+                                <td>12312313</td>
+                                <td>Dell</td>
+                                <td>Latitude e2560</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>2023-01-02</td>
+                                <td>00:00:00</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>INV70</td>
-                                <td>50</td>
-                                <td>22</td>
-                            </tr>
-
 
                         </tbody>
                     </table>

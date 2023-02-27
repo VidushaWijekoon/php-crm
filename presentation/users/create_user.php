@@ -3,7 +3,6 @@
 ob_start();
 session_start();
 require_once('../includes/header.php');
-require_once('../../functions/db_connection.php');
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
@@ -12,15 +11,8 @@ if (!isset($_SESSION['user_id'])) {
 
 ?>
 
-<style>
-    input[type="text"] {
-        width: 340px;
-        padding: 0 5px;
-    }
-</style>
-
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5 mx-3">
         <a href="./admin_dashboard.php">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
         </a>
@@ -33,132 +25,57 @@ if (!isset($_SESSION['user_id'])) {
             <form action="./addNew/create_user.php" method="POST">
                 <fieldset class="mx-3 mb-3 mt-2">
                     <legend>Create New User</legend>
-                    <div class="card-body">
-                        <!-- ============================================================== -->
-                        <!-- Emp ID  -->
-                        <!-- ============================================================== -->
-                        <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">Employee ID <span style="color: red">*</span></p>
-                            </div>
-                            <div class="col-md-9">
-                                <select name="emp_id" id="emp_id" class="w-75">
-                                    <option selected>--Select Employee ID--</option>
-                                    <?php
-                                    $query = "SELECT users.emp_id, employees.emp_id, first_name, last_name
-                                                FROM employees LEFT JOIN users  ON users.emp_id = employees.emp_id WHERE users.emp_id IS NULL;";
-                                    $result = mysqli_query($connection, $query);
-
-                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                        <option value="<?php echo $row["emp_id"]; ?>">
-                                            <?php echo strtoupper($row["emp_id"]); ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">Employee ID <span style="color: red">*</span></p>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- First Name  -->
-                        <!-- ============================================================== -->
-                        <!-- <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">First Name</p>
-                            </div>
-                            <div class="col-md-9">
-                                <select name="first_name" id="first_name" class="w-75"> </select>
-                            </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- Last Name  -->
-                        <!-- ============================================================== -->
-                        <!-- <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">Last Name</p>
-                            </div>
-                            <div class="col-md-9">
-                                <select name="last_name" id="last_name" class="w-75"></select> -->
-
-                        <!-- <input type="text" class="w-75" placeholder="Last Name" id="last_name" name="last_name"> -->
-                        <!-- </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- Department  -->
-                        <!-- ============================================================== -->
-                        <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">Department <span style="color: red">*</span></p>
-                            </div>
-                            <div class="col-md-9">
-                                <select name="department" class="w-75" required style="border-radius: 5px;">
-                                    <option selected>--Select Department--</option>
-                                    <?php
-                                    $query = "SELECT * FROM departments ORDER BY department_name ASC";
-                                    $result = mysqli_query($connection, $query);
-
-                                    while ($x = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                        <option value="<?php echo $x["department_id"]; ?>">
-                                            <?php echo strtoupper($x["department_name"]); ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                        <input type='text' name="emp_id" id='emp_id' placeholder='Enter user id' onkeyup="GetDetail(this.value)">
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">First Name<span style="color: red">*</span></p>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- Role  -->
-                        <!-- ============================================================== -->
-                        <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">Role <span style="color: red">*</span></p>
-                            </div>
-                            <div class="col-md-9">
-                                <select name="role" class="w-75" required style="border-radius: 5px;">
-                                    <option selected>--Select Role--</option>
-                                    <?php
-                                    $query = "SELECT * FROM user_roles ORDER BY role_name ASC";
-                                    $result = mysqli_query($connection, $query);
-
-                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                        <option value="<?php echo $row["role_id"]; ?>">
-                                            <?php echo strtoupper($row["role_name"]); ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                        <input type="text" name="first_name" class="text-capitalize" id="first_name" placeholder='First Name'>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">Last Name<span style="color: red">*</span></p>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- Username  -->
-                        <!-- ============================================================== -->
-                        <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">Username <span style="color: red">*</span></p>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="w-75" placeholder="Username" name="username">
-                            </div>
+                        <input type="text" name="last_name" class="text-capitalize" id="last_name" placeholder='Last Name'>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">Department<span style="color: red">*</span></p>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- Password  -->
-                        <!-- ============================================================== -->
-                        <div class="row mb-2">
-                            <div class="col-md-3">
-                                <p class="card-text">Password <span style="color: red">*</span></p>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="password" id="password" class="w-75" placeholder="Password" name="password">
-                            </div>
+                        <input type="text" name="department" class="text-capitalize" id="department" placeholder='Department'>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">Role<span style="color: red">*</span></p>
                         </div>
-
-                        <div class="row">
-                            <label class="col-sm-3 col-form-label"></label>
-                            <div class="col-sm-8">
-                                <div class="d-flex">
-                                    <input type="checkbox" onclick="showPassword()" style="width:20px;height:20px">
-                                    <p class="mt-1 mx-2">Show Password</p>
-                                </div>
+                        <input type="text" name="role" class="text-capitalize" id="role" placeholder='Role'>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">Username<span style="color: red">*</span></p>
+                        </div>
+                        <input type="text" name="username" placeholder='Username'>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            <p class="card-text">Password<span style="color: red">*</span></p>
+                        </div>
+                        <input type="password" name="password" placeholder='Password'>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-8">
+                            <div class="d-flex">
+                                <input type="checkbox" onclick="showPassword()" style="width:20px;height:20px">
+                                <p class="mt-1 mx-2">Show Password</p>
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <button type="submit" class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
                     </div>
@@ -168,8 +85,10 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
+
 <script>
-    function showPassword() {
+    // Show password
+    const showPassword = () => {
         var x = document.getElementById("password");
         if (x.type === "password") {
             x.type = "text";
@@ -177,4 +96,55 @@ if (!isset($_SESSION['user_id'])) {
             x.type = "password";
         }
     }
+
+    // onkeyup event will occur when the user
+    // release the key and calls the function
+    // assigned to this event
+    const GetDetail = (str) => {
+        if (str.length == 0) {
+            document.getElementById("first_name").value = "";
+            document.getElementById("last_name").value = "";
+            document.getElementById("department").value = "";
+            document.getElementById("role").value = "";
+            return;
+        } else {
+
+            // Creates a new XMLHttpRequest object
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+
+                // Defines a function to be called when
+                // the readyState property changes
+                if (this.readyState == 4 &&
+                    this.status == 200) {
+
+                    // Typical action to be performed
+                    // when the document is ready
+                    var myObj = JSON.parse(this.responseText);
+
+                    // Returns the response data as a
+                    // string and store this array in
+                    // a variable assign the value
+                    // received to first name input field
+
+                    document.getElementById("first_name").value = myObj[0];
+
+                    // Assign the value received to
+                    // last name input field
+                    document.getElementById("last_name").value = myObj[1];
+                    document.getElementById("department").value = myObj[2];
+                    document.getElementById("role").value = myObj[3];
+                }
+            };
+
+            // xhttp.open("GET", "filename", true);
+            xmlhttp.open("GET", "load_user_details.php?emp_id=" + str, true);
+
+            // Sends the request to the server
+            xmlhttp.send();
+        }
+    }
 </script>
+</body>
+
+</html>
