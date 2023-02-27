@@ -125,7 +125,7 @@ input[type=text] {
                 <div class="row">
                     <div class="col-5">Scan Supplier Barcode</div>
                     <div class="col-7">
-                        <input type="text">
+                        <input type="text" id="name">
                     </div>
                 </div>
             </div>
@@ -134,162 +134,20 @@ input[type=text] {
                 <div class="row">
                     <div class="col-5">Scan MFG Barcode</div>
                     <div class="col-7">
-                        <input type="text">
+                        <input type="text" id="mfg">
                     </div>
                 </div>
             </div>
         </div>
-
+        <button class="btnT d-none" id="myBtn1" onclick="getSortingData()" data-toggle="modal"
+            data-target="#exampleModal1">Scan</button>
         <!-- ADD Details Section -->
         <hr class="sectionUnderline mt-4" style="width: 80%;">
-        <div class="row detailsSec">
-            <div class="col-6">
-                <div class="row mb-1">
-                    <div class="col-4 addLable">MFG Number</div>
-                    <div class="col-8">
-                        <input type="text" placeholder="For Manual Enter" style="width: 100%;">
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">ASIN</div>
-                    <div class="col-8">
-                        <input type="text" placeholder="" style="width: 100%;">
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Device</div>
-                    <div class="col-8">
-                        <select name="" id="device" class="DropDown select2" style="width: 100%;">
-                            <option selected value="laptop">laptop</option>
-                        </select>
 
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Brand</div>
-                    <div class="col-8">
-                        <select name="" id="brand" class="DropDown select2" style="width: 100%;">
-                            <option selected value="dell">Dell</option>
-                            <option value="lenovo">Lenovo</option>
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Series</div>
-                    <div class="col-8">
-                        <select name="" id="series" class="DropDown select2" style="width: 100%;">
-                            <option selected value="latitude">Latitude</option>
-
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Model</div>
-                    <div class="col-8">
-                        <select name="" id="model" class="DropDown select2" style="width: 100%;">
-                            <option selected value="latitude e5420">Latitude e5420</option>
-
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Processor</div>
-                    <div class="col-8">
-                        <select name="" id="processor" class="DropDown select2" style="width: 100%;">
-                            <option selected value="intel">intel</option>
-                            <option value="amd">AMD</option>
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Core</div>
-                    <div class="col-8">
-                        <select name="" id="core" class="DropDown select2" style="width: 100%;">
-                            <option selected value="">i5-5200U</option>
-                            <option value="">AMD</option>
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Gen</div>
-                    <div class="col-8">
-                        <select name="" id="gen" class="DropDown select2" style="width: 100%;">
-                            <option selected value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Speed</div>
-                    <div class="col-8">
-                        <select name="" id="speed" class="DropDown select2" style="width: 100%;">
-                            <option selected value="2">2.00Ghz</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row mb-1">
-                    <div class="col-4 addLable">LCD Size</div>
-                    <div class="col-8">
-                        <select name="" id="lcdsize" class="DropDown select2" style="width: 100%;">
-                            <option selected value="14">14</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Resolution</div>
-                    <div class="col-8">
-                        <select name="" id="resolution" class="DropDown select2" style="width: 100%;">
-                            <option selected value="1366 x 768">1366 x 768</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Battery</div>
-                    <div class="col-8">
-                        <select name="" id="battery" class="DropDown select2" style="width: 100%;">
-                            <option selected value="yes">Yes</option>
-                            <option selected value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Touch</div>
-                    <div class="col-8">
-                        <select name="" id="touch" class="DropDown select2" style="width: 100%;">
-                            <option selected value="yes">Yes</option>
-                            <option selected value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Opticle</div>
-                    <div class="col-8">
-                        <select name="" id="opticle" class="DropDown select2" style="width: 100%;">
-                            <option selected value="yes">Yes</option>
-                            <option selected value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3 mb-5">
-            <div class="">
-                <button class="btnT" type="submit"><i class="fa-solid fa-qrcode mr-1" style="color:#168EB4"></i> Save
-                    QR</button>
-            </div>
-        </div>
-
-
+        <div id="txtHint"></div>
     </div>
 </div>
+
 <!-- 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script> -->
@@ -306,7 +164,55 @@ $(function() {
 
 })
 </script>
+<script>
+var input1 = document.getElementById("name");
+input1.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("myBtn1").click();
+    }
+});
+var input = document.getElementById("mfg");
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("myBtn1").click();
+    }
+});
 
+const getSortingData = () => {
+    var name = 0;
+    var mfg = 0;
+    name = $('#name').val();
+    mfg = $('#mfg').val();
+    if (name != 0) {
+        mfg = name;
+    }
+    console.log(mfg);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "add_item_view.php?q=" + mfg, true);
+    xmlhttp.send();
+    var getValue = 0;
+    var getValue2 = 0;
+    getValue = document.getElementById("name");
+    getValue2 = document.getElementById("mfg");
+    if (getValue2 != 0) {
+        getValue2.value = "";
+    }
+    if (getValue.value != "") {
+        getValue.value = "";
+    }
+
+}
+let searchbar = document.querySelector('input[name="supplier"]');
+searchbar.focus();
+search.value = '';
+</script>
 <?php
 require_once('../includes/footer.php')
 
