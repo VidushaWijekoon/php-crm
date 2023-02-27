@@ -71,7 +71,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 .DropDown {
-    height: 26px;
+    height: 24px;
     width: 100%;
     border-radius: 5px;
     border: 1px solid #D1CDCD;
@@ -84,11 +84,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 input {
-    height: 26px;
+    height: 24px;
 }
 
 .inputSec input[type="text"] {
-    height: 30px;
+    height: 24px;
     border-radius: 5px;
     border: 1px solid #D1CDCD;
     width: 100%;
@@ -106,6 +106,11 @@ th {
 td {
     font-size: 10px;
 }
+
+.addressSec p {
+    font-size: 10px;
+    margin-bottom: 0px;
+}
 </style>
 
 <div class="row p-2">
@@ -122,22 +127,25 @@ td {
                     <p class="px-4 mt-1">Customer Name</p>
                 </div>
                 <div class="col-sm-9">
-                    <div class="">
+                    <div class="cusName">
                         <input type="text" value="Uchechukwu Obualo">
                     </div>
-                    <div class="row mt-4 mb-2">
-                        <div class="col-sm-5">
-                            <div style="line-height: 5px;">
-                                <p>Billing Address</p>
-                                <p>Billing Address</p>
-                                <p>Billing Address</p>
-                                <p>Billing Address</p>
-                                <p>Billing Address</p>
+                    <div class="row mt-2 mb-2 addressSec">
+                        <div class="col-sm-5 mb-2 billAddress">
+                            <div>
+                                <p>
+                                    Billing Address
+                                    Billing Address
+                                    Billing Address
+                                    Billing Address
+                                    Billing Address
+                                    Billing Address
+                                </p>
                                 <a href="" data-toggle="modal" data-target="#billing_address">Add Billing Address</a>
                             </div>
                         </div>
-                        <div class="col-sm-5">
-                            <div style="line-height: 5px;">
+                        <div class="col-sm-5 shipAddress">
+                            <div>
                                 <p>Shipping Address</p>
                                 <a href="" data-toggle="modal" data-target="#shipping_address">Add Shipping Address</a>
                             </div>
@@ -237,8 +245,8 @@ td {
                                 </b></p>
                         </td>
                         <td class="p-0"><input type="text" class="w-100"></td>
-                        <td class="p-0"><input type="text"></td>
-                        <td class="p-0"><input type="text"></td>
+                        <td class="p-0"><input type="text" class="w-100"></td>
+                        <td class="p-0"><input type="text" class="w-100"></td>
                         <td>AED 15000.00</td>
 
                     </tr>
@@ -321,12 +329,16 @@ td {
         </div>
     </div>
 
-    <div class="row p-2" style="box-shadow: 0px 0 0px #888, 0px 0 6px #888;">
-        <button class="btn btn-xs btn-danger">Back</button>
+    <div class="row justify-content-end mb-5">
+        <a href="./all_orders.php">
+            <button class="btnT w-100 ">Back</button>
+        </a>
     </div>
 
+
+
     <!-- ============================================================== -->
-    <!-- Billing Address  -->
+    <!-- Billing Address Model  -->
     <!-- ============================================================== -->
     <div class="modal fade" id="billing_address">
         <div class="modal-dialog modal-lg">
@@ -343,145 +355,167 @@ td {
                                     <input type="text" class=" w-100" name="shipping_attention">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <label class="col-sm-4 col-form-label">Country/
                                     Region</label>
                                 <div class="col-sm-8 d-flex">
-                                    <select name="shipping_country" class="info_select w-100"
-                                        style="border-radius: 5px;">
+                                    <select name="shipping_country" class="info_select w-100 select2"
+                                        style="border-radius: 5px;width: 100%;"">
+                                        <option value="">UAE</option>
 
                                     </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Address</label>
-                                <div class="col-sm-8 d-flex">
-                                    <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                        name="shipping_address_1" style="width: 100%;"></textarea>
+                            <div class=" row">
+                                        <label class="col-sm-4 col-form-label">Address</label>
+                                        <div class="col-sm-8 d-flex">
+                                            <textarea class="" id="exampleFormControlTextarea1" rows="3"
+                                                placeholder="Street 1" name="shipping_address_1"
+                                                style="width: 100%;"></textarea>
 
+                                        </div>
+                                        <label class="col-sm-4 col-form-label"></label>
+                                        <div class="col-sm-8 d-flex">
+                                            <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
+                                                placeholder="Street 2" name="shipping_address_2"
+                                                style="width: 100%;"></textarea>
+                                        </div>
                                 </div>
-                                <label class="col-sm-4 col-form-label"></label>
-                                <div class="col-sm-8 d-flex">
-                                    <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Street 2" name="shipping_address_2"
-                                        style="width: 100%;"></textarea>
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">City</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="text" class=" w-100" name="shipping_city" placeholder="City">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">City</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="text" class=" w-100" name="shipping_city" placeholder="City">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">State</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="text" class=" w-100" name="shipping_state" placeholder="State">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">State</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="text" class=" w-100" name="shipping_state" placeholder="State">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">Zip
+                                        Code</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="number" class=" w-100" name="shipping_zip_code"
+                                            placeholder="Zip Code">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Zip
-                                    Code</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="number" class=" w-100" name="shipping_zip_code" placeholder="Zip Code">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Phone</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="number" class=" w-100" name="shipping_phone" placeholder="Phone">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">Phone</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="number" class=" w-100" name="shipping_phone" placeholder="Phone">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-xs btn-primary">Save changes</button>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-xs btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ============================================================== -->
-    <!-- Shipping Address  -->
-    <!-- ============================================================== -->
-    <div class="modal fade" id="shipping_address">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title">Add Shipping Address</h6>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-8 justify-content-center mx-auto">
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Attention</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="text" class=" w-100" name="shipping_attention">
+        <!-- ============================================================== -->
+        <!-- Shipping Address Model -->
+        <!-- ============================================================== -->
+        <div class="modal fade" id="shipping_address">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Add Shipping Address</h6>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-8 justify-content-center mx-auto">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">Attention</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="text" class="w-100" name="shipping_attention">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Country/
-                                    Region</label>
-                                <div class="col-sm-8 d-flex">
-                                    <select name="shipping_country" class="info_select w-100"
-                                        style="border-radius: 5px;">
+                                <div class="row mb-2">
+                                    <label class="col-sm-4  col-form-label">Country/
+                                        Region</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <select name="shipping_country" class="info_select select2"
+                                            style="border-radius: 5px; width: 100%;">
+                                            <option value="">UAE</option>
 
-                                    </select>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Address</label>
-                                <div class="col-sm-8 d-flex">
-                                    <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                        name="shipping_address_1" style="width: 100%;"></textarea>
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">Address</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <textarea class="" id="exampleFormControlTextarea1" rows="3"
+                                            placeholder="Street 1" name="shipping_address_1"
+                                            style="width: 100%;"></textarea>
 
+                                    </div>
+                                    <label class="col-sm-4 col-form-label"></label>
+                                    <div class="col-sm-8 d-flex">
+                                        <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
+                                            placeholder="Street 2" name="shipping_address_2"
+                                            style="width: 100%;"></textarea>
+                                    </div>
                                 </div>
-                                <label class="col-sm-4 col-form-label"></label>
-                                <div class="col-sm-8 d-flex">
-                                    <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Street 2" name="shipping_address_2"
-                                        style="width: 100%;"></textarea>
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">City</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="text" class=" w-100" name="shipping_city" placeholder="City">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">City</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="text" class=" w-100" name="shipping_city" placeholder="City">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">State</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="text" class=" w-100" name="shipping_state" placeholder="State">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">State</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="text" class=" w-100" name="shipping_state" placeholder="State">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">Zip
+                                        Code</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="number" class=" w-100" name="shipping_zip_code"
+                                            placeholder="Zip Code">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Zip
-                                    Code</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="number" class=" w-100" name="shipping_zip_code" placeholder="Zip Code">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-sm-4 col-form-label">Phone</label>
-                                <div class="col-sm-8 d-flex">
-                                    <input type="number" class=" w-100" name="shipping_phone" placeholder="Phone">
+                                <div class="row">
+                                    <label class="col-sm-4 col-form-label">Phone</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <input type="number" class=" w-100" name="shipping_phone" placeholder="Phone">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-xs btn-primary">Save changes</button>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-xs btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-xs btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
-</div>
+    <script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
 
-<?php require_once('../includes/footer.php'); ?>
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+    })
+    </script>
+
+    <?php require_once('../includes/footer.php'); ?>
