@@ -10,7 +10,7 @@
 
         .inline {
             display: inline-block;
-            float: right;
+            /* float: right; */
             margin: 20px 0px;
         }
 
@@ -61,7 +61,7 @@
 
         $start_from = ($page - 1) * $per_page_record;
 
-        $query = "SELECT username FROM users LIMIT $start_from, $per_page_record";
+        $query = "SELECT * FROM employees LIMIT $start_from, $per_page_record";
         $rs_result = mysqli_query($connection, $query);
         ?>
 
@@ -88,7 +88,7 @@
                             // Display each field of the records.    
                         ?>
                             <tr>
-                                <td><?php echo $row["username"]; ?></td>
+                                <td><?php echo $row["full_name"]; ?></td>
 
                             </tr>
                         <?php
@@ -99,7 +99,7 @@
 
                 <div class="pagination">
                     <?php
-                    $query = "SELECT COUNT(*) FROM users";
+                    $query = "SELECT COUNT(*) FROM employees";
                     $rs_result = mysqli_query($connection, $query);
                     $row = mysqli_fetch_row($rs_result);
                     $total_records = $row[0];
