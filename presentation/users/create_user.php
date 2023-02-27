@@ -29,43 +29,43 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="col-md-3">
                             <p class="card-text">Employee ID <span style="color: red">*</span></p>
                         </div>
-                        <input type='text' name="emp_id" id='emp_id' placeholder='Enter user id' onkeyup="GetDetail(this.value)">
+                        <input type='text' name="emp_id" id='emp_id' class="w-50" placeholder='Enter user id' onkeyup="GetDetail(this.value)">
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">First Name<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="first_name" class="text-capitalize" id="first_name" placeholder='First Name'>
+                        <input type="text" name="first_name" class="text-capitalize w-50" id="first_name" placeholder='First Name'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Last Name<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="last_name" class="text-capitalize" id="last_name" placeholder='Last Name'>
+                        <input type="text" name="last_name" class="text-capitalize w-50" id="last_name" placeholder='Last Name'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Department<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="department" class="text-capitalize" id="department" placeholder='Department'>
+                        <input type="text" name="department" class="text-capitalize w-50" id="department" placeholder='Department'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Role<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="role" class="text-capitalize" id="role" placeholder='Role'>
+                        <input type="text" name="role" class="text-capitalize w-50" id="role" placeholder='Role'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Username<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="username" placeholder='Username'>
+                        <input type="text" name="username" class="w-50" placeholder='Username'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Password<span style="color: red">*</span></p>
                         </div>
-                        <input type="password" name="password" placeholder='Password'>
+                        <input type="password" name="password" class="w-50" placeholder='Password'>
                     </div>
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
