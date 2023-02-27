@@ -85,7 +85,7 @@ $user_id = $_GET['user_id'];
 
                         $start_from = ($page - 1) * $per_page_record;
 
-                        $query = "SELECT * FROM users_logged_in_time WHERE user_id = '$user_id' ORDER BY id DESC LIMIT $start_from, $per_page_record ";
+                        $query = "SELECT * FROM users_logged_in_time WHERE user_id = '$user_id' ORDER BY id DESC LIMIT $start_from, $per_page_record";
                         $rs_result = mysqli_query($connection, $query);
                         while ($row = mysqli_fetch_array($rs_result)) {
                             // Display each field of the records.    
@@ -111,37 +111,57 @@ $user_id = $_GET['user_id'];
                         ?>
                     </tbody>
                 </table>
-                <div class="pagination">
-                    <?php
-                    $query = "SELECT COUNT(*) FROM users_logged_in_time";
-                    $rs_result = mysqli_query($connection, $query);
-                    $row = mysqli_fetch_row($rs_result);
-                    $total_records = $row[0];
+                <?php
 
-                    echo "</br>";
-                    // Number of pages required.   
-                    $total_pages = ceil($total_records / $per_page_record);
-                    $pagLink = "";
+                $query = "SELECT COUNT(*) FROM users_logged_in_time";
+                $rs_result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
 
-                    if ($page >= 2) {
-                        echo "<a class='page-link' href='login_logout_monitor.php?user_id=$user_id&page=" . ($page - 1) . "'>  Prev </a>";
-                    }
+                echo "</br>";
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $per_page_record);
+                $pagLink = "";
+                $query = "SELECT COUNT(*) FROM users_logged_in_time";
+                $rs_result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
 
-                    for ($i = 1; $i <= $total_pages; $i++) {
+                echo "</br>";
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $per_page_record);
+                $pagLink = "";
 
-                        if ($i == $page) {
-                            $pagLink .= "<a class='active'href='login_logout_monitor.php?user_id=$user_id&page=" . $i . "'>" . $i . " </a>";
-                        } else {
-                            $pagLink .= "<a class='page-item page-link' href='login_logout_monitor.php?user_id=$user_id&page=" . $i . "'> " . $i . " </a>";
-                        }
-                    };
-                    echo $pagLink;
+                ?>
+                <div class="row">
+                    <div class="col">
+                        <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?> Entries</p>
+                    </div>
+                    <div class="col">
+                        <div class="pagination">
+                            <?php
 
-                    if ($page < $total_pages) {
-                        echo "<a class='page-link' href='login_logout_monitor.php?user_id=$user_id&page=" . ($page + 1) . "'>  Next </a>";
-                    }
+                            if ($page >= 2) {
+                                echo "<a class='page-link' href='login_logout_monitor.php?user_id=$user_id&page=" . ($page - 1) . "'>  Prev </a>";
+                            }
 
-                    ?>
+                            for ($i = 1; $i <= $total_pages; $i++) {
+
+                                if ($i == $page) {
+                                    $pagLink .= "<a class='active'href='login_logout_monitor.php?user_id=$user_id&page=" . $i . "'>" . $i . " </a>";
+                                } else {
+                                    $pagLink .= "<a class='page-item page-link' href='login_logout_monitor.php?user_id=$user_id&page=" . $i . "'> " . $i . " </a>";
+                                }
+                            };
+                            echo $pagLink;
+
+                            if ($page < $total_pages) {
+                                echo "<a class='page-link' href='login_logout_monitor.php?user_id=$user_id&page=" . ($page + 1) . "'>  Next </a>";
+                            }
+
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

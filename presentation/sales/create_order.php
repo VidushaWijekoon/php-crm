@@ -890,6 +890,8 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
+
+
 <script>
     $(function() {
         //Initialize Select2 Elements
@@ -987,5 +989,7 @@ if (!isset($_SESSION['user_id'])) {
         color: red;
     }
 </style>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/select2/js/select2.min.js"></script>
 
 <?php require_once('../includes/footer.php'); ?>
