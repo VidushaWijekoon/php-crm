@@ -900,6 +900,8 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
+
+
 <script>
 $(function() {
     //Initialize Select2 Elements
@@ -998,6 +1000,9 @@ $(function() {
 }
 </style>
 <script src="../../plugins/jquery/jquery.min.js"></script>
+<<<<<<< HEAD
+<script src="../../plugins/select2/js/select2.min.js"></script>
+=======
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
 <script>
@@ -1012,5 +1017,6 @@ $(function() {
 
 })
 </script>
+>>>>>>> 85fd9d21a580400dd10ea70c85a662e8757eea29
 
 <?php require_once('../includes/footer.php'); ?>

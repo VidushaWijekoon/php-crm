@@ -108,7 +108,8 @@ if (!isset($_SESSION['user_id'])) {
                             INNER JOIN employees ON users.emp_id = employees.emp_id
                             LEFT JOIN departments ON employees.department_id = departments.department_id
                             LEFT JOIN user_roles ON employees.role_id = user_roles.role_id
-                            ORDER BY users.emp_id ASC";
+                            ORDER BY users.emp_id ASC
+                            LIMIT $start_from, $per_page_record";
                         $run = mysqli_query($connection, $query);
                         while ($row = mysqli_fetch_assoc($run)) {
                             $username = $row['user_name'];
@@ -155,37 +156,66 @@ if (!isset($_SESSION['user_id'])) {
                         <?php } ?>
                     </tbody>
                 </table>
-                <div class="pagination">
-                    <?php
-                    $query = "SELECT COUNT(*) FROM users";
-                    $rs_result = mysqli_query($connection, $query);
-                    $row = mysqli_fetch_row($rs_result);
-                    $total_records = $row[0];
+                <?php
 
-                    echo "</br>";
-                    // Number of pages required.   
-                    $total_pages = ceil($total_records / $per_page_record);
-                    $pagLink = "";
+                $query = "SELECT COUNT(*) FROM users";
+                $rs_result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
 
-                    if ($page >= 2) {
-                        echo "<a class='page-link' href='users.php?page=" . ($page - 1) . "'>  Prev </a>";
-                    }
+                echo "</br>";
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $per_page_record);
+                $pagLink = "";
+                $query = "SELECT COUNT(*) FROM users";
+                $rs_result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_row($rs_result);
+                $total_records = $row[0];
 
-                    for ($i = 1; $i <= $total_pages; $i++) {
+                echo "</br>";
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $per_page_record);
+                $pagLink = "";
 
-                        if ($i == $page) {
-                            $pagLink .= "<a class='active'href='users.php?page=" . $i . "'>" . $i . " </a>";
-                        } else {
-                            $pagLink .= "<a class='page-item page-link' href='users.php?page=" . $i . "'> " . $i . " </a>";
-                        }
-                    };
-                    echo $pagLink;
+                ?>
+                <div class="row">
+                    <div class="col">
+                        <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?> Entries</p>
+                    </div>
+                    <div class="col">
+                        <div class="pagination">
+                            <?php
+                            $query = "SELECT COUNT(*) FROM users";
+                            $rs_result = mysqli_query($connection, $query);
+                            $row = mysqli_fetch_row($rs_result);
+                            $total_records = $row[0];
 
-                    if ($page < $total_pages) {
-                        echo "<a class='page-link' href='users.php?page=" . ($page + 1) . "'>  Next </a>";
-                    }
+                            echo "</br>";
+                            // Number of pages required.   
+                            $total_pages = ceil($total_records / $per_page_record);
+                            $pagLink = "";
 
-                    ?>
+                            if ($page >= 2) {
+                                echo "<a class='page-link' href='users.php?page=" . ($page - 1) . "'>  Prev </a>";
+                            }
+
+                            for ($i = 1; $i <= $total_pages; $i++) {
+
+                                if ($i == $page) {
+                                    $pagLink .= "<a class='active'href='users.php?page=" . $i . "'>" . $i . " </a>";
+                                } else {
+                                    $pagLink .= "<a class='page-item page-link' href='users.php?page=" . $i . "'> " . $i . " </a>";
+                                }
+                            };
+                            echo $pagLink;
+
+                            if ($page < $total_pages) {
+                                echo "<a class='page-link' href='users.php?page=" . ($page + 1) . "'>  Next </a>";
+                            }
+
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
