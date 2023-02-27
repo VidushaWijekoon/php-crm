@@ -505,6 +505,15 @@
                                      <p>Part Stock Report</p>
                                  </a>
                              </li>
+                             <!-- ============================================================== -->
+                             <!-- Perfomance  -->
+                             <!-- ============================================================== -->
+                             <li class="nav-item">
+                                 <a href="../performance/performance_inventory.php" class="nav-link">
+                                     <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
+                                     <p>Performance</p>
+                                 </a>
+                             </li>
                          </ul>
                      </nav>
                  </div>
