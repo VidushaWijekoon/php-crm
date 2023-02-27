@@ -3,90 +3,102 @@
     $username = $_SESSION['username'];
     $department_id = $_SESSION['department_id'];
     $role_id = $_SESSION['role_id'];
-    $log_time_id = $_SESSION['log_time_id'];
     $user_id = $_SESSION['user_id'];
-
-
     ?>
 
  <!DOCTYPE html>
  <html lang="en">
 
-     <head>
-         <meta charset="utf-8" />
-         <meta name="viewport" content="width=device-width, initial-scale=1" />
-         <title>Alsakb Computer | ERP</title>
-         <link rel="icon" type="image/x-icon" href="./../../dist/img/alsakb logo.png">
+ <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <title>Alsakb Computer | ERP</title>
+     <link rel="icon" type="image/x-icon" href="./../../dist/img/alsakb logo.png">
 
-         <!-- Font Awesome -->
-         <link rel="stylesheet" href="../../plugins/fontawesome/css/all.min.css" />
-         <!-- Theme style -->
-         <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
-         <link rel="stylesheet" href="../../static/css/style.css">
-         <!-- Select 2 -->
-         <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-     </head>
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="../../plugins/fontawesome/css/all.min.css" />
+     <!-- Theme style -->
+     <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+     <link rel="stylesheet" href="../../static/css/style.css">
+     <!-- Select 2 -->
+     <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+ </head>
 
-     <style>
+ <style>
      .fas,
      .fa,
      .brands {
          font-size: 10px !important;
      }
-     </style>
+ </style>
 
-     <body class="hold-transition sidebar-mini layout-fixed">
-         <div class="wrapper">
-             <!-- Navbar -->
-             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-                 <!-- Left navbar links -->
-                 <ul class="navbar-nav">
-                     <li class="nav-item">
-                         <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-                             <i class="fas fa-bars"></i>
-                         </a>
-                     </li>
-                 </ul>
+ <body class="hold-transition sidebar-mini layout-fixed">
+     <div class="wrapper">
+         <!-- Navbar -->
+         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+             <!-- Left navbar links -->
+             <ul class="navbar-nav">
+                 <li class="nav-item">
+                     <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                         <i class="fas fa-bars"></i>
+                     </a>
+                 </li>
+             </ul>
 
 
-                 <!-- Right navbar links -->
-                 <ul class="navbar-nav ml-auto">
-                     <span class="mt-auto">Welcome <?php echo $username; ?>! <a
-                             href="../../logout.php?<?php echo "user_id='$user_id'&log_time_id='$log_time_id'"  ?>">Logout</a>
-                     </span>
-             </nav>
-             <!-- /.navbar -->
+             <!-- Right navbar links -->
+             <ul class="navbar-nav ml-auto">
+                 <span class="mt-auto">Welcome <?php echo $username; ?>! <a href="../../logout.php?<?php echo "user_id='$user_id'&log_time_id='$log_time_id'"  ?>">Logout</a>
+                 </span>
+         </nav>
+         <!-- /.navbar -->
 
-             <!-- Main Sidebar Container -->
-             <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                 <!-- Brand Logo -->
-                 <?php if ($department_id == 1 && $role_id == 1) { ?>
+         <!-- Main Sidebar Container -->
+         <aside class="main-sidebar sidebar-dark-primary elevation-4">
+             <!-- Brand Logo -->
+             <?php
+                if ($department_id == 1 && $role_id == 1) { ?>
                  <a href="../includes/main.php" class="brand-link text-center mx-auto d-flex justify-content-center">
-                     <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3"
-                         style="opacity: .8">
+                     <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
                  </a>
-                 <?php } ?>
+             <?php }
+                if ($department_id == 4 && $role_id == 4) {  ?>
+                 <a href="../sales/sales_dashboard.php" class="brand-link text-center mx-auto d-flex justify-content-center">
+                     <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
+                 </a>
+             <?php } ?>
+             <!-- Sidebar -->
+             <div class="sidebar">
+                 <!-- Sidebar user panel (optional) -->
+                 <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
 
-                 <!-- Sidebar -->
-                 <div class="sidebar">
-                     <!-- Sidebar user panel (optional) -->
-                     <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
-
-                     <!-- Sidebar Menu -->
-                     <nav class="mt-2">
-                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                             data-accordion="false">
-                             <?php if ($department_id == 1 && $role_id == 1) { ?>
+                 <!-- Sidebar Menu -->
+                 <nav class="mt-2">
+                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                         <!-- ============================================================== -->
+                         <!-- Home Pages  -->
+                         <!-- ============================================================== -->
+                         <?php
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item menu-open">
                                  <a href="../includes/main.php" class="nav-link active">
                                      <i class="nav-icon fas fa-home"></i>
                                      <p> Home Page </p>
                                  </a>
                              </li>
-                             <?php } ?>
-                             <!-- ============================================================== -->
-                             <!-- Admin & User Department  -->
-                             <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 4 && $role_id == 4) { ?>
+                             <li class="nav-item menu-open">
+                                 <a href="../sales/sales_dashboard.php" class="nav-link active">
+                                     <i class="nav-icon fas fa-home"></i>
+                                     <p> Home Page </p>
+                                 </a>
+                             </li>
+                         <?php } ?>
+                         <!-- ============================================================== -->
+                         <!-- Admin & User Department  -->
+                         <!-- ============================================================== -->
+                         <?php if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fas fa-lock"></i>
@@ -105,6 +117,9 @@
                              <!-- ============================================================== -->
                              <!-- HR Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
+
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fas fa-users"></i>
@@ -126,60 +141,48 @@
                              <!-- ============================================================== -->
                              <!-- Sales Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-receipt"></i>
                                      <p> Sales <i class="right fas fa-angle-left"></i> </p>
                                  </a>
                                  <ul class="nav nav-treeview">
-
                                      <li class="nav-item">
-                                         <a href="#" class="nav-link">
-                                             <i class="fa fa-landmark nav-icon" style="font-size: 12px;"></i>
-                                             <p>
-                                                 Sales
-                                                 <i class="right fas fa-angle-left"></i>
-                                             </p>
+                                         <a href="../sales/all_orders.php" class="nav-link">
+                                             <i class="fa-solid fa-files nav-icon" style="font-size: 12px;"></i>
+                                             <p>Orders</p>
                                          </a>
-                                         <ul class="nav nav-treeview">
-                                             <li class="nav-item">
-                                                 <a href="../sales/all_orders.php" class="nav-link">
-                                                     <i class="fa-solid fa-files nav-icon" style="font-size: 12px;"></i>
-                                                     <p>Orders</p>
-                                                 </a>
-                                             </li>
-
-                                             <li class="nav-item">
-                                                 <a href="../sales/all_customers.php" class="nav-link">
-                                                     <i class="fa-solid fa-people nav-icon"
-                                                         style="font-size: 12px;"></i>
-                                                     <p>Customers</p>
-                                                 </a>
-                                             </li>
-
-                                             <li class="nav-item">
-                                                 <a href="../sales/sales_assistant_daily_task.php" class="nav-link">
-                                                     <i class="fa-solid fa-list nav-icon" style="font-size: 12px;"></i>
-                                                     <p>Daily Task</p>
-                                                 </a>
-                                             </li>
-                                             <li class="nav-item">
-                                                 <a href="../sales/sales_dashboard.php" class="nav-link">
-                                                     <i class="fa-solid fa-universal-access nav-icon"
-                                                         style="font-size: 12px;"></i>
-                                                     <p>Sales Dashboard</p>
-                                                 </a>
-                                             </li>
-
-                                         </ul>
                                      </li>
 
+                                     <li class="nav-item">
+                                         <a href="../sales/all_customers.php" class="nav-link">
+                                             <i class="fa-solid fa-people nav-icon" style="font-size: 12px;"></i>
+                                             <p>Customers</p>
+                                         </a>
+                                     </li>
+
+                                     <li class="nav-item">
+                                         <a href="../sales/sales_assistant_daily_task.php" class="nav-link">
+                                             <i class="fa-solid fa-list nav-icon" style="font-size: 12px;"></i>
+                                             <p>Daily Task</p>
+                                         </a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="../sales/sales_dashboard.php" class="nav-link">
+                                             <i class="fa-solid fa-universal-access nav-icon" style="font-size: 12px;"></i>
+                                             <p>Sales Dashboard</p>
+                                         </a>
+                                     </li>
                                  </ul>
                              </li>
 
                              <!-- ============================================================== -->
                              <!-- E-Commerce Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa-brands brands fa-amazon"></i>
@@ -189,13 +192,14 @@
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
                                          <a href="../e-commerce/e_com_dashboard.php" class="nav-link">
-                                             <i class="fa-brands brands fa-amazon nav-icon"
-                                                 style="font-size: 12px;"></i>
+                                             <i class="fa-brands brands fa-amazon nav-icon" style="font-size: 12px;"></i>
                                              <p> E-Commerce </p>
                                          </a>
                                      </li>
                                  </ul>
                              </li>
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
 
                              <!-- ============================================================== -->
                              <!-- Accounts Department  -->
@@ -219,6 +223,8 @@
                              <!-- ============================================================== -->
                              <!-- Inventory Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fas fa-warehouse"></i>
@@ -244,6 +250,8 @@
                              <!-- ============================================================== -->
                              <!-- Production Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa-solid fa-screwdriver"></i>
@@ -271,6 +279,8 @@
                              <!-- ============================================================== -->
                              <!-- Part Inventory Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-screwdriver-wrench"></i>
@@ -298,6 +308,8 @@
                              <!-- ============================================================== -->
                              <!-- Motherboard Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fas fa-keyboard"></i>
@@ -317,6 +329,8 @@
                              <!-- ============================================================== -->
                              <!-- LCD Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-tv"></i>
@@ -343,6 +357,8 @@
                              <!-- ============================================================== -->
                              <!-- Bodywork Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-laptop"></i>
@@ -370,6 +386,8 @@
                              <!-- ============================================================== -->
                              <!-- Battery Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-battery"></i>
@@ -390,6 +408,8 @@
                              <!-- ============================================================== -->
                              <!-- Painting Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-spray-can"></i>
@@ -410,6 +430,8 @@
                              <!-- ============================================================== -->
                              <!-- QC Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fas fa-stethoscope"></i>
@@ -430,6 +452,8 @@
                              <!-- ============================================================== -->
                              <!-- Packing Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fas fa-boxes"></i>
@@ -449,6 +473,8 @@
                              <!-- ============================================================== -->
                              <!-- Management  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-right-to-bracket"></i>
@@ -458,19 +484,20 @@
 
                                      <li class="nav-item">
                                          <a href="../management/manager_dashboard.php" class="nav-link">
-                                             <i class="fa-solid fa-right-to-bracket nav-icon"
-                                                 style="font-size: 12px;"></i>
+                                             <i class="fa-solid fa-right-to-bracket nav-icon" style="font-size: 12px;"></i>
                                              <p> Manager </p>
                                          </a>
                                      </li>
 
                                  </ul>
                              </li>
-
-                             <li class="nav-header text-uppercase">Other</li>
-                             <!-- ============================================================== -->
-                             <!-- Laptop Inventory & Laptop Stock Count  -->
-                             <!-- ============================================================== -->
+                         <?php } ?>
+                         <li class="nav-header text-uppercase">Other</li>
+                         <!-- ============================================================== -->
+                         <!-- Laptop Inventory & Laptop Stock Count  -->
+                         <!-- ============================================================== -->
+                         <?php
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
                                  <a href="../laptop_inventory/laptop_inventory.php" class="nav-link">
                                      <i class="fas fa-laptop nav-icon" style="font-size: 12px;"></i>
@@ -480,6 +507,8 @@
                              <!-- ============================================================== -->
                              <!-- Ready Stock Department  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa-solid fa-signal-bars nav-icon" style="font-size: 12px;"></i>
@@ -489,6 +518,8 @@
                              <!-- ============================================================== -->
                              <!-- E-Commerce Inventory  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa-brands fa-amazon nav-icon" style="font-size: 12px;"></i>
@@ -498,6 +529,8 @@
                              <!-- ============================================================== -->
                              <!-- Part Stock Report  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
@@ -507,19 +540,22 @@
                              <!-- ============================================================== -->
                              <!-- Perfomance  -->
                              <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="../performance/performance_inventory.php" class="nav-link">
                                      <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
                                      <p>Performance</p>
                                  </a>
                              </li>
-                         </ul>
-                     </nav>
-                 </div>
-             </aside>
+                         <?php } ?>
+                     </ul>
+                 </nav>
+             </div>
+         </aside>
 
-             <!-- Content Wrapper. Contains page content -->
-             <div class="content-wrapper">
-                 <!-- Content Header (Page header) -->
-                 <div class="content-header">
-                     <div class="container-fluid">
+         <!-- Content Wrapper. Contains page content -->
+         <div class="content-wrapper">
+             <!-- Content Header (Page header) -->
+             <div class="content-header">
+                 <div class="container-fluid">
