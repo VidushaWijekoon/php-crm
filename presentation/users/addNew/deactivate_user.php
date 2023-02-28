@@ -10,8 +10,8 @@ if (isset($_GET['user_id'])) {
 	$result = mysqli_query($connection, $query);
 
 	if ($result) {
-		header('Location: ../users.php');
+		header('Location: ../users');
 	} else {
-		header('Location: users.php?err=delete_failed');
+		header('Location: users?err=delete_failed');
 	}
 }

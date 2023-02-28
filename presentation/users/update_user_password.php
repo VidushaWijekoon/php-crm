@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="row">
     <div class="col-md-5">
-        <a href="./users.php">
+        <a href="./users">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>
