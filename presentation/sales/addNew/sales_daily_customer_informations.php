@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO sales_daily_customer_informations(customer_name, country_name, customer_phone_code, customer_whatsapp_code, platform, 
                                                             model_selling_buying, uae_pickup, created_by, created_time) 
             VALUES('$customer_name', '$country_name', '$phone_code', '$whatsapp_number', '$platform', '$customer_buying_selling_model',
-                    '$uae_pickup1', NOW(), '$created_by')";
+                    '$uae_pickup1', '$created_by', now())";
     echo $query;
     $run = mysqli_query($connection, $query);
     if ($run) {
