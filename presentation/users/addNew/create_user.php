@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES('$emp_id', '$username', '$hashed_password', '1', NOW(), '$created_by')";
     $query_run = mysqli_query($connection, $query);
     if ($query_run) {
-        header("Location: ../users.php");
+        header("Location: ../users");
     } else {
         echo "<script>alert('Something went wrong')</script>";
     }

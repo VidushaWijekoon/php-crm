@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row">
     <div class="col-md-5 mx-1">
-        <a href="./admin_dashboard.php">
+        <a href="./admin_dashboard">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>

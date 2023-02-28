@@ -58,7 +58,7 @@
              <!-- Brand Logo -->
              <?php
                 if ($department_id == 1 && $role_id == 1) { ?>
-                 <a href="../includes/main.php" class="brand-link text-center mx-auto d-flex justify-content-center">
+                 <a href="../includes/main" class="brand-link text-center mx-auto d-flex justify-content-center">
                      <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
                  </a>
              <?php }
@@ -81,7 +81,7 @@
                          <?php
                             if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item menu-open">
-                                 <a href="../includes/main.php" class="nav-link active">
+                                 <a href="../includes/main" class="nav-link active">
                                      <i class="nav-icon fas fa-home"></i>
                                      <p> Home Page </p>
                                  </a>
@@ -107,7 +107,7 @@
 
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
-                                         <a href="../users/admin_dashboard.php" class="nav-link">
+                                         <a href="../users/admin_dashboard" class="nav-link">
                                              <i class="fa fa-user-circle nav-icon" style="font-size: 12px;"></i>
                                              <p> Admin </p>
                                          </a>
@@ -129,7 +129,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../hr/hr_dashboard.php" class="nav-link">
+                                         <a href="../hr/hr_dashboard" class="nav-link">
                                              <i class="fa fa-user nav-icon" style="font-size: 12px;"></i>
                                              <p> HR </i>
                                              </p>
@@ -150,27 +150,27 @@
                                  </a>
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
-                                         <a href="../sales/all_orders.php" class="nav-link">
+                                         <a href="../sales/all_orders" class="nav-link">
                                              <i class="fa-solid fa-files nav-icon" style="font-size: 12px;"></i>
                                              <p>Orders</p>
                                          </a>
                                      </li>
 
                                      <li class="nav-item">
-                                         <a href="../sales/all_customers.php" class="nav-link">
+                                         <a href="../sales/all_customers" class="nav-link">
                                              <i class="fa-solid fa-people nav-icon" style="font-size: 12px;"></i>
                                              <p>Customers</p>
                                          </a>
                                      </li>
 
                                      <li class="nav-item">
-                                         <a href="../sales/sales_assistant_daily_task.php" class="nav-link">
+                                         <a href="../sales/sales_assistant_daily_task" class="nav-link">
                                              <i class="fa-solid fa-list nav-icon" style="font-size: 12px;"></i>
                                              <p>Daily Task</p>
                                          </a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="../sales/sales_dashboard.php" class="nav-link">
+                                         <a href="../sales/sales_dashboard" class="nav-link">
                                              <i class="fa-solid fa-universal-access nav-icon" style="font-size: 12px;"></i>
                                              <p>Sales Dashboard</p>
                                          </a>

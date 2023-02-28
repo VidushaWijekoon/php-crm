@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(E_ALL & ~E_WARNING);
 require_once('functions/db_connection.php');
 require_once('functions/functions.php');
 require_once('functions/login.php');
