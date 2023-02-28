@@ -1,6 +1,0 @@
-2023-02-15 06:48:20: <br />
-<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\newcode\alsakberp\presentation\inventory\phpqrcode\qrsplit.php</b> on line <b>71</b><br />
-<br />
-<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\newcode\alsakberp\presentation\inventory\phpqrcode\qrsplit.php</b> on line <b>53</b><br />
-<br />
-<b>Warning</b>:  Trying to access array offset on value of type int in <b>C:\xampp\htdocs\newcode\alsakberp\presentation\inventory\phpqrcode\qrsplit.php</b> on line <b>62</b><br />
