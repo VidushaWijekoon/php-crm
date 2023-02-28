@@ -111,9 +111,18 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Device</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown select2">
-                        <option value="" selected>--Select Device--</option>
-                        <option value="laptop">Laptop</option>
+                    <select name="device" class="select2" id="device" style="border-radius: 5px; width: 100%">
+                        <option selected value="">--Select Device--</option>
+                        <?php
+                        $query = "SELECT device FROM machine_from_supplier GROUP BY device ASC";
+                        $result = mysqli_query($connection, $query);
+
+                        while ($xd = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
+                        ?>
+                            <option value="<?php echo $xd["device"]; ?>">
+                                <?php echo strtoupper($xd["device"]); ?>
+                            </option>
+                        <?php endwhile; ?>
                     </select>
                 </div>
             </div>
@@ -127,11 +136,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Brand</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown select2" aria-label="Default select example" name="brand" id="brand"
-                        required>
-                        <option value="" selected>--Select brand--</option>
-
-                    </select>
+                    <select name="brand" id="brand" class="info_select select2" style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -143,10 +148,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Model</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown select2">
-                        <option value="" selected>--Select Model--</option>
-                        <option value="">Thinkpad</option>
-                    </select>
+                    <select name="model" id="model" class="info_select select2" style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -159,11 +161,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Processor</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown select2" aria-label="Default select example" name="processor" id="processor"
-                        required>
-                        <option value="" selected>--Select Processor--</option>
-
-                    </select>
+                    <select name="processor" id="processor" class="info_select select2" style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -175,10 +173,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Core</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown select2">
-                        <option value="" selected>--Select Core--</option>
-                        <option value=""></option>
-                    </select>
+                    <select name="core" id="core" class="info_select select2" style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -191,10 +186,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Generation</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown select2" aria-label="Default select example" name="gen" id="gen" required>
-                        <option value="" selected>--Select Gen--</option>
-
-                    </select>
+                    <select name="generation" id="generation" class="info_select select2" style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -206,10 +198,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>Speed</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="" id="" class="DropDown select2">
-                        <option value="" selected>--Select Speed--</option>
-                        <option value="">1.80GHz</option>
-                    </select>
+                    <select name="speed" id="speed" class="info_select select2" style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -514,12 +503,10 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="inputSec col-9">
                         <select class="DropDown" name="condition">
                             <option selected="">--Select Condition--</option>
-                            <option value="fully refurbished"
-                                title="A B C D Painting, LCD No Scratch, Battery Health 80%">
+                            <option value="fully refurbished" title="A B C D Painting, LCD No Scratch, Battery Health 80%">
                                 Fully Refurbished-A B C D Painting, LCD No Scratch, Battery Health
                                 80%</option>
-                            <option value="a grade"
-                                title="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%">
+                            <option value="a grade" title="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%">
                                 A Grade-A B C D Small Scratch, No Dent, LCD Small Scratch, Battery
                                 Health 60%</option>
                         </select>
@@ -717,8 +704,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row">
     <div class="col-sm-6 mt-4 mb-3 px-3">
         <p>Customer Note</p>
-        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Customer Note"
-            name="note"></textarea>
+        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Customer Note" name="note"></textarea>
     </div>
     <div class="col-sm-6" style="background-color:#3494b333;">
         <div class="d-flex justify-content-between">
@@ -738,8 +724,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row">
     <div class="col-sm-6 mt-4 mb-3 px-3">
         <p>Term and Conditions</p>
-        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Term and Condition"
-            name="note"></textarea>
+        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Term and Condition" name="note"></textarea>
     </div>
 </div>
 
@@ -778,14 +763,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="row">
                             <label class="col-sm-4 col-form-label">Address</label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                    name="shipping_address_1" style="width: 100%;"></textarea>
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1" name="shipping_address_1" style="width: 100%;"></textarea>
 
                             </div>
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3" placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -854,14 +837,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="row">
                             <label class="col-sm-4 col-form-label">Address</label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                    name="shipping_address_1" style="width: 100%;"></textarea>
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1" name="shipping_address_1" style="width: 100%;"></textarea>
 
                             </div>
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3" placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -900,117 +881,177 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
-<script>
-$(function() {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
-    })
-
-})
-</script>
-
-<style>
-.select2-selection__rendered {
-    line-height: 17px !important;
-    padding-left: 0px !important;
-}
-
-.select2 {
-    width: 220px;
-}
-
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
-
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
-
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
-
-.ecomOrderFormSec {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.cardContainer {
-    width: 99%;
-    background-color: #ffffff;
-    padding: 10px 5px;
-}
-
-.createListingHeading {
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.sectionUnderline {
-    border-top: 2px solid #DBDBDB;
-    margin-top: 0px;
-}
-
-.formSec {
-    padding: 0px 20px;
-}
-
-.platformes {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.DropDown {
-    height: 30px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    /* padding: 0px 10px; */
-}
-
-.lableSec {
-    font-weight: 500;
-    font-size: 12px;
-}
-
-.inputSec input[type="text"] {
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    width: 100%;
-}
-
-.required:after {
-    content: " *";
-    color: red;
-}
-</style>
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
 <script>
-$(function() {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
     })
 
-})
+    $(document).ready(function() {
+        $("#device").on("change", function() {
+            var device = $("#device").val();
+            console.log(device);
+            var getURL = "./addNew/get_order_details.php?device=" + device;
+            console.log(device);
+
+            $.get(getURL, function(data, status) {
+                $("#brand").html(data);
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#brand").on("change", function() {
+            var brand = $("#brand").val();
+            var getURL = "./addNew/get_order_details.php?brand=" + brand;
+            $.get(getURL, function(data, status) {
+                $("#model").html(data);
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#model").on("change", function() {
+            var model = $("#model").val();
+            var getURL = "./addNew/get_order_details.php?model=" + model;
+            $.get(getURL, function(data, status) {
+                $("#processor").html(data);
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#processor").on("change", function() {
+            var processor = $("#processor").val();
+            var getURL = "./addNew/get_order_details.php?processor=" + processor;
+            $.get(getURL, function(data, status) {
+                $("#core").html(data);
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#core").on("change", function() {
+            var core = $("#core").val();
+            var getURL = "./addNew/get_order_details.php?core=" + core;
+            $.get(getURL, function(data, status) {
+                $("#generation").html(data);
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#generation").on("change", function() {
+            var generation = $("#generation").val();
+            var getURL = "./addNew/get_order_details.php?generation=" + generation;
+            $.get(getURL, function(data, status) {
+                $("#speed").html(data);
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#speed").on("change", function() {
+            var speed = $("#speed").val();
+            var getURL = "./addNew/get_order_details.php?speed=" + speed;
+            $.get(getURL, function(data, status) {
+                $("#lcd_size").html(data);
+            });
+        });
+    });
 </script>
 
-<?php require_once('../includes/footer.php'); ?>
+
+<style>
+    .select2-selection__rendered {
+        line-height: 17px !important;
+        padding-left: 0px !important;
+    }
+
+    .select2 {
+        width: 220px;
+    }
+
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
+
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
+
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .ecomOrderFormSec {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .cardContainer {
+        width: 99%;
+        background-color: #ffffff;
+        padding: 10px 5px;
+    }
+
+    .createListingHeading {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .sectionUnderline {
+        border-top: 2px solid #DBDBDB;
+        margin-top: 0px;
+    }
+
+    .formSec {
+        padding: 0px 20px;
+    }
+
+    .platformes {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .DropDown {
+        height: 30px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        /* padding: 0px 10px; */
+    }
+
+    .lableSec {
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    .inputSec input[type="text"] {
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        width: 100%;
+    }
+
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>

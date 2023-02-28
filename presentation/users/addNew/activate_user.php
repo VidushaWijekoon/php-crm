@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('../../../functions/db_connection.php');
 
 if (isset($_GET['user_id'])) {
