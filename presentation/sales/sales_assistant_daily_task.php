@@ -2,12 +2,25 @@
 
 ob_start();
 session_start();
+error_reporting(E_ALL & ~E_WARNING);
 require_once('../includes/header.php');
+require_once('../../functions/db_connection.php');
+
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+
+$user_id = $_SESSION['user_id'];
+
+$country_name;
+$customer_phone_code;
+$platform;
+
+echo $country_name;
+echo $customer_phone_code;
+echo $platform;
 
 ?>
 <style>
@@ -210,17 +223,17 @@ if (!isset($_SESSION['user_id'])) {
                                     <td>
                                         <div class="d-flex">
                                             <div class="d-flex align-items-center mr-2">
-                                                <input type="radio" id="uae_pickup1" name="uae_pickup1" value="yes">
+                                                <input type="radio" id="uae_pickup1" name="uae_pickup1" value="1">
                                                 <div class="label_values" for="uae_pickup1">Yes
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center mr-2">
-                                                <input type="radio" id="uae_pickup2" name="uae_pickup1" value="no">
+                                                <input type="radio" id="uae_pickup2" name="uae_pickup1" value="0">
                                                 <div class="label_values" for="uae_pickup2">No
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center mr-2">
-                                                <input type="radio" id="uae_pickup3" name="uae_pickup1" value="n/a">
+                                                <input type="radio" id="uae_pickup3" name="uae_pickup1" value="3">
                                                 <div class="label_values" for="uae_pickup3">N/A
                                                 </div>
                                             </div>
@@ -254,15 +267,83 @@ if (!isset($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                            <?php
+
+                            $query = "SELECT * FROM sales_daily_customer_informations WHERE created_by = '$user_id'";
+                            $run = mysqli_query($connection, $query);
+                            while ($x = mysqli_fetch_assoc($run)) {
+                                $uae_pickup = $x['uae_pickup'];
+                                $country_name = $x['country_name'];
+                                $customer_phone_code = $x['customer_phone_code'];
+                                $platform = $x['platform'];
+
+                            ?>
                                 <tr>
-                                    <td>Nigeria</td>
-                                    <td>1IRN TOPNET</td>
-                                    <td>+989395401832</td>
-                                    <td>Facebook</td>
-                                    <td>HP 1030 G3</td>
-                                    <td>No</td>
-                                    <td>02/21/2023 20:17</td>
+                                    <td><?php echo $country_name ?></td>
+                                    <td><?php echo $x['customer_name'] ?></td>
+                                    <td><?php echo "+ " . $customer_phone_code . " " . $x['customer_whatsapp_code'] ?></td>
+                                    <td><?php echo $platform ?></td>
+                                    <td><?php echo $x['model_selling_buying'] ?></td>
+                                    <td>
+                                        <?php if ($uae_pickup == 1) { ?>
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" checked disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php }
+                                        if ($uae_pickup == 0) { ?>
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" checked disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php }
+                                        if ($uae_pickup == 3) { ?>
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled checked name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?php echo $x['created_time']; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
