@@ -21,16 +21,16 @@ $role = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
 
-    $query = "SELECT user_id, first_name, last_name, user_name, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
+    $query = "SELECT users.emp_id AS user_emp_id, user_id, first_name, last_name, user_name, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
                     departments.department_id, departments.department_name, user_roles.role_id, user_roles.role_name 
                     FROM users 
             INNER JOIN employees ON users.emp_id = employees.emp_id
             LEFT JOIN departments ON employees.department_id = departments.department_id
             LEFT JOIN user_roles ON employees.role_id = user_roles.role_id
-            WHERE user_id = '$user_id'";
+            WHERE users.user_id = '$user_id'";
     $run = mysqli_query($connection, $query);
     while ($row = mysqli_fetch_array($run)) {
-        $user_id = $row['user_id'];
+        $user_id = $row['user_emp_id'];
         $username = $row['user_name'];
         $first_name = $row['first_name'];
         $last_name = $row['last_name'];
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class="card-text">Employee ID</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $user_id; ?>" name="first_name" readonly>
+                                <input type="text" class="w-75" value="<?php echo $user_id; ?>" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class="card-text">First Name</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $first_name ?>" name="first_name" readonly>
+                                <input type="text" class="w-75" value="<?php echo $first_name ?>" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class="card-text">Last Name</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $last_name ?>" name="last_name" readonly>
+                                <input type="text" class="w-75" value="<?php echo $last_name ?>" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class="card-text">Departmentt</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75" value="<?php echo $department ?>" name="last_name" readonly>
+                                <input type="text" class="w-75" value="<?php echo $department ?>" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class="card-text">Role</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75 text-capitalize" value="<?php echo $role ?>" name="last_name" readonly>
+                                <input type="text" class="w-75 text-capitalize" value="<?php echo $role ?>" readonly>
 
                             </div>
                         </div>
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p class="card-text">Username</p>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="w-75 text-capitalize" value="<?php echo $username; ?>" name="username" readonly>
+                                <input type="text" class="w-75 text-capitalize" value="<?php echo $username; ?>" readonly>
                             </div>
                         </div>
                         <!-- ============================================================== -->

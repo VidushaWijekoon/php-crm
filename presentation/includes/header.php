@@ -1,9 +1,9 @@
  <?php
-    require_once('../../functions/db_connection.php');
     $username = $_SESSION['username'];
     $department_id = $_SESSION['department_id'];
     $role_id = $_SESSION['role_id'];
     $user_id = $_SESSION['user_id'];
+    $log_time_id = $_SESSION['log_time_id'];
     ?>
 
  <!DOCTYPE html>
@@ -544,7 +544,7 @@
                             if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
                                  <a href="../performance/performance_inventory.php" class="nav-link">
-                                     <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
+                                     <i class="fa fa-clock nav-icon" style="font-size: 12px;"></i>
                                      <p>Performance</p>
                                  </a>
                              </li>
