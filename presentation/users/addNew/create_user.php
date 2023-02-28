@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once("../../../functions/db_connection.php");
 
 $created_by = $_SESSION['username'];
