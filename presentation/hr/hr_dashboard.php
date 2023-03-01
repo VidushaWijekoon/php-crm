@@ -21,10 +21,10 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row">
     <div class="col-12 mt-1">
-        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./create_employee.php">
+        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./create_employee">
             <i class="fa fa-plus"></i><span class="mx-1">Create New Employee</span>
         </a>
-        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="./employees.php">
+        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="./employees">
             <i class="fa-solid fa-bars"></i><span class="mx-1">All Employees</span>
         </a>
         <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="#">

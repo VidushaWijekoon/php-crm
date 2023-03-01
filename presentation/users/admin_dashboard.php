@@ -20,10 +20,10 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row">
     <div class="col-12 mt-1">
-        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./create_user.php">
+        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./create_user">
             <i class="fa fa-plus"></i><span class="mx-1">Add Users</span>
         </a>
-        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="./users.php">
+        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="./users">
             <i class="fa-solid fa-bars"></i><span class="mx-1">Disciplinary List</span>
         </a>
     </div>
