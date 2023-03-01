@@ -115,7 +115,17 @@ input[type="date"] {
     font-size: 10px;
     margin-bottom: 0px;
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
+
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./sales_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Dashbord</a>
+</div>
 
 <div class="row p-2">
     <i class="pageNameIcon fa-solid fa-shopping-cart mx-2"></i>
@@ -593,7 +603,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Graphic Brand</p>
+                        <p class="required">Graphic Brand</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown" name="graphic_type">
@@ -612,7 +622,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Graphic Capacity</p>
+                        <p class="required">Graphic Capacity</p>
 
                     </div>
                     <div class="inputSec col-9">
@@ -635,7 +645,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Charger Type</p>
+                        <p class="required">Charger Type</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown" name="charger">
@@ -654,7 +664,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Charger Watt</p>
+                        <p class="required">Charger Watt</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown" name="watt">
@@ -670,7 +680,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Charger Pin Colour</p>
+                        <p class="required">Charger Pin Colour</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown" name="pin_colour">
@@ -688,7 +698,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Condition</p>
+                        <p class="required">Condition</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown" name="condition">
@@ -710,7 +720,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Packing Type</p>
+                        <p class="required">Packing Type</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown " name="packing_type">
@@ -727,7 +737,7 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Shipping Method</p>
+                        <p class="required">Shipping Method</p>
                     </div>
                     <div class="inputSec col-9">
                         <select class="DropDown" name="shipping_method" id="shipping_method">
@@ -742,10 +752,10 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>QTY</p>
+                        <p class="required">QTY</p>
                     </div>
                     <div class="inputSec col-9">
-                        <input type="text" placeholder="Enter Listing Qty">
+                        <input type="text" id="orderQty" onchange="getTot()" placeholder="Enter Listing Qty">
                     </div>
                 </div>
             </div>
@@ -755,10 +765,10 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Unit Price</p>
+                        <p class="required">Unit Price</p>
                     </div>
                     <div class="inputSec col-9">
-                        <input type="text" placeholder="Enter Unit Price">
+                        <input type="text" id="unitPrice" onchange="getTot()" placeholder="Enter Unit Price">
                     </div>
                 </div>
             </div>
@@ -767,10 +777,10 @@ input[type="date"] {
             <div class="col-sm-12 col-lg-5">
                 <div class="row">
                     <div class="lableSec pt-2 col-3">
-                        <p>Discount</p>
+                        <p class="required">Discount</p>
                     </div>
                     <div class="inputSec col-9">
-                        <input type="text" placeholder="Enter Discount %">
+                        <input type="text" id="discount" onchange="getTot()" placeholder="Enter Discount %">
                     </div>
                 </div>
             </div>
@@ -783,7 +793,7 @@ input[type="date"] {
                         <p>Total</p>
                     </div>
                     <div class="inputSec col-9">
-                        <input type="text" placeholder="Total Price">
+                        <input type="text" id="tot" placeholder="Total Price">
                     </div>
                 </div>
             </div>
@@ -931,7 +941,7 @@ input[type="date"] {
 </div>
 
 <div class="d-flex justify-content-end">
-    <button type="submit" class="btnT mx-2 mt-3 mb-3">
+    <button type="submit" class="btnTB mx-2 mt-3 mb-3">
         Save Order
     </button>
     <button type="submit" class="btnTC mx-2 mt-3 mb-3">
@@ -1126,6 +1136,26 @@ $(function() {
     })
 
 })
+</script>
+
+<script>
+function getTot() {
+    var qty = $('#orderQty').val();
+    var x = parseInt(qty);
+
+    var unitPrice = $('#unitPrice').val();
+    var y = parseInt(unitPrice);
+
+    var discount = $('#discount').val();
+    var z = parseInt(discount);
+
+    var a = x * y;
+    var b = a * (z / 100);
+    var t = a - b;
+    console.log(t);
+
+    $('#tot').val(t);
+}
 </script>
 
 

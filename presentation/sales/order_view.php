@@ -111,7 +111,17 @@ td {
     font-size: 10px;
     margin-bottom: 0px;
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
+
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./all_orders.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Orders</a>
+</div>
 
 <div class="row p-2">
     <i class="pageNameIcon fa-solid fa-shopping-cart mx-2"></i>
