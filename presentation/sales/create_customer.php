@@ -94,15 +94,17 @@ input[type='text'] {
                     </div>
                     <div class="col-lg-8 col-sm-12 d-flex">
                         <div class="">
-                            <select name="salutation" class="DropDown w-100">
+                            <select name="salutation" id="salutation" class="DropDown w-100">
                                 <option selected value="mr">Mr</option>
                                 <option value="mrs">Mrs</option>
                                 <option value="miss">Miss</option>
                                 <option value="dr">DR</option>
                             </select>
                         </div>
-                        <div class="mx-3"><input class="w-100" type="text" placeholder="First Name" required></div>
-                        <div class=""><input class="w-100" type="text" placeholder="Last Name" required></div>
+                        <div class="mx-3"><input class="w-100" type="text" name="fName" id="fName"
+                                placeholder="First Name" required></div>
+                        <div class=""><input class="w-100" type="text" name="lName" id="lName" placeholder="Last Name"
+                                required></div>
                     </div>
                 </div>
                 <div class="row mx-2">
@@ -136,15 +138,7 @@ input[type='text'] {
                     <div class="col-sm-8">
                         <div class="">
                             <select name="resident_country" class="w-25 DropDown" required>
-                                <?php
-                                $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
-                                $result = mysqli_query($connection, $query);
 
-                                while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                <option value="<?php echo $resident_country["country_name"]; ?>">
-                                    <?php echo strtoupper($resident_country["country_name"]); ?>
-                                </option>
-                                <?php } ?>
 
                             </select>
                         </div>
@@ -157,15 +151,7 @@ input[type='text'] {
                     <div class="col-sm-8 d-flex">
                         <div class="">
                             <select name="country_code" class="w-75 DropDown">
-                                <?php
-                                $query = "SELECT phone_code FROM countries ORDER BY 'country_name' ASC";
-                                $result = mysqli_query($connection, $query);
 
-                                while ($phone_code = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                <option value="<?php echo $phone_code["phone_code"]; ?>">
-                                    <?php echo strtoupper($phone_code["phone_code"]); ?>
-                                </option>
-                                <?php } ?>
 
                             </select>
                         </div>
@@ -319,15 +305,7 @@ input[type='text'] {
                                         </div>
                                         <div class="col-sm-9">
                                             <select name="resident_country" class="w-75 DropDown">
-                                                <?php
-                                                $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
-                                                $result = mysqli_query($connection, $query);
 
-                                                while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                                <option value="<?php echo $resident_country["country_name"]; ?>">
-                                                    <?php echo strtoupper($resident_country["country_name"]); ?>
-                                                </option>
-                                                <?php } ?>
 
                                             </select>
                                         </div>
@@ -419,15 +397,7 @@ input[type='text'] {
                                         </div>
                                         <div class="col-sm-9">
                                             <select name="resident_country" class="w-75 DropDown">
-                                                <?php
-                                                $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
-                                                $result = mysqli_query($connection, $query);
 
-                                                while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                                <option value="<?php echo $resident_country["country_name"]; ?>">
-                                                    <?php echo strtoupper($resident_country["country_name"]); ?>
-                                                </option>
-                                                <?php } ?>
 
                                             </select>
                                         </div>
