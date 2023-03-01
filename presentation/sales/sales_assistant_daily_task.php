@@ -2,7 +2,6 @@
 
 ob_start();
 session_start();
-error_reporting(E_ALL & ~E_WARNING);
 require_once('../includes/header.php');
 require_once('../../functions/db_connection.php');
 
@@ -14,13 +13,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-$country_name;
-$customer_phone_code;
-$platform;
-
-echo $country_name;
-echo $customer_phone_code;
-echo $platform;
 
 ?>
 <style>
@@ -91,6 +83,36 @@ echo $platform;
         justify-content: space-between;
         gap: 5px;
     }
+
+    .pagination {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+    .page-item .active .page-link {
+        background-color: #168EB4;
+        border-color: #168EB4;
+    }
+
+    .pagination a {
+        font-weight: bold;
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        /* border: 1px solid black; */
+    }
+
+    .pagination a.active {
+        background-color: #168EB4;
+        color: #fff;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: skyblue;
+    }
 </style>
 
 <!-- <div class="row">
@@ -111,14 +133,14 @@ echo $platform;
     <div class="col-sm-12 grid-margin stretch-card justify-content-center mx-auto mt-3">
         <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active tblLable" id="custom-content-below-all-tab" data-toggle="pill" href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all" aria-selected="true">Customer Information</a>
+                <a href="#custom-content-below-create" class="nav-link active tblLable" id="custom-content-below-create-tab" data-toggle="pill" role="tab" aria-controls="custom-content-below-create" aria-selected="true">Customer Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link tblLable" id="custom-content-below-packing-tab" data-toggle="pill" href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing" aria-selected="false">Post to Customer</a>
+                <a href="#custom-content-below-posting" class="nav-link tblLable" id="custom-content-below-posting-tab" data-toggle="pill" role="tab" aria-controls="custom-content-below-posting" aria-selected="false">Post to Customer</a>
             </li>
         </ul>
         <div class="tab-content" id="custom-content-below-tabContent">
-            <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel" aria-labelledby="custom-content-below-all-tab">
+            <div class="tab-pane active" id="custom-content-below-create" role="tabpanel" aria-labelledby="custom-content-below-create-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -269,7 +291,17 @@ echo $platform;
                         <tbody>
                             <?php
 
-                            $query = "SELECT * FROM sales_daily_customer_informations WHERE created_by = '$user_id'";
+                            $per_page_record = 25;
+
+                            if (isset($_GET["page"])) {
+                                $page  = $_GET["page"];
+                            } else {
+                                $page = 1;
+                            }
+
+                            $start_from = ($page - 1) * $per_page_record;
+
+                            $query = "SELECT * FROM sales_daily_customer_informations WHERE created_by = '$user_id' LIMIT $start_from, $per_page_record ";
                             $run = mysqli_query($connection, $query);
                             while ($x = mysqli_fetch_assoc($run)) {
                                 $uae_pickup = $x['uae_pickup'];
@@ -348,12 +380,57 @@ echo $platform;
                             <?php } ?>
                         </tbody>
                     </table>
+                    <?php
+
+                    $query = "SELECT COUNT(*) FROM sales_daily_customer_informations";
+                    $rs_result = mysqli_query($connection, $query);
+                    $row = mysqli_fetch_row($rs_result);
+                    $total_records = $row[0];
+
+                    echo "</br>";
+                    // Number of pages required.   
+                    $total_pages = ceil($total_records / $per_page_record);
+                    $pagLink = "";
+
+                    ?>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?> Entries</p>
+                        </div>
+                        <div class="">
+                            <div class="pagination mb-4">
+                                <?php
+
+
+                                if ($page >= 2) {
+                                    echo "<a class='page-link' href='sales_assistant_daily_task.php?page=" . ($page - 1) . "'>  Prev </a>";
+                                }
+
+                                for ($i = 1; $i <= $total_pages; $i++) {
+
+                                    if ($i == $page) {
+                                        $pagLink .= "<a class='active'href='sales_assistant_daily_task.php?page=" . $i . "'>" . $i . " </a>";
+                                    } else {
+                                        $pagLink .= "<a class='page-item page-link' href='sales_assistant_daily_task.php?page=" . $i . "'> " . $i . " </a>";
+                                    }
+                                };
+                                echo $pagLink;
+
+                                if ($page < $total_pages) {
+                                    echo "<a class='page-link' href='sales_assistant_daily_task.php?page=" . ($page + 1) . "'>  Next </a>";
+                                }
+
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- ============================================================== -->
             <!-- Tab2  -->
             <!-- ============================================================== -->
-            <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel" aria-labelledby="custom-content-below-packing-tab">
+            <div class="tab-pane fade" id="custom-content-below-posting" role="tabpanel" aria-labelledby="custom-content-below-posting-tab">
                 <div class="row">
 
                     <div class="col-lg-6 col-sm-12">
@@ -448,141 +525,21 @@ echo $platform;
                 <div class="d-flex">
                     <p class="" style="font-size: 10px; margin-top: 5px">Please Select Country First: </p>
                     <div class="mx-1">
-                        <select name="visa_type" style="height: 24px">
-                            <option selected>--Select Country--</option>
-                            <option value="visit">USA</option>
-                            <option value="own">UK</option>
-                            <option value="company">Japan</option>
+                        <select name="country_name" id="create_customer_country" class="select2 w-75" onchange="showUser(this.value)">
+                            <?php
+                            $query = "SELECT country_name FROM sales_daily_customer_informations WHERE created_by = '$user_id' GROUP BY country_name";
+                            $result = mysqli_query($connection, $query);
+
+                            while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                <option value="<?php echo $resident_country["country_name"]; ?>">
+                                    <?php echo strtoupper($resident_country["country_name"]); ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Whatsapp Number</th>
-                                <th scope="col" style="width: 5%">Platform</th>
-                                <th scope="col">Model He Selling/ Buying</th>
-                                <th scope="col">Posted Model 1</th>
-                                <th scope="col">Posted Model 2</th>
-                                <th scope="col">Customer Asking Model</th>
-                                <th scope="col">Customer Asking Price</th>
-                                <th scope="col">He Can Pick Up From UAE?</th>
-                                <th scope="col">Posted Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody">
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                            <tr>
-                                <td>1IRN Topnet</td>
-                                <td>989395401832</td>
-                                <td>instgram</td>
-                                <td>folio</td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td>Yes</td>
-                                <td>02/18/2023</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
                 </div>
 
                 <div class="">
@@ -612,15 +569,20 @@ echo $platform;
     $(document).ready(function() {
         $("#create_customer_country").on("change", function() {
             var country_name = $("#create_customer_country").val();
-            console.log(country_name)
             var getURL = "./addNew/getphonecode.php?country_name=" + country_name;
-            console.log(getURL)
 
             $.get(getURL, function(data, status) {
                 $("#create_phone_code").html(data);
             });
         });
     });
+
+    function go2Page() {
+        var page = document.getElementById("page").value;
+        var user_id = document.getElementById("page").value;
+        page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
+        window.location.href = 'sales_assistant_daily_task.php?page=' + page;
+    }
 </script>
 
 
