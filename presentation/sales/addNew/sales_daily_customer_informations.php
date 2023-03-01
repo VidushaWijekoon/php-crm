@@ -20,6 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $query;
     $run = mysqli_query($connection, $query);
     if ($run) {
-        header("Location: ../sales_assistant_daily_task.php");
+        header("Location: ../sales_assistant_daily_task?custom-content-below-posting");
     }
 }
