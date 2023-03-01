@@ -142,6 +142,16 @@ option {
   font-size: 10px;
 }
 
+/* nav tab */
+.tabLable {
+  font-weight: 700;
+}
+
+.nav-tabs .nav-link.active {
+  color: #168eb4;
+}
+/*  */
+
 @media screen and (max-width: 1366px) {
   td {
     font-size: 10px;

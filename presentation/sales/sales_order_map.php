@@ -10,86 +10,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 ?>
-
-<div class="row">
-    <div class="col-md-5 align-self-center d-flex">
-        <i class="fa-solid fa-receipt m-2"></i>
-        <h6 style="margin-top: auto; font-weight: bold;">Road Map</h6>
-    </div>
-</div>
-
-<div class="row" style="background-color: #fff;">
-    <div class="col-md-12 col-sm-12 col-xs-12 center">
-        <section class="main-timeline-section">
-            <div class="timeline-start"></div>
-            <div class="conference-center-line"></div>
-            <div class="conference-timeline-content">
-                <div class="timeline-article timeline-article-top">
-                    <div class="content-date">
-                        <a href="">Packing</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-bottom">
-                    <div class="content-date" style="left: 0 !important;">
-                        <a href="">QC</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-top">
-                    <div class="content-date">
-                        <a href="">Cleaning</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-bottom">
-                    <div class="content-date" style="left: -15px">
-                        <a href="">Stikcer</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-top">
-                    <div class="content-date" style="left: -10px">
-                        <a href="">Paint</a>
-                    </div>
-                    <div class=" meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-bottom">
-                    <div class="content-date">
-                        <a href="">Bodywork</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-top">
-                    <div class="content-date" style="left: -6px;">
-                        <a href="">LCD</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-bottom">
-                    <div class="content-date">
-                        <a href="">Motherboard</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-top">
-                    <div class="content-date">
-                        <a href="">Prodution</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-                <div class="timeline-article timeline-article-bottom">
-                    <div class="content-date">
-                        <a href="">Inventory</a>
-                    </div>
-                    <div class="meta-date"></div>
-                </div>
-            </div>
-            <div class="timeline-end"></div>
-        </section>
-    </div>
-</div>
-
 <style>
 .main-timeline-section {
     position: relative;
@@ -195,6 +115,99 @@ if (!isset($_SESSION['user_id'])) {
         padding: 0 30px;
     }
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
+</style>
+
+
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./all_orders.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Orders</a>
+</div>
+
+<div class="row">
+    <div class="col-md-5 align-self-center d-flex">
+        <i class="fa-solid fa-receipt m-2"></i>
+        <h6 style="margin-top: auto; font-weight: bold;">Road Map</h6>
+    </div>
+</div>
+
+<div class="row" style="background-color: #fff;">
+    <div class="col-md-12 col-sm-12 col-xs-12 center">
+        <section class="main-timeline-section">
+            <div class="timeline-start"></div>
+            <div class="conference-center-line"></div>
+            <div class="conference-timeline-content">
+                <div class="timeline-article timeline-article-top">
+                    <div class="content-date">
+                        <a href="">Packing</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-bottom">
+                    <div class="content-date" style="left: 0 !important;">
+                        <a href="">QC</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-top">
+                    <div class="content-date">
+                        <a href="">Cleaning</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-bottom">
+                    <div class="content-date" style="left: -15px">
+                        <a href="">Stikcer</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-top">
+                    <div class="content-date" style="left: -10px">
+                        <a href="">Paint</a>
+                    </div>
+                    <div class=" meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-bottom">
+                    <div class="content-date">
+                        <a href="">Bodywork</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-top">
+                    <div class="content-date" style="left: -6px;">
+                        <a href="">LCD</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-bottom">
+                    <div class="content-date">
+                        <a href="">Motherboard</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-top">
+                    <div class="content-date">
+                        <a href="">Prodution</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+                <div class="timeline-article timeline-article-bottom">
+                    <div class="content-date">
+                        <a href="">Inventory</a>
+                    </div>
+                    <div class="meta-date"></div>
+                </div>
+            </div>
+            <div class="timeline-end"></div>
+        </section>
+    </div>
+</div>
+
+
 
 <?php include_once('../includes/footer.php');
 ?>

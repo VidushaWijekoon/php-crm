@@ -42,14 +42,16 @@ input[type='text'] {
     /* padding: 0px 10px; */
 }
 
-.tabLable {
-    font-weight: 700;
-}
-
-.nav-tabs .nav-link.active {
+.pageNavigation a {
     color: #168EB4;
+    font-weight: 600;
 }
 </style>
+
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./sales_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Dashbord</a>
+</div>
 
 
 <div class="p-2 card card-primary card-outline">
@@ -557,9 +559,9 @@ input[type='text'] {
                         </div>
                     </div>
                     <hr>
-                    <div class="mb-3 text-center">
-                        <button class="btnTB w-25">Submit</button>
-                        <button class="btnT w-25">Cancel</button>
+                    <div class="mb-3 float-right">
+                        <button class="btnTB ">Create Customer</button>
+                        <button class="btnTC">Cancel</button>
                     </div>
                 </div>
 
