@@ -16,116 +16,78 @@ $user_id = $_SESSION['user_id'];
 
 ?>
 <style>
-a:link {
-    color: #0c2e5b;
-}
+    a:link {
+        color: #0c2e5b;
+    }
 
-thead th {
-    color: #168EB4;
-}
+    thead th {
+        color: #168EB4;
+    }
 
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.tblLable {
-    font-weight: 700;
-    /* color: #0c2e5b; */
-}
+    .tblLable {
+        font-weight: 700;
+        /* color: #0c2e5b; */
+    }
 
-.nav-tabs .nav-link.active {
-    color: #919EAB !important;
-}
+    .nav-tabs .nav-link.active {
+        color: #919EAB !important;
+    }
 
-input {
-    height: 22px;
-}
+    input {
+        height: 22px;
+    }
 
-.DropDown {
-    height: 24px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    /* padding: 0px 10px; */
-}
+    .DropDown {
+        height: 24px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        /* padding: 0px 10px; */
+    }
 
-.select2-container--default .select2-results__option--highlighted {
-    background-color: #3498db;
-    /* font-size: 10px; */
-}
+    .select2-container--default .select2-results__option--highlighted {
+        background-color: #3498db;
+        /* font-size: 10px; */
+    }
 
-.select2-container .select2-selection--single .select2-selection__rendered {
-    font-size: 10px;
-}
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        font-size: 10px;
+    }
 
-.select2-container--default .select2-selection--single {
-    border: 1px solid #D1CDCD;
-}
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #D1CDCD;
+    }
 
-.select2-selection__rendered {
-    line-height: 14px !important;
-    padding-left: 0px !important;
-}
+    .select2-selection__rendered {
+        line-height: 14px !important;
+        padding-left: 0px !important;
+    }
 
-.select2-container .select2-selection--single {
-    height: 24px;
-}
+    .select2-container .select2-selection--single {
+        height: 24px;
+    }
 
-<<<<<<< HEAD
     .watsappField {
         display: flex;
         justify-content: space-between;
         gap: 5px;
     }
 
-    .pagination {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
     }
-
-    .page-item .active .page-link {
-        background-color: #168EB4;
-        border-color: #168EB4;
-    }
-
-    .pagination a {
-        font-weight: bold;
-        color: black;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        /* border: 1px solid black; */
-    }
-
-    .pagination a.active {
-        background-color: #168EB4;
-        color: #fff;
-    }
-
-    .pagination a:hover:not(.active) {
-        background-color: skyblue;
-    }
-=======
-.watsappField {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-}
-
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
->>>>>>> 6f1573616857edc964ef8c81e64f2652f278e440
 </style>
 
 <!-- <div class="row">
@@ -151,30 +113,14 @@ input {
     <div class="col-sm-12 grid-margin stretch-card justify-content-center mx-auto mt-3">
         <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
             <li class="nav-item">
-<<<<<<< HEAD
-                <a href="#custom-content-below-create" class="nav-link active tblLable" id="custom-content-below-create-tab" data-toggle="pill" role="tab" aria-controls="custom-content-below-create" aria-selected="true">Customer Information</a>
+                <a class="nav-link active tblLable" id="custom-content-below-all-tab" data-toggle="pill" href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all" aria-selected="true">Customer Information</a>
             </li>
             <li class="nav-item">
-                <a href="#custom-content-below-posting" class="nav-link tblLable" id="custom-content-below-posting-tab" data-toggle="pill" role="tab" aria-controls="custom-content-below-posting" aria-selected="false">Post to Customer</a>
+                <a class="nav-link tblLable" id="custom-content-below-packing-tab" data-toggle="pill" href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing" aria-selected="false">Post to Customer</a>
             </li>
         </ul>
         <div class="tab-content" id="custom-content-below-tabContent">
-            <div class="tab-pane active" id="custom-content-below-create" role="tabpanel" aria-labelledby="custom-content-below-create-tab">
-=======
-                <a class="nav-link active tblLable" id="custom-content-below-all-tab" data-toggle="pill"
-                    href="#custom-content-below-all" role="tab" aria-controls="custom-content-below-all"
-                    aria-selected="true">Customer Information</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link tblLable" id="custom-content-below-packing-tab" data-toggle="pill"
-                    href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing"
-                    aria-selected="false">Post to Customer</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="custom-content-below-tabContent">
-            <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel"
-                aria-labelledby="custom-content-below-all-tab">
->>>>>>> 6f1573616857edc964ef8c81e64f2652f278e440
+            <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel" aria-labelledby="custom-content-below-all-tab">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -193,22 +139,16 @@ input {
                                 <td>Facebook</td>
                                 <td>
                                     <div style="display: grid">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 1"
-                                            name="search_keyword_1">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 2"
-                                            name="search_keyword_2">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 3"
-                                            name="search_keyword_3">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 4"
-                                            name="search_keyword_4">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 5"
-                                            name="search_keyword_5">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 1" name="search_keyword_1">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 2" name="search_keyword_2">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 3" name="search_keyword_3">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 4" name="search_keyword_4">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 5" name="search_keyword_5">
                                     </div>
 
                                 </td>
                                 <td>
-                                    <div class=""
-                                        style="display: flex; justify-content: center; align-items: center; height: 100px; font-size: 75px; font-weight: bold;">
+                                    <div class="" style="display: flex; justify-content: center; align-items: center; height: 100px; font-size: 75px; font-weight: bold;">
                                         5
                                     </div>
                                 </td>
@@ -241,16 +181,15 @@ input {
                                             $result = mysqli_query($connection, $query);
 
                                             while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                            <option value="<?php echo $resident_country["country_name"]; ?>">
-                                                <?php echo strtoupper($resident_country["country_name"]); ?>
-                                            </option>
+                                                <option value="<?php echo $resident_country["country_name"]; ?>">
+                                                    <?php echo strtoupper($resident_country["country_name"]); ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
                                     </td>
                                     <td>
                                         <div class="watsappField">
-                                            <select name="phone_code" class="w-25" id="create_phone_code"
-                                                style="border-radius: 5px;" required>
+                                            <select name="phone_code" class="w-25" id="create_phone_code" style="border-radius: 5px;" required>
                                             </select>
                                             <input type="text" class="w-100" name="whatsappnumber">
                                         </div>
@@ -303,8 +242,7 @@ input {
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="submit" name="add_customer"
-                                            style="background: transparent; border:none;">
+                                        <button type="submit" name="add_customer" style="background: transparent; border:none;">
                                             <i class="fa-solid fa-circle-plus fa-2x text-primary"></i>
                                         </button>
                                     </td>
@@ -352,76 +290,73 @@ input {
                                 $platform = $x['platform'];
 
                             ?>
-                            <tr>
-                                <td><?php echo $country_name ?></td>
-                                <td><?php echo $x['customer_name'] ?></td>
-                                <td><?php echo "+ " . $customer_phone_code . " " . $x['customer_whatsapp_code'] ?></td>
-                                <td><?php echo $platform ?></td>
-                                <td><?php echo $x['model_selling_buying'] ?></td>
-                                <td>
-                                    <?php if ($uae_pickup == 1) { ?>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" checked disabled name="uae_pickup1"
-                                                value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes
+                                <tr>
+                                    <td><?php echo $country_name ?></td>
+                                    <td><?php echo $x['customer_name'] ?></td>
+                                    <td><?php echo "+ " . $customer_phone_code . " " . $x['customer_whatsapp_code'] ?></td>
+                                    <td><?php echo $platform ?></td>
+                                    <td><?php echo $x['model_selling_buying'] ?></td>
+                                    <td>
+                                        <?php if ($uae_pickup == 1) { ?>
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" checked disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
-                                            <div class="label_values" for="uae_pickup2">No
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php }
+                                        <?php }
                                         if ($uae_pickup == 0) { ?>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" checked disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup2" checked disabled name="uae_pickup1"
-                                                value="0">
-                                            <div class="label_values" for="uae_pickup2">No
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php }
+                                        <?php }
                                         if ($uae_pickup == 3) { ?>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled checked name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
-                                            <div class="label_values" for="uae_pickup2">No
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup3" disabled checked name="uae_pickup1"
-                                                value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php } ?>
-                                </td>
-                                <td><?php echo $x['created_time']; ?></td>
-                            </tr>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?php echo $x['created_time']; ?></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -475,147 +410,125 @@ input {
             <!-- ============================================================== -->
             <!-- Tab2  -->
             <!-- ============================================================== -->
-<<<<<<< HEAD
-            <div class="tab-pane fade" id="custom-content-below-posting" role="tabpanel" aria-labelledby="custom-content-below-posting-tab">
-=======
-            <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel"
-                aria-labelledby="custom-content-below-packing-tab">
->>>>>>> 6f1573616857edc964ef8c81e64f2652f278e440
-                <div class="row">
+            <<<<<<< HEAD <div class="tab-pane fade" id="custom-content-below-posting" role="tabpanel" aria-labelledby="custom-content-below-posting-tab">
+                =======
+                <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel" aria-labelledby="custom-content-below-packing-tab">
+                    >>>>>>> 6f1573616857edc964ef8c81e64f2652f278e440
+                    <div class="row">
 
-                    <div class="col-lg-6 col-sm-12">
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Day</th>
-                                    <th scope="col">Morning
-                                        9.00A.M-2.00P.M</th>
-                                    <th scope="col">Afternoon
-                                        3.00A.M-6.15P.M</th>
-                                    <th scope="col">
-                                        Evening
-                                        6.45A.M-9.00P.M
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Monday</td>
-                                    <td>
-                                        <div>
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-danger p-1">Please Follow the Order</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="col-lg-6 col-sm-12">
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Day</th>
+                                        <th scope="col">Morning
+                                            9.00A.M-2.00P.M</th>
+                                        <th scope="col">Afternoon
+                                            3.00A.M-6.15P.M</th>
+                                        <th scope="col">
+                                            Evening
+                                            6.45A.M-9.00P.M
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Monday</td>
+                                        <td>
+                                            <div>
+                                                <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                                <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                                <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                                <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                                <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                                <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                                <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                                <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                                <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger p-1">Please Follow the Order</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Platform</th>
+                                        <th scope="col">Morning
+                                            9.00A.M-2.00P.M</th>
+                                        <th scope="col">Afternoon
+                                            3.00A.M-6.15P.M</th>
+                                        <th scope="col">
+                                            Evening
+                                            6.45A.M-9.00P.M
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Facebook
+                                        </td>
+                                        <td>
+                                            <div style="display: grid">
+                                                <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                                <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                                <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                                <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                                <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display: grid">
+                                                <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                                <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                                <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                                <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                                <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-danger p-1">Please Follow the Order</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Platform</th>
-                                    <th scope="col">Morning
-                                        9.00A.M-2.00P.M</th>
-                                    <th scope="col">Afternoon
-                                        3.00A.M-6.15P.M</th>
-                                    <th scope="col">
-                                        Evening
-                                        6.45A.M-9.00P.M
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Facebook
-                                    </td>
-                                    <td>
-                                        <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-danger p-1">Please Follow the Order</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <p class="" style="font-size: 10px; margin-top: 5px">Please Select Country First: </p>
-                    <div class="mx-1">
-                        <select name="country_name" id="create_customer_country" class="select2 w-75" onchange="showUser(this.value)">
-                            <?php
-                            $query = "SELECT country_name FROM sales_daily_customer_informations WHERE created_by = '$user_id' GROUP BY country_name";
-                            $result = mysqli_query($connection, $query);
+                    <div class="d-flex">
+                        <p class="" style="font-size: 10px; margin-top: 5px">Please Select Country First: </p>
+                        <div class="mx-1">
+                            <select name="country_name" id="create_customer_country" class="select2 w-75" onchange="showUser(this.value)">
+                                <?php
+                                $query = "SELECT country_name FROM sales_daily_customer_informations WHERE created_by = '$user_id' GROUP BY country_name";
+                                $result = mysqli_query($connection, $query);
 
-                            while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                <option value="<?php echo $resident_country["country_name"]; ?>">
-                                    <?php echo strtoupper($resident_country["country_name"]); ?>
-                                </option>
-                            <?php } ?>
-                        </select>
+                                while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                    <option value="<?php echo $resident_country["country_name"]; ?>">
+                                        <?php echo strtoupper($resident_country["country_name"]); ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+
+                    </div>
+
+                    <div class="">
+                        <button class="btnT float-right mt-3 mb-4 w-25">Submit</button>
                     </div>
                 </div>
-                <div class="table-responsive">
-
-                </div>
-
-                <div class="">
-                    <button class="btnT float-right mt-3 mb-4 w-25">Submit</button>
-                </div>
-            </div>
 
         </div>
     </div>
@@ -625,46 +538,32 @@ input {
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
 <script>
-$(function() {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+    $(function() {
+                //Initialize Select2 Elements
+                $('.select2').select2()
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
-    })
+                //Initialize Select2 Elements
+                $('.select2bs4').select2({
+                    theme: 'bootstrap4'
+                })
 
-<<<<<<< HEAD
-    $(document).ready(function() {
-        $("#create_customer_country").on("change", function() {
-            var country_name = $("#create_customer_country").val();
-            var getURL = "./addNew/getphonecode.php?country_name=" + country_name;
-=======
-})
->>>>>>> 6f1573616857edc964ef8c81e64f2652f278e440
+                $(document).ready(function() {
+                            $("#create_customer_country").on("change", function() {
+                                        var country_name = $("#create_customer_country").val();
+                                        var getURL = "./addNew/getphonecode.php?country_name=" + country_name;
 
-$(document).ready(function() {
-    $("#create_customer_country").on("change", function() {
-        var country_name = $("#create_customer_country").val();
-        console.log(country_name)
-        var getURL = "./addNew/getphonecode.php?country_name=" + country_name;
-        console.log(getURL)
+                                        $(document).ready(function() {
+                                            $("#create_customer_country").on("change", function() {
+                                                var country_name = $("#create_customer_country").val();
+                                                console.log(country_name)
+                                                var getURL = "./addNew/getphonecode.php?country_name=" + country_name;
+                                                console.log(getURL)
 
-        $.get(getURL, function(data, status) {
-            $("#create_phone_code").html(data);
-        });
-    });
-<<<<<<< HEAD
-
-    function go2Page() {
-        var page = document.getElementById("page").value;
-        var user_id = document.getElementById("page").value;
-        page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
-        window.location.href = 'sales_assistant_daily_task.php?page=' + page;
-    }
-=======
-});
->>>>>>> 6f1573616857edc964ef8c81e64f2652f278e440
+                                                $.get(getURL, function(data, status) {
+                                                    $("#create_phone_code").html(data);
+                                                });
+                                            });
+                                        });
 </script>
 
 
