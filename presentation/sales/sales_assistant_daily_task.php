@@ -78,6 +78,11 @@ input {
     justify-content: space-between;
     gap: 5px;
 }
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
 
 <!-- <div class="row">
@@ -86,6 +91,11 @@ input {
         <h6 class="" style="margin-top: auto; font-weight: bold;">Daily Sales Person Task</h6>
     </div>
 </div> -->
+
+<div class="row pageNavigation pt-2 pl-2">
+    <a href="./sales_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+        Dashbord</a>
+</div>
 <div class="row pl-4 pt-2">
     <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
     <h6 class="pageName">Daily Sales Person Task</h6>
