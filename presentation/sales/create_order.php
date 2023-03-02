@@ -3,6 +3,8 @@
 ob_start();
 session_start();
 require_once('../includes/header.php');
+require_once("../../functions/db_connection.php");
+
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
@@ -12,114 +14,114 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <style>
-.select2-selection__rendered {
-    line-height: 17px !important;
-    padding-left: 0px !important;
-}
+    .select2-selection__rendered {
+        line-height: 17px !important;
+        padding-left: 0px !important;
+    }
 
-.select2 {
-    /* width: 100%; */
-    font-size: 10px;
-}
+    .select2 {
+        /* width: 100%; */
+        font-size: 10px;
+    }
 
-.select2 option {
-    /* width: 100%; */
-    font-size: 10px;
-}
+    .select2 option {
+        /* width: 100%; */
+        font-size: 10px;
+    }
 
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
 
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.ecomOrderFormSec {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .ecomOrderFormSec {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-}
+    }
 
-.cardContainer {
-    width: 99%;
-    background-color: #ffffff;
-    padding: 10px 5px;
-}
+    .cardContainer {
+        width: 99%;
+        background-color: #ffffff;
+        padding: 10px 5px;
+    }
 
-.createListingHeading {
-    font-weight: 600;
-    font-size: 20px;
-}
+    .createListingHeading {
+        font-weight: 600;
+        font-size: 20px;
+    }
 
-.sectionUnderline {
-    border-top: 2px solid #DBDBDB;
-    margin-top: 0px;
-}
+    .sectionUnderline {
+        border-top: 2px solid #DBDBDB;
+        margin-top: 0px;
+    }
 
-.formSec {
-    padding: 0px 20px;
-}
+    .formSec {
+        padding: 0px 20px;
+    }
 
-.platformes {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+    .platformes {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 
-.DropDown {
-    height: 30px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    font-size: 10px;
-    /* padding: 0px 10px; */
-}
+    .DropDown {
+        height: 30px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        font-size: 10px;
+        /* padding: 0px 10px; */
+    }
 
-.lableSec {
-    font-weight: 500;
-    font-size: 12px;
-}
+    .lableSec {
+        font-weight: 500;
+        font-size: 12px;
+    }
 
-input[type="text"] {
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    width: 100%;
-    font-size: 10px;
-}
+    input[type="text"] {
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        width: 100%;
+        font-size: 10px;
+    }
 
-input[type="date"] {
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    width: 100%;
-    font-size: 10px;
-}
+    input[type="date"] {
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        width: 100%;
+        font-size: 10px;
+    }
 
-.required:after {
-    content: " *";
-    color: red;
-}
+    .required:after {
+        content: " *";
+        color: red;
+    }
 
-.addressSec p {
-    font-size: 10px;
-    margin-bottom: 0px;
-}
+    .addressSec p {
+        font-size: 10px;
+        margin-bottom: 0px;
+    }
 
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -140,8 +142,21 @@ input[type="date"] {
             </div>
             <div class="col-sm-9">
                 <div class="">
-                    <select class="select2 w-75" name="visa_type" id="">
-                        <option selected>Select Customer</option>
+                    <select class="select2 w-75" name="visa_type" id="" onchange="showUser(this.value)">
+                        <?php
+                        $query = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations";
+                        $result = mysqli_query($connection, $query);
+
+                        while ($xd = mysqli_fetch_array($result, MYSQLI_ASSOC))
+
+                            $customer_first_name = $xd['customer_fname'];
+                        $customer_id = $xd['customer_id'];
+                        $customer_last_name = $xd['customer_lname']; {
+                        ?>
+                            <option value="<?php echo $customer_id; ?>">
+                                <?php echo ucfirst($customer_first_name . '' . $customer_last_name); ?>
+                            </option>
+                        <?php } ?>
 
                     </select>
                 </div>
@@ -316,8 +331,7 @@ input[type="date"] {
                     <p class="required">Brand</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown select2" aria-label="Default select example" name="brand" id="brand"
-                        required>
+                    <select class="DropDown select2" aria-label="Default select example" name="brand" id="brand" required>
                         <option value="" selected>--Select brand--</option>
 
                     </select>
@@ -348,8 +362,7 @@ input[type="date"] {
                     <p class="required">Processor</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select class="DropDown select2" aria-label="Default select example" name="processor" id="processor"
-                        required>
+                    <select class="DropDown select2" aria-label="Default select example" name="processor" id="processor" required>
                         <option value="" selected>--Select Processor--</option>
 
                     </select>
@@ -703,12 +716,10 @@ input[type="date"] {
                     <div class="inputSec col-9">
                         <select class="DropDown" name="condition">
                             <option selected="">--Select Condition--</option>
-                            <option value="fully refurbished"
-                                title="A B C D Painting, LCD No Scratch, Battery Health 80%">
+                            <option value="fully refurbished" title="A B C D Painting, LCD No Scratch, Battery Health 80%">
                                 Fully Refurbished-A B C D Painting, LCD No Scratch, Battery Health
                                 80%</option>
-                            <option value="a grade"
-                                title="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%">
+                            <option value="a grade" title="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%">
                                 A Grade-A B C D Small Scratch, No Dent, LCD Small Scratch, Battery
                                 Health 60%</option>
                         </select>
@@ -914,8 +925,7 @@ input[type="date"] {
 <div class="row">
     <div class="col-sm-6 mt-4 mb-3 px-3">
         <p>Customer Note</p>
-        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Customer Note"
-            name="note"></textarea>
+        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Customer Note" name="note"></textarea>
     </div>
     <div class="col-sm-6" style="background-color:#3494b333;">
         <div class="d-flex justify-content-between">
@@ -935,8 +945,7 @@ input[type="date"] {
 <div class="row">
     <div class="col-sm-6 mt-4 mb-3 px-3">
         <p>Term and Conditions</p>
-        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Term and Condition"
-            name="note"></textarea>
+        <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="Term and Condition" name="note"></textarea>
     </div>
 </div>
 
@@ -973,8 +982,7 @@ input[type="date"] {
                             <label class="col-sm-4 col-form-label">Country/
                                 Region</label>
                             <div class="col-sm-8 d-flex">
-                                <select name="shipping_country" class="info_select w-100 select2"
-                                    style="border-radius: 5px;width: 100%;"">
+                                <select name="shipping_country" class="info_select w-100 select2" style="border-radius: 5px;width: 100%;"">
                                         <?php
                                         $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
                                         $result = mysqli_query($connection, $query);
@@ -983,7 +991,7 @@ input[type="date"] {
                                 <option value=" <?php echo $resident_country["country_name"]; ?>">
                                     <?php echo strtoupper($resident_country["country_name"]); ?>
                                     </option>
-                                    <?php } ?>
+                                <?php } ?>
 
                                 </select>
                             </div>
@@ -991,14 +999,12 @@ input[type="date"] {
                         <div class=" row">
                             <label class="col-sm-4 col-form-label">Address</label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                    name="shipping_address_1" style="width: 100%;"></textarea>
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1" name="shipping_address_1" style="width: 100%;"></textarea>
 
                             </div>
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3" placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -1058,16 +1064,15 @@ input[type="date"] {
                             <label class="col-sm-4  col-form-label">Country/
                                 Region</label>
                             <div class="col-sm-8 d-flex">
-                                <select name="shipping_country" class="info_select select2"
-                                    style="border-radius: 5px; width: 100%;">
+                                <select name="shipping_country" class="info_select select2" style="border-radius: 5px; width: 100%;">
                                     <?php
                                     $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
                                     $result = mysqli_query($connection, $query);
 
                                     while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                    <option value="<?php echo $resident_country["country_name"]; ?>">
-                                        <?php echo strtoupper($resident_country["country_name"]); ?>
-                                    </option>
+                                        <option value="<?php echo $resident_country["country_name"]; ?>">
+                                            <?php echo strtoupper($resident_country["country_name"]); ?>
+                                        </option>
                                     <?php } ?>
 
                                 </select>
@@ -1076,14 +1081,12 @@ input[type="date"] {
                         <div class="row">
                             <label class="col-sm-4 col-form-label">Address</label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1"
-                                    name="shipping_address_1" style="width: 100%;"></textarea>
+                                <textarea class="" id="exampleFormControlTextarea1" rows="3" placeholder="Street 1" name="shipping_address_1" style="width: 100%;"></textarea>
 
                             </div>
                             <label class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-8 d-flex">
-                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
+                                <textarea class=" mt-2 mb-2" id="exampleFormControlTextarea1" rows="3" placeholder="Street 2" name="shipping_address_2" style="width: 100%;"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -1126,41 +1129,54 @@ input[type="date"] {
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 <script>
-$(function() {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
     })
 
-})
-</script>
+    function getTot() {
+        var qty = $('#orderQty').val();
+        var x = parseInt(qty);
 
-<script>
-function getTot() {
-    var qty = $('#orderQty').val();
-    var x = parseInt(qty);
+        var unitPrice = $('#unitPrice').val();
+        var y = parseInt(unitPrice);
 
-    var unitPrice = $('#unitPrice').val();
-    var y = parseInt(unitPrice);
+        var discount = $('#discount').val();
+        var z = parseInt(discount);
 
-    var discount = $('#discount').val();
-    var z = parseInt(discount);
+        var a = x * y;
+        var b = a * (z / 100);
+        var t = a - b;
+        console.log(t);
 
-    var a = x * y;
-    var b = a * (z / 100);
-    var t = a - b;
-    console.log(t);
+        $('#tot').val(t);
+    }
 
-    $('#tot').val(t);
-}
+    function showUser(str) {
+        if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            console.log(xmlhttp)
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "session_set.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    }
 </script>
 
 
 
 
 <?php require_once('../includes/footer.php'); ?>
-
-

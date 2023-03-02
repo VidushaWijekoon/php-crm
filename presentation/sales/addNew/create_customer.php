@@ -2,9 +2,12 @@
 session_start();
 require_once("../../../functions/db_connection.php");
 
-$created_by = $_SESSION['username'];
+$created_by = $_SESSION['user_id'];
+
+$errors = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $cutomer_type = mysqli_real_escape_string($connection, $_POST['cutomer_type']);
     $salutation = mysqli_real_escape_string($connection, $_POST['salutation']);
     $customer_fname = mysqli_real_escape_string($connection, $_POST['customer_fname']);
@@ -47,4 +50,105 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact_work_phone_number = mysqli_real_escape_string($connection, $_POST['contact_work_phone_number']);
     $contact_mobile_number = mysqli_real_escape_string($connection, $_POST['contact_mobile_number']);
     $remarks = mysqli_real_escape_string($connection, $_POST['remarks']);
+
+    $query = "INSERT INTO sales_customer_infomations(
+        cutomer_type,
+        salutation,
+        customer_fname,
+        customer_lname,
+        company_name,
+        display_name,
+        customer_email,
+        resident_country,
+        country_code,
+        country_number,
+        whatsapp_code,
+        whatsapp_number,
+        currency,
+        language,
+        payment_terms,
+        facebook,
+        instagram,
+        billing_attention,
+        billing_country,
+        billing_address1,
+        billing_address2,
+        billing_city,
+        billing_state,
+        billing_zip_code,
+        billing_phone,
+        billing_fax,
+        shipping_attention,
+        shipping_country,
+        shipping_address1,
+        shipping_address2,
+        shipping_city,
+        shipping_state,
+        shipping_zip_code,
+        shipping_phone,
+        shipping_fax,
+        contact_salutation,
+        contact_fist_name,
+        contact_last_name,
+        contact_email,
+        contact_work_phone_number,
+        contact_mobile_number,
+        remarks,
+        created_time,
+        created_by
+    )VALUES(
+        '$cutomer_type',
+        '$salutation',
+        '$customer_fname',
+        '$customer_lname',
+        '$company_name',
+        '$display_name',
+        '$customer_email',
+        '$resident_country',
+        '$country_code',
+        '$country_number',
+        '$whatsapp_code',
+        '$whatsapp_number',
+        '$whatsapp_number',
+        '$currency',
+        '$language',
+        '$payment_terms',
+        '$facebook',
+        '$instagram',
+        '$billing_attention',
+        '$billing_country',
+        '$billing_address1',
+        '$billing_address2',
+        '$billing_city',
+        '$billing_state',
+        '$billing_zip_code',
+        '$billing_phone',
+        '$billing_fax',
+        '$shipping_attention',
+        '$shipping_country'
+        '$shipping_address1',
+        '$shipping_address2',
+        '$shipping_city',
+        '$shipping_state',
+        '$shipping_zip_code',
+        '$shipping_phone',
+        '$shipping_fax',
+        '$contact_salutation',
+        '$contact_fist_name',
+        '$contact_last_name',
+        '$contact_email',
+        '$contact_work_phone_number',
+        '$contact_mobile_number',
+        '$remarks',
+        now(),
+        '$created_by'
+    )";
+
+
+    $run = mysqli_query($connection, $query);
+    if ($run) {
+        header("Location: ../all_customers");
+    } else {
+        echo "Record Add Failed";
+    }
 }
