@@ -28,6 +28,10 @@ body {
   color: var(--regular-black) !important;
 }
 
+p{
+  margin-bottom: 0px;
+}
+
 .main-sidebar {
   background-color: var(--heavy-blue) !important;
   color: var(--regular-white) !important;
@@ -155,11 +159,11 @@ option {
 @media screen and (max-width: 1366px) {
   td {
     font-size: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
   thead {
     font-size: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #168eb4;
   }
   .nav-link {
@@ -180,11 +184,11 @@ option {
 @media (min-width: 1920px) and (max-width: 2560px) {
   td {
     font-size: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
   thead {
     font-size: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #168eb4;
   }
   .nav-link {
