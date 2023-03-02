@@ -113,7 +113,7 @@ $user_id = $_GET['user_id'];
                 </table>
                 <?php
 
-                $query = "SELECT COUNT(*) FROM users_logged_in_time";
+                $query = "SELECT COUNT(*) FROM users_logged_in_time WHERE user_id = '$user_id'";
                 $rs_result = mysqli_query($connection, $query);
                 $row = mysqli_fetch_row($rs_result);
                 $total_records = $row[0];

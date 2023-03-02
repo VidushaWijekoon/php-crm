@@ -164,7 +164,7 @@
                                      </li>
 
                                      <li class="nav-item">
-                                         <a href="../sales/sales_assistant_daily_task" class="nav-link">
+                                         <a href="../sales/daily_create_customer" class="nav-link">
                                              <i class="fa-solid fa-list nav-icon" style="font-size: 12px;"></i>
                                              <p>Daily Task</p>
                                          </a>
