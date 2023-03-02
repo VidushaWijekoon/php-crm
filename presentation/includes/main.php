@@ -14,7 +14,8 @@ if (!isset($_SESSION['user_id'])) {
 <?php
 
 $msg = date('d/m/Y h:i:s');
-echo $msg;
+echo $msg . "<br>";
+
 
 ?>
 
@@ -42,6 +43,5 @@ echo $msg;
         }, 1000);
     });
 </script>
-
 
 <?php require_once('./footer.php'); ?>

@@ -259,15 +259,15 @@ if (!isset($_SESSION['user_id'])) {
                                         <select name="payment_terms" class="w-25 DropDown" required>
                                             <option value="" selected="">--Select Payment Terms--
                                             </option>
-                                            <option value="net 15">Net 15</option>
-                                            <option value="net 30">Net 30</option>
-                                            <option value="net 45">Net 45</option>
-                                            <option value="net 60">Net 60</option>
-                                            <option value="due end of the month">Due end of the
+                                            <option value="1">Net 15</option>
+                                            <option value="2">Net 30</option>
+                                            <option value="3">Net 45</option>
+                                            <option value="4">Net 60</option>
+                                            <option value="5">Due end of the
                                                 month</option>
-                                            <option value="duo end the the next month">Due end
+                                            <option value="6">Due end
                                                 of the next month</option>
-                                            <option value="due on receipt">Due on Receipt
+                                            <option value="7">Due on Receipt
                                             </option>
                                         </select>
                                     </div>
