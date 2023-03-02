@@ -629,3 +629,5 @@ function go2Page() {
     window.location.href = 'users.php?page=' + page;
 }
 </script>
+
+<?php require_once('../includes/footer.php'); ?>
