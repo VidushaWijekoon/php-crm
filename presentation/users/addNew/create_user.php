@@ -4,7 +4,7 @@ require_once("../../../functions/db_connection.php");
 
 $created_by = $_SESSION['username'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['create_user'])) {
     $emp_id = mysqli_real_escape_string($connection, $_POST['emp_id']);
     $department = mysqli_real_escape_string($connection, $_POST['department']);
     $role = mysqli_real_escape_string($connection, $_POST['role']);

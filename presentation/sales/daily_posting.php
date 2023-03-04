@@ -12,18 +12,18 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$choose_country = null;
 $load_country = $_GET['choose_country'];
 
 if (isset($_POST['country_name'])) {
     $choose_country = mysqli_real_escape_string($connection, $_POST['customer_country_name']);
-    header("Location: daily_customer_posting?choose_country=$choose_country");
+    header("Location: daily_posting?choose_country=$choose_country");
 }
 
 if (isset($_POST['create_post'])) {
     $id = mysqli_real_escape_string($connection, $_POST['id']);
     $post_model_1 = mysqli_real_escape_string($connection, $_POST['post_model_1']);
     $post_model_2 = mysqli_real_escape_string($connection, $_POST['post_model_2']);
-    echo $post_model_2;
     $model = mysqli_real_escape_string($connection, $_POST['model']);
     $price = mysqli_real_escape_string($connection, $_POST['price']);
     $uae_pickup1 = mysqli_real_escape_string($connection, $_POST['uae_pickup1']);
@@ -34,7 +34,7 @@ if (isset($_POST['create_post'])) {
     echo $query1;
     $run = mysqli_query($connection, $query1);
     if ($run) {
-        header("Location: daily_customer_posting?choose_country=$load_country");
+        header("Location: daily_posting?choose_country=$load_country");
     } else {
         echo "Sorry not updated ";
     }
@@ -168,7 +168,7 @@ if (isset($_POST['create_post'])) {
                 <a class="nav-link" aria-current="page" href="./daily_create_customer.php">Create Customer Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="./daily_customer_post">Create Daily Posting</a>
+                <a class="nav-link active" href="./daily_posting">Create Daily Posting</a>
             </li>
         </ul>
 
@@ -311,15 +311,13 @@ if (isset($_POST['create_post'])) {
 
                     <?php
 
-
-
                     $per_page_record = 100;
                     $post_model_1 = null;
                     $post_model_2 = null;
                     $customer_asking_model = null;
                     $customer_asking_price = null;
-                    $uae_pickup1 = 0;
-                    $updated_time = 0;
+                    $uae_pickup1 = null;
+                    $updated_time = null;
 
                     if (isset($_GET["page"])) {
                         $page  = $_GET["page"];
@@ -438,27 +436,83 @@ if (isset($_POST['create_post'])) {
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" name="uae_pickup1" value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes</div>
+                                    <?php if (($x <= '-7') || ($uae_pickup1 == null)) { ?>
+                                        <div class="d-flex">
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input type="radio" id="uae_pickup1" name="uae_pickup1" value="1">
+                                                <div class="label_values" for="uae_pickup1">Yes</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioRed' type="radio" id="uae_pickup2" name="uae_pickup1" value="0">
+                                                <div class="label_values" for="uae_pickup2">No</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioYellow' type="radio" id="uae_pickup3" name="uae_pickup1" value="3">
+                                                <div class="label_values" for="uae_pickup3">N/A</div>
+                                            </div>
                                         </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input class='radioRed' type="radio" id="uae_pickup2" name="uae_pickup1" value="0">
-                                            <div class="label_values" for="uae_pickup2">No</div>
+                                    <?php }
+                                    if (($x <= '-7') || ($uae_pickup1 == 1)) { ?>
+                                        <div class="d-flex">
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input type="radio" id="uae_pickup1" name="uae_pickup1" value="1" checked disabled>
+                                                <div class="label_values" for="uae_pickup1">Yes</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioRed' type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                <div class="label_values" for="uae_pickup2">No</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioYellow' type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                <div class="label_values" for="uae_pickup3">N/A</div>
+                                            </div>
                                         </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input class='radioYellow' type="radio" id="uae_pickup3" name="uae_pickup1" value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A</div>
+                                    <?php }
+                                    if (($x <= '-7') || ($uae_pickup1 == 0)) { ?>
+                                        <div class="d-flex">
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input type="radio" id="uae_pickup1" name="uae_pickup1" value="1" disabled>
+                                                <div class="label_values" for="uae_pickup1">Yes</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioRed' type="radio" id="uae_pickup2" checked disabled name="uae_pickup1" value="0">
+                                                <div class="label_values" for="uae_pickup2">No</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioYellow' type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                <div class="label_values" for="uae_pickup3">N/A</div>
+                                            </div>
                                         </div>
-                                    </div>
-
+                                    <?php }
+                                    if (($x <= '-7') || ($uae_pickup1 == 3)) { ?>
+                                        <div class="d-flex">
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input type="radio" id="uae_pickup1" name="uae_pickup1" value="1" disabled>
+                                                <div class="label_values" for="uae_pickup1">Yes</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioRed' type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                <div class="label_values" for="uae_pickup2">No</div>
+                                            </div>
+                                            <div class="d-flex align-items-center mr-2">
+                                                <input class='radioYellow' type="radio" id="uae_pickup3" checked disabled name="uae_pickup1" value="3">
+                                                <div class="label_values" for="uae_pickup3">N/A</div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </td>
                                 <td>
-                                    <button type="submit" name="create_post" style="background: transparent; border:none;">
-                                        <i class="fa-solid fa-circle-plus fa-2x text-primary"></i>
-                                    </button>
+                                    <?php if (($x <= '-7') || ($updated_time == null)) { ?>
+                                        <button type="submit" name="create_post" style="background: transparent; border:none;">
+                                            <i class="fa-solid fa-circle-plus fa-2x text-primary"></i>
+                                        </button>
+                                    <?php }
+                                    if (($x <= '-7') || ($updated_time != null)) { ?>
+                                        <button type="button" class="btn btn-xs btn-success" disabled>Posted </button>
+                                    <?php } ?>
                                 </td>
+
+
                                 <td>
                                     <p><?php echo $updated_time; ?></p>
                                 </td>
@@ -493,21 +547,21 @@ if (isset($_POST['create_post'])) {
 
 
                         if ($page >= 2) {
-                            echo "<a class='page-link' href='daily_customer_posting.php?country_name=$load_country&page=" . ($page - 1) . "'>  Prev </a>";
+                            echo "<a class='page-link' href='daily_posting.php?country_name=$load_country&page=" . ($page - 1) . "'>  Prev </a>";
                         }
 
                         for ($i = 1; $i <= $total_pages; $i++) {
 
                             if ($i == $page) {
-                                $pagLink .= "<a class='active'href='daily_customer_posting.php?country_name=$load_country&page=" . $i . "'>" . $i . " </a>";
+                                $pagLink .= "<a class='active'href='daily_posting.php?country_name=$load_country&page=" . $i . "'>" . $i . " </a>";
                             } else {
-                                $pagLink .= "<a class='page-item page-link' href='daily_customer_posting.php?country_name=$load_country&page=" . $i . "'> " . $i . " </a>";
+                                $pagLink .= "<a class='page-item page-link' href='daily_posting.php?country_name=$load_country&page=" . $i . "'> " . $i . " </a>";
                             }
                         };
                         echo $pagLink;
 
                         if ($page < $total_pages) {
-                            echo "<a class='page-link' href='daily_customer_posting.php?country_name=$load_country&page=" . ($page + 1) . "'>  Next </a>";
+                            echo "<a class='page-link' href='daily_posting.php?country_name=$load_country&page=" . ($page + 1) . "'>  Next </a>";
                         }
                         ?>
                     </div>
@@ -524,6 +578,8 @@ if (isset($_POST['create_post'])) {
         var page = document.getElementById("page").value;
         var user_id = document.getElementById("page").value;
         page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
-        window.location.href = 'daily_customer_posting?country_name=' + $load_country + '&page=' + page;
+        window.location.href = 'daily_posting?country_name=' + $load_country + '&page=' + page;
     }
 </script>
+
+<?php include_once('../includes/footer.php');  ?>

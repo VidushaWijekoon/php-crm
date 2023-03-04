@@ -5,7 +5,7 @@ require_once('functions/functions.php');
 require_once('functions/login.php');
 
 // check for form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['login'])) {
     $errors = array();
 
     $username  = mysqli_real_escape_string($connection, $_POST['username']);
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 <div class="d-flex">
                                     <div class="">
-                                        <button type="submit" name="submit" class="btn btn-primary btn-block">
+                                        <button type="submit" name="login" class="btn btn-primary btn-block">
                                             Log In
                                         </button>
                                     </div>

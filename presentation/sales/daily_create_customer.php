@@ -154,7 +154,7 @@ while ($x = mysqli_fetch_assoc($run)) {
                 <a class="nav-link active" aria-current="page" href="./daily_create_customer.php">Create Customer Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./daily_customer_posting">Create Daily Posting</a>
+                <a class="nav-link" href="./daily_posting">Create Daily Posting</a>
             </li>
         </ul>
         <!-- Tab panes -->
@@ -539,3 +539,5 @@ while ($x = mysqli_fetch_assoc($run)) {
         });
     });
 </script>
+
+<?php include_once('../includes/footer.php');  ?>
