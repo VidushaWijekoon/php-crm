@@ -18,7 +18,7 @@ $last_name = '';
 $department = '';
 $role = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['update_user'])) {
     $user_id = mysqli_real_escape_string($connection, $_GET['user_id']);
 
     $query = "SELECT users.emp_id AS user_emp_id, user_id, first_name, last_name, user_name, users.emp_id, employees.emp_id, employees.department_id, employees.role_id,
@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     </div>
                     <div class="row">
-                        <button type="submit" name="submit" class="btn btn-xs btn-info mx-auto mb-3">Update User</button>
+                        <button type="submit" name="update_user" class="btn btn-xs btn-info mx-auto mb-3">Update User</button>
                     </div>
                 </fieldset>
             </form>

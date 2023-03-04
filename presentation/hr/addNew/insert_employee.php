@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 // Check Existed Employee
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['create_employee'])) {
     $first_name = mysqli_real_escape_string($connection, $_POST['first_name']);
     $last_name = mysqli_real_escape_string($connection, $_POST['last_name']);
     $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
