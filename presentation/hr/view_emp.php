@@ -194,7 +194,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         <div class="mt-3 mb-3 text-center">
                             <?php
-                            echo "<a class='btn btn-xs btn-primary mx-1' href=\"update_employee.php?emp_id=$emp_id\">
+                            echo "<a class='btn btn-xs btn-primary mx-1' href=\"update_employee?emp_id=$emp_id\">
                                         Update Employee
                                     </a>";
                             ?>

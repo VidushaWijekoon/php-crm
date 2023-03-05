@@ -46,7 +46,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row">
     <div class="col-md-5">
-        <a href="./admin_dashboard.php">
+        <a href="./admin_dashboard">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>
@@ -117,7 +117,7 @@ if (!isset($_SESSION['user_id'])) {
                         ?>
                             <tr>
                                 <td>
-                                    <a href="<?php echo "update_user_password.php?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
+                                    <a href="<?php echo "update_user_password?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
                                     </a>
                                 </td>
                                 <td> <?php echo $row['first_name'] ?> </td>
@@ -136,18 +136,18 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>
                                     <?php
                                     if ($is_active == 0) {
-                                        echo "<a class='btn btn-xs mx-1' href=\"./addNew/activate_user.php?user_id={$row['user_id']}\" 
+                                        echo "<a class='btn btn-xs mx-1' href=\"./addNew/activate_user?user_id={$row['user_id']}\" 
                                         onclick=\"return confirm('Are you sure $username want active this user?');\">
                                         <i class='fa-solid fa-circle-check' style='color: #218838;'></i>
                                     </a>";
                                     };
                                     if ($is_active == 1) {
-                                        echo "<a class='btn btn-xs mx-1' href=\"./addNew/deactivate_user.php?user_id={$row['user_id']}\" 
+                                        echo "<a class='btn btn-xs mx-1' href=\"./addNew/deactivate_user?user_id={$row['user_id']}\" 
                                         onclick=\"return confirm('Are you sure $username want inactive this user?');\">
                                         <i class='fa-solid fa-trash' style='color: red;'></i>
                                   </a>";
                                     };
-                                    echo "<a class='btn btn-xs mx-1' href=\"./login_logout_monitor.php?user_id={$row['user_id']}\">
+                                    echo "<a class='btn btn-xs mx-1' href=\"./login_logout_monitor?user_id={$row['user_id']}\">
                                         <i class='fa-solid fa-eye' style='color: #168eb4;'></i>
                                   </a>";
                                     ?>
@@ -158,14 +158,6 @@ if (!isset($_SESSION['user_id'])) {
                 </table>
                 <?php
 
-                $query = "SELECT COUNT(*) FROM users";
-                $rs_result = mysqli_query($connection, $query);
-                $row = mysqli_fetch_row($rs_result);
-                $total_records = $row[0];
-
-                echo "</br>";
-                // Number of pages required.   
-                $total_pages = ceil($total_records / $per_page_record);
                 $pagLink = "";
                 $query = "SELECT COUNT(*) FROM users";
                 $rs_result = mysqli_query($connection, $query);
@@ -185,15 +177,6 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="col">
                         <div class="pagination">
                             <?php
-                            $query = "SELECT COUNT(*) FROM users";
-                            $rs_result = mysqli_query($connection, $query);
-                            $row = mysqli_fetch_row($rs_result);
-                            $total_records = $row[0];
-
-                            echo "</br>";
-                            // Number of pages required.   
-                            $total_pages = ceil($total_records / $per_page_record);
-                            $pagLink = "";
 
                             if ($page >= 2) {
                                 echo "<a class='page-link' href='users.php?page=" . ($page - 1) . "'>  Prev </a>";

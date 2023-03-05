@@ -47,7 +47,7 @@ $user_id = $_GET['user_id'];
 
 <div class="row">
     <div class="col-md-5 mx-1">
-        <a href="./users.php">
+        <a href="./users">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
         </a>
     </div>
@@ -113,16 +113,7 @@ $user_id = $_GET['user_id'];
                 </table>
                 <?php
 
-                $query = "SELECT COUNT(*) FROM users_logged_in_time";
-                $rs_result = mysqli_query($connection, $query);
-                $row = mysqli_fetch_row($rs_result);
-                $total_records = $row[0];
-
-                echo "</br>";
-                // Number of pages required.   
-                $total_pages = ceil($total_records / $per_page_record);
-                $pagLink = "";
-                $query = "SELECT COUNT(*) FROM users_logged_in_time";
+                $query = "SELECT COUNT(*) FROM users_logged_in_time WHERE user_id = '$user_id'";
                 $rs_result = mysqli_query($connection, $query);
                 $row = mysqli_fetch_row($rs_result);
                 $total_records = $row[0];

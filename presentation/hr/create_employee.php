@@ -223,7 +223,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
                         <div class="mt-3 mb-3 text-center">
-                            <button type="submit" name="submit" class="btn btn-xs btn-success mx-2"><i class="fa-solid fa-floppy-disk mx-1"></i>Save</button>
+                            <button type="submit" name="create_employee" class="btn btn-xs btn-success mx-2"><i class="fa-solid fa-floppy-disk mx-1"></i>Save</button>
                             <a href="hr_dashboard.php" class="btn btn-xs btn-danger mx-2"><i class="fa-solid fa-xmark mx-1"></i>Back</a>
                         </div>
                     </div>

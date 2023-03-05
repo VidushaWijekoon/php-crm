@@ -104,7 +104,7 @@ if (!isset($_SESSION['user_id'])) {
                         ?>
                             <tr>
                                 <td>
-                                    <?php echo "<a href=\"view_employee.php?emp_id={$row['emp_id']}\">$emp_id</a>" ?>
+                                    <?php echo "<a href=\"view_employee?emp_id={$row['emp_id']}\">$emp_id</a>" ?>
                                 </td>
                                 <td class="text-capitalize"><?php echo $full_name ?></td>
                                 <td><?php echo $department ?></td>
@@ -117,12 +117,12 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>
                                     <?php
 
-                                    echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee.php?emp_id={$row['emp_id']}\"
+                                    echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee?emp_id={$row['emp_id']}\"
                                     onclick=\"return confirm('Are you sure you want to remove this $emp_id employee?');\">
                                         <i class='fa-sharp fa-solid fa-circle-xmark' style='font-size: 15px;'></i>
                                     </a>";
 
-                                    echo "<a class='btn btn-xs text-primary mx-1' href=\"./view_emp.php?emp_id={$row['emp_id']}\">
+                                    echo "<a class='btn btn-xs text-primary mx-1' href=\"./view_emp?emp_id={$row['emp_id']}\">
                                         <i class='fa-solid fa-eye' style='font-size: 15px;'></i>
                                     </a>";
 
@@ -134,15 +134,6 @@ if (!isset($_SESSION['user_id'])) {
                 </table>
                 <?php
 
-                $query = "SELECT COUNT(*) FROM employees";
-                $rs_result = mysqli_query($connection, $query);
-                $row = mysqli_fetch_row($rs_result);
-                $total_records = $row[0];
-
-                echo "</br>";
-                // Number of pages required.   
-                $total_pages = ceil($total_records / $per_page_record);
-                $pagLink = "";
                 $query = "SELECT COUNT(*) FROM employees";
                 $rs_result = mysqli_query($connection, $query);
                 $row = mysqli_fetch_row($rs_result);
