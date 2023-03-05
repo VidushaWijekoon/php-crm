@@ -3,7 +3,7 @@
 require_once("../../functions/db_connection.php");
 
 // Get the user id
-$emp_id = $_REQUEST['emp_id'];
+$emp_id = $_GET['emp_id'];
 
 if ($emp_id !== "") {
 

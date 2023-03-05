@@ -4,7 +4,7 @@ session_start();
 require_once('../../../functions/db_connection.php');
 $created_by = $_SESSION['user_id'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit_customer'])) {
     $customer_name = mysqli_real_escape_string($connection, $_POST['customer_name']);
     $country_name = mysqli_real_escape_string($connection, $_POST['country_name']);
     $phone_code = mysqli_real_escape_string($connection, $_POST['phone_code']);
@@ -20,6 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $query;
     $run = mysqli_query($connection, $query);
     if ($run) {
-        header("Location: ../sales_assistant_daily_task?custom-content-below-posting");
+        header("Location: ../daily_create_customer");
     }
 }

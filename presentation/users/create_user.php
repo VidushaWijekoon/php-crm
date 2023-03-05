@@ -77,7 +77,7 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                     </div>
                     <div class="row">
-                        <button type="submit" class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
+                        <button type="submit" name="create_user" class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
                     </div>
                 </fieldset>
             </form>

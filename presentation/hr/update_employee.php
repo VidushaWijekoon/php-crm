@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['update_employee'])) {
 
     $emp_id = mysqli_real_escape_string($connection, $_GET['emp_id']);
     $visa_type = mysqli_real_escape_string($connection, $_POST['visa_type']);
@@ -248,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="mt-3 mb-3 text-center">
                             <?php
 
-                            echo "<button class='btn btn-xs btn-primary mx-1' type='submit' >
+                            echo "<button class='btn btn-xs btn-primary mx-1' type='submit' name='update_employee'>
                                         <i class='fa-solid fa-check mx-1'></i>Update Employee
                                     </button>";
                             echo "<a class='btn btn-xs btn-danger mx-1' href=\"./view_emp.php?emp_id=$emp_id\">

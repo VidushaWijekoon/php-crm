@@ -12,7 +12,19 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$country_name = null;
+$uae_pickup = 0;
+$customer_phone_code = 0;
+$platform = 0;
 
+
+$query = "SELECT country_name, customer_phone_code, platform FROM sales_daily_customer_informations WHERE created_by = '$user_id'";
+$run = mysqli_query($connection, $query);
+while ($x = mysqli_fetch_assoc($run)) {
+    $country_name = $x['country_name'];
+    $customer_phone_code = $x['customer_phone_code'];
+    $platform = $x['platform'];
+}
 
 ?>
 <style>
@@ -123,12 +135,6 @@ $user_id = $_SESSION['user_id'];
         background-color: skyblue;
     }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-</script>
-<script src="../../plugins/jquery/jquery.min.js"></script>
-
 
 <div class="row pageNavigation pt-2 pl-2">
     <a href="./sales_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
@@ -148,7 +154,7 @@ $user_id = $_SESSION['user_id'];
                 <a class="nav-link active" aria-current="page" href="./daily_create_customer.php">Create Customer Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./daily_customer_post">Daily Posting</a>
+                <a class="nav-link" href="./daily_posting">Create Daily Posting</a>
             </li>
         </ul>
         <!-- Tab panes -->
@@ -207,8 +213,12 @@ $user_id = $_SESSION['user_id'];
                                 </td>
                                 <td>
                                     <select name="country_name" id="create_customer_country" class="select2 w-75">
-                                        <option selected>--Select Resident Country--</option>
                                         <?php
+                                        if ($country_name != 0) { ?>
+                                            <option value="<?php echo $country_name ?>" selected><?php echo $country_name ?></option>
+                                        <?php } else { ?>
+                                            <option selected>--Select Resident Country--</option>
+                                        <?php }
                                         $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
                                         $result = mysqli_query($connection, $query);
 
@@ -221,21 +231,58 @@ $user_id = $_SESSION['user_id'];
                                 </td>
                                 <td>
                                     <div class="watsappField">
-                                        <select name="phone_code" class="w-25" id="create_phone_code" style="border-radius: 5px;" required>
+                                        <select name="phone_code" class="w-25" id="phone_code" style="border-radius: 5px;" required>
+
+                                            <?php if ($customer_phone_code != 0) { ?>
+                                                <option value="<?php echo $customer_phone_code ?>" selected><?php echo $customer_phone_code ?></option>
+                                            <?php } else { ?>
+                                                <option selected>--Select Platform--</option>
+                                            <?php } ?>
                                         </select>
                                         <input type="text" class="w-100" name="whatsappnumber">
                                     </div>
 
                                 <td>
                                     <select class="text-capitalize w-100 DropDown" name="platform" required>
+                                        <?php if ($platform != 0) { ?>
+                                            <option value="<?php echo $platform ?>" selected>
+                                                <?php
+                                                if ($platform == 1) echo "Facebook";
+                                                if ($platform == 2) echo "Instgram";
+                                                if ($platform == 3) echo "Lazada";
+                                                if ($platform == 4) echo "Shopee";
+                                                if ($platform == 5) echo "Tokopedia";
+                                                if ($platform == 6) echo "Amazon.com";
+                                                if ($platform == 7) echo "Amazon.uk";
+                                                if ($platform == 8) echo "Tiktok";
+                                                if ($platform == 9) echo "Loopzap";
+                                                if ($platform == 10) echo "Pigiame";
+                                                if ($platform == 11) echo "Kebuysell";
+                                                if ($platform == 12) echo "Kenya Group";
+                                                if ($platform == 13) echo "Loozap";
+                                                if ($platform == 14) echo "Website";
+                                                if ($platform == 15) echo "jiji.co.ke";
+                                                if ($platform == 16) echo "olist.ng";
+                                                if ($platform == 17) echo "jiji.ng";
+                                                if ($platform == 18) echo "Google";
+                                                if ($platform == 19) echo "Pc Exporters";
+                                                if ($platform == 20) echo "Jumia";
+                                                if ($platform == 21) echo "The Brokersite";
+                                                if ($platform == 22) echo "Avechi.com";
+
+                                                ?>
+                                            </option>
+                                        <?php } else { ?>
+                                            <option selected>--Select Platform--</option>
+                                        <?php } ?>
                                         <option value="1">Facebook</option>
                                         <option value="2">Instgram</option>
                                         <option value="3">Lazada</option>
                                         <option value="4">Shopee</option>
                                         <option value="5">Tokopedia</option>
-                                        <option value="6">amazon.com</option>
-                                        <option value="7">amazon.uk</option>
-                                        <option value="8">tiktok</option>
+                                        <option value="6">Amazon.com</option>
+                                        <option value="7">Amazon.uk</option>
+                                        <option value="8">Tiktok</option>
                                         <option value="9">Loopzap</option>
                                         <option value="10">Pigiame</option>
                                         <option value="11">Kebuysell</option>
@@ -245,10 +292,11 @@ $user_id = $_SESSION['user_id'];
                                         <option value="15">jiji.co.ke</option>
                                         <option value="16">olist.ng</option>
                                         <option value="17">jiji.ng</option>
-                                        <option value="18">google</option>
+                                        <option value="18">Google</option>
                                         <option value="19">Pc Exporters</option>
                                         <option value="20">Jumia</option>
                                         <option value="21">The Brokersite</option>
+                                        <option value="22">Avechi.com</option>
                                     </select>
                                 </td>
                                 <td>
@@ -274,7 +322,7 @@ $user_id = $_SESSION['user_id'];
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="submit" name="add_customer" style="background: transparent; border:none;">
+                                    <button type="submit" name="submit_customer" style="background: transparent; border:none;">
                                         <i class="fa-solid fa-circle-plus fa-2x text-primary"></i>
                                     </button>
                                 </td>
@@ -303,7 +351,7 @@ $user_id = $_SESSION['user_id'];
                     <tbody>
                         <?php
 
-                        $per_page_record = 50;
+                        $per_page_record = 250;
 
                         if (isset($_GET["page"])) {
                             $page  = $_GET["page"];
@@ -313,11 +361,12 @@ $user_id = $_SESSION['user_id'];
 
                         $start_from = ($page - 1) * $per_page_record;
 
-                        $query = "SELECT * FROM sales_daily_customer_informations WHERE created_by = '$user_id' LIMIT $start_from, $per_page_record ";
+                        $query = "SELECT * FROM sales_daily_customer_informations WHERE created_by = '$user_id' 
+                                    ORDER BY created_time DESC LIMIT $start_from, $per_page_record";
                         $run = mysqli_query($connection, $query);
                         while ($x = mysqli_fetch_assoc($run)) {
-                            $uae_pickup = $x['uae_pickup'];
                             $country_name = $x['country_name'];
+                            $uae_pickup = $x['uae_pickup'];
                             $customer_phone_code = $x['customer_phone_code'];
                             $platform = $x['platform'];
 
@@ -326,7 +375,32 @@ $user_id = $_SESSION['user_id'];
                                 <td><?php echo $country_name ?></td>
                                 <td><?php echo $x['customer_name'] ?></td>
                                 <td><?php echo "+ " . $customer_phone_code . " " . $x['customer_whatsapp_code'] ?></td>
-                                <td><?php echo $platform ?></td>
+                                <td>
+                                    <?php
+                                    if ($platform == 1) echo "Facebook";
+                                    if ($platform == 2) echo "Instgram";
+                                    if ($platform == 3) echo "Lazada";
+                                    if ($platform == 4) echo "Shopee";
+                                    if ($platform == 5) echo "Tokopedia";
+                                    if ($platform == 6) echo "Amazon.com";
+                                    if ($platform == 7) echo "Amazon.uk";
+                                    if ($platform == 8) echo "Tiktok";
+                                    if ($platform == 9) echo "Loopzap";
+                                    if ($platform == 10) echo "Pigiame";
+                                    if ($platform == 11) echo "Kebuysell";
+                                    if ($platform == 12) echo "Kenya Group";
+                                    if ($platform == 13) echo "Loozap";
+                                    if ($platform == 14) echo "Website";
+                                    if ($platform == 15) echo "jiji.co.ke";
+                                    if ($platform == 16) echo "olist.ng";
+                                    if ($platform == 17) echo "jiji.ng";
+                                    if ($platform == 18) echo "Google";
+                                    if ($platform == 19) echo "Pc Exporters";
+                                    if ($platform == 20) echo "Jumia";
+                                    if ($platform == 21) echo "The Brokersite";
+                                    if ($platform == 22) echo "Avechi.com";
+                                    ?>
+                                </td>
                                 <td><?php echo $x['model_selling_buying'] ?></td>
                                 <td>
                                     <?php if ($uae_pickup == 1) { ?>
@@ -442,27 +516,28 @@ $user_id = $_SESSION['user_id'];
     </div>
 </div>
 
+<script src="../../plugins/jquery/jquery.min.js"></script>
+
 <script>
-    $('#myTab a').click(function(e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
-
-    // store the currently selected tab in the hash value
-    $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
-        var id = $(e.target).attr("href").substr(1);
-        window.location.hash = id;
-    });
-
-    // on load of the page: switch to the currently selected tab
-    var hash = window.location.hash;
-    $('#myTab a[href="' + hash + '"]').tab('show');
-
-    // 
     function go2Page() {
         var page = document.getElementById("page").value;
         var user_id = document.getElementById("page").value;
         page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
         window.location.href = 'users.php?page=' + page;
     }
+
+    $(document).ready(function() {
+        $("#create_customer_country").on("change", function() {
+            var country_name = $("#create_customer_country").val();
+            console.log(country_name)
+            var getURL = "./addNew/get_phone_code.php?country_name=" + country_name;
+            console.log(getURL);
+
+            $.get(getURL, function(data, status) {
+                $("#phone_code").html(data);
+            });
+        });
+    });
 </script>
+
+<?php include_once('../includes/footer.php');  ?>
