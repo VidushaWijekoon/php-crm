@@ -1,6 +1,11 @@
 <?php
+session_start();
+require_once('../includes/header.php');
 
-require_once('../includes/header.php')
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
 
 ?>
 
@@ -36,12 +41,13 @@ require_once('../includes/header.php')
 
 .createListingHeading {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .sectionUnderline {
-    border-top: 2px solid #DBDBDB;
     margin-top: 0px;
+    margin-bottom: 0;
+    border-top: 2px solid #DBDBDB;
 }
 
 .formSec {
@@ -106,7 +112,7 @@ require_once('../includes/header.php')
             <hr class="sectionUnderline">
             <form action="" method="">
                 <!-- select Platform section -->
-                <div class="row px-5">
+                <div class="row mt-3 px-5">
                     <div class="col-3">
                         <p>Select platform</p>
                     </div>
@@ -161,22 +167,7 @@ require_once('../includes/header.php')
                                 <option value="FBP">FBP - DirectShipping</option>
                             </select>
                         </div>
-                        <!-- <div class="myDiv" id="showTwo">
-                            <select name="" id="" class="DropDown">
-                                <option selected value="DirectShipping">FBC</option>
-                            </select>
-                        </div>
-                        <div class="myDiv" id="showThree">
-                            <select name="" id="" class="DropDown">
-                                <option selected value="FBA">FBA - Warehouse</option>
-                            </select>
-                        </div>
-                        <div class="myDiv" id="showFour">
-                            <select name="" id="" class="DropDown">
-                                <option selected value="FBA">FBA - Warehouse</option>
-                                <option value="DirectShipping">Direct Shipping</option>
-                            </select>
-                        </div> -->
+
                     </div>
                 </div>
 

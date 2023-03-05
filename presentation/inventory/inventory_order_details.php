@@ -30,6 +30,12 @@ if (!isset($_SESSION['user_id'])) {
     font-size: 15px;
 }
 
+.sectionUnderline {
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-top: 2px solid #DBDBDB;
+}
+
 /* table sec */
 
 /* table styles */
@@ -302,6 +308,12 @@ if (!isset($_SESSION['user_id'])) {
     font-size: 15px;
     padding: 5px 10px;
 }
+
+/*  */
+
+#btryPNSec {
+    display: none;
+}
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
@@ -322,11 +334,11 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <hr class="sectionUnderline">
 
-        <div class="tableSec mx-3 row">
+        <div class="tableSec row">
 
 
             <!-- Table Tab and Search Bar Section  -->
-            <div class="tableSpec px-3 col-12">
+            <div class="tableSpec px-3 mt-2 col-12">
 
                 <div class="leftSec">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -1119,7 +1131,7 @@ if (!isset($_SESSION['user_id'])) {
                                                         <div class="row">
                                                             <div class="col-6 btryLbl">
                                                                 <input class="" type="radio" name="battery"
-                                                                    id="excellent">100 -
+                                                                    id="excellent" onclick="undisplayPN()">100 -
                                                                 80
                                                             </div>
                                                             <div class="col-6 btryLbl">
@@ -1132,7 +1144,8 @@ if (!isset($_SESSION['user_id'])) {
                                                     <div class="col-6">
                                                         <div class="row">
                                                             <div class="col-6 btryLbl">
-                                                                <input class="" type="radio" name="battery" id="Good">80
+                                                                <input class="" type="radio" name="battery" id="Good"
+                                                                    onclick="undisplayPN()">80
                                                                 - 55
                                                             </div>
                                                             <div class="col-6 btryLbl">Good</div>
@@ -1141,7 +1154,8 @@ if (!isset($_SESSION['user_id'])) {
                                                     <div class="col-6">
                                                         <div class="row">
                                                             <div class="col-6 btryLbl">
-                                                                <input class="" type="radio" name="battery" id="weak">50
+                                                                <input class="" type="radio" name="battery" id="weak"
+                                                                    onclick="displayPN()">50
                                                                 - 0
                                                             </div>
                                                             <div class="col-6 btryLbl">Weak</div>
@@ -1151,7 +1165,7 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
 
                                             <div class="row batterySec">
-                                                <div class="mt-3">
+                                                <div class="mt-3" id="btryPNSec">
                                                     Scan PN &nbsp;
                                                     <input type="text" id="btryPN">
                                                 </div>
@@ -1198,14 +1212,31 @@ if (!isset($_SESSION['user_id'])) {
 
             <!--model end  -->
 
-
-
-
-
-
         </div>
     </div>
 </div>
+
+<script>
+const displayPN = () => {
+
+    // console.log($("#weak").val);
+    // $("#radio_1").prop("checked", true);
+    if ($("#weak").prop("checked", true)) {
+        // console.log("checked");
+        $('#btryPNSec').css('display', 'block');
+    } else {
+        $('#btryPNSec').css('display', 'none');
+    }
+
+}
+
+const undisplayPN = () => {
+    if ($("#good").prop("checked", true) || $("#excellent").prop("checked", true)) {
+        $('#btryPNSec').css('display', 'none');
+    }
+
+}
+</script>
 <?php
 require_once('../includes/footer.php')
 
