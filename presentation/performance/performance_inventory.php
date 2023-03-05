@@ -63,6 +63,15 @@ input[type=text] {
     width: 100%;
 }
 
+@media screen and (max-width:768px) {
+    .tableSec {
+        overflow-x: auto;
+
+    }
+
+
+}
+
 .tableSec table {
     width: 100%;
     font-size: 10px;
@@ -212,7 +221,7 @@ input[type=text] {
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
-    <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+    <a href="../inventory/inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
         Dashboard</a>
 </div>
 
@@ -461,3 +470,8 @@ input[type=text] {
 
     </div>
 </div>
+
+<?php
+require_once('../includes/footer.php')
+
+?>
