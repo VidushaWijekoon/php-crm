@@ -6,7 +6,7 @@ $core=trim($_POST['core']);
 $generation=trim($_POST['gen']);
 $model=trim($_POST['model']);
 $screen_type=trim($_POST['screen_type']);
-$battery=trim($_POST['battery']);
+$battery=trim($_POST['battery']); 
 $mfg=trim($_POST['mfg']);
 $device=trim($_POST['device']);
 $series=trim($_POST['series']);
@@ -15,6 +15,7 @@ $speed=trim($_POST['speed']);
 $lcd_size=trim($_POST['lcd_size']);
 $resolution=trim($_POST['resolution']);
 $dvd=trim($_POST['dvd']);
+$keyboard_backlight=trim($_POST['keyboard_backlight']);
 $machine_id=trim($_POST['machine_id']);
 $user_id=$_SESSION['user_id'];
 
@@ -59,8 +60,9 @@ $query = "INSERT INTO `warehouse_information_sheet`(
             'WH2'
         )";
     $query1 = mysqli_query($connection, $query);
-
-
+    $sql="UPDATE machine_from_supplier SET add_to_wis='1' WHERE machine_id='$machine_id'";
+    $sql_run=mysqli_query($connection,$sql);
+   
 $sql="SELECT inventory_id,generation,model,brand,core,speed FROM warehouse_information_sheet WHERE create_by_inventory_id='$user_id' ORDER BY inventory_id DESC LIMIT 1";
 $result = mysqli_query($connection,$sql);
  $id=0;
@@ -76,8 +78,29 @@ while($row = mysqli_fetch_array($result)) {
     $codeContents = $id;
 
     QRcode::png($codeContents, $tempDir . '' . $filename . '.png', QR_ECLEVEL_L, 5, 1);
+    
 }
-
+$query = "INSERT INTO `performance_record_table`(
+    `user_id`,
+    `department_id`,
+    `qr_number`,
+    `job_description`,
+    `start_time`,
+    `end_time`,
+    `target`,
+    status
+    )
+    VALUES(
+    '$user_id',
+    '$department_id',
+    '$id',
+    'pc scan',
+     now(),
+     now(),
+    '1',
+    '1'
+    ) ";
+    $result = mysqli_query($connection,$query);
 // (A) IMAGE OBJECT
 $width = 500; $height = 220;
 $img = imagecreate($width, $height);
@@ -116,6 +139,6 @@ imagecopymerge($dest, $src, 15, 50, 0, 0, 110, 110, 75);
 // Output and free from memory
 header('Content-Type: image/png');
 imagegif($dest,"files/demo22.png");
- header("Location: samples.php?test=1");
+header("Location: samples.php?test=1");
 // imagedestroy($dest);
 // imagedestroy($src);

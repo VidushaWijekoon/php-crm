@@ -109,8 +109,14 @@
 </script>
 
 <?php
+
   $script = ob_get_contents();
   ob_clean();
+  echo"<script>";
+  echo" setInterval(() => {";
+  echo"window.location.href = '../inventory_add_laptop.php';";
+  echo "}, 1000);";
+  echo"</script>";
    include("template.php");
  
   
