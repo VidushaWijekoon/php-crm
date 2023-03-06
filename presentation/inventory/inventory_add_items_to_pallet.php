@@ -68,6 +68,12 @@ input[type='text'] {
     color: #168EB4;
     font-weight: 600;
 }
+
+.palletAddSec {
+    display: flex;
+    justify-content: center;
+    /* width: 100%; */
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -96,7 +102,8 @@ input[type='text'] {
                 <div class="row w-50">
                     <div class="col-4">Select Items</div>
                     <div class="col-8">
-                        <select name="" id="item" class="w-100 DropDown">
+                        <select name="" id="item" class="w-100 DropDown" onchange="displayMonitor()">
+                            <option>Select Item</option>
                             <option value="monitor">Monitor</option>
                             <option value="mouse">Mouse</option>
                             <option value="keyboard">Keyboard</option>
@@ -108,17 +115,17 @@ input[type='text'] {
                 </div>
 
             </div>
-            <div class="row justify-content-center mt-2">
+            <div class="row palletAddSec mt-2" id="palletNoSec">
                 <div class="row w-50">
-                    <div class="col-4">Pallet No</div>
+                    <div class="col-4">Pallet QR No</div>
                     <div class="col-8">
-                        <input type="text" class="w-100">
+                        <input type="text" class="w-100" id="palletNo">
                     </div>
 
                 </div>
 
             </div>
-            <div class="row justify-content-center mt-2">
+            <div class="row palletAddSec mt-2" id="brandSec">
                 <div class="row w-50">
                     <div class="col-4">Brand</div>
                     <div class="col-8">
@@ -131,7 +138,44 @@ input[type='text'] {
                 </div>
 
             </div>
-            <div class="row justify-content-center mt-2">
+            <div class="row palletAddSec mt-2" id="seriesSec">
+                <div class="row w-50">
+                    <div class="col-4">Series</div>
+                    <div class="col-8">
+                        <select name="" id="series" class="w-100 DropDown select2">
+                            <option value="latitude">Latitude</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row palletAddSec mt-2" id="modelSec">
+                <div class="row w-50">
+                    <div class="col-4">Model</div>
+                    <div class="col-8">
+                        <select name="" id="model" class="w-100 DropDown select2">
+                            <option value="e5480">e5480</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row palletAddSec mt-2" id="genSec">
+                <div class="row w-50">
+                    <div class="col-4">Generation</div>
+                    <div class="col-8">
+                        <select name="" id="gen" class="w-100 DropDown select2">
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row palletAddSec mt-2" id="screenSizeSec">
                 <div class="row w-50">
                     <div class="col-4">Screen Size</div>
                     <div class="col-8">
@@ -148,11 +192,21 @@ input[type='text'] {
                 </div>
 
             </div>
-            <div class="row justify-content-center mt-2">
+            <div class="row palletAddSec mt-2" id="serialNoSec">
+                <div class="row w-50">
+                    <div class="col-4">Serial No</div>
+                    <div class="col-8">
+                        <input type="text" class="w-100 id=" serialNo">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row palletAddSec mt-2" id="itemQtySec">
                 <div class="row w-50">
                     <div class="col-4">Item Qty</div>
                     <div class="col-8">
-                        <input type="text" class="w-100">
+                        <input type="text" class="w-100" id="itemQty">
                     </div>
 
                 </div>
@@ -178,8 +232,71 @@ input[type='text'] {
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         })
-
     })
+    </script>
+
+    <script>
+    const displayMonitor = () => {
+        var selectedVal = $('#item').val();
+        var series = document.getElementById("seriesSec");
+        var model = document.getElementById("modelSec");
+        var gen = document.getElementById("genSec");
+        var pallet = document.getElementById("palletNoSec");
+        var brand = document.getElementById("brandSec");
+        var screen = document.getElementById("screenSizeSec");
+        var serial = document.getElementById("serialNoSec");
+        var item = document.getElementById("itemQtySec");
+        console.log(selectedVal);
+        if (selectedVal == "monitor") {
+            series.style.display = "none";
+            model.style.display = "none";
+            gen.style.display = "none";
+            pallet.style.display = "block";
+            pallet.style.display = "flex";
+            // pallet.style.justifyContent = "center";
+            brand.style.display = "block";
+            brand.style.display = "flex";
+            // brand.style.justifyContent = "center";
+            screen.style.display = "block";
+            screen.style.display = "flex";
+            // screen.style.justifyContent = "center";
+            serial.style.display = "block";
+            serial.style.display = "flex";
+            item.style.display = "block";
+            item.style.display = "flex";
+            // item.style.justifyContent = "center";
+
+        } else if (selectedVal == "desktop") {
+            series.style.display = "block";
+            series.style.display = "flex";
+            model.style.display = "block";
+            model.style.display = "flex";
+            gen.style.display = "block";
+            gen.style.display = "flex";
+            pallet.style.display = "block";
+            pallet.style.display = "flex";
+            brand.style.display = "block";
+            brand.style.display = "flex";
+            screen.style.display = "block";
+            screen.style.display = "flex";
+            serial.style.display = "block";
+            serial.style.display = "flex";
+            item.style.display = "block";
+            item.style.display = "flex";
+        } else if ((selectedVal == "mouse") || (selectedVal == "keyboard") || (selectedVal == "charger")) {
+            pallet.style.display = "block";
+            pallet.style.display = "flex";
+            brand.style.display = "block";
+            brand.style.display = "flex";
+            item.style.display = "block";
+            item.style.display = "flex";
+            series.style.display = "none";
+            model.style.display = "none";
+            gen.style.display = "none";
+            screen.style.display = "none";
+            serial.style.display = "none";
+        }
+    }
     </script>
 
     <?php
