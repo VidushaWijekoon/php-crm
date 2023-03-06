@@ -349,7 +349,7 @@ if (!isset($_SESSION['user_id'])) {
             <!-- ////////////// -->
 
             <!-- Btn Card -->
-            <a href="">
+            <a href="./inventory_pallets_qr">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
                         <i class="fa-solid fa-edit" style="color: #168EB4;font-size: 15px;"></i>

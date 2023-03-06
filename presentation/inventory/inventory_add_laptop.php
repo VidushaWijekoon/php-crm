@@ -848,35 +848,6 @@ $(function() {
 })
 </script>
 <script>
-const getSortingData = () => {
-    var name = 0;
-    var mfg = 0;
-    name = $('#name').val();
-    mfg = $('#mfg').val();
-    if (name != 0) {
-        mfg = name;
-    }
-    console.log(mfg);
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("GET", "add_item_view.php?q=" + mfg, true);
-    xmlhttp.send();
-    var getValue = 0;
-    var getValue2 = 0;
-    getValue = document.getElementById("name");
-    getValue2 = document.getElementById("mfg");
-    if (getValue2 != 0) {
-        getValue2.value = "";
-    }
-    if (getValue.value != "") {
-        getValue.value = "";
-    }
-
-}
 let searchbar = document.querySelector('input[name="name"]');
 searchbar.focus();
 // text.value = '';
