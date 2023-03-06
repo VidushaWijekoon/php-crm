@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../includes/header.php');
-
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
@@ -287,7 +287,7 @@ if (!isset($_SESSION['user_id'])) {
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
-            <a href="">
+            <a href="./inventory_completed_tasks.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
                         <i class="fa-solid fa-note" style="color: #168EB4;font-size: 15px;"></i>
@@ -452,7 +452,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Total Inventory</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">1900
+                    <div class="cardValue">
+                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='0' "; 
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                            echo $data['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>
@@ -468,7 +474,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Production</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">120
+                    <div class="cardValue">
+                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='0' "; 
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                            echo $data['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>
@@ -484,7 +496,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Dispatch</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">90
+                    <div class="cardValue">
+                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='1' "; 
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                            echo $data['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>
@@ -658,9 +676,15 @@ if (!isset($_SESSION['user_id'])) {
                                             </a></td>
                                         <td>12342</td>
                                         <td>FBA</td>
-                                        <td>100</td>
-                                        <td>80</td>
-                                        <td>xxxxx</td>
+                                        <td id="orderQty">100</td>
+                                        <td id="completedQty">80</td>
+                                        <td>
+                                            <div class="progress border-2">
+                                                <div class="progress-bar progress-bar-striped bg-info"
+                                                    role="progressbar" style="width: 50%" aria-valuenow="50"
+                                                    aria-valuemin="0" aria-valuemax="100" id='progressBar'></div>
+                                            </div>
+                                        </td>
                                         <td>Sales Person 1</td>
                                         <td>inv 10</td>
                                         <td>2022-10-10</td>
@@ -873,6 +897,24 @@ if (!isset($_SESSION['user_id'])) {
 
     </div>
 </div>
+
+<script>
+// progress bar eke progress eka calculate karana eka
+window.onload = showProgress = () => {
+    // var orderQty = $("#orderQty").val();
+    var orderQty = document.getElementById('orderQty').innerHTML;
+    var completedQty = document.getElementById('completedQty').innerHTML;
+    // var completedQty = $("#completedQty").val().innerHTML;
+
+    console.log(orderQty);
+    console.log(completedQty);
+
+    var x = (completedQty / orderQty) * 100;
+    console.log(x);
+
+}
+</script>
+
 <?php
 require_once('../includes/footer.php')
 
