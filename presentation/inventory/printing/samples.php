@@ -3,7 +3,7 @@
   session_start();
   $user_id=0;
   $user_id=$_SESSION['user_id'];
-  $test=$_GET['test'];
+  $inventory=$_GET['inventory'];
   
   include 'WebClientPrint.php';
   use Neodynamic\SDK\Web\WebClientPrint;
@@ -112,11 +112,20 @@
 
   $script = ob_get_contents();
   ob_clean();
-  echo"<script>";
+  if(empty($inventory)){
+     echo"<script>";
   echo" setInterval(() => {";
   echo"window.location.href = '../inventory_add_laptop.php';";
   echo "}, 1000);";
   echo"</script>";
+  }else{
+     echo"<script>";
+  echo" setInterval(() => {";
+  echo"window.location.href = '../inventory_update_laptop.php';";
+  echo "}, 1000);";
+  echo"</script>";
+  }
+ 
    include("template.php");
  
   
