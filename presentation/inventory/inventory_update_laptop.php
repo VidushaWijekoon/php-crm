@@ -1,8 +1,7 @@
 <?php
-
 session_start();
 require_once('../includes/header.php');
-
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
@@ -95,7 +94,55 @@ input[type=text] {
     font-weight: 600;
 }
 </style>
-
+<?php 
+$query = "SELECT DISTINCT brand,series,model,processor,core,generation,speed,lcd_size,screen_resolution FROM main_inventory_informations ";
+$result_set = mysqli_query($connection, $query);
+    $core='';
+    $gen='';
+    $brand='';
+    $model='';
+    $screen_type='';
+    $battery='';
+    $mfg='';
+    $device='';
+    $series='';
+    $processor='';
+    $speed='';
+    $lcd_size='';
+    $resolution='';
+    $optical='';
+if(isset($_POST['submit'])){
+    $scanned_mfg='';
+    $inventory_id=$_POST['name'];
+    $scanned_mfg=$_POST['mfg'];
+    if($scanned_mfg !=''){
+        $inventory_id =$scanned_mfg;
+    }
+    $sql="SELECT * FROM main_inventory_informations WHERE (inventory_id = '".$inventory_id."' OR mfg = '".$inventory_id."')";
+$result = mysqli_query($connection,$sql);
+if(empty($result)){
+    $add_to_wis = 2;
+}else{
+while($row = mysqli_fetch_array($result)) {
+    $core=$row['core'];
+    $gen=$row['generation'];
+    $brand=$row['brand'];
+    $model=$row['model'];
+    $screen_type=$row['touch_or_none_touch'];
+    $battery=$row['battery'];
+    $mfg=$row['mfg'];
+    $device=$row['device'];
+    $series=$row['series'];
+    $processor=$row['processor'];
+    $speed=$row['speed'];
+    $lcd_size=$row['lcd_size'];
+    $resolution=$row['screen_resolution'];
+    $optical=$row['optical'];
+    $inventory_id=$row['inventory_id'];
+    }
+}
+    }
+?>
 <div class="row pageNavigation pt-2 pl-2">
     <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
         Dashboard</a>
@@ -120,167 +167,298 @@ input[type=text] {
         <hr class="sectionUnderline">
 
         <!-- scan Section -->
-        <div class="row scanSec mt-4">
-            <div class="col-lg-4 col-sm-12">
-                <div class="row">
-                    <div class="col-5">Scan Alsakb QRCode</div>
-                    <div class="col-7">
-                        <input type="text">
+        <form method='POST'>
+            <div class="row scanSec mt-4">
+                <div class="col-lg-4 col-sm-12">
+                    <div class="row">
+                        <div class="col-5">Scan Supplier Barcode</div>
+                        <div class="col-7">
+                            <input type="text" name="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-12"></div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="row">
+                        <div class="col-5">Scan MFG Barcode</div>
+                        <div class="col-7">
+                            <input type="text" name="mfg">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-12"></div>
-            <div class="col-lg-4 col-sm-12">
-                <div class="row">
-                    <div class="col-5">Scan MFG Barcode</div>
-                    <div class="col-7">
-                        <input type="text">
-                    </div>
-                </div>
-            </div>
-        </div>
+            <button class="btnT d-none" id="myBtn1" name='submit' type='submit'>Scan</button>
+        </form>
 
         <!-- ADD Details Section -->
         <hr class="sectionUnderline mt-4" style="width: 80%;">
-        <div class="row detailsSec">
-            <div class="col-6">
+        <form method='POST' action='printing/pimage.php'>
+            <div class="row detailsSec">
+                <div class="col-6">
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">MFG</div>
+                        <div class="col-8">
+                            <input type="text" placeholder="" style="width: 100%;" name="mfg"
+                                value="<?php echo $mfg ?>">
+                            <input type="text" placeholder="For Manual Enter" name="inventory_id" style="width: 100%;"
+                                class="d-none" value="<?php echo "$inventory_id"; ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN</div>
+                        <div class="col-8">
+                            <input type="text" placeholder="" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Device</div>
+                        <div class="col-8">
+                            <select name="device" id="device" class="DropDown select2" style="width: 100%;">
+                                <option selected value="laptop" value="<?php echo $device ?>"><?php echo $device ?>
+                                </option>
+                            </select>
 
-                <div class="row mb-1">
-                    <div class="col-4 addLable">ASIN</div>
-                    <div class="col-8">
-                        <input type="text" placeholder="" style="width: 100%;">
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Device</div>
-                    <div class="col-8">
-                        <select name="" id="device" class="DropDown select2" style="width: 100%;">
-                            <option selected value="laptop">laptop</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Brand</div>
+                        <div class="col-8">
+                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$brand"; ?>"><?php echo "$brand"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT brand FROM main_inventory_informations GROUP BY brand";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["brand"]; ?>">
+                                    <?php echo strtoupper($row["brand"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
 
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Brand</div>
-                    <div class="col-8">
-                        <select name="" id="brand" class="DropDown select2" style="width: 100%;">
-                            <option selected value="dell">Dell</option>
-                            <option value="lenovo">Lenovo</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Series</div>
+                        <div class="col-8">
+                            <select name="series" id="series" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$series"; ?>"><?php echo "$series"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT series FROM main_inventory_informations GROUP BY series ";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["series"]; ?>">
+                                    <?php echo strtoupper($row["series"]); ?>
+                                </option>
+                                <?php }?>
 
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Series</div>
-                    <div class="col-8">
-                        <select name="" id="series" class="DropDown select2" style="width: 100%;">
-                            <option selected value="latitude">Latitude</option>
+                            </select>
 
-                        </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Model</div>
+                        <div class="col-8">
+                            <select name="model" id="model" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$model"; ?>"><?php echo "$model"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT  model FROM main_inventory_informations GROUP BY model ";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["model"]; ?>">
+                                    <?php echo strtoupper($row["model"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
 
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Model</div>
-                    <div class="col-8">
-                        <select name="" id="model" class="DropDown select2" style="width: 100%;">
-                            <option selected value="latitude e5420">Latitude e5420</option>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Processor</div>
+                        <div class="col-8">
+                            <select name="processor" id="processor" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$processor"; ?>"><?php echo "$processor"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT  processor FROM main_inventory_informations GROUP BY processor";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["processor"]; ?>">
+                                    <?php echo strtoupper($row["processor"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
 
-                        </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Core</div>
+                        <div class="col-8">
+                            <select name="core" id="core" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$core"; ?>"><?php echo "$core"; ?></option>
+                                <?php
+                                $query = "SELECT  core FROM main_inventory_informations GROUP BY core ";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["core"]; ?>">
+                                    <?php echo strtoupper($row["core"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
 
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Processor</div>
-                    <div class="col-8">
-                        <select name="" id="processor" class="DropDown select2" style="width: 100%;">
-                            <option selected value="intel">intel</option>
-                            <option value="amd">AMD</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Gen</div>
+                        <div class="col-8">
+                            <select name="gen" id="gen" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$gen"; ?>"><?php echo "$gen"; ?></option>
+                                <?php
+                                $query = "SELECT  generation FROM main_inventory_informations GROUP BY generation ";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["generation"]; ?>">
+                                    <?php echo strtoupper($row["generation"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Speed</div>
+                        <div class="col-8">
+                            <select name="speed" id="speed" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$speed"; ?>"><?php echo "$speed"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT  speed FROM main_inventory_informations GROUP BY speed ";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["speed"]; ?>">
+                                    <?php echo strtoupper($row["speed"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
+                        </div>
+                    </div>
 
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">LCD Size</div>
+                        <div class="col-8">
+                            <select name="lcd_size" id="lcd_size" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$lcd_size"; ?>"><?php echo "$lcd_size"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT  lcd_size FROM main_inventory_informations GROUP BY lcd_size";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["lcd_size"]; ?>">
+                                    <?php echo strtoupper($row["lcd_size"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Core</div>
-                    <div class="col-8">
-                        <select name="" id="core" class="DropDown select2" style="width: 100%;">
-                            <option selected value="">i5-5200U</option>
-                            <option value="">AMD</option>
-                        </select>
-
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Resolution</div>
+                        <div class="col-8">
+                            <select name="resolution" id="resolution" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$resolution"; ?>">
+                                    <?php echo "$resolution"; ?>
+                                </option>
+                                <?php
+                                $query = "SELECT  screen_resolution FROM main_inventory_informations GROUP BY screen_resolution ";
+                                $result_set = mysqli_query($connection, $query);
+                                foreach($result_set as $row){
+                                                        ?>
+                                <option value="<?php echo $row["screen_resolution"]; ?>">
+                                    <?php echo strtoupper($row["screen_resolution"]); ?>
+                                </option>
+                                <?php }?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Gen</div>
-                    <div class="col-8">
-                        <select name="" id="gen" class="DropDown select2" style="width: 100%;">
-                            <option selected value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Battery</div>
+                        <div class="col-8">
+                            <select name="battery" id="battery" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$battery"; ?>"><?php echo "$battery"; ?>
+                                </option>
+                                <?php if($battery == 'yes'){
+                                    echo "<option  value='no'>No</option>";
+                                }elseif($battery == 'no'){
+                                    echo "<option  value='yes'>Yes</option>";
+                                }else{
+                                    echo "<option  value='yes'>Yes</option>";
+                                    echo "<option  value='no'>No</option>";
+                                } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Speed</div>
-                    <div class="col-8">
-                        <select name="" id="speed" class="DropDown select2" style="width: 100%;">
-                            <option selected value="2">2.00Ghz</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Touch</div>
+                        <div class="col-8">
+                            <select name="screen_type" id="touch" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$screen_type"; ?>">
+                                    <?php echo "$screen_type"; ?>
+                                </option>
+                                <?php if($screen_type == 'yes'){
+                                    echo "<option  value='no'>No</option>";
+                                }elseif($screen_type == 'no'){
+                                    echo "<option  value='yes'>Yes</option>";
+                                }else{
+                                    echo "<option  value='yes'>Yes</option>";
+                                    echo "<option  value='no'>No</option>";
+                                } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row mb-1">
-                    <div class="col-4 addLable">LCD Size</div>
-                    <div class="col-8">
-                        <select name="" id="lcdsize" class="DropDown select2" style="width: 100%;">
-                            <option selected value="14">14</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Opticle</div>
+                        <div class="col-8">
+                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;">
+                                <option selected value="<?php echo "$optical"; ?>"><?php echo "$optical"; ?></option>
+                                <?php if($optical == 'yes'){
+                                    echo "<option  value='no'>No</option>";
+                                }elseif($optical == 'no'){
+                                    echo "<option  value='yes'>Yes</option>";
+                                }else{
+                                    echo "<option  value='yes'>Yes</option>";
+                                    echo "<option  value='no'>No</option>";
+                                } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Resolution</div>
-                    <div class="col-8">
-                        <select name="" id="resolution" class="DropDown select2" style="width: 100%;">
-                            <option selected value="1366 x 768">1366 x 768</option>
-                        </select>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">Keyboard Backlight</div>
+                        <div class="col-8">
+                            <select name="keyboard_backlight" id="keyboard_backlight" class="DropDown select2"
+                                style="width: 100%;">
+                                <option selected></option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Battery</div>
-                    <div class="col-8">
-                        <select name="" id="battery" class="DropDown select2" style="width: 100%;">
-                            <option selected value="yes">Yes</option>
-                            <option selected value="no">No</option>
-                        </select>
+                    <div class="row justify-content-center mt-3 mb-5">
+                        <div class="">
+                            <button class="btnT" type="submit"><i class="fa-solid fa-qrcode mr-1"
+                                    style="color:#168EB4"></i>
+                                Update
+                                & Print QR</button>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Touch</div>
-                    <div class="col-8">
-                        <select name="" id="touch" class="DropDown select2" style="width: 100%;">
-                            <option selected value="yes">Yes</option>
-                            <option selected value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-1">
-                    <div class="col-4 addLable">Opticle</div>
-                    <div class="col-8">
-                        <select name="" id="opticle" class="DropDown select2" style="width: 100%;">
-                            <option selected value="yes">Yes</option>
-                            <option selected value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3 mb-5">
-            <div class="">
-                <button class="btnT" type="submit"><i class="fa-solid fa-qrcode mr-1" style="color:#168EB4"></i> Update
-                    & Print QR</button>
-            </div>
-        </div>
+        </form>
 
 
     </div>

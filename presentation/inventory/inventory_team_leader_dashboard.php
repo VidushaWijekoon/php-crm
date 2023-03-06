@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../includes/header.php');
-
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
@@ -452,7 +452,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Total Inventory</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">1900
+                    <div class="cardValue">
+                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='0' "; 
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                            echo $data['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>
@@ -468,7 +474,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Production</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">120
+                    <div class="cardValue">
+                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='0' "; 
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                            echo $data['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>
@@ -484,7 +496,13 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Dispatch</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">90
+                    <div class="cardValue">
+                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='1' "; 
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                            echo $data['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>

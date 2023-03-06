@@ -1341,7 +1341,7 @@ class PrintFileTXT extends PrintFile{
       * Gets or sets whether the text is bold. Default is False.
       * @var boolean 
       */
-     public $fontBold = false;
+     public $fontBold = true;
         
      /**
       * Gets or sets whether the text has the italic style applied. Default is False.
@@ -1365,7 +1365,7 @@ class PrintFileTXT extends PrintFile{
       * Gets or sets the font size in Points unit. Default is 10pt. 
       * @var float 
       */
-     public $fontSizeInPoints = 10.0;
+     public $fontSizeInPoints = 14.0;
         
      /**
       * Gets or sets the Color for the printed text. Color must be specified in Hex notation for RGB channels respectively e.g. #rgb or #rrggbb. Default is #000000.
