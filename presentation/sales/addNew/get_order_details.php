@@ -91,5 +91,3 @@ if (isset($_GET['speed'])) {
     }
     echo $lcd_size_list;
 }
-
-mysqli_close($connection);
