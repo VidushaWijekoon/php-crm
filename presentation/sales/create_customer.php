@@ -545,7 +545,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <hr>
                     <div class="mb-3 float-right">
-                        <button type="submit" class="btnTB ">Create Customer</button>
+                        <button type="submit" name="create_customer" class="btnTB ">Create Customer</button>
                         <a href="./sales_dashboard.php" class="btnTC">Cancel</a>
                     </div>
                 </div>

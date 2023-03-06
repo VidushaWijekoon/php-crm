@@ -4,9 +4,7 @@ require_once("../../../functions/db_connection.php");
 
 $created_by = $_SESSION['user_id'];
 
-$errors = array();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['create_customer'])) {
 
     $cutomer_type = mysqli_real_escape_string($connection, $_POST['cutomer_type']);
     $salutation = mysqli_real_escape_string($connection, $_POST['salutation']);

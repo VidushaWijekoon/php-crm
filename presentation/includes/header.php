@@ -491,6 +491,14 @@
 
                                  </ul>
                              </li>
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
+                             <li class="nav-item">
+                                 <a href="../performance/performance_inventory.php" class="nav-link">
+                                     <i class="fa fa-clock nav-icon" style="font-size: 12px;"></i>
+                                     <p>Performance</p>
+                                 </a>
+                             </li>
                          <?php } ?>
                          <li class="nav-header text-uppercase">Other</li>
                          <!-- ============================================================== -->
@@ -501,20 +509,10 @@
                              <li class="nav-item">
                                  <a href="../laptop_inventory/laptop_inventory.php" class="nav-link">
                                      <i class="fas fa-laptop nav-icon" style="font-size: 12px;"></i>
-                                     <p> Laptop Inventory </p>
+                                     <p> Laptop Stock Report </p>
                                  </a>
                              </li>
-                             <!-- ============================================================== -->
-                             <!-- Ready Stock Department  -->
-                             <!-- ============================================================== -->
-                         <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
-                             <li class="nav-item">
-                                 <a href="#" class="nav-link">
-                                     <i class="fa-solid fa-signal-bars nav-icon" style="font-size: 12px;"></i>
-                                     <p> Ready Stock Inventory </p>
-                                 </a>
-                             </li>
+
                              <!-- ============================================================== -->
                              <!-- E-Commerce Inventory  -->
                              <!-- ============================================================== -->
@@ -538,14 +536,36 @@
                                  </a>
                              </li>
                              <!-- ============================================================== -->
-                             <!-- Perfomance  -->
+                             <!-- Battery  -->
                              <!-- ============================================================== -->
                          <?php }
                             if ($department_id == 1 && $role_id == 1) { ?>
                              <li class="nav-item">
-                                 <a href="../performance/performance_inventory.php" class="nav-link">
-                                     <i class="fa fa-clock nav-icon" style="font-size: 12px;"></i>
-                                     <p>Performance</p>
+                                 <a href="#" class="nav-link">
+                                     <i class="fa fa-battery-bolt nav-icon" style="font-size: 12px;"></i>
+                                     <p>Battery Inventory</p>
+                                 </a>
+                             </li>
+                             <!-- ============================================================== -->
+                             <!-- LCD  -->
+                             <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
+                             <li class="nav-item">
+                                 <a href="#" class="nav-link">
+                                     <i class="fa fa-tv nav-icon" style="font-size: 12px;"></i>
+                                     <p>LCD Inventory</p>
+                                 </a>
+                             </li>
+                             <!-- ============================================================== -->
+                             <!-- Charger  -->
+                             <!-- ============================================================== -->
+                         <?php }
+                            if ($department_id == 1 && $role_id == 1) { ?>
+                             <li class="nav-item">
+                                 <a href="#" class="nav-link">
+                                     <i class="fa fa-plug nav-icon" style="font-size: 12px;"></i>
+                                     <p>Charger Inventory</p>
                                  </a>
                              </li>
                          <?php } ?>
