@@ -55,7 +55,7 @@ if (!isset($_SESSION['user_id'])) {
 .rackSturcture {
     display: flex;
     flex-direction: column;
-    height: 150px;
+    /* height: 150px; */
     width: 250px;
 }
 
@@ -100,7 +100,7 @@ if (!isset($_SESSION['user_id'])) {
 .lableLayer {
     font-size: 10px;
     display: flex;
-    height: 18%;
+    height: 25%;
     align-items: center;
 }
 
@@ -119,6 +119,11 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 .rack {
+    display: flex;
+    justify-content: center;
+}
+
+.rackDwn {
     display: flex;
     justify-content: center;
 }
@@ -169,7 +174,6 @@ if (!isset($_SESSION['user_id'])) {
     width: 93%;
     justify-content: space-between;
     font-weight: 600;
-    margin-left: 10px;
 
 }
 </style>
@@ -187,7 +191,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row mb-4 ml-1 pt-2">
     <!-- <i class=" fa-solid fa-store"></i> -->
     <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
-    <h6 class="pageName pt-1">Battery Virtual Inventory</h6>
+    <h6 class="pageName pt-1"> E-commerce inventory</h6>
 </div>
 
 <div class="row virtualInvSec">
@@ -206,25 +210,18 @@ if (!isset($_SESSION['user_id'])) {
             <div class="row text-center">
                 <!-- <div class="col-2"></div> -->
 
-                <div class="col-2">Type</div>
-                <div class="col-2">Status</div>
+                <div class="col-2">ASIN</div>
+                <div class="col-2">ALSAKB QR</div>
                 <div class="col-2">Model</div>
             </div>
             <div class="row">
                 <!-- <div class="col-2">Search</div> -->
 
                 <div class="col-2">
-                    <select name="" id="" class="select2 w-100">
-                        <option value="">OEM China</option>
-                        <option value="">Original</option>
-                    </select>
+                    <input class="w-100" type="text">
                 </div>
                 <div class="col-2">
-                    <select name="" id="" class="select2 w-100">
-                        <option value="">Tested</option>
-                        <option value="">Untest</option>
-                        <option value="">Damage-No-Use</option>
-                    </select>
+                    <input class="w-100" type="text">
                 </div>
                 <div class="col-3">
                     <input class="w-100" type="text">
@@ -261,6 +258,9 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="w-100">B</div>
                         <div class="w-100">C</div>
                         <div class="w-100">D</div>
+                        <div class="w-100">E</div>
+                        <div class="w-100">F</div>
+                        <div class="w-100">G</div>
                     </div>
                 </div>
 
@@ -270,549 +270,7 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="lableLayer">
                             T
                         </div>
-                        <div class="lableLayer">
-                            3
-                        </div>
-                        <div class="lableLayer">
-                            2
-                        </div>
-                        <div class="lableLayer">
-                            1
-                        </div>
-                    </div>
 
-                    <!-- Rck eke Sturucter eka -->
-
-
-                    <div class=" rackSturcture">
-
-                        <!-- <div class="rackfull"> -->
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-                        <!-- </div> -->
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- /// -->
-
-            <!-- Full Rack eka Back -->
-
-            <div class="rackSec w-100 m-3 text-center">
-                <p style="font-size: 15px; font-weight: 600;">Back-Side</p>
-                <br>
-                <!-- Rack Eke Lable  -->
-                <div class="d-flex justify-content-center">
-                    <div class="rackLbl">
-                        <div class="w-100">A</div>
-                        <div class="w-100">B</div>
-                        <div class="w-100">C</div>
-                        <div class="w-100">D</div>
-                    </div>
-                </div>
-
-                <div class="rack">
-                    <!-- Patte Lable tika -->
-                    <div class="lableLeftSec">
-                        <div class="lableLayer">
-                            T
-                        </div>
                         <div class="lableLayer">
                             6
                         </div>
@@ -839,31 +297,11 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                    <!-- <span>A-1</span> -->
+                                </div>
+
                             </div>
                             <!-- /// -->
                         </div>
@@ -872,31 +310,9 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                <div class="btnTBD btnBox">
+
+                                </div>
                             </div>
                             <!-- /// -->
 
@@ -906,56 +322,19 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+
                             </div>
                             <!-- /// -->
 
 
                         </div>
 
-                        <!-- </div> -->
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
@@ -1062,29 +441,10 @@ if (!isset($_SESSION['user_id'])) {
 
 
                         </div>
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
                         <div class="rackLayer ">
-
                         </div>
                         <!-- Rack Layer C -->
                         <div class="rackLayer ">
@@ -1149,6 +509,71 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
                                     <!-- iwrai hover eka -->
                                 </a>
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer A -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <a href="./virtual_inv_add_remove.php">
+                                    <div class="btnTB btnBox">
+                                        <span>A-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Latitude e2450</td>
+                                                    <td>10</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
+                            </div>
+                            <!-- /// -->
+
+
+                        </div>
+                    </div>
+                    <div class=" rackSturcture">
+                        <!-- Rack Layers T -->
+                        <div class="rackLayer ">
+
+                        </div>
+                        <!-- Rack Layer C -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer B -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
                             </div>
                             <!-- /// -->
                         </div>
@@ -1157,59 +582,184 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
                             </div>
                             <!-- /// -->
 
 
                         </div>
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
 
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
                         <div class="rackLayer ">
+
                         </div>
+                        <!-- Rack Layer C -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer B -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer A -->
+                        <div class="rackLayer">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+
+
+                        </div>
+
+
+                    </div>
+                    <div class=" rackSturcture">
+                        <!-- Rack Layers T -->
+                        <div class="rackLayer ">
+
+                        </div>
+                        <!-- Rack Layer C -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer B -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer A -->
+                        <div class="rackLayer">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+
+
+                        </div>
+
+
+                    </div>
+                    <div class=" rackSturcture">
+                        <!-- Rack Layers T -->
+                        <div class="rackLayer ">
+
+                        </div>
+                        <!-- Rack Layer C -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer B -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer A -->
+                        <div class="rackLayer">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <div class="btnTBD btnBox">
+
+                                </div>
+
+                            </div>
+                            <!-- /// -->
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="rackDwn">
+                    <!-- Patte Lable tika -->
+                    <div class="lableLeftSec">
+
+                        <div class="lableLayer">
+                            3
+                        </div>
+                        <div class="lableLayer">
+                            2
+                        </div>
+                        <div class="lableLayer">
+                            1
+                        </div>
+                    </div>
+
+                    <!-- Rck eke Sturucter eka -->
+
+
+                    <div class=" rackSturcture">
+
+
+
+
+                    </div>
+                    <div class=" rackSturcture">
+
                         <!-- Rack Layer C -->
                         <div class="rackLayer ">
                             <!-- Box sec 1 -->
@@ -1311,27 +861,138 @@ if (!isset($_SESSION['user_id'])) {
 
 
                         </div>
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
+                    <div class=" rackSturcture">
+
+                        <!-- Rack Layer C -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <a href="./virtual_inv_add_remove.php">
+                                    <div class="btnTB btnBox">
+                                        <span>A-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Latitude e2450</td>
+                                                    <td>10</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer B -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <a href="./virtual_inv_add_remove.php">
+                                    <div class="btnTB btnBox">
+                                        <span>A-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Latitude e2450</td>
+                                                    <td>10</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
+                            </div>
+                            <!-- /// -->
+                        </div>
+                        <!-- Rack Layer A -->
+                        <div class="rackLayer ">
+                            <!-- Box sec 1 -->
+                            <div class="box border">
+                                <!-- Box BTn  -->
+                                <a href="./virtual_inv_add_remove.php">
+                                    <div class="btnTB btnBox">
+                                        <span>A-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Latitude e2450</td>
+                                                    <td>10</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
+                            </div>
+                            <!-- /// -->
+
+
+                        </div>
+                    </div>
+                    <div class=" rackSturcture">
+
+
+
+
+                    </div>
+                    <div class=" rackSturcture">
+
+
+
+                    </div>
+                    <div class=" rackSturcture">
+
+                    </div>
+                    <div class=" rackSturcture">
+
+
+                    </div>
+
                 </div>
             </div>
+
+            <!-- /// -->
+
+            <!-- Full Rack eka Back -->
+
+
 
             <!-- /// -->
 

@@ -287,7 +287,7 @@ if (!isset($_SESSION['user_id'])) {
             </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
-            <a href="">
+            <a href="./inventory_completed_tasks.php">
                 <div class="btnCard mr-3 mt-2 mb-1">
                     <div class="btnCardIcon">
                         <i class="fa-solid fa-note" style="color: #168EB4;font-size: 15px;"></i>

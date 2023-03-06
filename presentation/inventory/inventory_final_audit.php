@@ -144,6 +144,10 @@ require_once('../includes/header.php')
     color: #168EB4;
     font-weight: 600;
 }
+
+#btryPNSec {
+    display: none;
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -191,7 +195,7 @@ require_once('../includes/header.php')
                             </button>
                         </div> -->
                     <div class="modal-body">
-                        <div class="orderDetailSec">
+                        <div class="orderDetailSec ml-4">
                             <!-- Order Details -->
 
 
@@ -749,11 +753,11 @@ require_once('../includes/header.php')
                                                 <div class="col-6">
                                                     <div class="row align-items-center">
                                                         <div class="col-6 btryLbl radioSec">
-                                                            <input class="" type="radio" name="battery"
-                                                                id="excellent">100 -
+                                                            <input class="" type="radio" name="battery" id="excellent"
+                                                                onclick="undisplayPN()">100 -
                                                             80
                                                         </div>
-                                                        <div class="col-6 btryLbl">
+                                                        <div class=" col-6 btryLbl">
                                                             Excellent
                                                         </div>
                                                     </div>
@@ -763,16 +767,19 @@ require_once('../includes/header.php')
                                                 <div class="col-6">
                                                     <div class="row">
                                                         <div class="col-6 btryLbl radioSec">
-                                                            <input class="" type="radio" name="battery" id="Good">80
+                                                            <input class="" type="radio" name="battery" id="Good"
+                                                                onclick="undisplayPN()">80
                                                             - 55
                                                         </div>
-                                                        <div class="col-6 btryLbl">Good</div>
+                                                        <div class=" col-6 btryLbl">Good
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="row">
                                                         <div class="col-6 btryLbl radioSec">
-                                                            <input class="" type="radio" name="battery" id="weak">50
+                                                            <input class="" type="radio" name="battery" id="weak"
+                                                                onclick="displayPN()">50
                                                             - 0
                                                         </div>
                                                         <div class="col-6 btryLbl">Weak</div>
@@ -783,7 +790,7 @@ require_once('../includes/header.php')
 
                                         </div>
                                         <div class="row batterySec">
-                                            <div class="mt-3">
+                                            <div class="mt-3" id="btryPNSec">
                                                 Scan PN &nbsp;
                                                 <input type="text" id="btryPN">
                                             </div>
@@ -811,7 +818,7 @@ require_once('../includes/header.php')
 
 
                                 <div class="row batterySec my-2">
-                                    <div class="btn btnT">Confirm</div>
+                                    <div class="btn btnTB">Confirm</div>
                                 </div>
 
                             </div>
@@ -833,6 +840,28 @@ require_once('../includes/header.php')
 
     </div>
 </div>
+
+<script>
+const displayPN = () => {
+
+    // console.log($("#weak").val);
+    // $("#radio_1").prop("checked", true);
+    if ($("#weak").prop("checked", true)) {
+        // console.log("checked");
+        $('#btryPNSec').css('display', 'block');
+    } else {
+        $('#btryPNSec').css('display', 'none');
+    }
+
+}
+
+const undisplayPN = () => {
+    if ($("#good").prop("checked", true) || $("#excellent").prop("checked", true)) {
+        $('#btryPNSec').css('display', 'none');
+    }
+
+}
+</script>
 
 <?php
 require_once('../includes/footer.php')

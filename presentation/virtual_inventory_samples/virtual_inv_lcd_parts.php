@@ -187,7 +187,7 @@ if (!isset($_SESSION['user_id'])) {
 <div class="row mb-4 ml-1 pt-2">
     <!-- <i class=" fa-solid fa-store"></i> -->
     <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
-    <h6 class="pageName pt-1">Battery Virtual Inventory</h6>
+    <h6 class="pageName pt-1">LCD Materials Inventory</h6>
 </div>
 
 <div class="row virtualInvSec">
@@ -207,23 +207,27 @@ if (!isset($_SESSION['user_id'])) {
                 <!-- <div class="col-2"></div> -->
 
                 <div class="col-2">Type</div>
-                <div class="col-2">Status</div>
-                <div class="col-2">Model</div>
+                <div class="col-2">Size</div>
+                <div class="col-2">Degree</div>
             </div>
             <div class="row">
                 <!-- <div class="col-2">Search</div> -->
 
                 <div class="col-2">
                     <select name="" id="" class="select2 w-100">
-                        <option value="">OEM China</option>
-                        <option value="">Original</option>
+                        <option value="">PGP</option>
+                        <option value="">SGP</option>
+                        <option value="">ZGP</option>
                     </select>
                 </div>
                 <div class="col-2">
                     <select name="" id="" class="select2 w-100">
-                        <option value="">Tested</option>
-                        <option value="">Untest</option>
-                        <option value="">Damage-No-Use</option>
+                        <option value="">11</option>
+                        <option value="">12.5</option>
+                        <option value="">13.3</option>
+                        <option value="">14</option>
+                        <option value="">15.6</option>
+                        <option value="">17.3</option>
                     </select>
                 </div>
                 <div class="col-3">
@@ -394,25 +398,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
 
-                        <!-- </div> -->
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
@@ -520,23 +506,6 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
@@ -672,31 +641,10 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                </div>
+
                             </div>
                             <!-- /// -->
                         </div>
@@ -705,31 +653,10 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                </div>
+
                             </div>
                             <!-- /// -->
                         </div>
@@ -738,54 +665,15 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                </div>
+
                             </div>
                             <!-- /// -->
-
-
                         </div>
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
 
-                        <!-- //////// -->
                     </div>
                 </div>
             </div>
@@ -814,13 +702,13 @@ if (!isset($_SESSION['user_id'])) {
                             T
                         </div>
                         <div class="lableLayer">
-                            6
+                            3
                         </div>
                         <div class="lableLayer">
-                            5
+                            2
                         </div>
                         <div class="lableLayer">
-                            4
+                            1
                         </div>
                     </div>
 
@@ -937,25 +825,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
 
-                        <!-- </div> -->
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
@@ -1063,23 +933,6 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
@@ -1215,31 +1068,10 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                </div>
+
                             </div>
                             <!-- /// -->
                         </div>
@@ -1248,31 +1080,10 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                </div>
+
                             </div>
                             <!-- /// -->
                         </div>
@@ -1281,57 +1092,19 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
-                                    <div class="btnTB btnBox">
-                                        <span>A-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+
+                                <div class="btnTBD btnBox">
+                                </div>
+
                             </div>
                             <!-- /// -->
-
-
                         </div>
 
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
 
-                        <!-- //////// -->
                     </div>
                 </div>
             </div>
+
 
             <!-- /// -->
 

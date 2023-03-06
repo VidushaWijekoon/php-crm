@@ -1,6 +1,11 @@
 <?php
+session_start();
+require_once('../includes/header.php');
 
-require_once('../includes/header.php')
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
 
 ?>
 
@@ -35,19 +40,20 @@ require_once('../includes/header.php')
 
 .createListingHeading {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .sectionUnderline {
-    border-top: 2px solid #DBDBDB;
     margin-top: 0px;
+    margin-bottom: 0;
+    border-top: 2px solid #DBDBDB;
 }
 
 /* Add Listing card styles */
 
 .btnCard {
-    width: 152px;
-    height: 48px;
+    padding: 0px 5px;
+    height: 28px;
     background: #FFFFFF;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
@@ -55,25 +61,26 @@ require_once('../includes/header.php')
     color: #000000;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 
 }
 
 .btnCardLable {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 10px;
 }
 
 /* Listing Count Card */
 
 .listingCountCard {
-    width: 180px;
-    height: 90px;
+    width: 140px;
+    /* height: 90px; */
     background: #FFFFFF;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    /* padding: 0px 25px; */
 }
 
 .ListingCardLeft {
@@ -84,7 +91,7 @@ require_once('../includes/header.php')
 }
 
 .ListingCardRight {
-    padding: 10px 0px;
+    padding: 5px 0px;
     width: 60%;
     display: flex;
     align-items: center;
@@ -94,18 +101,18 @@ require_once('../includes/header.php')
 
 .platformnName {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 12px;
 }
 
 .listingCount {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 20px;
     color: #168EB4;
 }
 
 .listingDetails {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 /* //////////////// */
@@ -113,11 +120,11 @@ require_once('../includes/header.php')
 /* OrderDetails Card Styles */
 
 .orderDetailsCard {
-    height: 185px;
+    height: 120px;
     background: #FFFFFF;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    padding: 10px 10px;
+    padding: 5px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,7 +135,7 @@ require_once('../includes/header.php')
     display: flex;
     justify-content: center;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .directPlatformCount {
@@ -142,8 +149,7 @@ require_once('../includes/header.php')
 .dirNoon,
 .dirCartlow {
     font-weight: 500;
-    font-size: 14px;
-
+    font-size: 10px;
     text-align: center;
 }
 
@@ -151,7 +157,7 @@ require_once('../includes/header.php')
     display: flex;
     justify-content: center;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 25px;
     color: #168EB4;
 
 }
@@ -161,8 +167,8 @@ require_once('../includes/header.php')
 /* Sales Person Card Styles */
 
 .salesPersonCard {
-    width: 320px;
-    height: 180px;
+    width: 220px;
+    /* height: 180px; */
     background: #FFFFFF;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
@@ -176,16 +182,16 @@ require_once('../includes/header.php')
 }
 
 .salesCardTopLeft {
-    padding: 10px 0px 0px 10px;
+    padding: 0px 0px 0px 5px;
 }
 
 .salesCardTopRight {
-    padding: 20px 0px 0px 20px;
+    padding: 8px 0px 0px 10px;
 }
 
 .SalesPersonName {
     font-weight: 600;
-    font-size: 22px;
+    font-size: 12px;
     color: #000000;
 }
 
@@ -208,7 +214,7 @@ require_once('../includes/header.php')
 
 .salesCardValue {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 12px;
 }
 
 /* //////////////////////////////////////////////// */
@@ -239,7 +245,7 @@ require_once('../includes/header.php')
 
                         <div class="btnCard m-3">
                             <div class="btnCardIcon">
-                                <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                                <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                             </div>
                             <div class="btnCardLable">Create Order</div>
                         </div>
@@ -249,7 +255,7 @@ require_once('../includes/header.php')
                     <a href="./e_com_packing.php">
                         <div class="btnCard m-3">
                             <div class="btnCardIcon">
-                                <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                                <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                             </div>
                             <div class="btnCardLable">Packing</div>
                         </div>
@@ -264,7 +270,7 @@ require_once('../includes/header.php')
 
         <!-- /////////////Create Listing Section//////////////////// -->
 
-        <div class="createListingSec">
+        <div class="createListingSec mb-3">
             <div class="">
                 <div class="createListingHeading">
                     Create Listings
@@ -277,7 +283,7 @@ require_once('../includes/header.php')
                     <!-- Amazon -->
                     <div class="btnCard m-3">
                         <div class="btnCardIcon">
-                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                         </div>
                         <div class="btnCardLable">Amazon</div>
                     </div>
@@ -286,7 +292,7 @@ require_once('../includes/header.php')
                     <a href="./e_com_create_listing_noon.php">
                         <div class="btnCard m-3">
                             <div class="btnCardIcon">
-                                <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                                <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                             </div>
                             <div class="btnCardLable">Noon</div>
                         </div>
@@ -295,7 +301,7 @@ require_once('../includes/header.php')
                     <!-- Cartlow -->
                     <div class="btnCard m-3">
                         <div class="btnCardIcon">
-                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                         </div>
                         <div class="btnCardLable">Cartlow</div>
                     </div>
@@ -303,7 +309,7 @@ require_once('../includes/header.php')
                     <!-- Shopee -->
                     <div class="btnCard m-3">
                         <div class="btnCardIcon">
-                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                         </div>
                         <div class="btnCardLable">Shopee</div>
                     </div>
@@ -311,7 +317,7 @@ require_once('../includes/header.php')
                     <!-- Lazada -->
                     <div class="btnCard m-3">
                         <div class="btnCardIcon">
-                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 20px;"></i>
+                            <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
                         </div>
                         <div class="btnCardLable">Lazada</div>
                     </div>
@@ -322,7 +328,6 @@ require_once('../includes/header.php')
 
         <!-- End Create Listing Sec -->
 
-        <br><br>
         <!-- /////////////View Listing Section//////////////////// -->
 
         <div class="viewListingSec mb-3">
@@ -340,7 +345,7 @@ require_once('../includes/header.php')
                     <!-- amazon USA -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Amazon</div>
@@ -354,7 +359,7 @@ require_once('../includes/header.php')
                     <!-- amazon USA -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Amazon</div>
@@ -368,7 +373,7 @@ require_once('../includes/header.php')
                     <!-- amazon USA -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Amazon</div>
@@ -384,7 +389,7 @@ require_once('../includes/header.php')
 
                         <div class="listingCountCard m-3">
                             <div class="ListingCardLeft">
-                                <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                                <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                             </div>
                             <div class="ListingCardRight">
                                 <div class="platformnName">Noon</div>
@@ -398,7 +403,7 @@ require_once('../includes/header.php')
                     <!-- Cartlow -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Cartlow</div>
@@ -412,7 +417,7 @@ require_once('../includes/header.php')
                     <!-- Shopee -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Shopee</div>
@@ -426,7 +431,7 @@ require_once('../includes/header.php')
                     <!-- Shopee-->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Shopee</div>
@@ -440,7 +445,7 @@ require_once('../includes/header.php')
                     <!-- Shopee -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Shopee</div>
@@ -454,7 +459,7 @@ require_once('../includes/header.php')
                     <!-- Lazada -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Lazada</div>
@@ -468,7 +473,7 @@ require_once('../includes/header.php')
                     <!-- Lazada -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Lazada</div>
@@ -482,7 +487,7 @@ require_once('../includes/header.php')
                     <!-- Lazada -->
                     <div class="listingCountCard m-3">
                         <div class="ListingCardLeft">
-                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 50px;"></i>
+                            <i class="fa-brands fa-amazon" style="color: #168EB4;font-size: 25px;"></i>
                         </div>
                         <div class="ListingCardRight">
                             <div class="platformnName">Lazada</div>
@@ -503,7 +508,7 @@ require_once('../includes/header.php')
 
         <!-- /////////////Order Details Section//////////////////// -->
 
-        <div class="orderDetailsSec">
+        <div class="orderDetailsSec mb-3">
             <div class="">
                 <div class="createListingHeading">
                     Order Details
@@ -514,8 +519,8 @@ require_once('../includes/header.php')
             <div class="viewOrderDetailCardSec">
                 <div class="row">
                     <!--Today Order Details Card -->
-                    <a href="./e_com_view_today_orders.php">
-                        <div class="orderDetailsCard m-3">
+                    <a class="m-3" href="./e_com_view_today_orders.php">
+                        <div class="orderDetailsCard">
                             <div class="orderDetailsHead">
                                 <span style="color: #168EB4;">Today</span> &nbsp;Orders
                             </div>
@@ -532,8 +537,8 @@ require_once('../includes/header.php')
                     </a>
                     <!-- //////////// -->
                     <!--All Order Details Card -->
-                    <a href="./e_com_view_all_orders.php">
-                        <div class="orderDetailsCard m-3">
+                    <a class="m-3" href="./e_com_view_all_orders.php">
+                        <div class="orderDetailsCard">
                             <div class="orderDetailsHead">
                                 <span style="color: #168EB4;">All</span> &nbsp;Orders
                             </div>
@@ -550,8 +555,8 @@ require_once('../includes/header.php')
                     </a>
                     <!-- //////////// -->
                     <!--FBN Order Details Card -->
-                    <a href="./e_com_view_fbn_orders.php">
-                        <div class="orderDetailsCard m-3">
+                    <a class="m-3" href="./e_com_view_fbn_orders.php">
+                        <div class="orderDetailsCard">
                             <div class="orderDetailsHead">
                                 <span style="color: #168EB4;">FBN</span> &nbsp;Orders
                             </div>
@@ -562,8 +567,8 @@ require_once('../includes/header.php')
                     </a>
                     <!-- //////////// -->
                     <!--FBA Order Details Card -->
-                    <a href="./e_com_view_fba_orders.php">
-                        <div class="orderDetailsCard m-3">
+                    <a class="m-3" href="./e_com_view_fba_orders.php">
+                        <div class="orderDetailsCard">
                             <div class="orderDetailsHead">
                                 <span style="color: #168EB4;">FBA</span> &nbsp;Orders
                             </div>
@@ -575,15 +580,14 @@ require_once('../includes/header.php')
                     </a>
                     <!-- //////////// -->
                     <!--FBC Order Details Card -->
-                    <a href="./e_com_view_fbc_orders.php">
-                        <div class="orderDetailsCard m-3">
+                    <a class="m-3" href="./e_com_view_fbc_orders.php">
+                        <div class="orderDetailsCard">
                             <div class="orderDetailsHead">
                                 <span style="color: #168EB4;">FBC</span> &nbsp;Orders
                             </div>
                             <div class="orderDetailsCount">
                                 50
                             </div>
-
                         </div>
                     </a>
                     <!-- //////////// -->
@@ -608,7 +612,7 @@ require_once('../includes/header.php')
                 <div class="salesPersonCard m-3">
                     <div class="salesCardTop">
                         <div class="salesCardTopLeft">
-                            <i class="fa-solid fa-laptop-mobile" style="color: #168EB4;font-size: 75px;"></i>
+                            <i class="fa-solid fa-laptop-mobile" style="color: #168EB4;font-size: 50px;"></i>
                         </div>
                         <div class="salesCardTopRight">
                             <div class="SalesPersonName">Sales Person 1</div>
@@ -618,7 +622,7 @@ require_once('../includes/header.php')
                     </div>
                     <div class="salesCardBody">
                         <div class="salesCardValue">Today Listing Count &nbsp;<span
-                                style="font-size: 23px; color: #168EB4;">
+                                style="font-size: 15px; color: #168EB4;">
                                 100</span> </div>
                     </div>
 
