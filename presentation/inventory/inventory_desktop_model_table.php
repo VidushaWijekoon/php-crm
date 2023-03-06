@@ -6,6 +6,8 @@ require_once('../includes/header.php');
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+$pallet=$_GET['id'];
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 ?>
 
 <style>
@@ -83,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="createListingHeading ml-5">
                     <span>
                         Pallet No :
-                        <span>1</span>
+                        <span><?php echo $pallet ?></span>
                     </span>
                 </div>
                 <table class="table mx-5 table-hover text-center">
@@ -91,25 +93,36 @@ if (!isset($_SESSION['user_id'])) {
                         <tr>
                             <th style="width: 33%;">Pallet No</th>
                             <th style="width: 33%;">Brand</th>
+                            <th style="width: 33%;">Series</th>
+                            <th style="width: 33%;">Model</th>
+                            <th style="width: 33%;">Generation</th>
+                            <th style="width: 33%;">Screen Size</th>
                             <th style="width: 33%;">Qty</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>Asus</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>Asus</td>
-                            <td>10</td>
-                        </tr>
-
+                        <?php
+                        $query="SELECT pallet_id,brand,series,screen_size,model,generation,SUM(qty)as qty FROM pallet_informations WHERE pallet_id='$pallet' AND category='Desktop' GROUP BY brand ORDER BY qty DESC";
+                        $query_run = mysqli_query($connection, $query);
+                        foreach($query_run as $data){
+                            $id=$data['pallet_id'];
+                            $qty=$data['qty'];
+                            $brand=$data['brand'];
+                            $series=$data['series'];
+                            $model=$data['model'];
+                            $generation=$data['generation'];
+                            $screen_size=$data['screen_size'];
+                            echo "<tr>";
+                            echo"<td>$id</td>";
+                            echo"<td>$brand</td>";
+                            echo"<td>$series</td>";
+                            echo"<td>$model</td>";
+                            echo"<td>$generation</td>";
+                            echo"<td>$screen_size</td>";
+                            echo"<td>$qty</td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

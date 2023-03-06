@@ -89,7 +89,7 @@ if(mysqli_query($connection, $sql)){
     '$user_id',
     '$department_id',
     '$pallet_id',
-    'monitor to pallet',
+    'monitor Add To pallet',
     '$start_date',
     '$start_date',
     '$brand',
@@ -112,7 +112,7 @@ if($save == 2){
     $qty = $_GET['qty'];
     $category = $_GET['category'];
     if($category ==2){
-        $category="Keyboard";
+        $category="Keyboard ";
     }elseif($category ==3){
         $category="Mouse";
     }elseif($category ==4){
@@ -234,7 +234,7 @@ echo "<div class='text-center text-success' style='font-size :24px'>$category Re
     '$user_id',
     '$department_id',
     '$pallet_id',
-    'Desktop',
+    'Desktop Add To pallet',
     '$start_date',
     '$start_date',
     '$model',
