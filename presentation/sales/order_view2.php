@@ -11,8 +11,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $order_id = $_GET['order_id'];
+$get_customer_id = $_GET['customer_id'];
+
 $query1 = "SELECT sales_order_id, reference, shipping_date, expected_payment_date, payment_term 
-            FROM sales_order_items WHERE sales_order_id = '$order_id' GROUP BY sales_order_id DESC";
+            FROM sales_order_items WHERE sales_order_id = '$order_id' AND customer_id = '$get_customer_id' GROUP BY sales_order_id DESC";
 $run1 = mysqli_query($connection, $query1);
 while ($x = mysqli_fetch_assoc($run1)) {
     $sales_order_id = $x['sales_order_id'];
@@ -28,7 +30,6 @@ while ($y = mysqli_fetch_assoc($run2)) {
     $customer_fname = $y['customer_fname'];
     $customer_lname = $y['customer_lname'];
     $customer_id = $y['customer_id'];
-    echo $customer_id;
 }
 ?>
 
@@ -140,7 +141,7 @@ while ($y = mysqli_fetch_assoc($run2)) {
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
-    <a href="./all_orders.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+    <a href="./all_customers"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
         Orders</a>
 </div>
 
@@ -276,7 +277,7 @@ while ($y = mysqli_fetch_assoc($run2)) {
                 <tbody>
                     <?php
 
-                    $query = "SELECT * FROM sales_order_items WHERE sales_order_id = '$order_id' AND approve = '0' ORDER BY sales_order_id DESC";
+                    $query = "SELECT * FROM sales_order_items WHERE sales_order_id = '$order_id' AND customer_id = '$get_customer_id'  ORDER BY sales_order_id DESC";
                     $run = mysqli_query($connection, $query);
                     while ($xd = mysqli_fetch_assoc($run)) {
 

@@ -16,118 +16,116 @@ $user_id = $_SESSION['user_id'];
 
 ?>
 <style>
-a {
-    color: #000;
-}
+    a {
+        color: #000;
+    }
 
-a:link {
-    color: #0c2e5b;
-}
+    a:link {
+        color: #0c2e5b;
+    }
 
-thead th {
-    color: #168EB4;
-}
+    thead th {
+        color: #168EB4;
+    }
 
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.tblLable {
-    font-weight: 700;
-    /* color: #0c2e5b; */
-}
+    .tblLable {
+        font-weight: 700;
+        /* color: #0c2e5b; */
+    }
 
-.nav-tabs .nav-link.active {
-    color: #919EAB !important;
-}
+    .nav-tabs .nav-link.active {
+        color: #919EAB !important;
+    }
 
-input {
-    height: 22px;
-}
+    input {
+        height: 22px;
+    }
 
-.DropDown {
-    height: 24px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1CDCD;
-    /* padding: 0px 10px; */
-}
+    .DropDown {
+        height: 24px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #D1CDCD;
+        /* padding: 0px 10px; */
+    }
 
-.select2-container--default .select2-results__option--highlighted {
-    background-color: #3498db;
-    /* font-size: 10px; */
-}
+    .select2-container--default .select2-results__option--highlighted {
+        background-color: #3498db;
+        /* font-size: 10px; */
+    }
 
-.select2-container .select2-selection--single .select2-selection__rendered {
-    font-size: 10px;
-}
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        font-size: 10px;
+    }
 
-.select2-container--default .select2-selection--single {
-    border: 1px solid #D1CDCD;
-}
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #D1CDCD;
+    }
 
-.select2-selection__rendered {
-    line-height: 14px !important;
-    padding-left: 0px !important;
-}
+    .select2-selection__rendered {
+        line-height: 14px !important;
+        padding-left: 0px !important;
+    }
 
-.select2-container .select2-selection--single {
-    height: 24px;
-}
+    .select2-container .select2-selection--single {
+        height: 24px;
+    }
 
-.watsappField {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-}
+    .watsappField {
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+    }
 
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
 
-.pagination {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    .pagination {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
 
-}
+    }
 
-.page-item .active .page-link {
-    background-color: #168EB4;
-    border-color: #168EB4;
-}
+    .page-item .active .page-link {
+        background-color: #168EB4;
+        border-color: #168EB4;
+    }
 
-.pagination a {
-    font-weight: bold;
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    /* border: 1px solid black; */
-}
+    .pagination a {
+        font-weight: bold;
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        /* border: 1px solid black; */
+    }
 
-.pagination a.active {
-    background-color: #168EB4;
-    color: #fff;
-}
+    .pagination a.active {
+        background-color: #168EB4;
+        color: #fff;
+    }
 
-.pagination a:hover:not(.active) {
-    background-color: skyblue;
-}
+    .pagination a:hover:not(.active) {
+        background-color: skyblue;
+    }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
 </script>
 <script src="../../plugins/jquery/jquery.min.js"></script>
 
@@ -147,13 +145,11 @@ input {
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="#create" class="nav-link active tblLable" id="create-tab" data-bs-toggle="tab"
-                    data-bs-target="#create" role="tab" aria-controls="create" aria-selected="true">Customer
+                <a href="#create" class="nav-link active tblLable" id="create-tab" data-bs-toggle="tab" data-bs-target="#create" role="tab" aria-controls="create" aria-selected="true">Customer
                     Information</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a href="#posting" class="nav-link tblLable" id="posting-tab" data-bs-toggle="tab"
-                    data-bs-target="#posting" role="tab" aria-controls="posting" aria-selected="false">Post to
+                <a href="#posting" class="nav-link tblLable" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting" role="tab" aria-controls="posting" aria-selected="false">Post to
                     Customer</a>
             </li>
 
@@ -180,22 +176,16 @@ input {
                                 <td>Facebook</td>
                                 <td>
                                     <div style="display: grid">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 1"
-                                            name="search_keyword_1">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 2"
-                                            name="search_keyword_2">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 3"
-                                            name="search_keyword_3">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 4"
-                                            name="search_keyword_4">
-                                        <input type="text" class="mb-1" placeholder="Search Keyword 5"
-                                            name="search_keyword_5">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 1" name="search_keyword_1">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 2" name="search_keyword_2">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 3" name="search_keyword_3">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 4" name="search_keyword_4">
+                                        <input type="text" class="mb-1" placeholder="Search Keyword 5" name="search_keyword_5">
                                     </div>
 
                                 </td>
                                 <td>
-                                    <div class=""
-                                        style="display: flex; justify-content: center; align-items: center; height: 100px; font-size: 75px; font-weight: bold;">
+                                    <div class="" style="display: flex; justify-content: center; align-items: center; height: 100px; font-size: 75px; font-weight: bold;">
                                         5
                                     </div>
                                 </td>
@@ -228,16 +218,15 @@ input {
                                             $result = mysqli_query($connection, $query);
 
                                             while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                            <option value="<?php echo $resident_country["country_name"]; ?>">
-                                                <?php echo strtoupper($resident_country["country_name"]); ?>
-                                            </option>
+                                                <option value="<?php echo $resident_country["country_name"]; ?>">
+                                                    <?php echo strtoupper($resident_country["country_name"]); ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
                                     </td>
                                     <td>
                                         <div class="watsappField">
-                                            <select name="phone_code" class="w-25" id="create_phone_code"
-                                                style="border-radius: 5px;" required>
+                                            <select name="phone_code" class="w-25" id="create_phone_code" style="border-radius: 5px;" required>
                                             </select>
                                             <input type="text" class="w-100" name="whatsappnumber">
                                         </div>
@@ -278,22 +267,19 @@ input {
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center mr-2">
-                                                <input class='radioRed' type="radio" id="uae_pickup2" name="uae_pickup1"
-                                                    value="0">
+                                                <input class='radioRed' type="radio" id="uae_pickup2" name="uae_pickup1" value="0">
                                                 <div class="label_values" for="uae_pickup2">No
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center mr-2">
-                                                <input class='radioYellow' type="radio" id="uae_pickup3"
-                                                    name="uae_pickup1" value="3">
+                                                <input class='radioYellow' type="radio" id="uae_pickup3" name="uae_pickup1" value="3">
                                                 <div class="label_values" for="uae_pickup3">N/A
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="submit" name="add_customer"
-                                            style="background: transparent; border:none;">
+                                        <button type="submit" name="add_customer" style="background: transparent; border:none;">
                                             <i class="fa-solid fa-circle-plus fa-2x text-primary"></i>
                                         </button>
                                     </td>
@@ -322,7 +308,7 @@ input {
                         <tbody>
                             <?php
 
-                             $per_page_record = 25;
+                            $per_page_record = 25;
 
                             if (isset($_GET["page"])) {
                                 $page  = $_GET["page"];
@@ -341,76 +327,73 @@ input {
                                 $platform = $x['platform'];
 
                             ?>
-                            <tr>
-                                <td><?php echo $country_name ?></td>
-                                <td><?php echo $x['customer_name'] ?></td>
-                                <td><?php echo "+ " . $customer_phone_code . " " . $x['customer_whatsapp_code'] ?></td>
-                                <td><?php echo $platform ?></td>
-                                <td><?php echo $x['model_selling_buying'] ?></td>
-                                <td>
-                                    <?php if ($uae_pickup == 1) { ?>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" checked disabled name="uae_pickup1"
-                                                value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes
+                                <tr>
+                                    <td><?php echo $country_name ?></td>
+                                    <td><?php echo $x['customer_name'] ?></td>
+                                    <td><?php echo "+ " . $customer_phone_code . " " . $x['customer_whatsapp_code'] ?></td>
+                                    <td><?php echo $platform ?></td>
+                                    <td><?php echo $x['model_selling_buying'] ?></td>
+                                    <td>
+                                        <?php if ($uae_pickup == 1) { ?>
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" checked disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
-                                            <div class="label_values" for="uae_pickup2">No
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php }
+                                        <?php }
                                         if ($uae_pickup == 0) { ?>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" checked disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup2" checked disabled name="uae_pickup1"
-                                                value="0">
-                                            <div class="label_values" for="uae_pickup2">No
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup3" disabled name="uae_pickup1" value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php }
+                                        <?php }
                                         if ($uae_pickup == 3) { ?>
-                                    <div class="d-flex">
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
-                                            <div class="label_values" for="uae_pickup1">Yes
+                                            <div class="d-flex">
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup1" disabled name="uae_pickup1" value="1">
+                                                    <div class="label_values" for="uae_pickup1">Yes
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
+                                                    <div class="label_values" for="uae_pickup2">No
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center mr-2">
+                                                    <input type="radio" id="uae_pickup3" disabled checked name="uae_pickup1" value="3">
+                                                    <div class="label_values" for="uae_pickup3">N/A
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup2" disabled name="uae_pickup1" value="0">
-                                            <div class="label_values" for="uae_pickup2">No
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center mr-2">
-                                            <input type="radio" id="uae_pickup3" disabled checked name="uae_pickup1"
-                                                value="3">
-                                            <div class="label_values" for="uae_pickup3">N/A
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php } ?>
-                                </td>
-                                <td><?php echo $x['created_time']; ?></td>
-                            </tr>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?php echo $x['created_time']; ?></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -485,30 +468,20 @@ input {
                                     <td>Monday</td>
                                     <td>
                                         <div>
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
@@ -540,30 +513,20 @@ input {
                                     </td>
                                     <td>
                                         <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
                                         <div style="display: grid">
-                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100"
-                                                name="search_keyword_1">
-                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100"
-                                                name="search_keyword_2">
-                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100"
-                                                name="search_keyword_3">
-                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100"
-                                                name="search_keyword_4">
-                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100"
-                                                name="search_keyword_5">
+                                            <input type="text" placeholder="Search Keyword 1" class="mb-1 w-100" name="search_keyword_1">
+                                            <input type="text" placeholder="Search Keyword 2" class="mb-1 w-100" name="search_keyword_2">
+                                            <input type="text" placeholder="Search Keyword 3" class="mb-1 w-100" name="search_keyword_3">
+                                            <input type="text" placeholder="Search Keyword 4" class="mb-1 w-100" name="search_keyword_4">
+                                            <input type="text" placeholder="Search Keyword 5" class="mb-1 w-100" name="search_keyword_5">
                                         </div>
                                     </td>
                                     <td>
@@ -577,16 +540,15 @@ input {
                 <div class="d-flex">
                     <p class="" style="font-size: 10px; margin-top: 5px">Please Select Country First: </p>
                     <div class="mx-1">
-                        <select name="country_name" id="create_customer_country" class="select2 w-75"
-                            onchange="showUser(this.value)">
+                        <select name="country_name" id="create_customer_country" class="select2 w-75" onchange="showUser(this.value)">
                             <?php
-                                $query = "SELECT country_name FROM sales_daily_customer_informations WHERE created_by = '$user_id' GROUP BY country_name";
-                                $result = mysqli_query($connection, $query);
+                            $query = "SELECT country_name FROM sales_daily_customer_informations WHERE created_by = '$user_id' GROUP BY country_name";
+                            $result = mysqli_query($connection, $query);
 
-                                while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                            <option value="<?php echo $resident_country["country_name"]; ?>">
-                                <?php echo strtoupper($resident_country["country_name"]); ?>
-                            </option>
+                            while ($resident_country = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                <option value="<?php echo $resident_country["country_name"]; ?>">
+                                    <?php echo strtoupper($resident_country["country_name"]); ?>
+                                </option>
                             <?php } ?>
                         </select>
                     </div>
@@ -606,28 +568,28 @@ input {
 </div>
 
 <script>
-$('#myTab a').click(function(e) {
-    e.preventDefault();
-    $(this).tab('show');
-});
+    $('#myTab a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
 
-// store the currently selected tab in the hash value
-$("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
-    var id = $(e.target).attr("href").substr(1);
-    window.location.hash = id;
-});
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
 
-// on load of the page: switch to the currently selected tab
-var hash = window.location.hash;
-$('#myTab a[href="' + hash + '"]').tab('show');
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+    $('#myTab a[href="' + hash + '"]').tab('show');
 
-// 
-function go2Page() {
-    var page = document.getElementById("page").value;
-    var user_id = document.getElementById("page").value;
-    page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
-    window.location.href = 'users.php?page=' + page;
-}
+    // 
+    function go2Page() {
+        var page = document.getElementById("page").value;
+        var user_id = document.getElementById("page").value;
+        page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
+        window.location.href = 'users.php?page=' + page;
+    }
 </script>
 
 <?php require_once('../includes/footer.php'); ?>

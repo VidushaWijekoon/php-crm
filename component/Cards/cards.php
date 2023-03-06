@@ -1,216 +1,216 @@
 <?php
-    require_once("../../presentation/includes/header.php")
+require_once("../../presentation/includes/header.php")
 ?>
 
 <style>
-/* btn card Styles */
-.btnCard {
-    width: 152px;
-    height: 48px;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    display: flex;
-    color: #000000;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+    /* btn card Styles */
+    .btnCard {
+        width: 152px;
+        height: 48px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        display: flex;
+        color: #000000;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
 
-}
+    }
 
-.btnCardLable {
-    font-weight: 600;
-    font-size: 16px;
-}
+    .btnCardLable {
+        font-weight: 600;
+        font-size: 16px;
+    }
 
 
-/* Card 1 --Count showing Styles */
-.dashCard {
-    width: 220px;
-    height: 110px;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    color: black;
-    padding: 10px 15px;
-}
+    /* Card 1 --Count showing Styles */
+    .dashCard {
+        width: 220px;
+        height: 110px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        color: black;
+        padding: 10px 15px;
+    }
 
-.dashCardTop {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
+    .dashCardTop {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 
-.cardIcon {
-    width: 20%;
-    /* padding: 5px 15px; */
-}
+    .cardIcon {
+        width: 20%;
+        /* padding: 5px 15px; */
+    }
 
-.cardTitle {
-    width: 80%;
-    /* padding: 8px 15px; */
-    margin-left: 5px;
-    margin-top: 2px;
-    font-weight: 500;
-    font-size: 22px;
-    color: #000000;
-}
+    .cardTitle {
+        width: 80%;
+        /* padding: 8px 15px; */
+        margin-left: 5px;
+        margin-top: 2px;
+        font-weight: 500;
+        font-size: 22px;
+        color: #000000;
+    }
 
-.cardValue {
-    font-weight: 600;
-    font-size: 28px;
-    color: #000000;
-    margin-top: 10px;
-    margin-left: 8px;
+    .cardValue {
+        font-weight: 600;
+        font-size: 28px;
+        color: #000000;
+        margin-top: 10px;
+        margin-left: 8px;
 
-}
+    }
 
-/* //////////////////////// */
+    /* //////////////////////// */
 
-/* Sales Person Card Styles */
+    /* Sales Person Card Styles */
 
-.salesPersonCard {
-    width: 320px;
-    height: 180px;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: #000000;
-}
+    .salesPersonCard {
+        width: 320px;
+        height: 180px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        padding: 5px 10px;
+        color: #000000;
+    }
 
-.salesCardTop {
-    width: 100%;
-    display: flex;
-}
+    .salesCardTop {
+        width: 100%;
+        display: flex;
+    }
 
-.salesCardTopLeft {
-    padding: 10px 0px 0px 10px;
-}
+    .salesCardTopLeft {
+        padding: 10px 0px 0px 10px;
+    }
 
-.salesCardTopRight {
-    padding: 20px 0px 0px 20px;
-}
+    .salesCardTopRight {
+        padding: 20px 0px 0px 20px;
+    }
 
-.SalesPersonName {
-    font-weight: 600;
-    font-size: 24px;
-    color: #000000;
-}
+    .SalesPersonName {
+        font-weight: 600;
+        font-size: 24px;
+        color: #000000;
+    }
 
-.SalesPersonPlatform {
-    font-weight: 600;
-    font-size: 14px;
-    color: #000000;
-}
+    .SalesPersonPlatform {
+        font-weight: 600;
+        font-size: 14px;
+        color: #000000;
+    }
 
-.SalesPersonStatus {
-    color: #6AA057;
-    font-weight: 600;
-    font-size: 10px;
-}
+    .SalesPersonStatus {
+        color: #6AA057;
+        font-weight: 600;
+        font-size: 10px;
+    }
 
-.salesCardBody {
-    display: flex;
-    justify-content: center;
-}
+    .salesCardBody {
+        display: flex;
+        justify-content: center;
+    }
 
-.salesCardValue {
-    font-weight: 600;
-    font-size: 20px;
-}
+    .salesCardValue {
+        font-weight: 600;
+        font-size: 20px;
+    }
 
-/* //////////////////////////////////////////////// */
+    /* //////////////////////////////////////////////// */
 
-/* Listing Count Card */
+    /* Listing Count Card */
 
-.listingCountCard {
-    width: 180px;
-    height: 90px;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-}
+    .listingCountCard {
+        width: 180px;
+        height: 90px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
 
-.ListingCardLeft {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .ListingCardLeft {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.ListingCardRight {
-    padding: 10px 0px;
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+    .ListingCardRight {
+        padding: 10px 0px;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
-.platformnName {
-    font-weight: 600;
-    font-size: 18px;
-}
+    .platformnName {
+        font-weight: 600;
+        font-size: 18px;
+    }
 
-.listingCount {
-    font-weight: 700;
-    font-size: 30px;
-    color: #168EB4;
-}
+    .listingCount {
+        font-weight: 700;
+        font-size: 30px;
+        color: #168EB4;
+    }
 
-.listingDetails {
-    font-weight: 500;
-    font-size: 12px;
-}
+    .listingDetails {
+        font-weight: 500;
+        font-size: 12px;
+    }
 
-/* //////////////// */
+    /* //////////////// */
 
-/* OrderDetails Card Styles */
+    /* OrderDetails Card Styles */
 
-.orderDetailsCard {
+    .orderDetailsCard {
 
-    background: #FFFFFF;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 10px 10px;
-}
+        background: #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        padding: 10px 10px;
+    }
 
-.orderDetailsHead {
-    display: flex;
-    justify-content: center;
-    font-weight: 500;
-    font-size: 20px;
-}
+    .orderDetailsHead {
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 20px;
+    }
 
-.directPlatformCount {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10%
-}
+    .directPlatformCount {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10%
+    }
 
-.dirAmazon,
-.dirNoon,
-.dirCartlow {
-    font-weight: 500;
-    font-size: 14px;
+    .dirAmazon,
+    .dirNoon,
+    .dirCartlow {
+        font-weight: 500;
+        font-size: 14px;
 
-    text-align: center;
-}
+        text-align: center;
+    }
 
-.orderDetailsCount {
-    display: flex;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 48px;
-    color: #168EB4;
+    .orderDetailsCount {
+        display: flex;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 48px;
+        color: #168EB4;
 
-}
+    }
 
-/* ///////////////// */
+    /* ///////////////// */
 </style>
 
 <div class="row">
@@ -322,5 +322,5 @@
 
 
 <?php
-    require_once("../../presentation/includes/footer.php")
+require_once("../../presentation/includes/footer.php")
 ?>

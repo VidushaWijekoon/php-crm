@@ -468,7 +468,7 @@ while ($x = mysqli_fetch_assoc($run)) {
                 </table>
                 <?php
 
-                $query = "SELECT COUNT(*) FROM sales_daily_customer_informations";
+                $query = "SELECT created_by, COUNT(*) FROM sales_daily_customer_informations WHERE created_by = '$user_id'";
                 $rs_result = mysqli_query($connection, $query);
                 $row = mysqli_fetch_row($rs_result);
                 $total_records = $row[0];

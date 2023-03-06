@@ -1098,17 +1098,19 @@ if (isset($_POST['update_and_save'])) {
                                     if ($order_shipping_method == 1) {
                                         echo "Local Pickup" . ", ";
                                     }
-                                    if ($order_packing_type == 2) {
+                                    if ($order_shipping_method == 2) {
                                         echo "DHL" . ", ";
                                     }
                                     if ($order_shipping_method == 3) {
                                         echo "Fedex" . ", ";
                                     }
-                                    if ($order_packing_type == 5) {
-                                        echo "Other" . ", ";
+                                    if ($order_shipping_method == 4) {
+                                        echo "UPS" . ", ";
                                     }
+                                    if ($order_shipping_method == 5) {
+                                        echo "UPS" . ", ";
+                                    };
                                     ?>
-
 
                                 </b>
                             </p>

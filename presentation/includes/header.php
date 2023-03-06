@@ -492,7 +492,7 @@
                                  </ul>
                              </li>
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
                                  <a href="../performance/performance_inventory.php" class="nav-link">
                                      <i class="fa fa-clock nav-icon" style="font-size: 12px;"></i>
