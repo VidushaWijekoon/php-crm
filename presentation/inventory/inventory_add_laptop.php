@@ -112,7 +112,6 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
     }
     $sql="SELECT * FROM machine_from_suppliers WHERE (serial_number = '".$scanned_mfg."' OR mfg = '".$scanned_mfg."')";
     $result = mysqli_query($connection,$sql);
-    echo $sql;
     if(empty($result)){
         $add_to_wis = 2;
     }else{
