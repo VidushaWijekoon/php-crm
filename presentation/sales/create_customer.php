@@ -65,7 +65,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
-    <form action="./addNew/create_customer" method="POST">
+    <form action="./addNew/customer/create_customer.php" method="POST">
         <div class="row mt-4">
             <div class="col-sm-12 col-lg-12 bg-white">
                 <div class="row mx-2">
@@ -126,7 +126,7 @@ if (!isset($_SESSION['user_id'])) {
                         <p>Customer Email</p>
                     </div>
                     <div class="col-sm-8">
-                        <div class=""><input class="w-25" type="text" name="customer_email" placeholder="E-mail"></div>
+                        <div class=""><input class="w-25" type="email" name="customer_email" placeholder="E-mail"></div>
                     </div>
                 </div>
                 <div class="row mx-2">
@@ -156,12 +156,10 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="col-sm-8 d-flex">
                         <div class="">
-                            <select name="country_code" id="country_code" required style="border-radius: 5px;" class="w-100">
-
-                            </select>
+                            <select name="country_code" id="country_code" required style="border-radius: 5px;" class="w-100"></select>
                         </div>
                         <div class="mx-2">
-                            <input type="text" name="country_number" placeholder="Customer Number" required>
+                            <input type="number" min="1" name="country_number" placeholder="Customer Number" required>
                         </div>
                     </div>
                 </div>
@@ -185,7 +183,7 @@ if (!isset($_SESSION['user_id'])) {
                             </select>
                         </div>
                         <div class="mx-2">
-                            <input type="text" placeholder="Whatsapp Number" name="whatsapp_number">
+                            <input type="number" min="1" placeholder="Whatsapp Number" name="whatsapp_number">
                         </div>
                     </div>
                 </div>
@@ -527,10 +525,9 @@ if (!isset($_SESSION['user_id'])) {
                                             </td>
                                             <td class="p-0"><input type="text" name="contact_fist_name" class="w-100"></td>
                                             <td class="p-0"><input type="text" name="contact_last_name" class="w-100"></td>
-                                            <td class="p-0"><input type="text" name="contact_email" class="w-100"></td>
-                                            <td class="p-0"><input type="text" name="contact_work_phone_number" class="w-100"></td>
-                                            <td class="p-0"><input type="text" name="contact_mobile_number" class="w-100"></td>
-
+                                            <td class="p-0"><input type="email" name="contact_email" class="w-100"></td>
+                                            <td class="p-0"><input type="number" name="contact_work_phone_number" class="w-100"></td>
+                                            <td class="p-0"><input type="number" name="contact_mobile_number" class="w-100"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -557,28 +554,6 @@ if (!isset($_SESSION['user_id'])) {
 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
-
-<script>
-    $(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        });
-    });
-
-    $(document).ready(function() {
-        $("#country_name").on("change", function() {
-            var country_name = $("#country_name").val();
-            var getURL = "./addNew/get_phone_code.php?country_name=" + country_name;
-            $.get(getURL, function(data, status) {
-                $("#country_code").html(data);
-            });
-        });
-    });
-</script>
-
+<script src="./create_order.js"></script>
 
 <?php require_once('../includes/footer.php'); ?>

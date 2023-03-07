@@ -48,7 +48,7 @@ $created_by = $_SESSION['user_id'];
 
 <div class="row">
     <div class="col">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mt-3">
 
             <!-- <div class="card-header">
                 <div class="card-title">
@@ -56,9 +56,13 @@ $created_by = $_SESSION['user_id'];
                 </div>
             </div> -->
             <div class="row pl-4 pt-2">
-                <!-- <i class="pageNameIcon fa-solid fa-store"></i> -->
-                <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
-                <h6 class="pageName">All Orders</h6>
+                <div class="card-title d-flex w-100 justify-content-between">
+                    <div class="d-inline">
+                        <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
+                        <span>Custom Content Below</span>
+                    </div>
+                    <a href="./create_order.php" class="btnT mx-4">Create New Order</a>
+                </div>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
