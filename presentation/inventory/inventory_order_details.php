@@ -429,8 +429,9 @@ if (!isset($_SESSION['user_id'])) {
                             <td>DHL</td>
                             <td>100</td>
                             <td>
-                                <button class="btn" data-toggle="modal" data-target="#myModal"><i
-                                        class="fa-solid fa-hourglass-start text-info"></i></button>
+                                <a href="./inventory_start_order.php">
+                                    <button class="btn"><i class="fa-solid fa-hourglass-start text-info"></i></button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -461,8 +462,11 @@ if (!isset($_SESSION['user_id'])) {
                             <td>DHL</td>
                             <td>100</td>
                             <td>
-                                <button class="btn" data-toggle="modal" data-target="#myModal"><i
-                                        class="fa-solid fa-hourglass-start text-info"></i></button>
+                                <!-- <button class="btn" data-toggle="modal" data-target="#myModal"><i
+                                        class="fa-solid fa-hourglass-start text-info"></i></button> -->
+                                <a href="./inventory_start_order.php">
+                                    <button class="btn"><i class="fa-solid fa-hourglass-start text-info"></i></button>
+                                </a>
                             </td>
                         </tr>
 
