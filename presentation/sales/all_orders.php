@@ -144,7 +144,9 @@ $created_by = $_SESSION['user_id'];
                                         </td>
                                         <td><?php echo $x['reference'] ?></td>
                                         <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
-                                        <td><a href="./sales_order_map.php">Processing</a></td>
+                                        <td>
+                                            <a href="../so_road_map/sales_order_road_map">Processing</a>
+                                        </td>
                                         <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
@@ -495,7 +497,7 @@ $created_by = $_SESSION['user_id'];
                                     <tr>
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $x['order_created_time'] ?></td>
-                                        <td><a href="./order_view.php">SO-<?php echo $x['sales_order_id'] ?></a></td>
+                                        <td><a href="../order_view">SO-<?php echo $x['sales_order_id'] ?></a></td>
                                         <td><?php echo $x['reference'] ?></td>
                                         <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
                                         <td><a href="./sales_order_map.php">Processing</a></td>
