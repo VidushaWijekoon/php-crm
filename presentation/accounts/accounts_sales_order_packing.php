@@ -11,6 +11,17 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <style>
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
+
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
 .cardContainer {
     /* width: 99%; */
     background-color: #ffffff;
@@ -42,15 +53,155 @@ if (!isset($_SESSION['user_id'])) {
     display: flex;
     justify-content: space-between;
 }
+
+.salesOrders,
+.OrderDetails {
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
 
 <div class="allSalesOrderBody">
     <div class="cardContainer">
+        <div class="row pageNavigation pt-1 pl-2">
+            <a href="./accounts_dashboard"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+                Dashboard</a>
+        </div>
+        <div class="row pl-2 pt-2">
+            <i class="pageNameIcon fa-solid fa-square-dollar"></i>
+            <h6 class="pageName">Sales Order : 12345</h6>
+        </div>
         <div class="row pt-3">
-            <div class="col-lg-3 border">a</div>
+            <div class="col-lg-3 border">
+                <div class="salesOrders">
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+                    <div class="SO border p-2 mt-1">
+                        <p class="soNum">
+                            <b>
+                                S0-123445
+                            </b>
+                        </p>
+                        <div class="soDetails d-flex justify-content-between">
+                            <p class="lableSo">John Doe</p>
+                            <!-- Shipping Date -->
+                            <p>2022-02-03</p>
+                        </div>
+                        <p class="soStatus">Packed</p>
+                    </div>
+
+                </div>
+            </div>
             <div class="col-lg-9 border">
                 <div class="OrderDetails">
-                    <div class="navSec">
+                    <div class="navSec mt-1">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
