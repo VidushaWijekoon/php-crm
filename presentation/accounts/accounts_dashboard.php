@@ -497,7 +497,7 @@ table th {
                                         <th scope="col">Sales Order</th>
                                         <th scope="col">Reference</th>
                                         <th scope="col">Customer Name</th>
-                                        <th scope="col">Order Status</th>
+                                        <th scope="col">Invoice Number</th>
                                         <th scope="col">Shipping Date</th>
                                         <th scope="col">Packed</th>
                                         <th scope="col">Invoiced</th>
@@ -514,7 +514,7 @@ table th {
                                         <td>OD-12345</td>
                                         <td>WH1-12334</td>
                                         <td>John Doe</td>
-                                        <td>Waiting for Approval</td>
+                                        <td>inv1232</td>
                                         <td>02/25/2023</td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
