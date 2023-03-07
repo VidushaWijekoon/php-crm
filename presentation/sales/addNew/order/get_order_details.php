@@ -1,10 +1,10 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "", "wms");
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 
 if (isset($_GET['device'])) {
 
     $device = mysqli_real_escape_string($connection, $_GET['device']);
-    $query         = "SELECT DISTINCT brand FROM warehouse_information_sheet WHERE device = '{$device}'";
+    $query         = "SELECT DISTINCT brand FROM main_inventory_informations WHERE device = '{$device}'";
     $result_set = mysqli_query($connection, $query);
 
     $brand_list = "<option selected>--Select Brand--</option>";
@@ -17,7 +17,7 @@ if (isset($_GET['device'])) {
 if (isset($_GET['brand'])) {
 
     $brand = mysqli_real_escape_string($connection, $_GET['brand']);
-    $query         = "SELECT DISTINCT model FROM warehouse_information_sheet WHERE brand = '{$brand}'";
+    $query         = "SELECT DISTINCT model FROM main_inventory_informations WHERE brand = '{$brand}'";
     $result_set = mysqli_query($connection, $query);
 
     $model_list = "<option selected>--Select Model--</option>";
@@ -30,7 +30,7 @@ if (isset($_GET['brand'])) {
 if (isset($_GET['model'])) {
 
     $model = mysqli_real_escape_string($connection, $_GET['model']);
-    $query         = "SELECT DISTINCT processor FROM warehouse_information_sheet WHERE model = '{$model}'";
+    $query         = "SELECT DISTINCT processor FROM main_inventory_informations WHERE model = '{$model}'";
     $result_set = mysqli_query($connection, $query);
 
     $processor_list = "<option selected>--Select Processor--</option>";
@@ -43,7 +43,7 @@ if (isset($_GET['model'])) {
 if (isset($_GET['processor'])) {
 
     $processor = mysqli_real_escape_string($connection, $_GET['processor']);
-    $query         = "SELECT DISTINCT core FROM warehouse_information_sheet WHERE processor = '{$processor}'";
+    $query         = "SELECT DISTINCT core FROM main_inventory_informations WHERE processor = '{$processor}'";
     $result_set = mysqli_query($connection, $query);
 
     $core_list = "<option selected>--Select Core--</option>";
@@ -56,7 +56,7 @@ if (isset($_GET['processor'])) {
 if (isset($_GET['core'])) {
 
     $core = mysqli_real_escape_string($connection, $_GET['core']);
-    $query         = "SELECT DISTINCT generation FROM warehouse_information_sheet WHERE core = '{$core}'";
+    $query         = "SELECT DISTINCT generation FROM main_inventory_informations WHERE core = '{$core}'";
     $result_set = mysqli_query($connection, $query);
 
     $generation_list = "<option selected>--Select Core--</option>";
@@ -69,7 +69,7 @@ if (isset($_GET['core'])) {
 if (isset($_GET['generation'])) {
 
     $generation = mysqli_real_escape_string($connection, $_GET['generation']);
-    $query         = "SELECT DISTINCT speed FROM warehouse_information_sheet WHERE generation = '{$generation}'";
+    $query         = "SELECT DISTINCT speed FROM main_inventory_informations WHERE generation = '{$generation}'";
     $result_set = mysqli_query($connection, $query);
 
     $speed_list = "<option selected>--Select Speed--</option>";
@@ -82,7 +82,7 @@ if (isset($_GET['generation'])) {
 if (isset($_GET['speed'])) {
 
     $speed = mysqli_real_escape_string($connection, $_GET['speed']);
-    $query         = "SELECT DISTINCT lcd_size FROM warehouse_information_sheet WHERE speed = '{$speed}'";
+    $query         = "SELECT DISTINCT lcd_size FROM main_inventory_informations WHERE speed = '{$speed}'";
     $result_set = mysqli_query($connection, $query);
 
     $lcd_size_list = "<option selected>--Select LCD Size--</option>";

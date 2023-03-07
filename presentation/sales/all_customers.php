@@ -23,9 +23,10 @@ if (!isset($_SESSION['user_id'])) {
     <div class="col">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h3 class="card-title">
-                    <h4>Custom Content Below</h4>
-                </h3>
+                <div class="card-title d-flex w-100 justify-content-between">
+                    <h6>Custom Content Below</h6>
+                    <a href="./create_customer.php" class="btnT">Create New Customer</a>
+                </div>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
@@ -63,7 +64,7 @@ if (!isset($_SESSION['user_id'])) {
                                 ?>
                                     <tr>
                                         <td>
-                                            <a href="<?php echo "customer_view?customer_id={$customer_id}"  ?>"><?php echo $customer_id ?> </a>
+                                            <a href="<?php echo "customer_view?customer_id={$customer_id}" ?>"><?php echo $customer_id ?> </a>
                                         </td>
                                         <td><?php echo $customer_fname . " " . $customer_lname ?></td>
                                         <td><?php echo $resident_country ?></td>

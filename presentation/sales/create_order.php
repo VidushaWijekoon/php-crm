@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(-1);
 ob_start();
 session_start();
 require_once('../includes/header.php');
@@ -12,14 +14,9 @@ if (!isset($_SESSION['user_id'])) {
 
 $created_by = $_SESSION['user_id'];
 
-if (isset($_POST['choose_customer'])) {
-    $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
-    header("Location: create_order?customer_id=$customer_id");
-}
-
 if (isset($_POST['create_order'])) {
 
-    $customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
+    $get_customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
     $reference = mysqli_real_escape_string($connection, $_POST['reference']);
     $shipping_date = mysqli_real_escape_string($connection, $_POST['shipping_date']);
     $expected_payment_date = mysqli_real_escape_string($connection, $_POST['expected_payment_date']);
@@ -93,7 +90,7 @@ if (isset($_POST['create_order'])) {
     `order_created_time`
     )
     VALUES(
-        '$customer_id',
+        '$get_customer_id',
         '$reference',
         '$shipping_date',
         '$expected_payment_date',
@@ -131,13 +128,23 @@ if (isset($_POST['create_order'])) {
         NOW()
     )
     ";
+    echo $query;
     $query_run = mysqli_query($connection, $query);
     if ($query_run) {
-        header("Location: ./create_order?customer_id=$customer_id");
+        echo "<script>
+            alert('Successfully Created Customer');
+            window.location.href=' ./create_order?customer_id=$get_customer_id';
+        </script>";
     } else {
         echo "Sorry Cannot Insert this item";
     }
 }
+
+if (isset($_POST['choose_customer'])) {
+    $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
+    header("Location: create_order?customer_id=$customer_id");
+}
+
 
 if (isset($_POST['update_and_save'])) {
     $customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
@@ -160,6 +167,38 @@ if (isset($_POST['update_and_save'])) {
     }
 }
 
+if (isset($_POST['remove_created_items'])) {
+    // getting the user information
+    $sales_order_item_id = mysqli_real_escape_string($connection, $_GET['sales_order_item_id']);
+    // should not delete current user
+    $dele_q = "DELETE FROM sales_order_items WHERE sales_order_id = 0";
+    $d_result = mysqli_query($connection, $dele_q);
+
+    if ($d_result) {
+        echo "<script>
+            alert('Are u sure want to go back');
+            window.location.href='./create_order';
+        </script>";
+    } else {
+        header('Location: users?err=delete_failed');
+    }
+}
+
+$reference1 = null;
+$shipping_date1 = null;
+$expected_payment_date1 = null;
+$payment_term1 = null;
+$get_customer_id = null;
+
+$get_customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
+$s_d = "SELECT reference, shipping_date, expected_payment_date, payment_term FROM sales_order_items WHERE customer_id = '$get_customer_id' AND approve = '0' AND sales_order_id  = '0' ORDER BY sales_order_item_id DESC ";
+$sx = mysqli_query($connection, $s_d);
+while ($i = mysqli_fetch_assoc($sx)) {
+    $reference1 = $i['reference'];
+    $shipping_date1 = $i['shipping_date'];
+    $expected_payment_date1 = $i['expected_payment_date'];
+    $payment_term1 = $i['payment_term'];
+}
 ?>
 
 <style>
@@ -292,10 +331,26 @@ if (isset($_POST['update_and_save'])) {
                 </div>
                 <div class="col-sm-9">
                     <div class="d-flex">
+                        <?php
+                        $get_cs_id = 0;
+                        $get_cs_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
+
+                        $cus1 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations WHERE created_by = '$created_by' AND customer_id = '$get_cs_id'";
+                        $cs_r = mysqli_query($connection, $cus1);
+                        while ($dx = mysqli_fetch_assoc($cs_r)) {
+                            $fname = $dx['customer_fname'];
+                            $lname = $dx['customer_lname'];
+                        }
+                        ?>
                         <select class="select2 w-25 mt-1" name="customer_id" id="">
-                            <option selected>--Select Custoer</option>
                             <?php
-                            $q1 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations";
+
+                            if ($get_cs_id != 0) { ?>
+                                <option value="<?php echo $get_cs_id ?>" selected><?php echo strtoupper($fname  . " " .  $lname) ?></option>
+                            <?php } else { ?>
+                                <option selected>--Select Resident Country--</option>
+                            <?php }
+                            $q1 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations WHERE created_by = '$created_by'";
                             $r2 = mysqli_query($connection, $q1);
 
                             while ($x = mysqli_fetch_assoc($r2)) { ?>
@@ -320,7 +375,17 @@ if (isset($_POST['update_and_save'])) {
                             <p class="px-4 mt-1 required">Order Number</p>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" disabled value="SO-12345" style="width:100%;" required>
+                            <?php
+                            $sales_order_id = null;
+
+                            $sn = "SELECT sales_order_id FROM sales_order_items GROUP BY sales_order_id DESC LIMIT 1";
+                            $sd = mysqli_query($connection, $sn);
+                            while ($m = mysqli_fetch_assoc($sd)) {
+                                $sales_order_id = $m['sales_order_id'];
+                            }
+                            ?>
+                            <input type="text" disabled value="SO-<?php $sales_order_id++;
+                                                                    echo $sales_order_id ?>" style="width:100%;" required>
                         </div>
                     </div>
                 </div>
@@ -345,7 +410,11 @@ if (isset($_POST['update_and_save'])) {
                             <p class="px-4 mt-1">Reference</p>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" value="WH-132" style="width:100%;" name="reference">
+                            <?php if ($reference1 == null) { ?>
+                                <input type="text" value="" style="width:100%;" name="reference" placeholder="Reference">
+                            <?php } else { ?>
+                                <input type="text" value="<?php echo $reference1 ?>" style="width:100%;" name="reference">
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -370,7 +439,11 @@ if (isset($_POST['update_and_save'])) {
                             <p class="px-4 mt-1 required">Shipping Date</p>
                         </div>
                         <div class="col-sm-6">
-                            <input type="date" value="25/02/2023" style="width:100%;" name="shipping_date">
+                            <?php if ($shipping_date1 == null) { ?>
+                                <input type="date" value="" style="width:100%;" name="shipping_date">
+                            <?php } else { ?>
+                                <input type="text" value="<?php echo $shipping_date1 ?>" style="width:100%;" name="reference">
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -394,7 +467,11 @@ if (isset($_POST['update_and_save'])) {
                             <p class="px-4 mt-1">Expected Payment Date</p>
                         </div>
                         <div class="col-sm-6">
-                            <input type="date" value="25/02/2023" style="width:100%;" name="expected_payment_date">
+                            <?php if ($expected_payment_date1 == null) { ?>
+                                <input type="date" value="" style="width:100%;" name="expected_payment_date">
+                            <?php } else { ?>
+                                <input type="text" value="<?php echo $expected_payment_date1 ?>" style="width:100%;" name="reference">
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -404,20 +481,44 @@ if (isset($_POST['update_and_save'])) {
                             <p class=" px-4 mt-1">Payment Terms</p>
                         </div>
                         <div class="col-sm-6">
-                            <select name="payment_term" class="DropDown" style="width: 100%;">
-                                <option value="" selected="">--Select Payment Terms--</option>
-                                <option value="1">Net 15</option>
-                                <option value="2">Net 30</option>
-                                <option value="3">Net 45</option>
-                                <option value="4">Net 60</option>
-                                <option value="5">Due end of the
-                                    month</option>
-                                <option value="6">Due end
-                                    of the next month</option>
-                                <option value="7">Due on Receipt
-                                </option>
-                            </select>
-
+                            <?php if ($expected_payment_date1 == null) { ?>
+                                <select name="payment_term" class="DropDown" style="width: 100%;">
+                                    <option value="" selected="">--Select Payment Terms--</option>
+                                    <option value="1">Net 15</option>
+                                    <option value="2">Net 30</option>
+                                    <option value="3">Net 45</option>
+                                    <option value="4">Net 60</option>
+                                    <option value="5">Due end of the
+                                        month</option>
+                                    <option value="6">Due end
+                                        of the next month</option>
+                                    <option value="7">Due on Receipt
+                                    </option>
+                                </select>
+                            <?php } else { ?>
+                                <input type="text" value="<?php
+                                                            if ($payment_term1 == 1) {
+                                                                echo 'Net 15';
+                                                            }
+                                                            if ($payment_term1 == 2) {
+                                                                echo 'Net 30';
+                                                            }
+                                                            if ($payment_term1 == 3) {
+                                                                echo 'Net 45';
+                                                            }
+                                                            if ($payment_term1 == 4) {
+                                                                echo 'Net 60';
+                                                            }
+                                                            if ($payment_term1 == 5) {
+                                                                echo 'Due end of the month';
+                                                            }
+                                                            if ($payment_term1 == 6) {
+                                                                echo 'Due end of the next month';
+                                                            }
+                                                            if ($payment_term1 == 7) {
+                                                                echo 'Due on Receipt';
+                                                            } ?>" style="width:100%;" name="reference">
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -880,7 +981,7 @@ if (isset($_POST['update_and_save'])) {
                     <p class="required" required>QTY</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="text" id="orderQty" name="order_qty" onchange="getTot()" placeholder="Enter Listing Qty">
+                    <input type="number" class="w-100" min="1" id="orderQty" name="order_qty" onchange="getTot()" placeholder="Enter Listing Qty">
                 </div>
             </div>
         </div>
@@ -893,7 +994,7 @@ if (isset($_POST['update_and_save'])) {
                     <p class="required" required> Unit Price</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="text" id="unitPrice" name="unit_price" onchange="getTot()" placeholder="Enter Unit Price">
+                    <input type="number" class="w-100" min="1" id="unitPrice" name="unit_price" onchange="getTot()" placeholder="Enter Unit Price">
                 </div>
             </div>
         </div>
@@ -905,7 +1006,7 @@ if (isset($_POST['update_and_save'])) {
                     <p class="required" required>Discount</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="text" id="discount" name="discount" onchange="getTot()" placeholder="Enter Discount %">
+                    <input type="number" class="w-100" min="0" id="discount" name="discount" onchange="getTot()" placeholder="Enter Discount %">
                 </div>
             </div>
         </div>
@@ -918,7 +1019,7 @@ if (isset($_POST['update_and_save'])) {
                     <p>Total</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="text" id="tot" name="total_price" placeholder="Total Price">
+                    <input type="number" class="w-100" min="1" id="tot" readonly name="total_price" placeholder="Total Price">
                 </div>
             </div>
         </div>
@@ -952,6 +1053,8 @@ if (isset($_POST['update_and_save'])) {
             </thead>
             <tbody>
                 <?php
+
+                $customer_id = 0;
 
                 $customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
 
@@ -1130,7 +1233,7 @@ if (isset($_POST['update_and_save'])) {
                         <td>
                             <?php
                             echo
-                            "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_items?sales_order_item_id={$xd['sales_order_item_id']}\"
+                            "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/order/remove_items?remove_order_single_item={$xd['sales_order_item_id']}&customer_id={$xd['customer_id']}\"
                                     onclick=\"return confirm('Are you sure you want to remove this item?');\">
                                         <i class='fa-solid fa-circle-minus fa-2x text-danger' style='font-size: 15px;'></i>
                             </a>";
@@ -1168,7 +1271,7 @@ if (isset($_POST['update_and_save'])) {
                     $query1 = "SELECT SUM(order_total_price) AS Total_Price FROM sales_order_items ORDER BY sales_order_item_id DESC";
                     $run_d = mysqli_query($connection, $query1);
                     while ($d = mysqli_fetch_assoc($run_d)) {
-                        echo $d['Total_Price'];
+                        echo number_format($d['Total_Price'], 2);
                     }
                     ?>
                 </p>
@@ -1715,117 +1818,6 @@ if (isset($_POST['update_and_save'])) {
 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
-<script>
-    $(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        });
-    });
-
-    function getTot() {
-        var qty = $('#orderQty').val();
-        var x = parseInt(qty);
-
-        var unitPrice = $('#unitPrice').val();
-        var y = parseInt(unitPrice);
-
-        var discount = $('#discount').val();
-        var z = parseInt(discount);
-
-        var a = x * y;
-        var b = a * (z / 100);
-        var t = a - b;
-        console.log(t);
-
-        $('#tot').val(t);
-    }
-
-    $(document).ready(function() {
-        $("#country_name").on("change", function() {
-            var country_name = $("#country_name").val();
-            var getURL = "./addNew/get_order_details.php?country_name=" + country_name;
-            $.get(getURL, function(data, status) {
-                $("#country_code").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#device").on("change", function() {
-            var device = $("#device").val();
-            var getURL = "./addNew/get_order_details.php?device=" + device;
-            $.get(getURL, function(data, status) {
-                $("#brand").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#brand").on("change", function() {
-            var brand = $("#brand").val();
-            var getURL = "./addNew/get_order_details.php?brand=" + brand;
-            $.get(getURL, function(data, status) {
-                $("#model").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#model").on("change", function() {
-            var model = $("#model").val();
-            var getURL = "./addNew/get_order_details.php?model=" + model;
-            $.get(getURL, function(data, status) {
-                $("#processor").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#processor").on("change", function() {
-            var processor = $("#processor").val();
-            var getURL = "./addNew/get_order_details.php?processor=" + processor;
-            $.get(getURL, function(data, status) {
-                $("#core").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#core").on("change", function() {
-            var core = $("#core").val();
-            var getURL = "./addNew/get_order_details.php?core=" + core;
-            $.get(getURL, function(data, status) {
-                $("#generation").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#generation").on("change", function() {
-            var generation = $("#generation").val();
-            var getURL = "./addNew/get_order_details.php?generation=" + generation;
-            $.get(getURL, function(data, status) {
-                $("#speed").html(data);
-            });
-        });
-    });
-
-    $(document).ready(function() {
-        $("#speed").on("change", function() {
-            var speed = $("#speed").val();
-            var getURL = "./addNew/get_order_details.php?speed=" + speed;
-            $.get(getURL, function(data, status) {
-                $("#lcd_size").html(data);
-            });
-        });
-    });
-</script>
-
-
-
+<script src="./create_order.js"></script>
 
 <?php require_once('../includes/footer.php'); ?>

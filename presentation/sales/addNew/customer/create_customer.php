@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../../../functions/db_connection.php");
+require_once("../../../../functions/db_connection.php");
 
 $created_by = $_SESSION['user_id'];
 
@@ -145,7 +145,10 @@ if (isset($_POST['create_customer'])) {
 
     $run = mysqli_query($connection, $query);
     if ($run) {
-        header("Location: ../all_customers");
+        echo "<script>
+            alert('Successfully Created Customer');
+            window.location.href='../../all_customers.php';
+        </script>";
     } else {
         echo "Record Add Failed";
     }

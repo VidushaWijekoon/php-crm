@@ -48,7 +48,7 @@ $created_by = $_SESSION['user_id'];
 
 <div class="row">
     <div class="col">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mt-3">
 
             <!-- <div class="card-header">
                 <div class="card-title">
@@ -56,9 +56,13 @@ $created_by = $_SESSION['user_id'];
                 </div>
             </div> -->
             <div class="row pl-4 pt-2">
-                <!-- <i class="pageNameIcon fa-solid fa-store"></i> -->
-                <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
-                <h6 class="pageName">All Orders</h6>
+                <div class="card-title d-flex w-100 justify-content-between">
+                    <div class="d-inline">
+                        <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
+                        <span>Custom Content Below</span>
+                    </div>
+                    <a href="./create_order.php" class="btnT mx-4">Create New Order</a>
+                </div>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
@@ -140,7 +144,9 @@ $created_by = $_SESSION['user_id'];
                                         </td>
                                         <td><?php echo $x['reference'] ?></td>
                                         <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
-                                        <td><a href="./sales_order_map.php">Processing</a></td>
+                                        <td>
+                                            <a href="../so_road_map/sales_order_road_map">Processing</a>
+                                        </td>
                                         <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
@@ -491,7 +497,7 @@ $created_by = $_SESSION['user_id'];
                                     <tr>
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $x['order_created_time'] ?></td>
-                                        <td><a href="./order_view.php">SO-<?php echo $x['sales_order_id'] ?></a></td>
+                                        <td><a href="../order_view">SO-<?php echo $x['sales_order_id'] ?></a></td>
                                         <td><?php echo $x['reference'] ?></td>
                                         <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
                                         <td><a href="./sales_order_map.php">Processing</a></td>

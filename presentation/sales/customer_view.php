@@ -3,9 +3,9 @@
 ob_start();
 session_start();
 require_once('../includes/header.php');
-require_once('./addNew/get_customer_data.php');
+require_once('./addNew/customercd/get_customer_data.php');
 
-// Check User Login  
+// Check User Login
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
@@ -396,13 +396,13 @@ $customer_id = $_GET['customer_id'];
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        $query = "SELECT sales_customer_infomations.customer_id, 
-                                                sales_order_items.customer_id, 
+                                        $query = "SELECT sales_customer_infomations.customer_id,
+                                                sales_order_items.customer_id,
                                                 customer_fname,
                                                 customer_lname,
-                                                sales_order_id, 
+                                                sales_order_id,
                                                 shipping_date,
-                                                order_created_by, 
+                                                order_created_by,
                                                 reference,
                                                 order_shipping_method,
                                                 order_created_time
@@ -554,8 +554,17 @@ $customer_id = $_GET['customer_id'];
                             <label class="col-sm-4 col-form-label">Country/
                                 Region</label>
                             <div class="col-sm-8 d-flex">
-                                <select name="shipping_country" class="info_select w-100" style="border-radius: 5px;">
+                                <select name="shipping_country" class="w-100 DropDown">
+                                    <option selected>--Select Resident Country--</option>
+                                    <?php
+                                    $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
+                                    $result = mysqli_query($connection, $query);
 
+                                    while ($x = mysqli_fetch_assoc($result)) { ?>
+                                        <option value="<?php echo $x["country_name"]; ?>">
+                                            <?php echo strtoupper($x["country_name"]); ?>
+                                        </option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -628,8 +637,17 @@ $customer_id = $_GET['customer_id'];
                             <label class="col-sm-4 col-form-label">Country/
                                 Region</label>
                             <div class="col-sm-8 d-flex">
-                                <select name="shipping_country" class="info_select w-100" style="border-radius: 5px;">
+                                <select name="shipping_country" class="w-100 DropDown">
+                                    <option selected>--Select Resident Country--</option>
+                                    <?php
+                                    $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
+                                    $result = mysqli_query($connection, $query);
 
+                                    while ($x = mysqli_fetch_assoc($result)) { ?>
+                                        <option value="<?php echo $x["country_name"]; ?>">
+                                            <?php echo strtoupper($x["country_name"]); ?>
+                                        </option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
