@@ -10,8 +10,27 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
 
+$billing_attention = null;
+$billing_country = null;
+$billing_address1 = null;
+$billing_address2 = null;
+$billing_city = null;
+$billing_state = null;
+$billing_zip_code = null;
+$billing_phone = null;
+$billing_fax = null;
+$shipping_attention = null;
+$shipping_country = null;
+$shipping_address1 = null;
+$shipping_address2 = null;
+$shipping_city = null;
+$shipping_state = null;
+$shipping_zip_code = null;
+$shipping_phone = null;
+$shipping_fax = null;
+
 $order_id = $_GET['order_id'];
-$query1 = "SELECT sales_order_id, reference, shipping_date, expected_payment_date, payment_term 
+$query1 = "SELECT sales_order_id, customer_id, reference, shipping_date, expected_payment_date, payment_term 
             FROM sales_order_items WHERE sales_order_id = '$order_id' GROUP BY sales_order_id DESC";
 $run1 = mysqli_query($connection, $query1);
 while ($x = mysqli_fetch_assoc($run1)) {
@@ -20,15 +39,36 @@ while ($x = mysqli_fetch_assoc($run1)) {
     $shipping_date = $x['shipping_date'];
     $expected_payment_date = $x['expected_payment_date'];
     $payment_term = $x['payment_term'];
+    $customer_id = $x['customer_id'];
 }
 
-$query2 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations";
+$query2 = "SELECT billing_attention, billing_country, billing_address1, billing_address2, billing_city, billing_state, billing_zip_code, billing_phone, billing_fax,
+                shipping_attention, shipping_country, shipping_address1, shipping_address2, shipping_city, shipping_state, shipping_zip_code, shipping_phone, shipping_fax,
+                customer_id, customer_fname, customer_lname 
+            FROM sales_customer_infomations WHERE customer_id = '$customer_id'";
 $run2 = mysqli_query($connection, $query2);
 while ($y = mysqli_fetch_assoc($run2)) {
     $customer_fname = $y['customer_fname'];
     $customer_lname = $y['customer_lname'];
     $customer_id = $y['customer_id'];
-    echo $customer_id;
+    $billing_attention = $y['billing_attention'];
+    $billing_country = $y['billing_country'];
+    $billing_address1 = $y['billing_address1'];
+    $billing_address2 = $y['billing_address2'];
+    $billing_city = $y['billing_city'];
+    $billing_state = $y['billing_state'];
+    $billing_zip_code = $y['billing_zip_code'];
+    $billing_phone = $y['billing_phone'];
+    $billing_fax = $y['billing_fax'];
+    $shipping_attention = $y['shipping_attention'];
+    $shipping_country = $y['shipping_country'];
+    $shipping_address1 = $y['shipping_address1'];
+    $shipping_address2 = $y['shipping_address2'];
+    $shipping_city = $y['shipping_city'];
+    $shipping_state = $y['shipping_state'];
+    $shipping_zip_code = $y['shipping_zip_code'];
+    $shipping_phone = $y['shipping_phone'];
+    $shipping_fax = $y['shipping_fax'];
 }
 ?>
 
@@ -139,10 +179,18 @@ while ($y = mysqli_fetch_assoc($run2)) {
     }
 </style>
 
-<div class="row pageNavigation pt-2 pl-2">
-    <a href="./all_orders.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
-        Orders</a>
-</div>
+<?php if ($department_id == 4 && $role_id == 4) { ?>
+    <div class="row pageNavigation pt-2 pl-2">
+        <a href="./all_orders.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+            Orders</a>
+    </div>
+<?php }
+if ($department_id == 18 && $role_id == 12) { ?>
+    <div class="row pageNavigation pt-2 pl-2">
+        <a href="../management/manager_sales"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+            Orders</a>
+    </div>
+<?php } ?>
 
 <div class="row p-2">
     <i class="pageNameIcon fa-solid fa-shopping-cart mx-2"></i>
@@ -161,24 +209,52 @@ while ($y = mysqli_fetch_assoc($run2)) {
                     <div class="cusName">
                         <input type="text" readonly class="w-50" value="<?php echo $customer_fname . " " . $customer_lname ?>">
                     </div>
-                    <div class="row mt-2 mb-2 addressSec">
+                    <div class="row mt-2 mb-2 addressSec w-50">
                         <div class="col-sm-5 mb-2 billAddress">
-                            <div>
-                                <p>
-                                    Billing Address
-                                    Billing Address
-                                    Billing Address
-                                    Billing Address
-                                    Billing Address
-                                    Billing Address
-                                </p>
-                                <a href="" data-toggle="modal" data-target="#billing_address">Add Billing Address</a>
+                            <p style="font-weight: bold;">Billing Address</p>
+                            <div class="d-flex">
+                                <?php if ($billing_attention == null && $billing_address1 == null && $billing_address2 == null && $billing_country == null && $billing_city == null && $billing_state == null && $billing_zip_code == null && $billing_phone == null && $billing_fax == null) { ?>
+                                    <span>No Billing Address - </span>
+                                    <a href="" data-toggle="modal" data-target="#billing_address">Add
+                                        Billing
+                                        Address</a>
+                                <?php } else { ?>
+                                    <div class="d-inline">
+                                        <p><?php echo $billing_attention ?></p>
+                                        <p><?php echo $billing_country ?></p>
+                                        <p><?php echo $billing_address1 ?></p>
+                                        <p><?php echo $billing_address2 ?></p>
+                                        <p><?php echo $billing_city ?></p>
+                                        <p><?php echo $billing_state ?></p>
+                                        <p><?php echo $billing_zip_code ?></p>
+                                        <p><?php echo $billing_phone ?></p>
+                                        <p><?php echo $billing_fax ?></p>
+                                    </div>
+
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="col-sm-5 shipAddress">
-                            <div>
-                                <p>Shipping Address</p>
-                                <a href="" data-toggle="modal" data-target="#shipping_address">Add Shipping Address</a>
+                            <p class="text-bold">Shipping Address</p>
+                            <div class="d-flex">
+                                <?php if ($shipping_attention == null && $shipping_address1 == null && $shipping_address2 == null && $shipping_country == null || $shipping_city == null || $shipping_state == null || $shipping_zip_code == null || $shipping_phone == null || $shipping_fax == null) { ?>
+                                    <span>No Shipping Address - </span>
+                                    <a href="" data-toggle="modal" data-target="#shipping_address">Add
+                                        Shipping
+                                        Address</a>
+                                <?php } else { ?>
+                                    <div class="d-inline">
+                                        <p><?php echo $shipping_attention ?></p>
+                                        <p><?php echo $shipping_country ?></p>
+                                        <p><?php echo $shipping_address1 ?></p>
+                                        <p><?php echo $shipping_address2 ?></p>
+                                        <p><?php echo $shipping_city ?></p>
+                                        <p><?php echo $shipping_state ?></p>
+                                        <p><?php echo $shipping_zip_code ?></p>
+                                        <p><?php echo $shipping_phone ?></p>
+                                        <p><?php echo $shipping_fax ?></p>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

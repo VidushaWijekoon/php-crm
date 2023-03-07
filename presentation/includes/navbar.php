@@ -8,7 +8,12 @@
                  </a>
              <?php }
                 if ($department_id == 4 && $role_id == 4) {  ?>
-                 <a href="../sales/sales_dashboard.php" class="brand-link text-center mx-auto d-flex justify-content-center">
+                 <a href="../sales/sales_dashboard" class="brand-link text-center mx-auto d-flex justify-content-center">
+                     <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
+                 </a>
+             <?php }
+                if ($department_id == 18 && $role_id == 12) {  ?>
+                 <a href="../management/manager_dashboard" class="brand-link text-center mx-auto d-flex justify-content-center">
                      <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
                  </a>
              <?php } ?>
@@ -34,7 +39,15 @@
                          <?php }
                             if ($department_id == 4 && $role_id == 4) { ?>
                              <li class="nav-item menu-open">
-                                 <a href="../sales/sales_dashboard.php" class="nav-link active">
+                                 <a href="../sales/sales_dashboard" class="nav-link active">
+                                     <i class="nav-icon fas fa-home"></i>
+                                     <p> Home Page </p>
+                                 </a>
+                             </li>
+                         <?php }
+                            if ($department_id == 18 && $role_id == 12) { ?>
+                             <li class="nav-item menu-open">
+                                 <a href="../management/manager_dashboard" class="nav-link active">
                                      <i class="nav-icon fas fa-home"></i>
                                      <p> Home Page </p>
                                  </a>
@@ -136,7 +149,7 @@
 
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
-                                         <a href="../e-commerce/e_com_dashboard.php" class="nav-link">
+                                         <a href="../e-commerce/e_com_dashboard" class="nav-link">
                                              <i class="fa-brands brands fa-amazon nav-icon" style="font-size: 12px;"></i>
                                              <p> E-Commerce </p>
                                          </a>
@@ -157,7 +170,7 @@
 
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
-                                         <a href="../accounts/accounts_dashboard.php" class="nav-link">
+                                         <a href="../accounts/accounts_dashboard" class="nav-link">
                                              <i class="fa fa-coins nav-icon" style="font-size: 12px;"></i>
                                              <p> Accounts </p>
                                          </a>
@@ -178,13 +191,13 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../inventory/inventory_team_leader_dashboard.php" class="nav-link">
+                                         <a href="../inventory/inventory_team_leader_dashboard" class="nav-link">
                                              <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                              <p>Team Leader</p>
                                          </a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="../inventory/inventory_member_dashboard.php" class="nav-link">
+                                         <a href="../inventory/inventory_member_dashboard" class="nav-link">
                                              <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                              <p>Team Member </p>
                                          </a>
@@ -205,14 +218,14 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../production/prodution_team_leader_dashboard.php" class="nav-link">
+                                         <a href="../production/prodution_team_leader_dashboard" class="nav-link">
                                              <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                              <p> Team Leader </p>
                                          </a>
                                      </li>
 
                                      <li class="nav-item">
-                                         <a href="../production/production_technician_dashboard.php" class="nav-link">
+                                         <a href="../production/production_technician_dashboard" class="nav-link">
                                              <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                              <p> Technician </p>
                                          </a>
@@ -234,7 +247,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../part/part_inventory_dashboard.php" class="nav-link">
+                                         <a href="../part/part_inventory_dashboard" class="nav-link">
                                              <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                              <p>Leader Dashboard</p>
                                          </a>
@@ -242,7 +255,7 @@
 
                                      <!-- Part -->
                                      <li class="nav-item">
-                                         <a href="../part/part_stock.php" class="nav-link">
+                                         <a href="../part/part_stock" class="nav-link">
                                              <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
                                              <p>Part Stock Report</p>
                                          </a>
@@ -263,7 +276,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../motherboard/motherboard_dashboard.php" class="nav-link">
+                                         <a href="../motherboard/motherboard_dashboard" class="nav-link">
                                              <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                              <p>Motherboard</p>
                                          </a>
@@ -284,14 +297,14 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../bodywork/bodywork_team_leader_dashboard.php" class="nav-link">
+                                         <a href="../bodywork/bodywork_team_leader_dashboard" class="nav-link">
                                              <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                              <p> Team Leader </p>
                                          </a>
                                      </li>
 
                                      <li class="nav-item">
-                                         <a href="../bodywork/bodywork_member_dashboard.php" class="nav-link">
+                                         <a href="../bodywork/bodywork_member_dashboard" class="nav-link">
                                              <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                              <p> Member </p>
                                          </a>
@@ -312,14 +325,14 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../bodywork/bodywork_team_leader_dashboard.php" class="nav-link">
+                                         <a href="../bodywork/bodywork_team_leader_dashboard" class="nav-link">
                                              <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                              <p> Team Leader </p>
                                          </a>
                                      </li>
 
                                      <li class="nav-item">
-                                         <a href="../bodywork/bodywork_member_dashboard.php" class="nav-link">
+                                         <a href="../bodywork/bodywork_member_dashboard" class="nav-link">
                                              <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                              <p> Member </p>
                                          </a>
@@ -341,7 +354,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../battery/battery_dashboard.php" class="nav-link">
+                                         <a href="../battery/battery_dashboard" class="nav-link">
                                              <i class="fa fa-battery nav-icon" style="font-size: 12px;"></i>
                                              <p> Battery </p>
                                          </a>
@@ -363,7 +376,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../paint/paint_dashboard.php" class="nav-link">
+                                         <a href="../paint/paint_dashboard" class="nav-link">
                                              <i class="fa fa-spray-can nav-icon" style="font-size: 12px;"></i>
                                              <p> Painting </p>
                                          </a>
@@ -385,7 +398,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../qc/qc_dashboard.php" class="nav-link">
+                                         <a href="../qc/qc_dashboard" class="nav-link">
                                              <i class="fa fa-stethoscope nav-icon" style="font-size: 12px;"></i>
                                              <p> QC </p>
                                          </a>
@@ -407,7 +420,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../packing/packing_dashboard.php" class="nav-link">
+                                         <a href="../packing/packing_dashboard" class="nav-link">
                                              <i class="fa fa-boxes nav-icon" style="font-size: 12px;"></i>
                                              <p> Packing </p>
                                          </a>
@@ -419,7 +432,7 @@
                              <!-- Management  -->
                              <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="nav-icon fa fa-right-to-bracket"></i>
@@ -428,7 +441,7 @@
                                  <ul class="nav nav-treeview">
 
                                      <li class="nav-item">
-                                         <a href="../management/manager_dashboard.php" class="nav-link">
+                                         <a href="../management/manager_dashboard" class="nav-link">
                                              <i class="fa-solid fa-right-to-bracket nav-icon" style="font-size: 12px;"></i>
                                              <p> Manager </p>
                                          </a>
@@ -439,7 +452,7 @@
                          <?php }
                             if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
-                                 <a href="../performance/performance_inventory.php" class="nav-link">
+                                 <a href="../performance/performance_inventory" class="nav-link">
                                      <i class="fa fa-clock nav-icon" style="font-size: 12px;"></i>
                                      <p>Performance</p>
                                  </a>
@@ -450,9 +463,9 @@
                          <!-- Laptop Inventory & Laptop Stock Count  -->
                          <!-- ============================================================== -->
                          <?php
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
-                                 <a href="../laptop_inventory/laptop_inventory.php" class="nav-link">
+                                 <a href="../laptop_inventory/laptop_inventory" class="nav-link">
                                      <i class="fas fa-laptop nav-icon" style="font-size: 12px;"></i>
                                      <p> Laptop Stock Report </p>
                                  </a>
@@ -473,7 +486,7 @@
                              <!-- Part Stock Report  -->
                              <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
@@ -484,7 +497,7 @@
                              <!-- Battery  -->
                              <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa fa-battery-bolt nav-icon" style="font-size: 12px;"></i>
@@ -495,7 +508,7 @@
                              <!-- LCD  -->
                              <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa fa-tv nav-icon" style="font-size: 12px;"></i>
@@ -506,7 +519,7 @@
                              <!-- Charger  -->
                              <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
                                  <a href="#" class="nav-link">
                                      <i class="fa fa-plug nav-icon" style="font-size: 12px;"></i>
