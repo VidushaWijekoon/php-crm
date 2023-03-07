@@ -1,12 +1,11 @@
 <?php
 session_start();
-require_once("../../../functions/db_connection.php");
-
+require_once("../../../../functions/db_connection.php");
 $created_by = $_SESSION['user_id'];
 
 if (isset($_POST['create_order'])) {
 
-    $customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
+    $get_customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
     $reference = mysqli_real_escape_string($connection, $_POST['reference']);
     $shipping_date = mysqli_real_escape_string($connection, $_POST['shipping_date']);
     $expected_payment_date = mysqli_real_escape_string($connection, $_POST['expected_payment_date']);
@@ -80,7 +79,7 @@ if (isset($_POST['create_order'])) {
     `order_created_time`
     )
     VALUES(
-        '$customer_id',
+        '$get_customer_id',
         '$reference',
         '$shipping_date',
         '$expected_payment_date',
@@ -120,7 +119,10 @@ if (isset($_POST['create_order'])) {
     ";
     $query_run = mysqli_query($connection, $query);
     if ($query_run) {
-        header("Location: ../create_order?customer_id=$customer_id");
+        echo "<script>
+            alert('Successfully Created Customer');
+            window.location.href='../../create_order?customer_id=$get_customer_id';
+        </script>";
     } else {
         echo "Sorry Cannot Insert this item";
     }
