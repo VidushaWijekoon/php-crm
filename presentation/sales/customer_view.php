@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 require_once('../includes/header.php');
-require_once('./addNew/get_customer_data.php');
+require_once('./addNew/customercd/get_customer_data.php');
 
 // Check User Login
 if (!isset($_SESSION['user_id'])) {

@@ -10,7 +10,7 @@ if (isset($_GET['remove_order_single_item'])) {
     $result = mysqli_query($connection, $query1);
 
     if ($result) {
-        header("Location: ../../create_order?deleted_item_id=$customer_id");
+        header("Location: ../../create_order?customer_id=$customer_id");
     } else {
         header('Location: users?err=delete_failed');
     }

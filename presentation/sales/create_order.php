@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(-1);
 ob_start();
 session_start();
 require_once('../includes/header.php');
@@ -11,6 +13,132 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $created_by = $_SESSION['user_id'];
+
+if (isset($_POST['create_order'])) {
+
+    $get_customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
+    $reference = mysqli_real_escape_string($connection, $_POST['reference']);
+    $shipping_date = mysqli_real_escape_string($connection, $_POST['shipping_date']);
+    $expected_payment_date = mysqli_real_escape_string($connection, $_POST['expected_payment_date']);
+    $payment_term = mysqli_real_escape_string($connection, $_POST['payment_term']);
+    $device = mysqli_real_escape_string($connection, $_POST['device']);
+    $brand = mysqli_real_escape_string($connection, $_POST['brand']);
+    $model = mysqli_real_escape_string($connection, $_POST['model']);
+    $processor = mysqli_real_escape_string($connection, $_POST['processor']);
+    $core = mysqli_real_escape_string($connection, $_POST['core']);
+    $generation = mysqli_real_escape_string($connection, $_POST['generation']);
+    $speed = mysqli_real_escape_string($connection, $_POST['speed']);
+    $touch_type = mysqli_real_escape_string($connection, $_POST['touch_type']);
+    $screen_size = mysqli_real_escape_string($connection, $_POST['screen_size']);
+    $resolution = mysqli_real_escape_string($connection, $_POST['resolution']);
+    $hdd_capacity = mysqli_real_escape_string($connection, $_POST['hdd_capacity']);
+    $hdd_type = mysqli_real_escape_string($connection, $_POST['hdd_type']);
+    $ram = mysqli_real_escape_string($connection, $_POST['ram']);
+    $os = mysqli_real_escape_string($connection, $_POST['os']);
+    $inventory_location = mysqli_real_escape_string($connection, $_POST['inventory_location']);
+    $keybord_language = mysqli_real_escape_string($connection, $_POST['keybord_language']);
+    $keybord_backlight = mysqli_real_escape_string($connection, $_POST['keybord_backlight']);
+    $graphic_type = mysqli_real_escape_string($connection, $_POST['graphic_type']);
+    $graphic_capacity = mysqli_real_escape_string($connection, $_POST['graphic_capacity']);
+    $charger = mysqli_real_escape_string($connection, $_POST['charger']);
+    $charger_watt = mysqli_real_escape_string($connection, $_POST['charger_watt']);
+    $charger_color = mysqli_real_escape_string($connection, $_POST['charger_color']);
+    $condition = mysqli_real_escape_string($connection, $_POST['condition']);
+    $packing_type = mysqli_real_escape_string($connection, $_POST['packing_type']);
+    $shipping_method = mysqli_real_escape_string($connection, $_POST['shipping_method']);
+    $order_qty = mysqli_real_escape_string($connection, $_POST['order_qty']);
+    $unit_price = mysqli_real_escape_string($connection, $_POST['unit_price']);
+    $discount = mysqli_real_escape_string($connection, $_POST['discount']);
+    $total_price = mysqli_real_escape_string($connection, $_POST['total_price']);
+
+    $query = "INSERT INTO `sales_order_items`(
+    `customer_id`,
+    `reference`,
+    `shipping_date`,
+    `expected_payment_date`,
+    `payment_term`,
+    `order_device`,
+    `order_brand`,
+    `order_model`,
+    `order_processor`,
+    `order_core`,
+    `order_generation`,
+    `order_speed`,
+    `order_touch_status`,
+    `order_screen_size`,
+    `order_resolution`,
+    `order_hdd_capacity`,
+    `order_hdd_type`,
+    `order_ram`,
+    `order_os`,
+    `order_inventory_location`,
+    `order_keyboard_language`,
+    `order_keyboard_backlight`,
+    `order_graphic_type`,
+    `order_graphic_capacity`,
+    `order_charger_type`,
+    `order_charger_watt`,
+    `charging_pin_color`,
+    `order_condition`,
+    `order_packing_type`,
+    `order_shipping_method`,
+    `order_qty`,
+    `order_unit_price`,
+    `order_discount`,
+    `order_total_price`,
+    `order_created_by`,
+    `order_created_time`
+    )
+    VALUES(
+        '$get_customer_id',
+        '$reference',
+        '$shipping_date',
+        '$expected_payment_date',
+        '$payment_term',
+        '$device',
+        '$brand',
+        '$model',
+        '$processor',
+        '$core',
+        '$generation',
+        '$speed',
+        '$touch_type',
+        '$screen_size',
+        '$resolution',
+        '$hdd_capacity',
+        '$hdd_type',
+        '$ram',
+        '$os',
+        '$inventory_location',
+        '$keybord_language',
+        '$keybord_backlight',
+        '$graphic_type',
+        '$graphic_capacity',
+        '$charger',
+        '$charger_watt',
+        '$charger_color',
+        '$condition',
+        '$packing_type',
+        '$shipping_method',
+        '$order_qty',
+        '$unit_price',
+        '$discount',
+        '$total_price',
+        '$created_by',
+        NOW()
+    )
+    ";
+    echo $query;
+    $query_run = mysqli_query($connection, $query);
+    if ($query_run) {
+        echo "<script>
+            alert('Successfully Created Customer');
+            window.location.href=' ./create_order?customer_id=$get_customer_id';
+        </script>";
+    } else {
+        echo "Sorry Cannot Insert this item";
+    }
+}
 
 if (isset($_POST['choose_customer'])) {
     $customer_id = mysqli_real_escape_string($connection, $_POST['customer_id']);
@@ -61,10 +189,9 @@ $shipping_date1 = null;
 $expected_payment_date1 = null;
 $payment_term1 = null;
 $get_customer_id = null;
-$asdasd1 = null;
 
 $get_customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
-$s_d = "SELECT * FROM sales_order_items WHERE customer_id = '$get_customer_id' AND approve = '0' AND sales_order_id  = '0' ORDER BY sales_order_item_id DESC ";
+$s_d = "SELECT reference, shipping_date, expected_payment_date, payment_term FROM sales_order_items WHERE customer_id = '$get_customer_id' AND approve = '0' AND sales_order_id  = '0' ORDER BY sales_order_item_id DESC ";
 $sx = mysqli_query($connection, $s_d);
 while ($i = mysqli_fetch_assoc($sx)) {
     $reference1 = $i['reference'];
@@ -204,10 +331,25 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 </div>
                 <div class="col-sm-9">
                     <div class="d-flex">
+                        <?php
+                        $get_cs_id = 0;
+                        $get_cs_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
 
+                        $cus1 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations WHERE created_by = '$created_by' AND customer_id = '$get_cs_id'";
+                        $cs_r = mysqli_query($connection, $cus1);
+                        while ($dx = mysqli_fetch_assoc($cs_r)) {
+                            $fname = $dx['customer_fname'];
+                            $lname = $dx['customer_lname'];
+                        }
+                        ?>
                         <select class="select2 w-25 mt-1" name="customer_id" id="">
-
                             <?php
+
+                            if ($get_cs_id != 0) { ?>
+                                <option value="<?php echo $get_cs_id ?>" selected><?php echo strtoupper($fname  . " " .  $lname) ?></option>
+                            <?php } else { ?>
+                                <option selected>--Select Resident Country--</option>
+                            <?php }
                             $q1 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations WHERE created_by = '$created_by'";
                             $r2 = mysqli_query($connection, $q1);
 
@@ -225,7 +367,7 @@ while ($i = mysqli_fetch_assoc($sx)) {
         <hr>
 
         <!-- ///////// -->
-        <form action="./addNew/order/create_order_item.php" method="POST">
+        <form action="" method="POST">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
                     <div class="row">
@@ -233,7 +375,17 @@ while ($i = mysqli_fetch_assoc($sx)) {
                             <p class="px-4 mt-1 required">Order Number</p>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" disabled value="SO-12345" style="width:100%;" required>
+                            <?php
+                            $sales_order_id = null;
+
+                            $sn = "SELECT sales_order_id FROM sales_order_items GROUP BY sales_order_id DESC LIMIT 1";
+                            $sd = mysqli_query($connection, $sn);
+                            while ($m = mysqli_fetch_assoc($sd)) {
+                                $sales_order_id = $m['sales_order_id'];
+                            }
+                            ?>
+                            <input type="text" disabled value="SO-<?php $sales_order_id++;
+                                                                    echo $sales_order_id ?>" style="width:100%;" required>
                         </div>
                     </div>
                 </div>
@@ -1119,7 +1271,7 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     $query1 = "SELECT SUM(order_total_price) AS Total_Price FROM sales_order_items ORDER BY sales_order_item_id DESC";
                     $run_d = mysqli_query($connection, $query1);
                     while ($d = mysqli_fetch_assoc($run_d)) {
-                        echo $d['Total_Price'];
+                        echo number_format($d['Total_Price'], 2);
                     }
                     ?>
                 </p>

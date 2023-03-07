@@ -64,7 +64,7 @@ if (!isset($_SESSION['user_id'])) {
                                 ?>
                                     <tr>
                                         <td>
-                                            <a href="<?php echo "customer_view?customer_id={$customer_id}"  ?>"><?php echo $customer_id ?> </a>
+                                            <a href="<?php echo "customer_view?customer_id={$customer_id}" ?>"><?php echo $customer_id ?> </a>
                                         </td>
                                         <td><?php echo $customer_fname . " " . $customer_lname ?></td>
                                         <td><?php echo $resident_country ?></td>
