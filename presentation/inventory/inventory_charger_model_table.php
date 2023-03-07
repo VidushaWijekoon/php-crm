@@ -6,6 +6,8 @@ require_once('../includes/header.php');
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+$pallet=$_GET['id'];
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 ?>
 
 <style>
@@ -84,7 +86,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="createListingHeading ml-5">
                     <span>
                         Pallet No :
-                        <span>1</span>
+                        <span><?php echo $pallet ?></span>
                     </span>
                 </div>
                 <table class="table mx-5 table-hover text-center">
@@ -96,21 +98,20 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>Asus</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>Asus</td>
-                            <td>10</td>
-                        </tr>
-
+                        <?php
+                        $query="SELECT pallet_id,brand,SUM(qty)as qty FROM pallet_informations WHERE pallet_id='$pallet' AND category='Charger' GROUP BY brand ORDER BY qty DESC";
+                        $query_run = mysqli_query($connection, $query);
+                        foreach($query_run as $data){
+                            $id=$data['pallet_id'];
+                            $qty=$data['qty'];
+                            $brand=$data['brand'];
+                            echo "<tr>";
+                            echo"<td>$id</td>";
+                            echo"<td>$brand</td>";
+                            echo"<td>$qty</td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
