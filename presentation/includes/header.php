@@ -50,6 +50,7 @@
              <ul class="navbar-nav ml-auto">
                  <span class="mt-auto">Welcome <?php echo $username; ?>! <a href="../../logout.php?<?php echo "user_id='$user_id'&log_time_id='$log_time_id'"  ?>">Logout</a>
                  </span>
+             </ul>
          </nav>
          <!-- /.navbar -->
          <?php require_once('navbar.php');
