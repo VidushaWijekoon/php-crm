@@ -1,13 +1,15 @@
 <?php
 
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
-$dbname = 'main_project';
-
-$connection = mysqli_connect('localhost', 'root', '', 'main_project');
-
-// Checking the connection
-if (mysqli_connect_errno()) {
-	die('Database connection failed ' . mysqli_connect_error());
+try {
+	$dbhost = 'localhost';
+	$dbuser = 'root';
+	$dbpass = '';
+	$dbname = 'main_project';
+	if ($connection = mysqli_connect('localhost', 'root', '', 'main_project')) {
+		// echo "Successfully Connected";
+	} else {
+		throw new Exception("Database Unable to Connect") . mysqli_connect_error();
+	}
+} catch (Exception $e) {
+	echo $e->getMessage();
 }
