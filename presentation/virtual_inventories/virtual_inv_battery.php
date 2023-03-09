@@ -9,179 +9,175 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <style>
-.pageNameIcon {
-    font-size: 25px;
-    margin-right: 05px;
-}
+    .pageNameIcon {
+        font-size: 25px;
+        margin-right: 05px;
+    }
 
-.pageName {
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
+    .pageName {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.virtualInvSec {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .virtualInvSec {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-}
-
-
-.cardContainer {
-    width: 99%;
-    background-color: #ffffff;
-    padding: 10px 5px;
-}
+    }
 
 
-.pageNavigation a {
-    color: #168EB4;
-    font-weight: 600;
-}
-
-.createListingHeading {
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.sectionUnderline {
-    border-top: 2px solid #DBDBDB;
-    margin-top: 0px;
-}
-
-/* Rack eke Styles */
-
-.rackSturcture {
-    display: flex;
-    flex-direction: column;
-    height: 150px;
-    width: 250px;
-}
+    .cardContainer {
+        width: 99%;
+        background-color: #ffffff;
+        padding: 10px 5px;
+    }
 
 
+    .pageNavigation a {
+        color: #168EB4;
+        font-weight: 600;
+    }
 
-.rackLayer {
-    display: flex;
-    height: 25%;
-    border-left: 1px solid #dee2e6;
-    border-right: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
-}
+    .createListingHeading {
+        font-weight: 600;
+        font-size: 15px;
+    }
 
+    .sectionUnderline {
+        border-top: 2px solid #DBDBDB;
+        margin-top: 0px;
+    }
 
-.box {
-    position: relative;
-    padding: 5px;
-    height: 100%;
-    width: 100%;
-}
+    /* Rack eke Styles */
+
+    .rackSturcture {
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        width: 250px;
+    }
 
 
 
-.box button {
-    width: 100%;
-    height: 100%;
-}
+    .rackLayer {
+        display: flex;
+        height: 25%;
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
 
 
-/* ///// */
+    .box {
+        position: relative;
+        padding: 5px;
+        height: 100%;
+        width: 100%;
+    }
 
-/* patte lable section eka */
 
-.lableLeftSec {
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    width: 15px;
-    font-weight: 600;
-}
 
-.lableLayer {
-    font-size: 10px;
-    display: flex;
-    height: 18%;
-    align-items: center;
-}
+    .box button {
+        width: 100%;
+        height: 100%;
+    }
 
-/* Yata Lable Sec Eke  */
 
-.lableBoxLayer {
-    display: flex;
-    width: 100%;
-}
+    /* ///// */
 
-.colNu {
-    width: 25%;
-    text-align: center;
-    font-size: 10px;
+    /* patte lable section eka */
 
-}
+    .lableLeftSec {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        width: 15px;
+        font-weight: 600;
+    }
 
-.rack {
-    display: flex;
-    justify-content: center;
-}
+    .lableLayer {
+        font-size: 10px;
+        display: flex;
+        height: 18%;
+        align-items: center;
+    }
 
-/* Box button eke styles */
+    /* Yata Lable Sec Eke  */
 
-.btnBox {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff !important;
-}
+    .lableBoxLayer {
+        display: flex;
+        width: 100%;
+    }
 
-.btnBox:hover+.hide {
-    /* background-color: #dee2e6; */
-    display: block;
-}
+    .colNu {
+        width: 25%;
+        text-align: center;
+        font-size: 10px;
 
-/* hover Btn Sec */
-.hide {
-    display: none;
-    position: absolute;
-    /* width: 300px; */
-    padding: 5px 10px;
-    height: 100px;
-    top: -105px;
-    left: 20px;
-}
+    }
 
-/*  */
+    .rack {
+        display: flex;
+        justify-content: center;
+    }
 
-.insideDetails {
-    background-color: black;
-    opacity: 0.5;
-    color: #ffffff;
-    border-radius: 10px;
-}
+    /* Box button eke styles */
 
-.tableModel {
-    width: 100%;
+    .btnBox {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff !important;
+    }
 
-}
+    .btnBox:hover+.hide {
+        /* background-color: #dee2e6; */
+        display: block;
+    }
 
-/* Rack Name */
-.rackLbl {
-    display: flex;
-    width: 93%;
-    justify-content: space-between;
-    font-weight: 600;
-    margin-left: 10px;
+    /* hover Btn Sec */
+    .hide {
+        display: none;
+        position: absolute;
+        /* width: 300px; */
+        padding: 5px 10px;
+        height: 100px;
+        top: -105px;
+        left: 20px;
+    }
 
-}
+    /*  */
+
+    .insideDetails {
+        background-color: black;
+        opacity: 0.5;
+        color: #ffffff;
+        border-radius: 10px;
+    }
+
+    .tableModel {
+        width: 100%;
+
+    }
+
+    /* Rack Name */
+    .rackLbl {
+        display: flex;
+        width: 93%;
+        justify-content: space-between;
+        font-weight: 600;
+        margin-left: 10px;
+
+    }
 </style>
 
-
-
-
 <div class="row pageNavigation pt-2 pl-2">
-    <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+    <a href="./inventory_team_leader_dashboard"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
         Dashboard</a>
 </div>
-
 
 
 <div class="row mb-4 ml-1 pt-2">
@@ -250,7 +246,9 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="row w-100">
 
-            <!-- Full Rack eka Front -->
+            <!-- ============================================================== -->
+            <!-- Front  -->
+            <!-- ============================================================== -->
             <div class="rackSec w-100 m-3 text-center">
                 <p style="font-size: 15px; font-weight: 600;">Front-Side</p>
                 <br>
@@ -281,11 +279,10 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                     </div>
 
+
+
                     <!-- Rck eke Sturucter eka -->
-
-
                     <div class=" rackSturcture">
-
                         <!-- <div class="rackfull"> -->
                         <!-- Rack Layers T -->
                         <div class="rackLayer ">
@@ -296,9 +293,9 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
-                                        <span>A-1</span>
+                                        <span>A-3</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
                                     <div class="hide insideDetails">
@@ -329,9 +326,9 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
-                                        <span>A-1</span>
+                                        <span>A-2</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
                                     <div class="hide insideDetails">
@@ -363,7 +360,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -394,25 +391,6 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
 
-                        <!-- </div> -->
-
-                        <!-- Yata Lable Tika -->
-                        <!-- <div class="lableBoxLayer">
-                            <div class="colNu">
-                                1
-                            </div>
-                            <div class="colNu">
-                                2
-                            </div>
-                            <div class="colNu">
-                                3
-                            </div>
-                            <div class="colNu">
-                                4
-                            </div>
-                        </div> -->
-
-                        <!-- //////// -->
                     </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
@@ -423,7 +401,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -456,7 +434,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -489,7 +467,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -548,7 +526,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -581,7 +559,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -614,7 +592,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -672,7 +650,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -705,7 +683,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -738,7 +716,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -792,8 +770,9 @@ if (!isset($_SESSION['user_id'])) {
 
             <!-- /// -->
 
-            <!-- Full Rack eka Back -->
-
+            <!-- ============================================================== -->
+            <!-- Back  -->
+            <!-- ============================================================== -->
             <div class="rackSec w-100 m-3 text-center">
                 <p style="font-size: 15px; font-weight: 600;">Back-Side</p>
                 <br>
@@ -839,7 +818,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -872,7 +851,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -906,7 +885,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -966,7 +945,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -999,7 +978,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1032,7 +1011,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1091,7 +1070,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1124,7 +1103,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1157,7 +1136,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1215,7 +1194,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1248,7 +1227,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1281,7 +1260,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_add_remove.php">
+                                <a href="./virtual_inv_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>A-1</span>
                                     </div>
@@ -1347,7 +1326,4 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-<?php
-require_once('../includes/footer.php')
-
-?>
+<?php require_once('../includes/footer.php'); ?>

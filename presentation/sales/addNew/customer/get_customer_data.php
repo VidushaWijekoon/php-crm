@@ -2,7 +2,6 @@
 
 require_once("../../functions/db_connection.php");
 
-
 $customer_id = $_GET['customer_id'];
 $create_by = $_SESSION['user_id'];
 

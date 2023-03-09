@@ -477,7 +477,7 @@
                          <?php }
                             if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                              <li class="nav-item">
-                                 <a href="#" class="nav-link">
+                                 <a href="../virtual_inventory/virtual_inv_ecommerce.php" class="nav-link">
                                      <i class="fa-brands fa-amazon nav-icon" style="font-size: 12px;"></i>
                                      <p> E-Commerce Inventory </p>
                                  </a>
@@ -499,7 +499,7 @@
                          <?php }
                             if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
-                                 <a href="#" class="nav-link">
+                                 <a href="../battery_inventroy/virtual_inv_battery" class="nav-link">
                                      <i class="fa fa-battery-bolt nav-icon" style="font-size: 12px;"></i>
                                      <p>Battery Inventory</p>
                                  </a>
@@ -510,7 +510,7 @@
                          <?php }
                             if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                              <li class="nav-item">
-                                 <a href="#" class="nav-link">
+                                 <a href="../virtual_inventory/virtual_inv_lcd" class="nav-link">
                                      <i class="fa fa-tv nav-icon" style="font-size: 12px;"></i>
                                      <p>LCD Inventory</p>
                                  </a>
