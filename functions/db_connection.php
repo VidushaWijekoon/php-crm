@@ -3,9 +3,9 @@
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
-$dbname = 'main_project';
+$dbname = 'new_wms';
 
-$connection = mysqli_connect('localhost', 'root', '', 'main_project');
+$connection = mysqli_connect('localhost', 'root', '', 'new_wms');
 
 // Checking the connection
 if (mysqli_connect_errno()) {

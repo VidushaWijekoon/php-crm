@@ -7,18 +7,18 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .image-uploader {
     position: relative;
     width: 90%;
     max-width: 600px;
-    height: 500px;
+    height: 65px;
     border: 2px dashed #4169e1;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@ body {
     color: #4169e1;
 }
 
-h2 {
+/* h2 {
     font-size: 2rem;
     font-weight: 400;
     margin-top: 1em;
@@ -42,7 +42,7 @@ h2 {
 p {
     margin: 0.75em 0;
     color: #696969;
-}
+} */
 
 .browse-link {
     border: none;
@@ -59,7 +59,7 @@ p {
     height: 100%;
     background-color: #fff;
     display: none;
-    padding: 1em;
+    /* padding: 1em; */
 }
 
 .image-preview::before {
@@ -79,8 +79,8 @@ p {
 
 figure {
     width: 100px;
-    height: 100px;
-    margin: 1em;
+    height: 10px;
+    /* margin: 1em; */
     display: inline-block;
     animation: zoomIn 500ms ease-in 1;
     filter: drop-shadow(0 0 0.5em #e5e5e5);
@@ -95,8 +95,8 @@ figure::before {
     color: #fff;
     display: grid;
     place-items: center;
-    top: -0.75em;
-    right: -0.75em;
+    /* top: -0.05em;/ */
+    /* right: -0.75em; */
     border-radius: 50%;
     font-weight: bold;
     transform: scale(0);
@@ -112,10 +112,11 @@ figure.zoomOut {
 }
 
 img {
-    width: 100%;
-    height: 100px;
+    width: 50%;
+    height: 50px;
     object-fit: cover;
     border-radius: 0.5em;
+    margin: 5px;
 }
 
 @keyframes zoomIn {
@@ -142,7 +143,7 @@ img {
 
 <div class="image-uploader" id="dragArea">
     <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
-    <h2>Drag &amp; Drop</h2>
+    <p>Drag &amp; Drop</p>
     <p>
         your file here or
         <span class="browse-link">browse</span>
@@ -152,6 +153,7 @@ img {
     <div class="image-preview" id="imagePreview"></div>
 </div>
 
+
 <script>
 const fileInput = document.querySelector("input");
 const dragArea = document.getElementById("dragArea");
@@ -159,6 +161,8 @@ const imagePreview = document.getElementById("imagePreview");
 
 dragArea.addEventListener("click", () => {
     fileInput.click();
+    console.log("pala hutto yanna")
+    console.log(fileInput)
 });
 
 function preventDefault(event) {
