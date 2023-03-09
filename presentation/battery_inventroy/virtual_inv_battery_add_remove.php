@@ -10,6 +10,55 @@ if (!isset($_SESSION['user_id'])) {
 
 $rack = $_GET['rack'];
 
+if (isset($_POST['add_items'])) {
+    $qty = null;
+    $item_id = mysqli_real_escape_string($connection, $_POST['item_id']);
+    $rack_no = mysqli_real_escape_string($connection, $_GET['rack']);
+    $add_remove = mysqli_real_escape_string($connection, $_POST['add_remove']);
+
+    $query = "SELECT qty FROM battery_inventory WHERE id = '$item_id'";
+    $result = mysqli_query($connection, $query);
+    while ($xd = mysqli_fetch_assoc($result)) {
+        $qty = $xd['qty'];
+    }
+    $add =  $qty + $add_remove;
+
+    $add_q = "UPDATE battery_inventory SET qty = '$add'  WHERE id = '$item_id'";
+    $add_r = mysqli_query($connection, $add_q);
+    if ($add_r) {
+        echo "<script>
+            alert('Successfully Add Items to $rack');
+            
+        </script>";
+    }
+}
+
+if (isset($_POST['remove_items'])) {
+    $qty = null;
+
+    $item_id = mysqli_real_escape_string($connection, $_POST['item_id']);
+    $rack_no = mysqli_real_escape_string($connection, $_GET['rack']);
+    $add_remove = mysqli_real_escape_string($connection, $_POST['add_remove']);
+
+    $query = "SELECT qty FROM battery_inventory WHERE id = '$item_id'";
+    $result = mysqli_query($connection, $query);
+    while ($xd = mysqli_fetch_assoc($result)) {
+        $qty = $xd['qty'];
+    }
+    $sub =  $qty - $add_remove;
+
+    if ($sub < 0) {
+        echo "<script>
+            alert('You cannot update qty less than 0 in this $rack');
+            window.location.href='./virtual_inv_battery';
+        </script>";
+    }
+    if ($sub >= 0) {
+        $add_s = "UPDATE battery_inventory SET qty = '$sub'  WHERE id = '$item_id'";
+        $add_sub = mysqli_query($connection, $add_s);
+    }
+}
+
 ?>
 
 <style>
@@ -82,30 +131,31 @@ $rack = $_GET['rack'];
         </div>
         <hr class="sectionUnderline">
 
-        <form action="" method="GET">
-            <div class="addItemsSec mt-4">
-                <div class="row justify-content-center">
-                    <div class="tableSec">
-                        <table class="table mx-3 table-hover text-center">
-                            <thead>
+        <div class="addItemsSec mt-4">
+            <div class="row justify-content-center">
+                <div class="tableSec">
+                    <table class="table mx-3 table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>Item Device</th>
+                                <th>Item Brand</th>
+                                <th>Item Model</th>
+                                <th>Available Qty</th>
+                                <th>Rack No</th>
+                                <th>Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * FROM battery_inventory WHERE rack_no = '$rack'";
+                            $result = mysqli_query($connection, $query);
+                            while ($xd = mysqli_fetch_assoc($result)) {
+                                $id = $xd['id'];
+                            ?>
+
                                 <tr>
-                                    <th>Item Device</th>
-                                    <th>Item Brand</th>
-                                    <th>Item Model</th>
-                                    <th>Available Qty</th>
-                                    <th>Rack No</th>
-                                    <th>Qty</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $query = "SELECT * FROM battery_inventory WHERE rack_no = '$rack'";
-                                $result = mysqli_query($connection, $query);
-                                while ($xd = mysqli_fetch_assoc($result)) {
-                                    $id = $xd['id'];
-                                ?>
-                                    <tr>
-                                        <td class=""><input type="text" name="item_id" value="<?php echo $id ?>"></td>
+                                    <form action="" method="POST">
+                                        <td class="d-none"><input type="text" name="item_id" value="<?php echo $id ?>"></td>
                                         <td class="text-capitalize"><?php echo $xd['device'] ?></td>
                                         <td><?php echo ucfirst($xd['brand']) ?></td>
                                         <td style="text-transform: capitalize;"><?php echo $xd['model'] ?></td>
@@ -116,7 +166,7 @@ $rack = $_GET['rack'];
                                         </td>
                                         <td>
                                             <div class="d-flex">
-                                                <button type="submit" name="remove_items" style="background: transparent; border:none;">
+                                                <button type="submit" name="add_items" style="background: transparent; border:none;">
                                                     <i class="fa-solid fa-circle-plus fa-2x text-info"></i>
                                                 </button>
                                                 <button type="submit" name="remove_items" style="background: transparent; border:none;">
@@ -124,17 +174,18 @@ $rack = $_GET['rack'];
                                                 </button>
                                             </div>
                                         </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <a href="./virtual_inv_battery_add_new_item?rack=<?php echo $rack; ?>" name="remove_items" type="submit" class="btnT mr-2">Add New Item</a>
+
+                                    </form>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </form>
+            <div class="row justify-content-center">
+                <a href="./virtual_inv_battery_add_new_item?rack=<?php echo $rack; ?>" name="remove_items" type="submit" class="btnT mr-2">Add New Item</a>
+            </div>
+        </div>
     </div>
 </div>
 
