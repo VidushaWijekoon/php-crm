@@ -202,114 +202,114 @@ while ($i = mysqli_fetch_assoc($sx)) {
 ?>
 
 <style>
-    .select2-selection__rendered {
-        line-height: 17px !important;
-        padding-left: 0px !important;
-    }
+.select2-selection__rendered {
+    line-height: 17px !important;
+    padding-left: 0px !important;
+}
 
-    .select2 {
-        /* width: 100%; */
-        font-size: 10px;
-    }
+.select2 {
+    /* width: 100%; */
+    font-size: 10px;
+}
 
-    .select2 option {
-        /* width: 100%; */
-        font-size: 10px;
-    }
+.select2 option {
+    /* width: 100%; */
+    font-size: 10px;
+}
 
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .ecomOrderFormSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.ecomOrderFormSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
+}
 
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 20px;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 20px;
+}
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 
-    .formSec {
-        padding: 0px 20px;
-    }
+.formSec {
+    padding: 0px 20px;
+}
 
-    .platformes {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
+.platformes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
-    .DropDown {
-        height: 30px;
-        width: 100%;
-        border-radius: 5px;
-        border: 1px solid #D1CDCD;
-        font-size: 10px;
-        /* padding: 0px 10px; */
-    }
+.DropDown {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    font-size: 10px;
+    /* padding: 0px 10px; */
+}
 
-    .lableSec {
-        font-weight: 500;
-        font-size: 12px;
-    }
+.lableSec {
+    font-weight: 500;
+    font-size: 12px;
+}
 
-    input[type="text"] {
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid #D1CDCD;
-        width: 100%;
-        font-size: 10px;
-    }
+input[type="text"] {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    width: 100%;
+    font-size: 10px;
+}
 
-    input[type="date"] {
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid #D1CDCD;
-        width: 100%;
-        font-size: 10px;
-    }
+input[type="date"] {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #D1CDCD;
+    width: 100%;
+    font-size: 10px;
+}
 
-    .required:after {
-        content: " *";
-        color: red;
-    }
+.required:after {
+    content: " *";
+    color: red;
+}
 
-    .addressSec p {
-        font-size: 10px;
-        margin-bottom: 0px;
-    }
+.addressSec p {
+    font-size: 10px;
+    margin-bottom: 0px;
+}
 
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -346,20 +346,22 @@ while ($i = mysqli_fetch_assoc($sx)) {
                             <?php
 
                             if ($get_cs_id != 0) { ?>
-                                <option value="<?php echo $get_cs_id ?>" selected><?php echo strtoupper($fname  . " " .  $lname) ?></option>
+                            <option value="<?php echo $get_cs_id ?>" selected>
+                                <?php echo strtoupper($fname  . " " .  $lname) ?></option>
                             <?php } else { ?>
-                                <option selected>--Select Resident Country--</option>
+                            <option selected>--Select Resident Country--</option>
                             <?php }
                             $q1 = "SELECT customer_id, customer_fname, customer_lname FROM sales_customer_infomations WHERE created_by = '$created_by'";
                             $r2 = mysqli_query($connection, $q1);
 
                             while ($x = mysqli_fetch_assoc($r2)) { ?>
-                                <option value="<?php echo $x["customer_id"]; ?>">
-                                    <?php echo strtoupper($x["customer_fname"] . " " . $x['customer_lname']); ?>
-                                </option>
+                            <option value="<?php echo $x["customer_id"]; ?>">
+                                <?php echo strtoupper($x["customer_fname"] . " " . $x['customer_lname']); ?>
+                            </option>
                             <?php } ?>
                         </select>
-                        <button class="btn btn-xs btn-primary mx-2" name="choose_customer" type="submit">Choose Customer</button>
+                        <button class="btn btn-xs btn-primary mx-2" name="choose_customer" type="submit">Choose
+                            Customer</button>
                     </div>
                 </div>
             </div>
@@ -385,7 +387,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                             }
                             ?>
                             <input type="text" disabled value="SO-<?php $sales_order_id++;
-                                                                    echo $sales_order_id ?>" style="width:100%;" required>
+                                                                    echo $sales_order_id ?>" style="width:100%;"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -411,9 +414,9 @@ while ($i = mysqli_fetch_assoc($sx)) {
                         </div>
                         <div class="col-sm-6">
                             <?php if ($reference1 == null) { ?>
-                                <input type="text" value="" style="width:100%;" name="reference" placeholder="Reference">
+                            <input type="text" value="" style="width:100%;" name="reference" placeholder="Reference">
                             <?php } else { ?>
-                                <input type="text" value="<?php echo $reference1 ?>" style="width:100%;" name="reference">
+                            <input type="text" value="<?php echo $reference1 ?>" style="width:100%;" name="reference">
                             <?php } ?>
                         </div>
                     </div>
@@ -440,9 +443,10 @@ while ($i = mysqli_fetch_assoc($sx)) {
                         </div>
                         <div class="col-sm-6">
                             <?php if ($shipping_date1 == null) { ?>
-                                <input type="date" value="" style="width:100%;" name="shipping_date">
+                            <input type="date" value="" style="width:100%;" name="shipping_date">
                             <?php } else { ?>
-                                <input type="text" value="<?php echo $shipping_date1 ?>" style="width:100%;" name="reference">
+                            <input type="text" value="<?php echo $shipping_date1 ?>" style="width:100%;"
+                                name="reference">
                             <?php } ?>
                         </div>
                     </div>
@@ -468,9 +472,10 @@ while ($i = mysqli_fetch_assoc($sx)) {
                         </div>
                         <div class="col-sm-6">
                             <?php if ($expected_payment_date1 == null) { ?>
-                                <input type="date" value="" style="width:100%;" name="expected_payment_date">
+                            <input type="date" value="" style="width:100%;" name="expected_payment_date">
                             <?php } else { ?>
-                                <input type="text" value="<?php echo $expected_payment_date1 ?>" style="width:100%;" name="reference">
+                            <input type="text" value="<?php echo $expected_payment_date1 ?>" style="width:100%;"
+                                name="reference">
                             <?php } ?>
                         </div>
                     </div>
@@ -482,21 +487,21 @@ while ($i = mysqli_fetch_assoc($sx)) {
                         </div>
                         <div class="col-sm-6">
                             <?php if ($expected_payment_date1 == null) { ?>
-                                <select name="payment_term" class="DropDown" style="width: 100%;">
-                                    <option value="" selected="">--Select Payment Terms--</option>
-                                    <option value="1">Net 15</option>
-                                    <option value="2">Net 30</option>
-                                    <option value="3">Net 45</option>
-                                    <option value="4">Net 60</option>
-                                    <option value="5">Due end of the
-                                        month</option>
-                                    <option value="6">Due end
-                                        of the next month</option>
-                                    <option value="7">Due on Receipt
-                                    </option>
-                                </select>
+                            <select name="payment_term" class="DropDown" style="width: 100%;">
+                                <option value="" selected="">--Select Payment Terms--</option>
+                                <option value="1">Net 15</option>
+                                <option value="2">Net 30</option>
+                                <option value="3">Net 45</option>
+                                <option value="4">Net 60</option>
+                                <option value="5">Due end of the
+                                    month</option>
+                                <option value="6">Due end
+                                    of the next month</option>
+                                <option value="7">Due on Receipt
+                                </option>
+                            </select>
                             <?php } else { ?>
-                                <input type="text" value="<?php
+                            <input type="text" value="<?php
                                                             if ($payment_term1 == 1) {
                                                                 echo 'Net 15';
                                                             }
@@ -546,9 +551,9 @@ while ($i = mysqli_fetch_assoc($sx)) {
 
                         while ($xd = mysqli_fetch_array($result, MYSQLI_ASSOC)) :;
                         ?>
-                            <option value="<?php echo $xd["device"]; ?>">
-                                <?php echo strtoupper($xd["device"]); ?>
-                            </option>
+                        <option value="<?php echo $xd["device"]; ?>">
+                            <?php echo strtoupper($xd["device"]); ?>
+                        </option>
                         <?php endwhile; ?>
                     </select>
                 </div>
@@ -563,7 +568,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required">Brand</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="brand" id="brand" class="DropDown select2" style="border-radius: 5px; width: 100%;"> </select>
+                    <select name="brand" id="brand" class="DropDown select2" style="border-radius: 5px; width: 100%;">
+                    </select>
                 </div>
             </div>
         </div>
@@ -575,7 +581,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required">Model</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="model" id="model" class="DropDown select2" style="border-radius: 5px; width: 100%;"> </select>
+                    <select name="model" id="model" class="DropDown select2" style="border-radius: 5px; width: 100%;">
+                    </select>
                 </div>
             </div>
         </div>
@@ -588,7 +595,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required">Processor</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="processor" id="processor" class="DropDown select2" style="border-radius: 5px; width: 100%;"> </select>
+                    <select name="processor" id="processor" class="DropDown select2"
+                        style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -600,7 +608,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required">Core</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="core" id="core" class="DropDown select2" style="border-radius: 5px; width: 100%;"> </select>
+                    <select name="core" id="core" class="DropDown select2" style="border-radius: 5px; width: 100%;">
+                    </select>
                 </div>
             </div>
         </div>
@@ -613,7 +622,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required">Generation</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="generation" id="generation" class="DropDown select2" style="border-radius: 5px; width: 100%;"> </select>
+                    <select name="generation" id="generation" class="DropDown select2"
+                        style="border-radius: 5px; width: 100%;"> </select>
                 </div>
             </div>
         </div>
@@ -625,7 +635,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required">Speed</p>
                 </div>
                 <div class="inputSec col-9">
-                    <select name="speed" id="speed" class="DropDown select2" style="border-radius: 5px; width: 100%;"> </select>
+                    <select name="speed" id="speed" class="DropDown select2" style="border-radius: 5px; width: 100%;">
+                    </select>
                 </div>
             </div>
         </div>
@@ -797,8 +808,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 </div>
                 <div class="inputSec col-9">
                     <select class="DropDown" name="keybord_language" id="keybord_language" onchange="" required>
-                        <option value="">Select Language </option>
-                        <option value="1">US</option>
+                        <option>Select Language </option>
+                        <option value="1" selected>US</option>
                         <option value="2">UK</option>
                         <option value="3">FRENCH</option>
                         <option value="4">ARABIC</option>
@@ -833,7 +844,7 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 </div>
                 <div class="inputSec col-9">
                     <select class="DropDown" name="graphic_type" required>
-                        <option selected="">--Select Graphic Type--</option>
+                        <option selected>--Select Graphic Type--</option>
                         <option value="1">Intel</option>
                         <option value="2">Amd</option>
                         <option value="3">nVidia</option>
@@ -852,14 +863,14 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 </div>
                 <div class="inputSec col-9">
                     <select class="DropDown" name="graphic_capacity" required>
-                        <option selected="">--Select Graphic Capacity--</option>
+                        <option selected>--Select Graphic Capacity--</option>
                         <option value="1">1GB</option>
                         <option value="2">2GB</option>
                         <option value="4">4GB</option>
                         <option value="6">6GB</option>
                         <option value="8">8GB</option>
-                        <option value="9">Mix</option>
-                        <option value="10">N/A</option>
+                        <option value="10">Mix</option>
+                        <option value="0">N/A</option>
                     </select>
 
                 </div>
@@ -894,7 +905,12 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="charger_watt" required>
                         <option selected="">--Select Charger Watt--</option>
-                        <option value="1">65w</option>
+                        <option value="45">45w</option>
+                        <option value="65">65w</option>
+                        <option value="90">90w</option>
+                        <option value="130">130w</option>
+                        <option value="180">180w</option>
+                        <option value="240">240w</option>
                     </select>
                 </div>
             </div>
@@ -908,7 +924,7 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 </div>
                 <div class="inputSec col-9">
                     <select class="DropDown" name="charger_color" required>
-                        <option selected="">--Select Pin Colour--</option>
+                        <option selected>--Select Pin Colour--</option>
                         <option value="1">blue</option>
                         <option value="2">Yellow</option>
                         <option value="3">white</option>
@@ -963,7 +979,7 @@ while ($i = mysqli_fetch_assoc($sx)) {
                 </div>
                 <div class="inputSec col-9">
                     <select class="DropDown" name="shipping_method" id="shipping_method" required>
-                        <option selected="">--Select Shipping Method--</option>
+                        <option selected>--Select Shipping Method--</option>
                         <option value="1">Local Pickup</option>
                         <option value="2">DHL</option>
                         <option value="3">Fedex</option>
@@ -981,7 +997,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required" required>QTY</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="number" class="w-100" min="1" id="orderQty" name="order_qty" onchange="getTot()" placeholder="Enter Listing Qty">
+                    <input type="number" class="w-100" min="1" id="orderQty" name="order_qty" onchange="getTot()"
+                        placeholder="Enter Listing Qty">
                 </div>
             </div>
         </div>
@@ -994,7 +1011,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required" required> Unit Price</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="number" class="w-100" min="1" id="unitPrice" name="unit_price" onchange="getTot()" placeholder="Enter Unit Price">
+                    <input type="number" class="w-100" min="1" id="unitPrice" name="unit_price" onchange="getTot()"
+                        placeholder="Enter Unit Price">
                 </div>
             </div>
         </div>
@@ -1006,7 +1024,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p class="required" required>Discount</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="number" class="w-100" min="0" id="discount" name="discount" onchange="getTot()" placeholder="Enter Discount %">
+                    <input type="number" class="w-100" min="0" id="discount" name="discount" onchange="getTot()"
+                        placeholder="Enter Discount %">
                 </div>
             </div>
         </div>
@@ -1019,7 +1038,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     <p>Total</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="number" class="w-100" min="1" id="tot" readonly name="total_price" placeholder="Total Price">
+                    <input type="number" class="w-100" min="1" id="tot" readonly name="total_price"
+                        placeholder="Total Price">
                 </div>
             </div>
         </div>
@@ -1093,11 +1113,11 @@ while ($i = mysqli_fetch_assoc($sx)) {
                     $order_total_price = $xd['order_total_price'];
 
                 ?>
-                    <tr>
-                        <td>
-                            <p>
-                                <b class="text-capitalize">
-                                    <?php echo $order_device . ", " . $order_brand . ", " . $order_model . ", " . $order_processor . ", " . $order_core . ", " . $order_generation . ", " . $order_speed . ", ";
+                <tr>
+                    <td>
+                        <p>
+                            <b class="text-capitalize">
+                                <?php echo $order_device . ", " . $order_brand . ", " . $order_model . ", " . $order_processor . ", " . $order_core . ", " . $order_generation . ", " . $order_speed . ", ";
                                     if ($order_touch_status == 0) {
                                         echo "yes" . ", ";
                                     } else {
@@ -1215,23 +1235,23 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                     };
                                     ?>
 
-                                </b>
-                            </p>
-                        </td>
-                        <td class="p-0">
-                            <input type="text" disabled value="<?php echo $order_qty ?>">
-                        </td>
-                        <td class="p-0">
-                            <input type="text" disabled value="<?php echo $order_unit_price ?>">
-                        </td>
-                        <td class="p-0">
-                            <input type="text" disabled value="<?php echo $order_discount ?>">
-                        </td>
-                        <td class="p-0">
-                            <input type="text" disabled value="<?php echo $order_total_price ?>">
-                        </td>
-                        <td>
-                            <?php
+                            </b>
+                        </p>
+                    </td>
+                    <td class="p-0">
+                        <input type="text" disabled value="<?php echo $order_qty ?>">
+                    </td>
+                    <td class="p-0">
+                        <input type="text" disabled value="<?php echo $order_unit_price ?>">
+                    </td>
+                    <td class="p-0">
+                        <input type="text" disabled value="<?php echo $order_discount ?>">
+                    </td>
+                    <td class="p-0">
+                        <input type="text" disabled value="<?php echo $order_total_price ?>">
+                    </td>
+                    <td>
+                        <?php
                             echo
                             "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/order/remove_items?remove_order_single_item={$xd['sales_order_item_id']}&customer_id={$xd['customer_id']}\"
                                     onclick=\"return confirm('Are you sure you want to remove this item?');\">
@@ -1240,8 +1260,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
 
                             ?>
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 <?php } ?>
 
             </tbody>
@@ -1328,14 +1348,18 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                 </div>
                                 <div class="col-sm-8 d-flex pb-3">
                                     <div class="form-check d-flex align-items-center">
-                                        <input class="form-check-input" type="radio" name="cutomer_type" value="0" id="flexRadioDefault1" checked>
-                                        <label class="form-check-label" for="flexRadioDefault1" style="margin-left: 6px;">
+                                        <input class="form-check-input" type="radio" name="cutomer_type" value="0"
+                                            id="flexRadioDefault1" checked>
+                                        <label class="form-check-label" for="flexRadioDefault1"
+                                            style="margin-left: 6px;">
                                             Business
                                         </label>
                                     </div>
                                     <div class="form-check mx-2  d-flex align-items-center">
-                                        <input class="form-check-input" type="radio" name="cutomer_type" value="1" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2" style="margin-left: 6px;">
+                                        <input class="form-check-input" type="radio" name="cutomer_type" value="1"
+                                            id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2"
+                                            style="margin-left: 6px;">
                                             Individual
                                         </label>
                                     </div>
@@ -1355,8 +1379,10 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                             <option value="3">DR</option>
                                         </select>
                                     </div>
-                                    <div class="mx-3"><input class="w-100" type="text" name="customer_fname" id="fName" placeholder="First Name" required></div>
-                                    <div class=""><input class="w-100" type="text" name="customer_lname" id="lName" placeholder="Last Name" required></div>
+                                    <div class="mx-3"><input class="w-100" type="text" name="customer_fname" id="fName"
+                                            placeholder="First Name" required></div>
+                                    <div class=""><input class="w-100" type="text" name="customer_lname" id="lName"
+                                            placeholder="Last Name" required></div>
                                 </div>
                             </div>
                             <div class="row mx-2">
@@ -1364,7 +1390,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                     <p>Company Name</p>
                                 </div>
                                 <div class="col-sm-8">
-                                    <div><input class="w-25" type="text" name="company_name" placeholder="Company Name"></div>
+                                    <div><input class="w-25" type="text" name="company_name" placeholder="Company Name">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mx-2">
@@ -1372,7 +1399,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                     <p>Display Name</p>
                                 </div>
                                 <div class="col-sm-8">
-                                    <div class=""><input class="w-25" type="text" name="display_name" placeholder="Customer Display Name"></div>
+                                    <div class=""><input class="w-25" type="text" name="display_name"
+                                            placeholder="Customer Display Name"></div>
                                 </div>
                             </div>
                             <div class="row mx-2">
@@ -1380,7 +1408,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                     <p>Customer Email</p>
                                 </div>
                                 <div class="col-sm-8">
-                                    <div class=""><input class="w-25" type="text" name="customer_email" placeholder="E-mail"></div>
+                                    <div class=""><input class="w-25" type="text" name="customer_email"
+                                            placeholder="E-mail"></div>
                                 </div>
                             </div>
                             <div class="row mx-2">
@@ -1389,16 +1418,17 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="">
-                                        <select name="resident_country" id="country_name" class="w-25 DropDown" required>
+                                        <select name="resident_country" id="country_name" class="w-25 DropDown"
+                                            required>
                                             <option selected>--Select Resident Country--</option>
                                             <?php
                                             $query = "SELECT country_name FROM countries ORDER BY 'country_name' ASC";
                                             $result = mysqli_query($connection, $query);
 
                                             while ($x = mysqli_fetch_assoc($result)) { ?>
-                                                <option value="<?php echo $x["country_name"]; ?>">
-                                                    <?php echo strtoupper($x["country_name"]); ?>
-                                                </option>
+                                            <option value="<?php echo $x["country_name"]; ?>">
+                                                <?php echo strtoupper($x["country_name"]); ?>
+                                            </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -1410,7 +1440,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                 </div>
                                 <div class="col-sm-8 d-flex">
                                     <div class="">
-                                        <select name="country_code" id="country_code" required style="border-radius: 5px;" class="w-100">
+                                        <select name="country_code" id="country_code" required
+                                            style="border-radius: 5px;" class="w-100">
 
                                         </select>
                                     </div>
@@ -1432,9 +1463,9 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                             $result = mysqli_query($connection, $query);
 
                                             while ($x = mysqli_fetch_assoc($result)) { ?>
-                                                <option value="<?php echo $x["phone_code"]; ?>">
-                                                    <?php echo "+" . $x["phone_code"]; ?>
-                                                </option>
+                                            <option value="<?php echo $x["phone_code"]; ?>">
+                                                <?php echo "+" . $x["phone_code"]; ?>
+                                            </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -1450,23 +1481,37 @@ while ($i = mysqli_fetch_assoc($sx)) {
                             <div class="">
                                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                                     <li class="nav-item">
-                                        <div class="nav-link active tabLable" id="custom-content-below-other-details-tab" data-toggle="pill" href="#custom-content-below-other-details" role="tab" aria-controls="custom-content-below-other-details" aria-selected="true">Other Details
+                                        <div class="nav-link active tabLable"
+                                            id="custom-content-below-other-details-tab" data-toggle="pill"
+                                            href="#custom-content-below-other-details" role="tab"
+                                            aria-controls="custom-content-below-other-details" aria-selected="true">
+                                            Other Details
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="nav-link tabLable" id="custom-content-below-address-tab" data-toggle="pill" href="#custom-content-below-address" role="tab" aria-controls="custom-content-below-address" aria-selected="false">Address</dvi>
+                                        <div class="nav-link tabLable" id="custom-content-below-address-tab"
+                                            data-toggle="pill" href="#custom-content-below-address" role="tab"
+                                            aria-controls="custom-content-below-address" aria-selected="false">Address
+                                            </dvi>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="nav-link tabLable" id="custom-content-below-contact-person-tab" data-toggle="pill" href="#custom-content-below-contact-person" role="tab" aria-controls="custom-content-below-contact-person" aria-selected="false">Contact
+                                        <div class="nav-link tabLable" id="custom-content-below-contact-person-tab"
+                                            data-toggle="pill" href="#custom-content-below-contact-person" role="tab"
+                                            aria-controls="custom-content-below-contact-person" aria-selected="false">
+                                            Contact
                                             Persons
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <div class="nav-link tabLable" id="custom-content-below-remark-tab" data-toggle="pill" href="#custom-content-below-remark" role="tab" aria-controls="custom-content-below-remark" aria-selected="false">Remark</div>
+                                        <div class="nav-link tabLable" id="custom-content-below-remark-tab"
+                                            data-toggle="pill" href="#custom-content-below-remark" role="tab"
+                                            aria-controls="custom-content-below-remark" aria-selected="false">Remark
+                                        </div>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="custom-content-below-tabContent">
-                                    <div class="tab-pane fade show active" id="custom-content-below-other-details" role="tabpanel" aria-labelledby="custom-content-below-other-details-tab">
+                                    <div class="tab-pane fade show active" id="custom-content-below-other-details"
+                                        role="tabpanel" aria-labelledby="custom-content-below-other-details-tab">
                                         <div class="m-2">
                                             <div class="row mt-2">
                                                 <div class="col-sm-2">
@@ -1491,7 +1536,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     <p class="required" title=" Speaking language">Language</p>
                                                 </div>
                                                 <div class="col-sm-9">
-                                                    <select name="language" class="w-25 DropDown" title=" Select Customer Speaking language" required>
+                                                    <select name="language" class="w-25 DropDown"
+                                                        title=" Select Customer Speaking language" required>
                                                         <option value="" selected="">--Select Languages--
                                                         </option>
                                                         <option value="english">English</option>
@@ -1545,7 +1591,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                         </div>
 
                                     </div>
-                                    <div class="tab-pane fade" id="custom-content-below-address" role="tabpanel" aria-labelledby="custom-content-below-address-tab">
+                                    <div class="tab-pane fade" id="custom-content-below-address" role="tabpanel"
+                                        aria-labelledby="custom-content-below-address-tab">
                                         <div class="row px-4">
                                             <div class="col-sm-6">
                                                 <h6 class="text-uppercase mt-4 mb-3">Billing Address</h6>
@@ -1555,7 +1602,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="billing_attention" class="w-75 ">
+                                                            <input type="text" placeholder="" name="billing_attention"
+                                                                class="w-75 ">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1571,9 +1619,9 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                             $result = mysqli_query($connection, $query);
 
                                                             while ($x = mysqli_fetch_assoc($result)) { ?>
-                                                                <option value="<?php echo $x["country_name"]; ?>">
-                                                                    <?php echo strtoupper($x["country_name"]); ?>
-                                                                </option>
+                                                            <option value="<?php echo $x["country_name"]; ?>">
+                                                                <?php echo strtoupper($x["country_name"]); ?>
+                                                            </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -1583,14 +1631,18 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                         <p>Address</p>
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control w-75" rows="3" placeholder="Billing Address 1" name="billing_address1"></textarea>
+                                                        <textarea class="form-control w-75" rows="3"
+                                                            placeholder="Billing Address 1"
+                                                            name="billing_address1"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-3">
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control mt-1 w-75" rows="3" placeholder="Billing Address 2" name="billing_address2"></textarea>
+                                                        <textarea class="form-control mt-1 w-75" rows="3"
+                                                            placeholder="Billing Address 2"
+                                                            name="billing_address2"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-1">
@@ -1599,7 +1651,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="billing_city" class="w-75">
+                                                            <input type="text" placeholder="" name="billing_city"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
 
@@ -1610,7 +1663,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="billing_state" class="w-75">
+                                                            <input type="text" placeholder="" name="billing_state"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1620,7 +1674,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="billing_zip_code" class="w-75">
+                                                            <input type="text" placeholder="" name="billing_zip_code"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1630,7 +1685,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="billing_phone" class="w-75">
+                                                            <input type="text" placeholder="" name="billing_phone"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1640,7 +1696,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="billing_fax" class="w-75">
+                                                            <input type="text" placeholder="" name="billing_fax"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1653,7 +1710,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="shipping_attention" class="w-75">
+                                                            <input type="text" placeholder="" name="shipping_attention"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1669,9 +1727,9 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                             $result = mysqli_query($connection, $query);
 
                                                             while ($x = mysqli_fetch_assoc($result)) { ?>
-                                                                <option value="<?php echo $x["country_name"]; ?>">
-                                                                    <?php echo strtoupper($x["country_name"]); ?>
-                                                                </option>
+                                                            <option value="<?php echo $x["country_name"]; ?>">
+                                                                <?php echo strtoupper($x["country_name"]); ?>
+                                                            </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -1681,14 +1739,18 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                         <p>Address</p>
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control w-75" rows="3" placeholder="Shipping Address" name="shipping_address1"></textarea>
+                                                        <textarea class="form-control w-75" rows="3"
+                                                            placeholder="Shipping Address"
+                                                            name="shipping_address1"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-3">
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control mt-1 w-75" rows="3" placeholder="Shipping Adderess" name="shipping_address2"></textarea>
+                                                        <textarea class="form-control mt-1 w-75" rows="3"
+                                                            placeholder="Shipping Adderess"
+                                                            name="shipping_address2"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-1">
@@ -1697,7 +1759,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="shipping_city" class="w-75">
+                                                            <input type="text" placeholder="" name="shipping_city"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1707,7 +1770,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="shipping_state" class="w-75">
+                                                            <input type="text" placeholder="" name="shipping_state"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1717,7 +1781,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="shipping_zip_code" class="w-75">
+                                                            <input type="text" placeholder="" name="shipping_zip_code"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1727,7 +1792,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="shipping_phone" class="w-75">
+                                                            <input type="text" placeholder="" name="shipping_phone"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1737,7 +1803,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                     </div>
                                                     <div class="col-sm-9">
                                                         <div class="">
-                                                            <input type="text" placeholder="" name="shipping_fax" class="w-75">
+                                                            <input type="text" placeholder="" name="shipping_fax"
+                                                                class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1755,7 +1822,8 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="custom-content-below-contact-person" role="tabpanel" aria-labelledby="custom-content-below-contact-person-tab">
+                                    <div class="tab-pane fade" id="custom-content-below-contact-person" role="tabpanel"
+                                        aria-labelledby="custom-content-below-contact-person-tab">
                                         <div class="col-sm-12 table-responsive w-100">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -1779,11 +1847,16 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                                                 <option value="4">DR</option>
                                                             </select>
                                                         </td>
-                                                        <td class="p-0"><input type="text" name="contact_fist_name" class="w-100"></td>
-                                                        <td class="p-0"><input type="text" name="contact_last_name" class="w-100"></td>
-                                                        <td class="p-0"><input type="text" name="contact_email" class="w-100"></td>
-                                                        <td class="p-0"><input type="text" name="contact_work_phone_number" class="w-100"></td>
-                                                        <td class="p-0"><input type="text" name="contact_mobile_number" class="w-100"></td>
+                                                        <td class="p-0"><input type="text" name="contact_fist_name"
+                                                                class="w-100"></td>
+                                                        <td class="p-0"><input type="text" name="contact_last_name"
+                                                                class="w-100"></td>
+                                                        <td class="p-0"><input type="text" name="contact_email"
+                                                                class="w-100"></td>
+                                                        <td class="p-0"><input type="text"
+                                                                name="contact_work_phone_number" class="w-100"></td>
+                                                        <td class="p-0"><input type="text" name="contact_mobile_number"
+                                                                class="w-100"></td>
 
                                                     </tr>
                                                 </tbody>
@@ -1791,9 +1864,11 @@ while ($i = mysqli_fetch_assoc($sx)) {
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="custom-content-below-remark" role="tabpanel" aria-labelledby="custom-content-below-remark-tab">
+                                    <div class="tab-pane fade" id="custom-content-below-remark" role="tabpanel"
+                                        aria-labelledby="custom-content-below-remark-tab">
                                         <div class="form-group">
-                                            <textarea class="form-control mt-4" rows="3" placeholder="Remarks" name="remarks" style="width: 50%;"></textarea>
+                                            <textarea class="form-control mt-4" rows="3" placeholder="Remarks"
+                                                name="remarks" style="width: 50%;"></textarea>
                                         </div>
                                     </div>
                                 </div>
