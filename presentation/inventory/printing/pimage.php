@@ -23,6 +23,7 @@ if(empty($_POST['machine_id'])){}else{$machine_id=trim($_POST['machine_id']);}
 if(empty($_POST['inventory_id'])){}else{$inventory_id=trim($_POST['inventory_id']);}
 $user_id=$_SESSION['user_id'];
 $connection = mysqli_connect("localhost", "root", "", "main_project");
+ $id=0;
 if($inventory_id==0){
 $query = "INSERT INTO `main_inventory_informations`(
             `device`,
@@ -70,7 +71,7 @@ $query = "INSERT INTO `main_inventory_informations`(
 $sql="SELECT inventory_id,generation,model,brand,core,speed FROM main_inventory_informations WHERE create_by_inventory_id='$user_id' ORDER BY inventory_id DESC LIMIT 1";
 $result = mysqli_query($connection,$sql);
 echo $sql;
- $id=0;
+
 while($row = mysqli_fetch_array($result)) {
    $id=$row['inventory_id'];
    $generation=strtoupper($row['generation']);

@@ -518,7 +518,14 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Team Members</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">5
+                    <div class="cardValue">
+                        <?php 
+                        $sql="SELECT COUNT(emp_id)as count FROM employees WHERE department_id='6'";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count'];
+                        }
+                        ?>
                         <!-- <span style="font-size: 18px;">100</span> -->
                     </div>
                 </div>
@@ -535,8 +542,23 @@ if (!isset($_SESSION['user_id'])) {
                         Received Qty from MB</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">10
-                        <!-- <span style="font-size: 18px;">100</span> -->
+                    <div class="cardValue">
+                        <?php 
+                        $sql="SELECT COUNT(issue_type2)as count FROM issue_laptops WHERE mb_received='1' AND issue_type2='1'   ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count']."/";
+                        }
+                        ?>
+                        <span style="font-size: 14px;">
+                            <?php 
+                        $sql="SELECT COUNT(issue_type2)as count FROM issue_laptops WHERE issue_type2='1'  ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count'];
+                        }
+                        ?>
+                        </span>
                     </div>
                 </div>
 
@@ -552,9 +574,24 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Completed Qty in MB</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">20
+                    <div class="cardValue">
+                        <?php 
+                        $sql="SELECT COUNT(issue_type2)as count FROM issue_laptops WHERE status='2' AND issue_type2='1'  ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count']."/";
+                        }
+                        ?>
                         <span style="font-size: 12px;cursor:pointer; color:#168eb4;" data-toggle="modal"
-                            data-target="#motherboardModel">/38</span>
+                            data-target="#motherboardModel">
+                            <?php 
+                        $sql="SELECT COUNT(issue_type2)as count FROM issue_laptops WHERE issue_type2='1'  ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count'];
+                        }
+                        ?>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -571,8 +608,23 @@ if (!isset($_SESSION['user_id'])) {
                         Received Qty from LCD</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">10
-                        <!-- <span style="font-size: 18px;">100</span> -->
+                    <div class="cardValue">
+                        <?php 
+                        $sql="SELECT COUNT(issue_type)as count FROM issue_laptops WHERE lcd_received='1' AND issue_type='1'  ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count']."/";
+                        }
+                        ?>
+                        <span style="font-size: 14px;">
+                            <?php 
+                        $sql="SELECT COUNT(issue_type)as count FROM issue_laptops WHERE issue_type='1' ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count'];
+                        }
+                        ?>
+                        </span>
                     </div>
                 </div>
 
@@ -588,9 +640,24 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="cardTitle">Completed Qty in LCD</div>
                 </div>
                 <div class="dashCardBody">
-                    <div class="cardValue">20
+                    <div class="cardValue">
+                        <?php 
+                        $sql="SELECT COUNT(issue_type)as count FROM issue_laptops WHERE status='2' AND issue_type='1'  ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count']."/";
+                        }
+                        ?>
                         <span style="font-size: 12px; cursor:pointer; color:#168eb4;" data-toggle="modal"
-                            data-target="#lcdModel">/38</span>
+                            data-target="#lcdModel">
+                            <?php 
+                        $sql="SELECT COUNT(issue_type)as count FROM issue_laptops WHERE issue_type='1' ";
+                        $sql_run=mysqli_query($connection,$sql);
+                        while($row = mysqli_fetch_array($sql_run)){
+                            echo $row['count'];
+                        }
+                        ?>
+                        </span>
                     </div>
                 </div>
             </div>
