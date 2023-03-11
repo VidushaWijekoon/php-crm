@@ -123,7 +123,7 @@ if (!isset($_SESSION['user_id'])) {
     position: relative;
     width: 90%;
     max-width: 600px;
-    height: 65px;
+    height: 350px;
     border: 2px dashed #4169e1;
     display: flex;
     flex-direction: column;
@@ -184,7 +184,7 @@ p {
 
 figure {
     width: 100px;
-    height: 10px;
+    height: 20px;
     /* margin: 1em; */
     display: inline-block;
     animation: zoomIn 500ms ease-in 1;
@@ -221,7 +221,7 @@ img {
     height: 50px;
     object-fit: cover;
     border-radius: 0.5em;
-    margin: 5px;
+    margin: 25px;
 }
 
 @keyframes zoomIn {
@@ -386,11 +386,11 @@ img {
                     <div class="navSec mt-1">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="nav-item">
+                            <li class="nav-item border rounded-top">
                                 <a class="nav-link" aria-current="page" href="./accounts_sales_order_new.php">Sales
                                     Order</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item border">
                                 <a class="nav-link" aria-current="page"
                                     href="./accounts_sales_order_packing.php">Packing</a>
                             </li>
@@ -604,10 +604,6 @@ img {
                                                     <div class="image-preview" id="imagePreview"></div>
 
                                                 </div>
-
-
-
-
                                                 <!-- <div class="imgbox">
                                                 </div>
                                                 <div class="imgbox">
