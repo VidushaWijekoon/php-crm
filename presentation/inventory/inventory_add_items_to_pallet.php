@@ -34,7 +34,7 @@ if(empty($count)){
     if($pallet_id !='null'){
     echo '<script type="text/javascript">';
 echo 'alert("Please enter valid pallet'.$pallet_id.' number");';
-echo 'window.location.href = "add_pallet.php";';
+echo 'window.location.href = "inventory_add_items_to_pallet.php";';
 echo '</script>';
 }
 
@@ -75,7 +75,7 @@ if(mysqli_query($connection, $sql)){
     $department_id = $_SESSION['department_id'];
     $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
     $start_date = $date1->format('Y-m-d H:i:s');
-    $query = " INSERT INTO `performance_record_table`(
+    $query = " INSERT INTO `performance_records`(
     `user_id`,
     `department_id`,
     `qr_number`,
@@ -89,7 +89,7 @@ if(mysqli_query($connection, $sql)){
     '$user_id',
     '$department_id',
     '$pallet_id',
-    'monitor Add To pallet',
+    'monitor add to pallet',
     '$start_date',
     '$start_date',
     '$brand',
@@ -146,7 +146,7 @@ if($save == 2){
     $department_id = $_SESSION['department_id'];
     $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
     $start_date = $date1->format('Y-m-d H:i:s');
-    $query = " INSERT INTO `performance_record_table`(
+    $query = " INSERT INTO `performance_records`(
     `user_id`,
     `department_id`,
     `qr_number`,
@@ -220,7 +220,7 @@ echo "<div class='text-center text-success' style='font-size :24px'>$category Re
     $department_id = $_SESSION['department_id'];
     $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
     $start_date = $date1->format('Y-m-d H:i:s');
-    $query = " INSERT INTO `performance_record_table`(
+    $query = " INSERT INTO `performance_records`(
     `user_id`,
     `department_id`,
     `qr_number`,
@@ -234,7 +234,7 @@ echo "<div class='text-center text-success' style='font-size :24px'>$category Re
     '$user_id',
     '$department_id',
     '$pallet_id',
-    'Desktop Add To pallet',
+    'Desktop add to pallet',
     '$start_date',
     '$start_date',
     '$model',

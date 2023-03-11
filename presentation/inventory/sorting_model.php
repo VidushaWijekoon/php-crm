@@ -2,7 +2,7 @@
     session_start();
 $q = $_GET['q'];
 
-$con = mysqli_connect("localhost", "root", "", "wms");
+$con = mysqli_connect("localhost", "root", "", "main_project");
 if (!$con) {
 //   die('Could not connect: ' . mysqli_error($con));
 }
@@ -10,7 +10,7 @@ date_default_timezone_set('Asia/dubai');
 $timestamp = time();
 $date_time = date("Y-m-d H:i:s", $timestamp);
 
-mysqli_select_db($con,"wms");
+mysqli_select_db($con,"main_project");
 $sql="SELECT * FROM machine_from_supplier WHERE serial_no = '".$q."' OR mfg = '".$q."' ";
 
 $result = mysqli_query($con,$sql);
@@ -33,7 +33,7 @@ while($row = mysqli_fetch_array($result)) {
     if($supplier_name !=0){
         $user_id=$_SESSION['user_id'];
          $department=$_SESSION['department_id'];
-        $sql="INSERT INTO `performance_record_table`(
+        $sql="INSERT INTO `performance_records`(
     `user_id`,
     `department_id`,
     `qr_number`,

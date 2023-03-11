@@ -6,6 +6,7 @@ require_once('../includes/header.php');
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+  $connection = mysqli_connect("localhost", "root", "", "main_project");
 ?>
 
 <style>
@@ -119,7 +120,25 @@ if (!isset($_SESSION['user_id'])) {
 
 /*  */
 </style>
-
+<?php
+    $value=1;
+    if($value == 1) {
+    for($i=0;$i<$value;$i++){
+        echo "<script>";
+        echo "var gross_profit = 0;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('txtHint').innerHTML = this.responseText;
+          }
+        };
+        xmlhttp.open('GET','mb_view.php?q='+gross_profit,true);
+        xmlhttp.send();";
+        echo "</script>";
+        }
+    
+    } 
+?>
 <div class="row pageNavigation pt-2 pl-2">
     <a href="./inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
         Dashboard</a>
@@ -140,8 +159,24 @@ if (!isset($_SESSION['user_id'])) {
             <div class="cardTitle">Received Qty from MB</div>
         </div>
         <div class="dashCardBody">
-            <div class="cardValue">10
-                <span style="font-size: 12px;">/38</span></span>
+            <?php
+     $sql="SELECT COUNT(alsakb_qr) as count FROM issue_laptops WHERE issue_type2='1' ";
+      $query_run = mysqli_query($connection, $sql);
+      $count=0;
+      $count2=0;
+      $count3=0;
+      $count4 = 0;
+      foreach($query_run as $a){
+        $count=$a['count'];
+      }
+       $sql="SELECT COUNT(alsakb_qr) as count FROM issue_laptops WHERE issue_type2='1' AND mb_received='1'";
+      $query_run = mysqli_query($connection, $sql);
+      foreach($query_run as $a){
+         $count2=$a['count'];
+      }
+    ?>
+            <div class="cardValue"><?php echo $count2 ?>/
+                <span style="font-size: 12px;"><?php echo $count ?></span></span>
             </div>
         </div>
 
@@ -155,8 +190,16 @@ if (!isset($_SESSION['user_id'])) {
             <div class="cardTitle">Completed Qty in MB</div>
         </div>
         <div class="dashCardBody">
-            <div class="cardValue">20
-                <span style="font-size: 12px;">/38</span></span>
+            <div class="cardValue">
+                <?php
+                 $sql="SELECT COUNT(alsakb_qr) as count FROM issue_laptops WHERE issue_type2='1' AND status='2'";
+      $query_run = mysqli_query($connection, $sql);
+      foreach($query_run as $a){
+         $count3=$a['count'];
+      }
+      echo $count3."/";
+    ?>
+                <span style="font-size: 12px;"><?php echo $count ?></span></span>
             </div>
         </div>
 
@@ -170,8 +213,10 @@ if (!isset($_SESSION['user_id'])) {
             <div class="cardTitle">Remaining Qty in MB</div>
         </div>
         <div class="dashCardBody">
-            <div class="cardValue">18
-                <span style="font-size: 12px;">/38</span></span>
+            <div class="cardValue"><?php 
+             $count4 = $count-$count3;
+            echo $count4 ?> /
+                <span style="font-size: 12px;"><?php echo $count ?></span></span>
             </div>
         </div>
 
@@ -193,211 +238,57 @@ if (!isset($_SESSION['user_id'])) {
         <div class="row">
             <div class="inventorySec row mx-4 mt-3 w-100">
                 <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <div class="nav-item nav-link" id="nav-Received-tab" data-toggle="tab" href="#nav-Received"
-                            role="tab" aria-controls="nav-Received" aria-selected="true">
-                            <span class="tabLable">
-
-                                Received
-                            </span>
-                        </div>
+                    <button onclick="getGrossProfit(0)">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <div class="nav-item nav-link" id="nav-Received-tab" data-toggle="tab" href="#nav-Received"
+                                role="tab" aria-controls="nav-Received" aria-selected="true">
+                                <span class="tabLable">
+                                    Received
+                                </span>
+                            </div>
+                    </button>
+                    <button onclick='getGrossProfit(1)'>
                         <div class="nav-item nav-link active" id="nav-Completed-tab" data-toggle="tab"
                             href="#nav-Completed" role="tab" aria-controls="nav-Completed" aria-selected="false">
                             <span class="tabLable">
                                 Completed(Not Received)
                             </span>
                         </div>
+                    </button>
+                    <button onclick="getGrossProfit(2)">
                         <div class="nav-item nav-link" id="nav-Remaining-tab" data-toggle="tab" href="#nav-Remaining"
                             role="tab" aria-controls="nav-Remaining" aria-selected="false">
                             <span class="tabLable">
                                 Remaining
                             </span>
                         </div>
-
-                    </div>
-                </nav>
-
-                <div class="tab-content w-100" id="nav-tabContent">
-                    <div class="tab-pane fade show" id="nav-Received" role="tabpanel"
-                        aria-labelledby="nav-Received-tab">
-                        <div class="row" style="justify-content: center;">
-                            <!-- Received Table -->
-                            <div class="tableSec mx-3">
-                                <table class="table  table-hover text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Inventory ID</th>
-                                            <th>Model</th>
-                                            <th>Core</th>
-                                            <th>Generation</th>
-                                            <th>Sent Date</th>
-                                            <th>Status</th>
-                                            <th>Received Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Completed</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Completed</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Completed</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="nav-Completed" role="tabpanel"
-                        aria-labelledby="nav-Completed-tab">
-                        <div class="row" style="justify-content: center;">
-                            <!-- Completed Table -->
-                            <div class="tableSec mx-3 w-100">
-                                <table class="table  table-hover text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Inventory ID</th>
-                                            <th>Model</th>
-                                            <th>Core</th>
-                                            <th>Generation</th>
-                                            <th>Sent Date</th>
-                                            <th>Status</th>
-                                            <th>Completed Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Completed</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Completed</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Completed</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /// -->
-                        </div>
-
-
-                    </div>
-                    <div class="tab-pane fade show " id="nav-Remaining" role="tabpanel"
-                        aria-labelledby="nav-Remaining-tab">
-                        <div class="row" style="justify-content: center;">
-                            <!-- Remaining Tble -->
-                            <div class="tableSec mx-3 w-100">
-                                <table class="table  table-hover text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Inventory ID</th>
-                                            <th>Model</th>
-                                            <th>Core</th>
-                                            <th>Generation</th>
-                                            <th>Sent Date</th>
-                                            <th>Status</th>
-                                            <th>Completed Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Not Started</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Not Started</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>244234</td>
-                                            <td>Elitebook 840 G3</td>
-                                            <td>I5-5200U</td>
-                                            <td>5</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                            <td>Not Started</td>
-                                            <td>2023-01-25 00:00:00</td>
-                                        </tr>
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!--  -->
-                        </div>
-                    </div>
-
-                </div>
+                    </button>
             </div>
+            </nav>
+
+            <!-- <div id="txtHint"></div> -->
+
+            <div class="w-100" id="txtHint">
+
+            </div>
+
         </div>
     </div>
-
-    <?php
+</div>
+<script type="text/javascript">
+const getGrossProfit = (str) => {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+    };
+    console.log(str);
+    xmlhttp.open("GET", "mb_view.php?q=" + str, true);
+    xmlhttp.send();
+}
+</script>
+<?php
     require_once('../includes/footer.php')
 
     ?>
