@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "", "wms");
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 
 if (isset($_GET['country_name'])) {
 

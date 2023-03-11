@@ -1,5 +1,13 @@
-<?php 
-require_once('../includes/header.php')
+<?php
+session_start();
+require_once('../includes/header.php');
+require_once('../../functions/db_connection.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
+
 ?>
 
 <style>

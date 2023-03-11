@@ -453,9 +453,9 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="dashCardBody">
                     <div class="cardValue">
-                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='0' "; 
-                        $sql_run=mysqli_query($connection,$sql);
-                        foreach($sql_run as $data){
+                        <?php $sql = "SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='0' ";
+                        $sql_run = mysqli_query($connection, $sql);
+                        foreach ($sql_run as $data) {
                             echo $data['count'];
                         }
                         ?>
@@ -475,9 +475,9 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="dashCardBody">
                     <div class="cardValue">
-                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='0' "; 
-                        $sql_run=mysqli_query($connection,$sql);
-                        foreach($sql_run as $data){
+                        <?php $sql = "SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='0' ";
+                        $sql_run = mysqli_query($connection, $sql);
+                        foreach ($sql_run as $data) {
                             echo $data['count'];
                         }
                         ?>
@@ -497,9 +497,9 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="dashCardBody">
                     <div class="cardValue">
-                        <?php $sql="SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='1' "; 
-                        $sql_run=mysqli_query($connection,$sql);
-                        foreach($sql_run as $data){
+                        <?php $sql = "SELECT COUNT(inventory_id) as count  FROM main_inventory_informations WHERE send_to_production='1' AND dispatch='1' ";
+                        $sql_run = mysqli_query($connection, $sql);
+                        foreach ($sql_run as $data) {
                             echo $data['count'];
                         }
                         ?>
@@ -658,6 +658,41 @@ if (!isset($_SESSION['user_id'])) {
                         }
                         ?>
                         </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ////////////// -->
+            <!-- Card 1 -->
+            <div class=" dashCard mt-2 mb-1 mr-3">
+                <div class="dashCardTop">
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
+                    </div>
+                    <div class="cardTitle">
+                        Received Qty from Battery</div>
+                </div>
+                <div class="dashCardBody">
+                    <div class="cardValue">10
+                        <!-- <span style="font-size: 18px;">100</span> -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- ////////////// -->
+            <!-- Card 1 -->
+
+            <div class="dashCard mt-2 mb-1 mr-3">
+                <div class="dashCardTop">
+                    <div class="cardIcon"><i class="fa-solid fa-scale-balanced"
+                            style="color: #168EB4;font-size: 16px;"></i>
+                    </div>
+                    <div class="cardTitle">Completed Qty in Battery</div>
+                </div>
+                <div class="dashCardBody">
+                    <div class="cardValue">20
+                        <span style="font-size: 12px; cursor:pointer; color:#168eb4;" data-toggle="modal"
+                            data-target="#lcdModel">/38</span>
                     </div>
                 </div>
             </div>

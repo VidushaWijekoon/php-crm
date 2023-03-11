@@ -11,6 +11,8 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
 
+$created_by = $_SESSION['user_id'];
+
 ?>
 <style>
     .pageNameIcon {
@@ -46,7 +48,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row">
     <div class="col">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mt-3">
 
             <!-- <div class="card-header">
                 <div class="card-title">
@@ -54,9 +56,13 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div> -->
             <div class="row pl-4 pt-2">
-                <!-- <i class="pageNameIcon fa-solid fa-store"></i> -->
-                <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
-                <h6 class="pageName">All Orders</h6>
+                <div class="card-title d-flex w-100 justify-content-between">
+                    <div class="d-inline">
+                        <i class="pageNameIcon fa-sharp fa-solid fa-list-radio"></i>
+                        <span>Custom Content Below</span>
+                    </div>
+                    <a href="./create_order.php" class="btnT mx-4">Create New Order</a>
+                </div>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
@@ -109,15 +115,39 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                <?php
+                                $i = 0;
+                                $query = "SELECT sales_customer_infomations.customer_id, 
+                                                sales_order_items.customer_id, 
+                                                customer_fname,
+                                                customer_lname,
+                                                sales_order_id, 
+                                                shipping_date,
+                                                order_created_by, 
+                                                reference,
+                                                order_shipping_method,
+                                                order_created_time
+                                        FROM sales_order_items
+                                        INNER JOIN sales_customer_infomations ON sales_customer_infomations.customer_id = sales_order_items.customer_id
+                                        WHERE order_created_by = '$created_by' GROUP BY sales_order_id";
+                                $run = mysqli_query($connection, $query);
+                                while ($x = mysqli_fetch_assoc($run)) {
+                                    $i++;
+                                    $order_shipping_method = $x['order_shipping_method'];
+
+                                ?>
                                     <tr>
                                         <td><?php echo $i ?></td>
-                                        <td>02/18/2023</td>
-                                        <td><a href="./order_view.php">SO-12345</a></td>
-                                        <td>WH1-12334</td>
-                                        <td>John Doe</td>
-                                        <td><a href="./sales_order_map.php">Processing</a></td>
-                                        <td>02/25/2023</td>
+                                        <td><?php echo $x['order_created_time'] ?></td>
+                                        <td>
+                                            <a href="./order_view.php?order_id= <?php echo $x['sales_order_id'] ?>">SO-<?php echo $x['sales_order_id'] ?></a>
+                                        </td>
+                                        <td><?php echo $x['reference'] ?></td>
+                                        <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
+                                        <td>
+                                            <a href="../so_road_map/sales_order_road_map">Processing</a>
+                                        </td>
+                                        <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
@@ -130,7 +160,25 @@ if (!isset($_SESSION['user_id'])) {
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
-                                        <td>Local Pickup</td>
+                                        <td>
+                                            <?php
+                                            if ($order_shipping_method == 1) {
+                                                echo "Local Pickup";
+                                            }
+                                            if ($order_shipping_method == 2) {
+                                                echo "DHL";
+                                            }
+                                            if ($order_shipping_method == 3) {
+                                                echo "Fedex";
+                                            }
+                                            if ($order_shipping_method == 4) {
+                                                echo "UPS";
+                                            }
+                                            if ($order_shipping_method == 5) {
+                                                echo "UPS";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>5 Days 25Minutes</td>
                                         <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                     </tr>
@@ -158,30 +206,74 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($j = 1; $j <= 5; $j++) { ?>
+                                <?php
+                                $i = 0;
+                                $query = "SELECT sales_customer_infomations.customer_id, 
+                                                sales_order_items.customer_id, 
+                                                customer_fname,
+                                                customer_lname,
+                                                sales_order_id, 
+                                                shipping_date,
+                                                order_created_by, 
+                                                reference,
+                                                order_shipping_method,
+                                                order_created_time
+                                        FROM sales_order_items
+                                        INNER JOIN sales_customer_infomations ON sales_customer_infomations.customer_id = sales_order_items.customer_id
+                                        WHERE order_created_by = '$created_by' GROUP BY sales_order_id";
+                                $run = mysqli_query($connection, $query);
+                                while ($x = mysqli_fetch_assoc($run)) {
+                                    $i++;
+                                    $order_shipping_method = $x['order_shipping_method'];
+
+                                ?>
                                     <tr>
-                                        <td><?php echo $j ?></td>
-                                        <td>02/18/2023</td>
-                                        <td><a href="./order_view.php">SO-12345</a></td>
-                                        <td>WH1-12334</td>
-                                        <td>John Doe</td>
-                                        <td><a href="./sales_order_map.php">Processing</a></td>
-                                        <td>02/25/2023</td>
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $x['order_created_time'] ?></td>
+                                        <td>
+                                            <a href="./order_view.php?order_id<?php echo $x['sales_order_id'] ?>">SO-<?php echo $x['sales_order_id'] ?></a>
+                                        </td>
+                                        <td><?php echo $x['reference'] ?></td>
+                                        <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
+                                        <td>
+                                            <a href="./sales_order_map.php">Processing</a>
+                                        </td>
+                                        <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
+                                            <i class="fa-solid fa-circle"></i>
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
+                                            <i class="fa-solid fa-circle"></i>
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
+                                            <i class="fa-solid fa-circle"></i>
                                         </td>
-                                        <td>Local Pickup</td>
+                                        <td>
+                                            <?php
+                                            if ($order_shipping_method == 1) {
+                                                echo "Local Pickup";
+                                            }
+                                            if ($order_shipping_method == 2) {
+                                                echo "DHL";
+                                            }
+                                            if ($order_shipping_method == 3) {
+                                                echo "Fedex";
+                                            }
+                                            if ($order_shipping_method == 4) {
+                                                echo "UPS";
+                                            }
+                                            if ($order_shipping_method == 5) {
+                                                echo "UPS";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>5 Days 25Minutes</td>
-                                        <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
+                                        <td>
+                                            <a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -207,15 +299,35 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($k = 1; $k <= 5; $k++) { ?>
+                                <?php
+                                $i = 0;
+                                $query = "SELECT sales_customer_infomations.customer_id, 
+                                                sales_order_items.customer_id, 
+                                                customer_fname,
+                                                customer_lname,
+                                                sales_order_id, 
+                                                shipping_date,
+                                                order_created_by, 
+                                                reference,
+                                                order_shipping_method,
+                                                order_created_time
+                                        FROM sales_order_items
+                                        INNER JOIN sales_customer_infomations ON sales_customer_infomations.customer_id = sales_order_items.customer_id
+                                        WHERE order_created_by = '$created_by' GROUP BY sales_order_id";
+                                $run = mysqli_query($connection, $query);
+                                while ($x = mysqli_fetch_assoc($run)) {
+                                    $i++;
+                                    $order_shipping_method = $x['order_shipping_method'];
+
+                                ?>
                                     <tr>
-                                        <td><?php echo $k ?></td>
-                                        <td>02/18/2023</td>
-                                        <td><a href="./order_view.php">SO-12345</a></td>
-                                        <td>WH1-12334</td>
-                                        <td>John Doe</td>
-                                        <td><a href="./sales_order_map.php">Shipped</a></td>
-                                        <td>02/25/2023</td>
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $x['order_created_time'] ?></td>
+                                        <td><a href="./order_view.php">SO-<?php echo $x['sales_order_id'] ?></a></td>
+                                        <td><?php echo $x['reference'] ?></td>
+                                        <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
+                                        <td><a href="./sales_order_map.php">Processing</a></td>
+                                        <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
@@ -223,12 +335,30 @@ if (!isset($_SESSION['user_id'])) {
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
+                                            <i class="fa-solid fa-circle"></i>
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
+                                            <i class="fa-solid fa-circle"></i>
                                         </td>
-                                        <td>Local Pickup</td>
+                                        <td>
+                                            <?php
+                                            if ($order_shipping_method == 1) {
+                                                echo "Local Pickup";
+                                            }
+                                            if ($order_shipping_method == 2) {
+                                                echo "DHL";
+                                            }
+                                            if ($order_shipping_method == 3) {
+                                                echo "Fedex";
+                                            }
+                                            if ($order_shipping_method == 4) {
+                                                echo "UPS";
+                                            }
+                                            if ($order_shipping_method == 5) {
+                                                echo "UPS";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>5 Days 25Minutes</td>
                                         <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                     </tr>
@@ -256,15 +386,35 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($l = 1; $l <= 5; $l++) { ?>
+                                <?php
+                                $i = 0;
+                                $query = "SELECT sales_customer_infomations.customer_id, 
+                                                sales_order_items.customer_id, 
+                                                customer_fname,
+                                                customer_lname,
+                                                sales_order_id, 
+                                                shipping_date,
+                                                order_created_by, 
+                                                reference,
+                                                order_shipping_method,
+                                                order_created_time
+                                        FROM sales_order_items
+                                        INNER JOIN sales_customer_infomations ON sales_customer_infomations.customer_id = sales_order_items.customer_id
+                                        WHERE order_created_by = '$created_by' GROUP BY sales_order_id";
+                                $run = mysqli_query($connection, $query);
+                                while ($x = mysqli_fetch_assoc($run)) {
+                                    $i++;
+                                    $order_shipping_method = $x['order_shipping_method'];
+
+                                ?>
                                     <tr>
-                                        <td><?php echo $l ?></td>
-                                        <td>02/18/2023</td>
-                                        <td><a href="./order_view.php">SO-12345</a></td>
-                                        <td>WH1-12334</td>
-                                        <td>John Doe</td>
-                                        <td><a href="./sales_order_map.php">Shipped</a></td>
-                                        <td>02/25/2023</td>
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $x['order_created_time'] ?></td>
+                                        <td><a href="./order_view.php">SO-<?php echo $x['sales_order_id'] ?></a></td>
+                                        <td><?php echo $x['reference'] ?></td>
+                                        <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
+                                        <td><a href="./sales_order_map.php">Processing</a></td>
+                                        <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
@@ -275,9 +425,27 @@ if (!isset($_SESSION['user_id'])) {
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-circle" style="color: #a1a3a8;"></i>
+                                            <i class="fa-solid fa-circle"></i>
                                         </td>
-                                        <td>Local Pickup</td>
+                                        <td>
+                                            <?php
+                                            if ($order_shipping_method == 1) {
+                                                echo "Local Pickup";
+                                            }
+                                            if ($order_shipping_method == 2) {
+                                                echo "DHL";
+                                            }
+                                            if ($order_shipping_method == 3) {
+                                                echo "Fedex";
+                                            }
+                                            if ($order_shipping_method == 4) {
+                                                echo "UPS";
+                                            }
+                                            if ($order_shipping_method == 5) {
+                                                echo "UPS";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>5 Days 25Minutes</td>
                                         <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                     </tr>
@@ -305,15 +473,35 @@ if (!isset($_SESSION['user_id'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($m = 1; $m <= 5; $m++) { ?>
+                                <?php
+                                $i = 0;
+                                $query = "SELECT sales_customer_infomations.customer_id, 
+                                                sales_order_items.customer_id, 
+                                                customer_fname,
+                                                customer_lname,
+                                                sales_order_id, 
+                                                shipping_date,
+                                                order_created_by, 
+                                                reference,
+                                                order_shipping_method,
+                                                order_created_time
+                                        FROM sales_order_items
+                                        INNER JOIN sales_customer_infomations ON sales_customer_infomations.customer_id = sales_order_items.customer_id
+                                        WHERE order_created_by = '$created_by' GROUP BY sales_order_id";
+                                $run = mysqli_query($connection, $query);
+                                while ($x = mysqli_fetch_assoc($run)) {
+                                    $i++;
+                                    $order_shipping_method = $x['order_shipping_method'];
+
+                                ?>
                                     <tr>
-                                        <td><?php echo $l ?></td>
-                                        <td>02/18/2023</td>
-                                        <td><a href="./order_view.php">SO-12345</a></td>
-                                        <td>WH1-12334</td>
-                                        <td>John Doe</td>
-                                        <td><a href="./sales_order_map.php">Shipped</a></td>
-                                        <td>02/25/2023</td>
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $x['order_created_time'] ?></td>
+                                        <td><a href="../order_view">SO-<?php echo $x['sales_order_id'] ?></a></td>
+                                        <td><?php echo $x['reference'] ?></td>
+                                        <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
+                                        <td><a href="./sales_order_map.php">Processing</a></td>
+                                        <td><?php echo $x['shipping_date'] ?></td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
@@ -326,7 +514,25 @@ if (!isset($_SESSION['user_id'])) {
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
-                                        <td>Local Pickup</td>
+                                        <td>
+                                            <?php
+                                            if ($order_shipping_method == 1) {
+                                                echo "Local Pickup";
+                                            }
+                                            if ($order_shipping_method == 2) {
+                                                echo "DHL";
+                                            }
+                                            if ($order_shipping_method == 3) {
+                                                echo "Fedex";
+                                            }
+                                            if ($order_shipping_method == 4) {
+                                                echo "UPS";
+                                            }
+                                            if ($order_shipping_method == 5) {
+                                                echo "UPS";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>5 Days 25Minutes</td>
                                         <td><a href="./order_tree.php"><i class="fa-solid fa-bullseye"></i></a></td>
                                     </tr>

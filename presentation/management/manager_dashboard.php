@@ -19,13 +19,13 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="row">
     <div class="col-12 mt-1">
-        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./manager_sales.php">
+        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="./manager_sales">
             <i class="fa-solid fa-business-time"></i><span class="mx-1">Sales</span>
         </a>
         <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="#">
             <i class="fa-brands fa-amazon"></i><span class="mx-1">E-Commerce</span>
         </a>
-        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="../accounts/accounts_dashboard.php">
+        <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="../accounts/accounts_dashboard">
             <i class="fa-solid fa-coins"></i><span class="mx-1">Accounts</span>
         </a>
         <a class="btn btn-xs mr-2 text-black dahsboard_btn px-2 py-1" href="#">

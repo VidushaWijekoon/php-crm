@@ -43,6 +43,14 @@ table th {
 .nav-tabs .nav-link.active {
     color: #919EAB !important;
 }
+
+#btnClose {
+    display: none;
+}
+
+#btnOpen {
+    display: block;
+}
 </style>
 
 
@@ -78,7 +86,7 @@ table th {
                             </span>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <div class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill"
                             href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve"
                             aria-selected="false">
@@ -86,8 +94,8 @@ table th {
                                 Approved
                             </span>
                         </div>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <div class="nav-link" id="custom-content-below-approve-tab" data-toggle="pill"
                             href="#custom-content-below-approve" role="tab" aria-controls="custom-content-below-approve"
                             aria-selected="false">
@@ -96,7 +104,7 @@ table th {
                             </span>
 
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <div class="nav-link" id="custom-content-below-packing-tab" data-toggle="pill"
                             href="#custom-content-below-packing" role="tab" aria-controls="custom-content-below-packing"
@@ -137,6 +145,7 @@ table th {
                     </li>
                 </ul>
                 <div class="tab-content" id="custom-content-below-tabContent">
+                    <!-- all -->
                     <div class="tab-pane fade show active" id="custom-content-below-all" role="tabpanel"
                         aria-labelledby="custom-content-below-all-tab">
                         <div class="tblSec">
@@ -162,7 +171,7 @@ table th {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td scope="row"><a href="./accounts_sales_order.php">1</a></td>
+                                        <td scope="row"><a href="./accounts_sales_order_new.php">1</a></td>
                                         <td>02/18/2023</td>
                                         <td>OD-12345</td>
                                         <td>WH1-12334</td>
@@ -184,10 +193,15 @@ table th {
                                         </td>
                                         <td>Local Pickup</td>
                                         <td>
-                                            <div>
-                                                <button class="btnT">
+                                            <div id="btnOpen">
+                                                <button class="btnTB" onclick="changeStatusOpen()">
                                                     Open
+                                                </button>
 
+                                            </div>
+                                            <div id="btnClose">
+                                                <button class="btnTC" onclick="changeStatusClose()">
+                                                    Close
                                                 </button>
                                             </div>
                                         </td>
@@ -272,6 +286,7 @@ table th {
 
 
                     </div>
+                    <!-- approve -->
                     <div class="tab-pane fade show" id="custom-content-below-approve" role="tabpanel"
                         aria-labelledby="custom-content-below-approve-tab">
                         <div class="tblSec">
@@ -345,7 +360,7 @@ table th {
                             </table>
                         </div>
                     </div>
-
+                    <!-- packing -->
                     <div class="tab-pane fade" id="custom-content-below-packing" role="tabpanel"
                         aria-labelledby="custom-content-below-packing-tab">
                         <div class="tblSec">
@@ -357,13 +372,16 @@ table th {
                                         <th scope="col">Sales Order</th>
                                         <th scope="col">Reference</th>
                                         <th scope="col">Customer Name</th>
-                                        <th scope="col">Order Status</th>
+                                        <th scope="col">Packed Qty</th>
+                                        <th scope="col">Packed Date</th>
                                         <th scope="col">Shipping Date</th>
+                                        <th scope="col">Sales Person</th>
                                         <th scope="col">Packed</th>
                                         <th scope="col">Invoiced</th>
                                         <th scope="col">Payment</th>
                                         <th scope="col">Shipped</th>
                                         <th scope="col">Shipping Method</th>
+                                        <th scope="col">Packing Status</th>
                                         <th scope="col">Remaining Time</th>
                                     </tr>
                                 </thead>
@@ -372,10 +390,12 @@ table th {
                                         <td scope="row"><a href="order_view.php">1</a></td>
                                         <td>02/18/2023</td>
                                         <td>OD-12345</td>
-                                        <td>WH1-12334</td>
+                                        <td>12</td>
                                         <td>John Doe</td>
-                                        <td>Waiting for Approval</td>
+                                        <td>80</td>
                                         <td>02/25/2023</td>
+                                        <td>02/25/2023</td>
+                                        <td>Sal 123</td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
                                         </td>
@@ -389,9 +409,10 @@ table th {
                                             <i class="fa-solid fa-circle" style="color: #a1a3a8"></i>
                                         </td>
                                         <td>Local Pickup</td>
-                                        <td>5 Days 25Minutes</td>
+                                        <td>Packed</td>
+                                        <td>00:00:00</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td scope="row"><a href="order_view.php">1</a></td>
                                         <td>02/18/2023</td>
                                         <td>OD-12345</td>
@@ -459,11 +480,12 @@ table th {
                                         </td>
                                         <td>Local Pickup</td>
                                         <td>5 Days 25Minutes</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    <!-- invoiced -->
                     <div class="tab-pane fade" id="custom-content-below-invoiced" role="tabpanel"
                         aria-labelledby="custom-content-below-invoiced-tab">
                         <div class="tblSec">
@@ -475,7 +497,7 @@ table th {
                                         <th scope="col">Sales Order</th>
                                         <th scope="col">Reference</th>
                                         <th scope="col">Customer Name</th>
-                                        <th scope="col">Order Status</th>
+                                        <th scope="col">Invoice Number</th>
                                         <th scope="col">Shipping Date</th>
                                         <th scope="col">Packed</th>
                                         <th scope="col">Invoiced</th>
@@ -492,7 +514,7 @@ table th {
                                         <td>OD-12345</td>
                                         <td>WH1-12334</td>
                                         <td>John Doe</td>
-                                        <td>Waiting for Approval</td>
+                                        <td>inv1232</td>
                                         <td>02/25/2023</td>
                                         <td>
                                             <i class="fa-solid fa-circle"></i>
@@ -583,6 +605,7 @@ table th {
                         </div>
 
                     </div>
+                    <!-- shipping -->
                     <div class="tab-pane fade" id="custom-content-below-shipping" role="tabpanel"
                         aria-labelledby="custom-content-below-shipping-tab">
                         <div class="tblSec">
@@ -701,6 +724,7 @@ table th {
                             </table>
                         </div>
                     </div>
+                    <!-- shipped -->
                     <div class="tab-pane fade" id="custom-content-below-shipped" role="tabpanel"
                         aria-labelledby="custom-content-below-shipped-tab">
                         <div class="tblSec">
@@ -826,3 +850,26 @@ table th {
 </div>
 
 <?php require_once('../includes/footer.php'); ?>
+
+<script>
+const changeStatusOpen = () => {
+    var btnOpen = document.getElementById("btnOpen");
+    var btnClose = document.getElementById("btnClose");
+    var confirm1 = confirm('Are You Sure to Open this Sales Order to Process ?');
+    if (confirm1 == true) {
+        btnOpen.style.display = "none";
+        btnClose.style.display = 'block';
+    }
+
+
+}
+const changeStatusClose = () => {
+
+    alert("You Can't Close Sales Order while it in Processing");
+    // var btnOpen = document.getElementById("btnOpen");
+    // var btnClose = document.getElementById("btnClose");
+    // btnOpen.style.display = "block";
+    // btnClose.style.display = 'none';
+
+}
+</script>
