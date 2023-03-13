@@ -609,24 +609,26 @@ if (!isset($_SESSION['user_id'])) {
             <div class="viewSalesPersonCardSec">
 
                 <!-- card 2 -sales Person -->
-                <div class="salesPersonCard m-3">
-                    <div class="salesCardTop">
-                        <div class="salesCardTopLeft">
-                            <i class="fa-solid fa-laptop-mobile" style="color: #168EB4;font-size: 50px;"></i>
+                <a href="./e_com_Salesmen_Details">
+                    <div class="salesPersonCard m-3">
+                        <div class="salesCardTop">
+                            <div class="salesCardTopLeft">
+                                <i class="fa-solid fa-laptop-mobile" style="color: #168EB4;font-size: 50px;"></i>
+                            </div>
+                            <div class="salesCardTopRight">
+                                <div class="SalesPersonName">Sales Person 1</div>
+                                <div class="SalesPersonPlatform">Amazon</div>
+                                <div class="SalesPersonStatus">Online</div>
+                            </div>
                         </div>
-                        <div class="salesCardTopRight">
-                            <div class="SalesPersonName">Sales Person 1</div>
-                            <div class="SalesPersonPlatform">Amazon</div>
-                            <div class="SalesPersonStatus">Online</div>
+                        <div class="salesCardBody">
+                            <div class="salesCardValue">Today Listing Count &nbsp;<span
+                                    style="font-size: 15px; color: #168EB4;">
+                                    100</span> </div>
                         </div>
-                    </div>
-                    <div class="salesCardBody">
-                        <div class="salesCardValue">Today Listing Count &nbsp;<span
-                                style="font-size: 15px; color: #168EB4;">
-                                100</span> </div>
-                    </div>
 
-                </div>
+                    </div>
+                </a>
                 <!-- /////////////// -->
 
             </div>

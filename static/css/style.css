@@ -129,7 +129,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   color: #ffffff;
 }
 thead th {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 td {
@@ -244,10 +244,11 @@ option {
 
 ::-webkit-scrollbar
 {
-  height: 3px;
+  height: 4px;
 	width: 5px;
 	background-color: #F5F5F5;
 }
+
 
 ::-webkit-scrollbar-thumb
 {

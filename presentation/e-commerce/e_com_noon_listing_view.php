@@ -119,8 +119,6 @@ if (!isset($_SESSION['user_id'])) {
 
 }
 
-
-
 .tableSec table {
     width: 100%;
     text-align: center;
@@ -155,6 +153,8 @@ if (!isset($_SESSION['user_id'])) {
     display: flex;
     align-items: center;
     margin-right: 10px;
+    font-size: 10px;
+
 }
 
 .searchSec {
@@ -180,6 +180,7 @@ if (!isset($_SESSION['user_id'])) {
     display: flex;
     align-items: center;
     margin-right: 5px;
+    font-size: 10px;
 
 }
 
@@ -295,9 +296,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 </style>
 
-<div class="row pageNavigation">
+<div class="row pageNavigation pt-2 pl-2">
     <!-- <i class="pageNameIcon fa-solid fa-left"></i> -->
-    <a href="./e_com_dashboard.php"><i class="fa-solid fa-house"></i>&nbsp;Dashboard</a>/
+    <a href="./e_com_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp;Dashboard</a>/
 </div>
 <br>
 
@@ -417,7 +418,7 @@ if (!isset($_SESSION['user_id'])) {
                                         <div class="filterSec">
                                             <div class="statusFilter">
                                                 <select class="DropDown" aria-label="Default select example">
-                                                    <option selected>-- Filter Status --</option>
+                                                    <option selected>Filter Status</option>
                                                     <option value="prepared for listing">
                                                         <?php echo 'Prepared for listing'; ?>
                                                     </option>
@@ -444,7 +445,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <div class="promoFilter">
                                                 <select class="DropDown" aria-label="Default select example">
                                                     <!-- <option option selected>--Select Promotion Type--</option> -->
-                                                    <option selected>-- Filter Promo --</option>
+                                                    <option selected>Filter Promo</option>
 
                                                     <option value="weekly">
                                                         <?php echo 'weekly'; ?>
@@ -577,7 +578,8 @@ if (!isset($_SESSION['user_id'])) {
 
                                                     <button class=" btn"><i
                                                             class="text-danger fa-solid fa-trash"></i></button>
-                                                    <button class="btn"><i
+                                                    <button class="btn" data-toggle="modal"
+                                                        data-target="#myModalFull"><i
                                                             class="text-success fa-solid fa-eye"></i></button>
                                                 </div>
                                             </td>
@@ -848,7 +850,7 @@ if (!isset($_SESSION['user_id'])) {
                                                             <td>
 
                                                                 <div class="">
-                                                                    <button class="btn btn-info">Update</button>
+                                                                    <button class="btnTB">Update</button>
 
                                                                 </div>
                                                             </td>
@@ -867,7 +869,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- full View Model -->
 
                             <!-- model-->
-                            <div id="myModal" class="modal fade editModel" role="dialog">
+                            <div id="myModalFull" class="modal fade editModel" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content ">
                                         <div class="modal-header">
@@ -880,34 +882,34 @@ if (!isset($_SESSION['user_id'])) {
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>
-                                                                <div style="width: 120px;">
+                                                                <div>
                                                                     Family
                                                                 </div>
                                                             </th>
                                                             <th>
-                                                                <div style="width: 100px;">
+                                                                <div>
                                                                     Product Type
                                                                 </div>
                                                             </th>
                                                             <th>
-                                                                <div style="width: 100px;">
+                                                                <div>
                                                                     Product SUB TYpe
                                                                 </div>
                                                             </th>
                                                             <th>
-                                                                <div style="width: 100px;">
+                                                                <div>
                                                                     What's In the box
                                                                 </div>
                                                             </th>
                                                             <th>
-                                                                <div style="width: 100px;">
+                                                                <div>
                                                                     GTIN
                                                                 </div>
                                                             </th>
                                                             <th>Partner SKU</th>
                                                             <th>Brand</th>
                                                             <th>
-                                                                <div style="width: 100px;">
+                                                                <div>
                                                                     Product Title
                                                                 </div>
                                                             </th>
@@ -1050,161 +1052,102 @@ if (!isset($_SESSION['user_id'])) {
                                                             <th>Image URL 5</th>
                                                             <th>Image URL 6</th>
                                                             <th>Image URL 7</th>
-                                                            <th>Shipiing Length</th>
-                                                            <th>Shipiing Length Unit</th>
-                                                            <th>Shipiing Height</th>
-                                                            <th>Shipiing Height Unit</th>
-                                                            <th>Shipiing Width/</th>
-                                                            <th></th>
+                                                            <th>Shipping Length</th>
+                                                            <th>Shipping Length Unit</th>
+                                                            <th>Shipping Height</th>
+                                                            <th>Shipping Height Unit</th>
+                                                            <th>Shipping Width/Depth</th>
+                                                            <th>Shipping Width/Depth Unit</th>
+                                                            <th>Shipping Weight</th>
+                                                            <th>Shipping Weight Unit</th>
+                                                            <th>Shipping Destination</th>
+                                                            <th>Recomended Retail Price AE</th>
+                                                            <th>Recomended Retail Price AE Unit</th>
+                                                            <th>Recomended Retail Price SA</th>
+                                                            <th>Recomended Retail Price SA Unit</th>
+                                                            <th>Recomended Retail Price EG</th>
+                                                            <th>Recomended Retail Price EG Unit</th>
+                                                            <th>HS Code</th>
+                                                            <th>Monitor Response Time</th>
+                                                            <th>Refresh Rates</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                1
+
                                                             </td>
 
                                                             <td>
-                                                                <div>
-                                                                    <select class="DropDown"
-                                                                        aria-label="Default select example">
-                                                                        <!-- <option selected>--Select Status--</option> -->
-                                                                        <option value="prepared for listing">
-                                                                            <?php echo 'Prepared for listing'; ?>
-                                                                        </option>
-                                                                        <option value="listing submitted">
-                                                                            <?php echo 'Listing submitted'; ?>
-                                                                        </option>
-                                                                        <option value="listing approved">
-                                                                            <?php echo 'Listing approved'; ?>
-                                                                        </option>
-                                                                        <option value="listed done on noon">
-                                                                            <?php echo 'Listed done on noon'; ?>
-                                                                        </option>
-                                                                        <option value="promotion">
-                                                                            <?php echo 'Promotion'; ?>
-                                                                        </option>
-                                                                        <option value="FBN Done">
-                                                                            <?php echo 'FBN Done'; ?>
-                                                                        </option>
-                                                                        <option value="S/O Created">
-                                                                            <?php echo 'S/O Created'; ?>
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <select class="DropDown"
-                                                                        aria-label="Default select example">
-                                                                        <!-- <option option selected>--Select Promotion Type--</option> -->
-                                                                        <option selected value="None">
-                                                                            <?php echo 'None'; ?>
-                                                                        </option>
 
-                                                                        <option value="weekly">
-                                                                            <?php echo 'weekly'; ?>
-                                                                        </option>
-                                                                        <option value="11:11">
-                                                                            <?php echo '11:11'; ?>
-                                                                        </option>
-                                                                        <option value="B friday">
-                                                                            <?php echo 'B friday'; ?>
-                                                                        </option>
-                                                                        <option value="Christmas">
-                                                                            <?php echo 'Christmas'; ?>
-                                                                        </option>
-                                                                        <option value="Ramadan">
-                                                                            <?php echo 'Ramadan'; ?>
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
                                                             </td>
-                                                            <td>123123131</td>
-                                                            <td>Laptop</td>
-                                                            <td>Lenovo</td>
-                                                            <td>Thinkpad X1 Yoga G1</td>
-                                                            <td>i5</td>
-                                                            <td>6th</td>
-                                                            <td>8GB</td>
-                                                            <td>256GB</td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="10">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="10%">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="text" value="1000">
-                                                                </div>
-                                                            </td>
-
-                                                            <td>2023-01-30</td>
-                                                            <td>2023-01-30</td>
-                                                            <td>2023-01-30</td>
-                                                            <td>Sales Person 1</td>
                                                             <td>
 
-                                                                <div class="">
-                                                                    <button class="btn btn-info">Update</button>
-
-                                                                </div>
                                                             </td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
