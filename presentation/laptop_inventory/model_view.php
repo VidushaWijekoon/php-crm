@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for ($a = 1; $a <= 10; $a++) { ?>
+
 
                             <tr>
                                 <td>1</td>
@@ -70,7 +70,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </a>
                                 </td>
                             </tr>
-                            <?php } ?>
+
                         </tbody>
                     </table>
                 </div>

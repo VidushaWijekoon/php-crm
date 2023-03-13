@@ -46,7 +46,7 @@ if (!isset($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+
                             <tr>
                                 <td><a href="./model_spec_view.php">B07NYTMHQS</a></td>
                                 <td>Dell</td>
@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>$165</td>
                                 <td>12</td>
                             </tr>
-                            <?php } ?>
+
                         </tbody>
 
                     </table>
