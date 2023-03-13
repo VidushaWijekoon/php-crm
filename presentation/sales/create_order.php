@@ -5,7 +5,8 @@ error_reporting(-1);
 ob_start();
 session_start();
 require_once('../includes/header.php');
-require_once("../../functions/db_connection.php");
+// require_once("../../functions/db_connection.php");
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
@@ -189,16 +190,18 @@ $shipping_date1 = null;
 $expected_payment_date1 = null;
 $payment_term1 = null;
 $get_customer_id = null;
-
 $get_customer_id = mysqli_real_escape_string($connection, $_GET['customer_id']);
 $s_d = "SELECT reference, shipping_date, expected_payment_date, payment_term FROM sales_order_items WHERE customer_id = '$get_customer_id' AND approve = '0' AND sales_order_id  = '0' ORDER BY sales_order_item_id DESC ";
 $sx = mysqli_query($connection, $s_d);
+
+
 while ($i = mysqli_fetch_assoc($sx)) {
     $reference1 = $i['reference'];
     $shipping_date1 = $i['shipping_date'];
     $expected_payment_date1 = $i['expected_payment_date'];
     $payment_term1 = $i['payment_term'];
 }
+
 ?>
 
 <style>
@@ -489,40 +492,18 @@ input[type="date"] {
                             <?php if ($expected_payment_date1 == null) { ?>
                             <select name="payment_term" class="DropDown" style="width: 100%;">
                                 <option value="" selected="">--Select Payment Terms--</option>
-                                <option value="1">Net 15</option>
-                                <option value="2">Net 30</option>
-                                <option value="3">Net 45</option>
-                                <option value="4">Net 60</option>
-                                <option value="5">Due end of the
-                                    month</option>
-                                <option value="6">Due end
-                                    of the next month</option>
-                                <option value="7">Due on Receipt
+                                <option value="Net 15">Net 15</option>
+                                <option value="Net 30">Net 30</option>
+                                <option value="Net 45">Net 45</option>
+                                <option value="Net 60">Net 60</option>
+                                <option value="Due end of the month">Due end of the month</option>
+                                <option value="Due end of the next month">Due end of the next month</option>
+                                <option value="Due on Receipt">Due on Receipt
                                 </option>
                             </select>
                             <?php } else { ?>
-                            <input type="text" value="<?php
-                                                            if ($payment_term1 == 1) {
-                                                                echo 'Net 15';
-                                                            }
-                                                            if ($payment_term1 == 2) {
-                                                                echo 'Net 30';
-                                                            }
-                                                            if ($payment_term1 == 3) {
-                                                                echo 'Net 45';
-                                                            }
-                                                            if ($payment_term1 == 4) {
-                                                                echo 'Net 60';
-                                                            }
-                                                            if ($payment_term1 == 5) {
-                                                                echo 'Due end of the month';
-                                                            }
-                                                            if ($payment_term1 == 6) {
-                                                                echo 'Due end of the next month';
-                                                            }
-                                                            if ($payment_term1 == 7) {
-                                                                echo 'Due on Receipt';
-                                                            } ?>" style="width:100%;" name="reference">
+                            <input type="text" value="<?php echo $payment_term1 ?>" style="width:100%;"
+                                name="reference">
                             <?php } ?>
                         </div>
                     </div>
@@ -651,8 +632,8 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select name="touch_type" id="screen_size" class="DropDown" required>
                         <option value="">--Select Touch Type--</option>
-                        <option value="1">yes</option>
-                        <option value="0">no</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
                     </select>
                 </div>
             </div>

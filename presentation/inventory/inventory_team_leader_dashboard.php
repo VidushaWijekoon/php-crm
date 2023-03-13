@@ -764,7 +764,6 @@ if (!isset($_SESSION['user_id'])) {
                                         <th>Completed Qty</th>
                                         <th>Progress</th>
                                         <th>Created By</th>
-                                        <th>Prepared By</th>
                                         <th>Created Date</th>
                                         <th>Deadline Date</th>
                                         <th>Remaning Time</th>
@@ -772,77 +771,68 @@ if (!isset($_SESSION['user_id'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $sql="SELECT sales_order_items.sales_order_id,reference,SUM(sales_order_items.order_qty) as qty,user_name,order_created_time,shipping_date FROM sales_order_items 
+                                    LEFT JOIN main_inventory_informations ON main_inventory_informations.sales_order_id=sales_order_items.sales_order_id 
+                                    LEFT JOIN users ON users.user_id=sales_order_items.order_created_by 
+                                    GROUP by main_inventory_informations.sales_order_id"; 
+                                     $sql_run=mysqli_query($connection,$sql);
+                                     foreach($sql_run as $data){
+                                     ?>
                                     <tr>
                                         <td><a href="./inventory_order_details.php">
-                                                so12345
+                                                <?php echo $data['sales_order_id'] ?>
                                             </a></td>
-                                        <td>12342</td>
+                                        <td> <?php echo $data['reference'] ?></td>
                                         <td>FBA</td>
-                                        <td id="orderQty">100</td>
-                                        <td id="completedQty">80</td>
-                                        <td>
-                                            <div class="progress border-2">
-                                                <div class="progress-bar progress-bar-striped bg-info"
-                                                    role="progressbar" style="width: 50%" aria-valuenow="50"
-                                                    aria-valuemin="0" aria-valuemax="100" id='progressBar'></div>
-                                            </div>
+                                        <td id="orderQty"> <?php echo $data['qty'] ?></td>
+                                        <td id="completedQty">
+                                            <?php 
+                                            $sql="SELECT COUNT(sales_order_id) as count FROM main_inventory_informations WHERE sales_order_id='{$data['sales_order_id']}' ";
+                                            $sql_run_2=mysqli_query($connection,$sql);
+                                            $count=1;
+                                            foreach($sql_run_2 as $d){
+                                                 $count= $d['count'];
+                                                echo $d['count'];
+                                            }
+                                        ?>
                                         </td>
-                                        <td>Sales Person 1</td>
-                                        <td>inv 10</td>
-                                        <td>2022-10-10</td>
-                                        <td>2022-10-15</td>
+                                        <td>
+                                            <?php
+
+                                            $percentage = round(($count/$data['qty']) * 100);
+
+                                            if ($percentage == 100) {
+                                                $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+                                                $date = $date1->format('Y-m-d H:i:s');
+                                                $query = "UPDATE warehouse_assign_task SET task_completed_date='{$date}',status ='1' WHERE sales_order = '{$items['sales_order_id']}'";
+                                                $query_update = mysqli_query($connection, $query);
+                                                $progress_bar_class = 'bg-success progress-bar-striped';
+
+                                            } else if ($percentage >= 50 && $percentage < 99) {
+                                                $progress_bar_class = 'bg-info progress-bar-striped';
+                                            } else if ($percentage >= 11 && $percentage < 49) {
+                                                $progress_bar_class = 'bg-info progress-bar-striped';
+                                            } else if ($percentage >= 0 && $percentage < 10) {
+                                                $progress_bar_class = 'bg-info progress-bar-striped';
+                                            } else {
+                                                $progress_bar_class = 'bg-info progress-bar-striped';
+                                            }
+
+                                            echo
+                                            '<div class="progress text-bold">
+                                                                    <div class="progress-bar ' . $progress_bar_class . '" role="progressbar" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percentage . '%">
+                                                                        ' . $percentage . ' %
+                                                                    </div>
+                                                                </div>'
+                                            ?>
+                                        </td>
+                                        <td> <?php echo $data['user_name'] ?></td>
+                                        <td><?php echo $data['order_created_time'] ?></td>
+                                        <td><?php echo $data['shipping_date'] ?></td>
                                         <td>00:00:00</td>
 
                                     </tr>
-                                    <tr>
-                                        <td><a href="">
-                                                so12345
-                                            </a></td>
-                                        <td>12342</td>
-                                        <td>FBA</td>
-                                        <td>100</td>
-                                        <td>80</td>
-                                        <td>xxxxx</td>
-                                        <td>Sales Person 1</td>
-                                        <td>inv 10</td>
-                                        <td>2022-10-10</td>
-                                        <td>2022-10-15</td>
-                                        <td>00:00:00</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">
-                                                so12345
-                                            </a></td>
-                                        <td>12342</td>
-                                        <td>FBA</td>
-                                        <td>100</td>
-                                        <td>80</td>
-                                        <td>xxxxx</td>
-                                        <td>Sales Person 1</td>
-                                        <td>inv 10</td>
-                                        <td>2022-10-10</td>
-                                        <td>2022-10-15</td>
-                                        <td>00:00:00</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">
-                                                so12345
-                                            </a></td>
-                                        <td>12342</td>
-                                        <td>FBA</td>
-                                        <td>100</td>
-                                        <td>80</td>
-                                        <td>xxxxx</td>
-                                        <td>Sales Person 1</td>
-                                        <td>inv 10</td>
-                                        <td>2022-10-10</td>
-                                        <td>2022-10-15</td>
-                                        <td>00:00:00</td>
-
-                                    </tr>
-
+                                    <?php } ?>
 
                                 </tbody>
                             </table>

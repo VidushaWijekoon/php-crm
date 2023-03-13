@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../includes/header.php');
-
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
@@ -392,7 +392,7 @@ if (!isset($_SESSION['user_id'])) {
                             <th>Condition</th>
                             <th>Charger Watt</th>
                             <th>Charger Type</th>
-                            <th>Charger Pin</th>
+                            <!-- <th>Charger Pin</th> -->
                             <th>Packing type</th>
                             <th>Shipping method</th>
                             <th>Order Qty</th>
@@ -401,76 +401,46 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                        $sql="SELECT * FROM sales_order_items WHERE order_status='1'";
+                        $sql_run=mysqli_query($connection,$sql);
+                        foreach($sql_run as $data){
+                        ?>
                         <tr>
-                            <td>12313</td>
-                            <td>AS1231</td>
-                            <td>Laptop</td>
-                            <td>Dell</td>
-                            <td>Latitude e5480</td>
-                            <td>Intel</td>
-                            <td>i5-2540U</td>
-                            <td>2</td>
-                            <td>2.50Ghz</td>
-                            <td>LCD</td>
-                            <td>14</td>
-                            <td>1366 x 768</td>
-                            <td>HD</td>
-                            <td>8GB</td>
-                            <td>256GB</td>
-                            <td>SSD</td>
-                            <td>nVidia</td>
-                            <td>4GB</td>
-                            <td>Windows 10 pro Original</td>
-                            <td>Refurbished</td>
-                            <td>65W</td>
-                            <td>UK</td>
-                            <td>Blue</td>
-                            <td>Bulkbox</td>
-                            <td>DHL</td>
-                            <td>100</td>
+                            <td><?php echo $data['sales_order_id'] ?></td>
+                            <td><?php echo "ASIN NUMBER";?></td>
+                            <td><?php echo $data['order_device'] ?></td>
+                            <td><?php echo $data['order_brand'] ?></td>
+                            <td><?php echo $data['order_model'] ?></td>
+                            <td><?php echo $data['order_processor'] ?></td>
+                            <td><?php echo $data['order_core'] ?></td>
+                            <td><?php echo $data['order_generation'] ?></td>
+                            <td><?php echo $data['order_speed'] ?></td>
+                            <td><?php echo $data['order_touch_status'] ?></td>
+                            <td><?php echo $data['order_screen_size'] ?></td>
+                            <td><?php echo $data['order_resolution'] ?></td>
+                            <td><?php echo $data['order_resolution'] ?></td>
+                            <td><?php echo $data['order_ram'] ?></td>
+
+                            <td><?php echo $data['order_hdd_capacity'] ?></td>
+                            <td><?php echo $data['order_hdd_type'] ?></td>
+                            <td><?php echo $data['order_graphic_type'] ?></td>
+                            <td><?php echo $data['order_graphic_capacity'] ?></td>
+                            <td><?php echo $data['order_os'] ?></td>
+                            <td><?php echo $data['order_condition'] ?></td>
+                            <td><?php echo $data['order_charger_watt'] ?></td>
+                            <td><?php echo $data['order_charger_type'] ?></td>
+                            <!-- <td><?php echo $data['order_'] ?></td> -->
+                            <td><?php echo $data['order_shipping_method'] ?></td>
+                            <td><?php echo $data['order_packing_type'] ?></td>
+                            <td><?php echo $data['order_qty'] ?></td>
                             <td>
                                 <a href="./inventory_start_order.php">
                                     <button class="btn"><i class="fa-solid fa-hourglass-start text-info"></i></button>
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>12313</td>
-                            <td>AS1231</td>
-                            <td>Laptop</td>
-                            <td>Dell</td>
-                            <td>Latitude e7480</td>
-                            <td>Intel</td>
-                            <td>i5-6500U</td>
-                            <td>6</td>
-                            <td>2.50Ghz</td>
-                            <td>LCD</td>
-                            <td>14</td>
-                            <td>1366 x 768</td>
-                            <td>HD</td>
-                            <td>8GB</td>
-                            <td>256GB</td>
-                            <td>SSD</td>
-                            <td>nVidia</td>
-                            <td>4GB</td>
-                            <td>Windows 10 pro Original</td>
-                            <td>Refurbished</td>
-                            <td>65W</td>
-                            <td>UK</td>
-                            <td>Blue</td>
-                            <td>Bulkbox</td>
-                            <td>DHL</td>
-                            <td>100</td>
-                            <td>
-                                <!-- <button class="btn" data-toggle="modal" data-target="#myModal"><i
-                                        class="fa-solid fa-hourglass-start text-info"></i></button> -->
-                                <a href="./inventory_start_order.php">
-                                    <button class="btn"><i class="fa-solid fa-hourglass-start text-info"></i></button>
-                                </a>
-                            </td>
-                        </tr>
-
-
+                        <?php } ?>
                     </tbody>
                 </table>
 
