@@ -1,5 +1,11 @@
-<?php 
-require_once('../includes/header.php')
+<?php
+session_start();
+require_once('../includes/header.php');
+$connection = mysqli_connect("localhost", "root", "", "main_project");
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
 ?>
 
 <style>
@@ -27,7 +33,7 @@ require_once('../includes/header.php')
 
 .createListingHeading {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .sectionUnderline {
@@ -175,14 +181,19 @@ require_once('../includes/header.php')
     overflow-y: auto;
 }
 
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
+
 
 /* ////// */
 </style>
 
 <div class="row pageNavigation">
     <!-- <i class="pageNameIcon fa-solid fa-left"></i> -->
-    <a href="./e_com_dashboard.php"><i class="fa-solid fa-house"></i>&nbsp;Dashboard</a>/
-    <a href="./e_com_packing.php"><i class="fa-solid fa-left"></i>&nbsp;packing</a>/
+    <!-- <a href="./e_com_dashboard.php"><i class="fa-solid fa-house"></i>&nbsp;Dashboard</a>/ -->
+    <a href="./e_com_packing.php"><i class="fa-solid fa-backward"></i>&nbsp;packing</a>/
 </div>
 <br>
 

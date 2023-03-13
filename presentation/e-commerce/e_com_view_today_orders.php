@@ -1,7 +1,19 @@
-<?php 
-require_once('../includes/header.php')
-?>
+<?php
 
+ob_start();
+session_start();
+require_once('../includes/header.php');
+require_once("../../functions/db_connection.php");
+
+
+require_once('../../functions/db_connection.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
+
+?>
 <style>
 .pageNavigation a {
     color: #168EB4;
@@ -74,7 +86,6 @@ require_once('../includes/header.php')
     width: 200px;
 
 }
-
 
 .searchSec i:hover {
     cursor: pointer;
@@ -274,7 +285,7 @@ require_once('../includes/header.php')
                         <tbody>
                             <tr>
                                 <th style="color:black">1</th>
-                                <td><a href="e_com_orderdetail_list.php" style="color:black;">ALSk1234</a>
+                                <td><a href="e_com_orderdetail_list.php">ALSk1234</a>
                                 </td>
                                 <td>S51231sD</td>
                                 <td>As124</td>
@@ -341,7 +352,7 @@ require_once('../includes/header.php')
                         <tbody>
                             <tr>
                                 <th style="color:black">1</th>
-                                <td><a href="./ecom_orderdetail_list.php" style="color:black;">ALSk1234</a></td>
+                                <td><a href="./ecom_orderdetail_list.php">ALSk1234</a></td>
                                 <td>S51231sD</td>
                                 <td>AS1234</td>
                                 <td>Noon</td>
@@ -397,7 +408,7 @@ require_once('../includes/header.php')
                                 <td>Noon</td>
                                 <td>Direct Noon</td>
                                 <td>Thinkpad T460 </td>
-                                <!-- <td>E-Commerce</td>                            -->
+                                <!-- <td>E-Commerce</td> -->
                                 <td>10</td>
                                 <td>5</td>
                                 <td>Sales Person 1</td>
@@ -416,7 +427,7 @@ require_once('../includes/header.php')
                                 <td>Amazon</td>
                                 <td>Direct Amazon</td>
                                 <td>Latitude e5240</td>
-                                <!-- <td>E-Commerce</td>                            -->
+                                <!-- <td>E-Commerce</td> -->
                                 <td>10</td>
                                 <td>10</td>
                                 <td>Sales Person 2</td>

@@ -11,10 +11,10 @@ if (!isset($_SESSION['user_id'])) {
 $connection = mysqli_connect("localhost", "root", "", "main_project");
 ?>
 <div class="row">
-    <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-5">
+    <!-- <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-5">
         <button class="btn btn-xs btn-primary">Download Excel File</button>
         <button class="btn btn-xs btn-primary">Download All Unit Excel File</button>
-    </div>
+    </div> -->
 </div>
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2">
@@ -47,6 +47,7 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
                                 $i++;
                             ?>
                             <tr>
+
                                 <td><?php echo $i; ?></td>
                                 <td> <?php echo $data['brand'] ?></td>
                                 <td> <?php echo $data['in_total'] ?></td>
@@ -80,6 +81,7 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
                                 </td>
                             </tr>
                             <?php } ?>
+
                         </tbody>
 
                     </table>

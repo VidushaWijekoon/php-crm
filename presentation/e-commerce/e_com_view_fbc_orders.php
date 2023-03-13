@@ -1,5 +1,18 @@
-<?php 
-require_once('../includes/header.php')
+<?php
+
+ob_start();
+session_start();
+require_once('../includes/header.php');
+require_once("../../functions/db_connection.php");
+
+
+require_once('../../functions/db_connection.php');
+
+// Check User Login  
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../index.php');
+}
+
 ?>
 
 <style>
@@ -281,7 +294,7 @@ require_once('../includes/header.php')
                         <tbody>
                             <tr>
                                 <th style="color:black">1</th>
-                                <td><a href="e_com_orderdetail_list.php" style="color:black;">ALSk1234</a>
+                                <td><a href="e_com_orderdetail_list.php">ALSk1234</a>
                                 </td>
                                 <td>S51231sD</td>
                                 <td>As124</td>
@@ -331,7 +344,7 @@ require_once('../includes/header.php')
                         <tbody>
                             <tr>
                                 <th style="color:black">1</th>
-                                <td><a href="./ecom_orderdetail_list.php" style="color:black;">ALSk1234</a></td>
+                                <td><a href="./ecom_orderdetail_list.php">ALSk1234</a></td>
                                 <td>S51231sD</td>
                                 <td>AS1234</td>
                                 <td>Cartlow</td>
@@ -380,8 +393,7 @@ require_once('../includes/header.php')
                         <tbody>
                             <tr>
                                 <th style="color:black">1</th>
-                                <td>ALSk1234
-                                </td>
+                                <td><a href="./ecom_orderdetail_list.php">ALSk1234</a></td>
                                 <td>S51231sD</td>
                                 <td>AS124</td>
                                 <td>Cartlow</td>

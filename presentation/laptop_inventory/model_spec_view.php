@@ -27,8 +27,14 @@ if (!isset($_SESSION['user_id'])) {
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <div class="mt-2 text-uppercase">Dell Latitude E5480 Intel i5-6300u</div>
-                    <div class=""><input type="text" class="mx-2" placeholder="Search By Model"></div>
+                    <div>
+                        <div>ASIN : <span>####</span></div>
+                        <div class="mt-2 text-uppercase">Dell Latitude E5480 Intel i5-6300u</div>
+                    </div>
+
+                    <div class=""><input type="text" class="mx-2" placeholder="Search">
+                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
