@@ -22,167 +22,167 @@ while ($xd = mysqli_fetch_assoc($q)) {
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .virtualInvSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.virtualInvSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
-
-
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+}
 
 
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
-
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
-
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
-
-    /* Rack eke Styles */
-
-    .rackSturcture {
-        display: flex;
-        flex-direction: column;
-        height: 150px;
-        width: 250px;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
 
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
 
-    .rackLayer {
-        display: flex;
-        height: 25%;
-        border-left: 1px solid #dee2e6;
-        border-right: 1px solid #dee2e6;
-        border-bottom: 1px solid #dee2e6;
-    }
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
 
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 
-    .box {
-        position: relative;
-        padding: 5px;
-        height: 100%;
-        width: 100%;
-    }
+/* Rack eke Styles */
+
+.rackSturcture {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 250px;
+}
 
 
 
-    .box button {
-        width: 100%;
-        height: 100%;
-    }
+.rackLayer {
+    display: flex;
+    height: 25%;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
 
 
-    /* ///// */
+.box {
+    position: relative;
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+}
 
-    /* patte lable section eka */
 
-    .lableLeftSec {
-        display: flex;
-        flex-direction: column;
-        height: 200px;
-        width: 15px;
-        font-weight: 600;
-    }
 
-    .lableLayer {
-        font-size: 10px;
-        display: flex;
-        height: 18%;
-        align-items: center;
-    }
+.box button {
+    width: 100%;
+    height: 100%;
+}
 
-    /* Yata Lable Sec Eke  */
 
-    .lableBoxLayer {
-        display: flex;
-        width: 100%;
-    }
+/* ///// */
 
-    .colNu {
-        width: 25%;
-        text-align: center;
-        font-size: 10px;
+/* patte lable section eka */
 
-    }
+.lableLeftSec {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 15px;
+    font-weight: 600;
+}
 
-    .rack {
-        display: flex;
-        justify-content: center;
-    }
+.lableLayer {
+    font-size: 10px;
+    display: flex;
+    height: 18%;
+    align-items: center;
+}
 
-    /* Box button eke styles */
+/* Yata Lable Sec Eke  */
 
-    .btnBox {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff !important;
-    }
+.lableBoxLayer {
+    display: flex;
+    width: 100%;
+}
 
-    .btnBox:hover+.hide {
-        /* background-color: #dee2e6; */
-        display: block;
-    }
+.colNu {
+    width: 25%;
+    text-align: center;
+    font-size: 10px;
 
-    /* hover Btn Sec */
-    .hide {
-        display: none;
-        position: absolute;
-        padding: 5px 10px;
-        top: -105px;
-        left: 20px;
-    }
+}
 
-    /*  */
+.rack {
+    display: flex;
+    justify-content: center;
+}
 
-    .insideDetails {
-        background-color: black;
-        opacity: 0.5;
-        color: #ffffff;
-        border-radius: 10px;
-    }
+/* Box button eke styles */
 
-    .tableModel {
-        width: 100%;
+.btnBox {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important;
+}
 
-    }
+.btnBox:hover+.hide {
+    /* background-color: #dee2e6; */
+    display: block;
+}
 
-    /* Rack Name */
-    .rackLbl {
-        display: flex;
-        width: 93%;
-        justify-content: space-between;
-        font-weight: 600;
-        margin-left: 10px;
+/* hover Btn Sec */
+.hide {
+    display: none;
+    position: absolute;
+    padding: 5px 10px;
+    top: -105px;
+    left: 20px;
+}
 
-    }
+/*  */
+
+.insideDetails {
+    background-color: black;
+    opacity: 0.5;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.tableModel {
+    width: 100%;
+
+}
+
+/* Rack Name */
+.rackLbl {
+    display: flex;
+    width: 93%;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-left: 10px;
+
+}
 </style>
 
 <div class="row mb-4 ml-1 pt-2">
@@ -311,75 +311,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($a_3_total_qty == 0 || $a_3_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=a-3">
-                                        <div class="btnEmpty btnBox">
-                                            <span>A-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=a-3">
+                                    <div class="btnEmpty btnBox">
+                                        <span>A-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3'";
                                                     $a_3_r = mysqli_query($connection, $a_3_q);
                                                     while ($a_3_x = mysqli_fetch_assoc($a_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_3_x['model']; ?></td>
-                                                            <td><?php echo $a_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_3_x['model']; ?></td>
+                                                    <td><?php echo $a_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($a_3_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=a-3">
-                                        <div class="btnTB btnBox">
-                                            <span>A-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=a-3">
+                                    <div class="btnTB btnBox">
+                                        <span>A-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3'";
                                                     $a_3_r = mysqli_query($connection, $a_3_q);
                                                     while ($a_3_x = mysqli_fetch_assoc($a_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_3_x['model']; ?></td>
-                                                            <td><?php echo $a_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_3_x['model']; ?></td>
+                                                    <td><?php echo $a_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -402,75 +402,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($a_2_total_qty == 0 || $a_2_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=a-2">
-                                        <div class="btnEmpty btnBox">
-                                            <span>A-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=a-2">
+                                    <div class="btnEmpty btnBox">
+                                        <span>A-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-2'";
                                                     $a_2_r = mysqli_query($connection, $a_2_q);
                                                     while ($a_2_x = mysqli_fetch_assoc($a_2_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_2_x['model']; ?></td>
-                                                            <td><?php echo $a_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_2_x['model']; ?></td>
+                                                    <td><?php echo $a_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($a_2_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=a-2">
-                                        <div class="btnTB btnBox">
-                                            <span>A-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=a-2">
+                                    <div class="btnTB btnBox">
+                                        <span>A-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-2'";
                                                     $a_2_r = mysqli_query($connection, $a_2_q);
                                                     while ($a_2_x = mysqli_fetch_assoc($a_2_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_2_x['model']; ?></td>
-                                                            <td><?php echo $a_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_2_x['model']; ?></td>
+                                                    <td><?php echo $a_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -493,75 +493,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($a_1_total_qty == 0 || $a_1_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=a-1">
-                                        <div class="btnEmpty btnBox">
-                                            <span>A-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=a-1">
+                                    <div class="btnEmpty btnBox">
+                                        <span>A-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'";
                                                     $a_1_r = mysqli_query($connection, $a_1_q);
                                                     while ($a_1_x = mysqli_fetch_assoc($a_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_1_x['model']; ?></td>
-                                                            <td><?php echo $a_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_1_x['model']; ?></td>
+                                                    <td><?php echo $a_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($a_1_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=a-1">
-                                        <div class="btnTB btnBox">
-                                            <span>A-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=a-1">
+                                    <div class="btnTB btnBox">
+                                        <span>A-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'";
                                                     $a_1_r = mysqli_query($connection, $a_1_q);
                                                     while ($a_1_x = mysqli_fetch_assoc($a_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_1_x['model']; ?></td>
-                                                            <td><?php echo $a_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_1_x['model']; ?></td>
+                                                    <td><?php echo $a_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -596,75 +596,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($b_3_total_qty == 0 || $b_3_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=b-3">
-                                        <div class="btnEmpty btnBox">
-                                            <span>B-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=b-3">
+                                    <div class="btnEmpty btnBox">
+                                        <span>B-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $b_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-3'";
                                                     $b_3_r = mysqli_query($connection, $b_3_q);
                                                     while ($b_3_x = mysqli_fetch_assoc($b_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $b_3_x['model']; ?></td>
-                                                            <td><?php echo $b_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $b_3_x['model']; ?></td>
+                                                    <td><?php echo $b_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($b_3_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=b-3">
-                                        <div class="btnTB btnBox">
-                                            <span>B-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=b-3">
+                                    <div class="btnTB btnBox">
+                                        <span>B-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $b_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-3'";
                                                     $b_3_r = mysqli_query($connection, $b_3_q);
                                                     while ($b_3_x = mysqli_fetch_assoc($b_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $b_3_x['model']; ?></td>
-                                                            <td><?php echo $b_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $b_3_x['model']; ?></td>
+                                                    <td><?php echo $b_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -688,75 +688,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($b_2_total_qty == 0 || $b_2_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=b-2">
-                                        <div class="btnEmpty btnBox">
-                                            <span>B-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=b-2">
+                                    <div class="btnEmpty btnBox">
+                                        <span>B-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $b_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-2'";
                                                     $b_2_r = mysqli_query($connection, $b_2_q);
                                                     while ($b_2_x = mysqli_fetch_assoc($b_2_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $b_2_x['model']; ?></td>
-                                                            <td><?php echo $b_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $b_2_x['model']; ?></td>
+                                                    <td><?php echo $b_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($b_2_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=b-2">
-                                        <div class="btnTB btnBox">
-                                            <span>B-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=b-2">
+                                    <div class="btnTB btnBox">
+                                        <span>B-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $b_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-2'";
                                                     $b_2_r = mysqli_query($connection, $b_2_q);
                                                     while ($b_2_x = mysqli_fetch_assoc($b_2_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $b_2_x['model']; ?></td>
-                                                            <td><?php echo $b_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $b_2_x['model']; ?></td>
+                                                    <td><?php echo $b_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -780,75 +780,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($b_1_total_qty == 0 || $b_1_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=b-1">
-                                        <div class="btnEmpty btnBox">
-                                            <span>B-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=b-1">
+                                    <div class="btnEmpty btnBox">
+                                        <span>B-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $b_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-1'";
                                                     $b_1_r = mysqli_query($connection, $b_1_q);
                                                     while ($b_1_x = mysqli_fetch_assoc($b_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $b_1_x['model']; ?></td>
-                                                            <td><?php echo $b_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $b_1_x['model']; ?></td>
+                                                    <td><?php echo $b_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($b_1_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=b-1">
-                                        <div class="btnTB btnBox">
-                                            <span>B-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=b-1">
+                                    <div class="btnTB btnBox">
+                                        <span>B-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $b_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-1'";
                                                     $b_1_r = mysqli_query($connection, $b_1_q);
                                                     while ($b_1_x = mysqli_fetch_assoc($b_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $b_1_x['model']; ?></td>
-                                                            <td><?php echo $b_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $b_1_x['model']; ?></td>
+                                                    <td><?php echo $b_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -881,75 +881,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($c_3_total_qty == 0 || $c_3_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=c-3">
-                                        <div class="btnEmpty btnBox">
-                                            <span>C-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=c-3">
+                                    <div class="btnEmpty btnBox">
+                                        <span>C-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $c_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-3'";
                                                     $c_3_r = mysqli_query($connection, $c_3_q);
                                                     while ($c_3_x = mysqli_fetch_assoc($c_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $c_3_x['model']; ?></td>
-                                                            <td><?php echo $c_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $c_3_x['model']; ?></td>
+                                                    <td><?php echo $c_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($c_3_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=c-3">
-                                        <div class="btnTB btnBox">
-                                            <span>C-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=c-3">
+                                    <div class="btnTB btnBox">
+                                        <span>C-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $c_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-3'";
                                                     $c_3_r = mysqli_query($connection, $c_3_q);
                                                     while ($c_3_x = mysqli_fetch_assoc($c_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $c_3_x['model']; ?></td>
-                                                            <td><?php echo $c_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $c_3_x['model']; ?></td>
+                                                    <td><?php echo $c_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -972,75 +972,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($c_2_total_qty == 0 || $c_2_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=c-2">
-                                        <div class="btnEmpty btnBox">
-                                            <span>C-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=c-2">
+                                    <div class="btnEmpty btnBox">
+                                        <span>C-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $c_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-2'";
                                                     $c_2_r = mysqli_query($connection, $c_2_q);
                                                     while ($c_2_x = mysqli_fetch_assoc($c_2_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $c_2_x['model']; ?></td>
-                                                            <td><?php echo $c_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $c_2_x['model']; ?></td>
+                                                    <td><?php echo $c_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($c_2_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=c-2">
-                                        <div class="btnTB btnBox">
-                                            <span>C-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=c-2">
+                                    <div class="btnTB btnBox">
+                                        <span>C-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'";
                                                     $a_1_r = mysqli_query($connection, $a_1_q);
                                                     while ($a_1_x = mysqli_fetch_assoc($a_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $a_1_x['model']; ?></td>
-                                                            <td><?php echo $a_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $a_1_x['model']; ?></td>
+                                                    <td><?php echo $a_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -1063,75 +1063,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($c_1_total_qty == 0 || $c_1_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=c-1">
-                                        <div class="btnEmpty btnBox">
-                                            <span>C-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=c-1">
+                                    <div class="btnEmpty btnBox">
+                                        <span>C-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $c_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-1'";
                                                     $c_1_r = mysqli_query($connection, $c_1_q);
                                                     while ($c_1_x = mysqli_fetch_assoc($c_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $c_1_x['model']; ?></td>
-                                                            <td><?php echo $c_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $c_1_x['model']; ?></td>
+                                                    <td><?php echo $c_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($c_1_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=c-1">
-                                        <div class="btnTB btnBox">
-                                            <span>C-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=c-1">
+                                    <div class="btnTB btnBox">
+                                        <span>C-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $c_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-1'";
                                                     $c_1_r = mysqli_query($connection, $c_1_q);
                                                     while ($c_1_x = mysqli_fetch_assoc($c_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $c_1_x['model']; ?></td>
-                                                            <td><?php echo $c_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $c_1_x['model']; ?></td>
+                                                    <td><?php echo $c_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -1163,75 +1163,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($d_3_total_qty == 0 || $d_3_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=d-3">
-                                        <div class="btnEmpty btnBox">
-                                            <span>D-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=d-3">
+                                    <div class="btnEmpty btnBox">
+                                        <span>D-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $d_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-3'";
                                                     $d_3_r = mysqli_query($connection, $d_3_q);
                                                     while ($d_3_x = mysqli_fetch_assoc($d_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $d_3_x['model']; ?></td>
-                                                            <td><?php echo $d_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $d_3_x['model']; ?></td>
+                                                    <td><?php echo $d_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($d_3_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=d-3">
-                                        <div class="btnTB btnBox">
-                                            <span>D-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=d-3">
+                                    <div class="btnTB btnBox">
+                                        <span>D-3</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $d_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-3'";
                                                     $d_3_r = mysqli_query($connection, $d_3_q);
                                                     while ($d_3_x = mysqli_fetch_assoc($d_3_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $d_3_x['model']; ?></td>
-                                                            <td><?php echo $d_3_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $d_3_x['model']; ?></td>
+                                                    <td><?php echo $d_3_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -1254,75 +1254,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($d_2_total_qty == 0 || $d_2_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=d-2">
-                                        <div class="btnEmpty btnBox">
-                                            <span>D-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=d-2">
+                                    <div class="btnEmpty btnBox">
+                                        <span>D-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $d_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-2'";
                                                     $d_2_q = mysqli_query($connection, $d_2_q);
                                                     while ($d_2_x = mysqli_fetch_assoc($d_2_q)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $d_2_x['model']; ?></td>
-                                                            <td><?php echo $d_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $d_2_x['model']; ?></td>
+                                                    <td><?php echo $d_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($d_2_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=d-2">
-                                        <div class="btnTB btnBox">
-                                            <span>D-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=d-2">
+                                    <div class="btnTB btnBox">
+                                        <span>D-2</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $d_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-2'";
                                                     $d_2_q = mysqli_query($connection, $d_2_q);
                                                     while ($d_2_x = mysqli_fetch_assoc($d_2_q)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $d_2_x['model']; ?></td>
-                                                            <td><?php echo $d_2_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $d_2_x['model']; ?></td>
+                                                    <td><?php echo $d_2_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->
@@ -1345,75 +1345,75 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                 }
 
                                 if ($d_1_total_qty == 0 || $d_1_total_qty == null) { ?>
-                                    <a href="./virtual_inv_battery_add_new_item?rack=d-1">
-                                        <div class="btnEmpty btnBox">
-                                            <span>D-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_new_item?rack=d-1">
+                                    <div class="btnEmpty btnBox">
+                                        <span>D-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $d_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-1'";
                                                     $d_1_r = mysqli_query($connection, $d_1_q);
                                                     while ($d_1_x = mysqli_fetch_assoc($d_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $d_1_x['model']; ?></td>
-                                                            <td><?php echo $d_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $d_1_x['model']; ?></td>
+                                                    <td><?php echo $d_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } elseif ($d_1_total_qty >= 0) { ?>
-                                    <a href="./virtual_inv_battery_add_remove?rack=d-1">
-                                        <div class="btnTB btnBox">
-                                            <span>D-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
+                                <a href="./virtual_inv_battery_add_remove?rack=d-1">
+                                    <div class="btnTB btnBox">
+                                        <span>D-1</span>
+                                    </div>
+                                    <!-- hover details  Sec eka -->
+                                    <div class="hide insideDetails">
+                                        <div class="tableModel">
+                                            <table>
+                                                <tr>
+                                                    <th>
+                                                        <div style="width:100px;">
+                                                            Models
+                                                        </div>
+                                                    </th>
+                                                    <th>Qty</th>
+                                                </tr>
 
-                                                    <?php
+                                                <?php
                                                     $d_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-1'";
                                                     $d_1_r = mysqli_query($connection, $d_1_q);
                                                     while ($d_1_x = mysqli_fetch_assoc($d_1_r)) {
 
                                                     ?>
-                                                        <tr class="text-capitalize">
-                                                            <td><?php echo $d_1_x['model']; ?></td>
-                                                            <td><?php echo $d_1_x['qty']; ?></td>
+                                                <tr class="text-capitalize">
+                                                    <td><?php echo $d_1_x['model']; ?></td>
+                                                    <td><?php echo $d_1_x['qty']; ?></td>
 
-                                                        </tr>
-                                                    <?php } ?>
-                                                </table>
-                                            </div>
+                                                </tr>
+                                                <?php } ?>
+                                            </table>
                                         </div>
-                                        <!-- iwrai hover eka -->
-                                    </a>
+                                    </div>
+                                    <!-- iwrai hover eka -->
+                                </a>
                                 <?php } ?>
                             </div>
                             <!-- /// -->

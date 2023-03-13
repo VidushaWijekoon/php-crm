@@ -11,8 +11,13 @@ $timestamp = time();
 $date_time = date("Y-m-d H:i:s", $timestamp);
 
 mysqli_select_db($con,"main_project");
+$sql="SELECT target_id,point FROM targets WHERE target_id = '1'";
+$result_set = mysqli_query($con,$sql);
+while($row = mysqli_fetch_array($result_set)) {
+$target_id=$row['target_id'];
+$point=$row['point'];
+}
 $sql="SELECT * FROM machine_from_supplier WHERE serial_no = '".$q."' OR mfg = '".$q."' ";
-
 $result = mysqli_query($con,$sql);
 
 while($row = mysqli_fetch_array($result)) {
@@ -50,10 +55,10 @@ VALUES(
     '$supplier_name',
     '$mfg',
     '$model',
-    'pc sorting',
+    '$target_id',
     '$date_time',
     '$date_time',
-    '1'
+    '$point'
 )";
 $query_run = mysqli_query($con,$sql);
     }
@@ -105,14 +110,6 @@ if(empty($model)){ ?>
         <br>
         <hr class="sectionUnderline">
         <br>
-        <!-- <div class="row">
-
-                        <div class="col-8 text-bold" id="supplierName">
-                            Supplier Name
-                            <input class="ml-2 w-75" type="text" id="supName">
-                        </div>
-
-                    </div> -->
         <div class="formSec">
             <div class="row my-2 justify-content-center">
                 <div class="col-lg-6 col-sm-12">
