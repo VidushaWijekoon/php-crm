@@ -11,10 +11,10 @@ if (!isset($_SESSION['user_id'])) {
 $connection = mysqli_connect("localhost", "root", "", "main_project");
 ?>
 <div class="row">
-    <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-5">
+    <!-- <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-5">
         <button class="btn btn-xs btn-primary">Download Excel File</button>
         <button class="btn btn-xs btn-primary">Download All Unit Excel File</button>
-    </div>
+    </div> -->
 </div>
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2">
@@ -35,6 +35,7 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
                                 <th>In Total</th>
                                 <th>In Stock</th>
                                 <th>Processing</th>
+                                <th>Processing</th>
                                 <th>Dispatch</th>
                                 <th>&nbsp;</th>
                             </tr>
@@ -47,39 +48,49 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
                                 $i++;
                             ?>
                             <tr>
-                                <td><?php echo $i; ?></td>
-                                <td> <?php echo $data['brand'] ?></td>
-                                <td> <?php echo $data['in_total'] ?></td>
-                                <td>
-                                    <?php $sql="SELECT COUNT(inventory_id)as in_stock FROM main_inventory_informations WHERE send_to_production ='0' AND brand='{$data['brand']}'";
-                                $sql_run=mysqli_query($connection,$sql);
-                                foreach($sql_run as $stock){
-                                 echo $stock['in_stock'];   
-                                }
-                                ?>
-                                </td>
-                                <td>
-                                    <?php $sql="SELECT COUNT(inventory_id)as in_stock FROM main_inventory_informations WHERE send_to_production ='1' AND dispatch='0' AND brand='{$data['brand']}'";
-                                $sql_run=mysqli_query($connection,$sql);
-                                foreach($sql_run as $stock){
-                                 echo $stock['in_stock'];   
-                                }
-                                ?>
-                                </td>
-                                <td>
-                                    <?php $sql="SELECT COUNT(inventory_id)as dispatch FROM main_inventory_informations WHERE send_to_production ='1' AND dispatch='1' AND brand='{$data['brand']}'";
-                                $sql_run=mysqli_query($connection,$sql);
-                                foreach($sql_run as $stock){
-                                 echo $stock['dispatch'];   
-                                }
-                                ?>
-                                </td>
+                                <td></td>
+                                <td> dell</td>
+                                <td> 8061</td>
+                                <td>8007</td>
+                                <td>32</td>
                                 <td class="text-center">
                                     <a class="" href="model_summery.php"><i class="fas fa-eye"></i>
                                     </a>
                                 </td>
                             </tr>
-                            <?php } ?>
+                            <tr>
+                                <td></td>
+                                <td> hp</td>
+                                <td> 1669</td>
+                                <td>1669</td>
+                                <td>0</td>
+                                <td class="text-center">
+                                    <a class="" href="model_summery.php"><i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td> lenovo</td>
+                                <td> 4990</td>
+                                <td>4990</td>
+                                <td>0</td>
+                                <td class="text-center">
+                                    <a class="" href="model_summery.php"><i class="fas fa-eye fas-2x"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td> panasonic</td>
+                                <td> 5</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td class="text-center">
+                                    <a class="" href="model_summery.php"><i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
 
                     </table>

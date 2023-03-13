@@ -197,7 +197,8 @@ if (!isset($_SESSION['user_id'])) {
                                     }
                                     ?>
                                     <!-- <input id="orderNumber" type="text" disabled
-                                        value="SO-<?php $sales_order_id++;echo $sales_order_id ?>" name="orderNumber"
+                                        value="SO-<?php $sales_order_id++;
+                                                    echo $sales_order_id ?>" name="orderNumber"
                                         required> -->
                                 </div>
                             </div>
@@ -234,39 +235,8 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
                         <div class="col-sm-12 col-lg-5">
-                            <div class="row">
-                                <div class="lableSec pt-2 col-3">
-                                    <p>Brand</p>
-                                </div>
-                                <div class="inputSec col-9">
-                                    <select class="DropDown" aria-label="Default select example" name="brand" id="brand"
-                                        required>
-                                        <option value="" selected>--Select brand--</option>
-                                        <option value="dell">Dell</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row px-5 mt-2">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="row">
-                                <div class="lableSec pt-2 col-3">
-                                    <p>Model</p>
-                                </div>
-                                <div class="inputSec col-9">
-                                    <select name="model" id="model" class="DropDown">
-                                        <option value="" selected>--Select Model--</option>
-                                        <option value="Thinkpad">Thinkpad</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-
-                        </div>
-                        <div class="col-sm-12 col-lg-5">
+                            <!-- brand tibbe -->
+                            <!-- processor -->
                             <div class="row">
                                 <div class="lableSec pt-2 col-3">
                                     <p>Processor</p>
@@ -284,6 +254,26 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="row px-5 mt-2">
                         <div class="col-sm-12 col-lg-5">
+                            <!-- new Brand -->
+                            <div class="row">
+                                <div class="lableSec pt-2 col-3">
+                                    <p>Brand</p>
+                                </div>
+                                <div class="inputSec col-9">
+                                    <select class="DropDown" aria-label="Default select example" name="brand" id="brand"
+                                        required>
+                                        <option value="" selected>--Select brand--</option>
+                                        <option value="dell">Dell</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-sm-12 col-lg-5">
                             <div class="row">
                                 <div class="lableSec pt-2 col-3">
                                     <p>Core</p>
@@ -295,6 +285,23 @@ if (!isset($_SESSION['user_id'])) {
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row px-5 mt-2">
+                        <div class="col-sm-12 col-lg-5">
+                            <!-- Model -->
+                            <div class="row">
+                                <div class="lableSec pt-2 col-3">
+                                    <p>Model</p>
+                                </div>
+                                <div class="inputSec col-9">
+                                    <select name="model" id="model" class="DropDown">
+                                        <option value="" selected>--Select Model--</option>
+                                        <option value="Thinkpad">Thinkpad</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-2">
 
@@ -319,22 +326,6 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="col-sm-12 col-lg-5">
                             <div class="row">
                                 <div class="lableSec pt-2 col-3">
-                                    <p>Speed</p>
-                                </div>
-                                <div class="inputSec col-9">
-                                    <select name="speed" id="speed" class="DropDown">
-                                        <option value="" selected>--Select Speed--</option>
-                                        <option value="1.80Ghz">1.80GHz</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-
-                        </div>
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="row">
-                                <div class="lableSec pt-2 col-3">
                                     <p>Touch</p>
                                 </div>
                                 <div class="inputSec col-9">
@@ -346,6 +337,46 @@ if (!isset($_SESSION['user_id'])) {
                                     </select>
                                 </div>
                             </div>
+                            <!-- <div class="row">
+                                <div class="lableSec pt-2 col-3">
+                                    <p>Speed</p>
+                                </div>
+                                <div class="inputSec col-9">
+                                    <select name="speed" id="speed" class="DropDown">
+                                        <option value="" selected>--Select Speed--</option>
+                                        <option value="1.80Ghz">1.80GHz</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-sm-12 col-lg-5">
+                            <div class="row">
+                                <div class="lableSec pt-2 col-3">
+                                    <p>Speed</p>
+                                </div>
+                                <div class="inputSec col-9">
+                                    <select name="speed" id="speed" class="DropDown">
+                                        <option value="" selected>--Select Speed--</option>
+                                        <option value="1.80Ghz">1.80GHz</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="lableSec pt-2 col-3">
+                                    <p>Touch</p>
+                                </div>
+                                <div class="inputSec col-9">
+                                    <select class="DropDown" aria-label="Default select example" name="touch" id="touch"
+                                        required>
+                                        <option value="0" selected>No</option>
+                                        <option value="1">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="row px-5 mt-2">
