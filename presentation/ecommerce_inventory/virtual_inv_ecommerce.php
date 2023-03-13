@@ -438,8 +438,6 @@ if (!isset($_SESSION['user_id'])) {
                                 </a>
                             </div>
                             <!-- /// -->
-
-
                         </div>
                     </div>
                     <div class=" rackSturcture">
