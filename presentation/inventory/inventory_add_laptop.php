@@ -222,7 +222,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Device</div>
                         <div class="col-8">
-                            <select name="device" id="device" class="DropDown select2" style="width: 100%;">
+                            <select name="device" id="device" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$device"; ?>"><?php echo "$device"; ?>
                                 </option>
                             </select>
@@ -231,7 +231,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Brand</div>
                         <div class="col-8">
-                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;">
+                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$brand"; ?>"><?php echo "$brand"; ?>
                                 </option>
                             </select>
@@ -352,7 +352,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                         <div class="col-4 addLable">Keyboard Backlight</div>
                         <div class="col-8">
                             <select name="keyboard_backlight" id="keyboard_backlight" class="DropDown select2"
-                                style="width: 100%;">
+                                style="width: 100%;" required>
                                 <option selected></option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
@@ -614,7 +614,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Opticle</div>
                         <div class="col-8">
-                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;">
+                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$dvd"; ?>"><?php echo "$dvd"; ?></option>
                                 <?php if($optical == 'yes'){
                                     echo "<option  value='no'>No</option>";
@@ -631,7 +631,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                         <div class="col-4 addLable">Keyboard Backlight</div>
                         <div class="col-8">
                             <select name="keyboard_backlight" id="keyboard_backlight" class="DropDown select2"
-                                style="width: 100%;">
+                                style="width: 100%;" required>
                                 <option selected></option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
@@ -666,7 +666,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">MFG Number</div>
                         <div class="col-8">
-                            <input type="text" placeholder="For Manual Enter" name="mfg" style="width: 100%;">
+                            <input type="text" placeholder="For Manual Enter" name="mfg" style="width: 100%;" required>
                         </div>
                     </div>
                     <div class="row mb-1">
@@ -698,7 +698,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Brand</div>
                         <div class="col-8">
-                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;">
+                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                             </select>
 
@@ -707,7 +707,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Series</div>
                         <div class="col-8">
-                            <select name="series" id="series" class="DropDown select2" style="width: 100%;">
+                            <select name="series" id="series" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
 
                             </select>
@@ -717,7 +717,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Model</div>
                         <div class="col-8">
-                            <select name="model" id="model" class="DropDown select2" style="width: 100%;">
+                            <select name="model" id="model" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                             </select>
 
@@ -726,7 +726,8 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Processor</div>
                         <div class="col-8">
-                            <select name="processor" id="processor" class="DropDown select2" style="width: 100%;">
+                            <select name="processor" id="processor" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected>
                                 </option>
                             </select>
@@ -736,7 +737,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Core</div>
                         <div class="col-8">
-                            <select name="core" id="core" class="DropDown select2" style="width: 100%;">
+                            <select name="core" id="core" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                             </select>
 
@@ -745,7 +746,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Gen</div>
                         <div class="col-8">
-                            <select name="gen" id="generation" class="DropDown select2" style="width: 100%;">
+                            <select name="gen" id="generation" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                             </select>
                         </div>
@@ -753,7 +754,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Speed</div>
                         <div class="col-8">
-                            <select name="speed" id="speed" class="DropDown select2" style="width: 100%;">
+                            <select name="speed" id="speed" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                             </select>
                         </div>
@@ -762,7 +763,8 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">LCD Size</div>
                         <div class="col-8">
-                            <select name="lcd_size" id="lcd_size" class="DropDown select2" style="width: 100%;">
+                            <select name="lcd_size" id="lcd_size" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected></option>
                             </select>
                         </div>
@@ -770,7 +772,8 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Resolution</div>
                         <div class="col-8">
-                            <select name="resolution" id="resolution" class="DropDown select2" style="width: 100%;">
+                            <select name="resolution" id="resolution" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected>
                                 </option>
                             </select>
@@ -779,7 +782,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Battery</div>
                         <div class="col-8">
-                            <select name="battery" id="battery" class="DropDown select2" style="width: 100%;">
+                            <select name="battery" id="battery" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
@@ -789,7 +792,8 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Touch</div>
                         <div class="col-8">
-                            <select name="screen_type" id="touch" class="DropDown select2" style="width: 100%;">
+                            <select name="screen_type" id="touch" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected>
                                 </option>
                                 <option value="yes">Yes</option>
@@ -800,7 +804,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                     <div class="row mb-1">
                         <div class="col-4 addLable">Opticle</div>
                         <div class="col-8">
-                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;">
+                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;" required>
                                 <option selected></option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
@@ -811,7 +815,7 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                         <div class="col-4 addLable">Keyboard Backlight</div>
                         <div class="col-8">
                             <select name="keyboard_backlight" id="keyboard_backlight" class="DropDown select2"
-                                style="width: 100%;">
+                                style="width: 100%;" required>
                                 <option selected></option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
