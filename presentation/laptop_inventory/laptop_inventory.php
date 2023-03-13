@@ -47,7 +47,6 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
                                 $i++;
                             ?>
                             <tr>
-
                                 <td><?php echo $i; ?></td>
                                 <td> <?php echo $data['brand'] ?></td>
                                 <td> <?php echo $data['in_total'] ?></td>
@@ -75,13 +74,14 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
                                 }
                                 ?>
                                 </td>
+                                >>>>>>>>> Temporary merge branch 2
                                 <td class="text-center">
                                     <a class="" href="model_summery.php"><i class="fas fa-eye"></i>
                                     </a>
                                 </td>
                             </tr>
                             <?php } ?>
-
+                            >>>>>>>>> Temporary merge branch 2
                         </tbody>
 
                     </table>
