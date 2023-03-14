@@ -19,7 +19,7 @@ $point=$row['point'];
 }
 $sql="SELECT * FROM machine_from_supplier WHERE serial_no = '".$q."' OR mfg = '".$q."' ";
 $result = mysqli_query($con,$sql);
-
+if(empty($result)){}else{
 while($row = mysqli_fetch_array($result)) {
     $supplier_name=0;
     $supplier_name=$row['supplier_name'];
@@ -62,6 +62,7 @@ VALUES(
 )";
 $query_run = mysqli_query($con,$sql);
     }
+}
 }
 if(empty($model)){ ?>
 <div class="modal-content">
