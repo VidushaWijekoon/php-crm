@@ -41,6 +41,7 @@ $query = "INSERT INTO `main_inventory_informations`(
             `lcd_size`,
             `touch_or_none_touch`,
              `optical`,
+             keyboard_backlight,
              screen_resolution,
              location
         )
@@ -60,17 +61,16 @@ $query = "INSERT INTO `main_inventory_informations`(
             '$lcd_size',
             '$screen_type',
             '$dvd',
+            '$keyboard_backlight',
             '$resolution',
             'WH2'
         )";
     $query1 = mysqli_query($connection, $query);
-    echo  $query;
     $sql="UPDATE machine_from_suppliers SET add_to_inventory='1' WHERE machine_id='$machine_id'";
     $sql_run=mysqli_query($connection,$sql);
    
 $sql="SELECT inventory_id,generation,model,brand,core,speed FROM main_inventory_informations WHERE create_by_inventory_id='$user_id' ORDER BY inventory_id DESC LIMIT 1";
 $result = mysqli_query($connection,$sql);
-echo $sql;
 
 while($row = mysqli_fetch_array($result)) {
    $id=$row['inventory_id'];
@@ -100,7 +100,7 @@ $query = "INSERT INTO `performance_records`(
     '$user_id',
     '1',
     '$id',
-    'pc scan',
+    '22',
      now(),
      now(),
     '1',
@@ -147,7 +147,7 @@ SET
     '$user_id',
     '1',
     '$id',
-    'pc scan update',
+    '23',
      now(),
      now(),
     '1',

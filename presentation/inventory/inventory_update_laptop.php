@@ -198,8 +198,8 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">MFG</div>
                         <div class="col-8">
-                            <input type="text" placeholder="" style="width: 100%;" name="mfg"
-                                value="<?php echo $mfg ?>">
+                            <input type="text" placeholder="" style="width: 100%;" name="mfg" value="<?php echo $mfg ?>"
+                                required>
                             <input type="text" placeholder="For Manual Enter" name="inventory_id" style="width: 100%;"
                                 class="d-none" value="<?php echo "$inventory_id"; ?>">
                         </div>
@@ -213,7 +213,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Device</div>
                         <div class="col-8">
-                            <select name="device" id="device" class="DropDown select2" style="width: 100%;">
+                            <select name="device" id="device" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="laptop" value="<?php echo $device ?>"><?php echo $device ?>
                                 </option>
                             </select>
@@ -223,7 +223,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Brand</div>
                         <div class="col-8">
-                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;">
+                            <select name="brand" id="brand" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$brand"; ?>"><?php echo "$brand"; ?>
                                 </option>
                                 <?php
@@ -242,7 +242,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Series</div>
                         <div class="col-8">
-                            <select name="series" id="series" class="DropDown select2" style="width: 100%;">
+                            <select name="series" id="series" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$series"; ?>"><?php echo "$series"; ?>
                                 </option>
                                 <?php
@@ -262,7 +262,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Model</div>
                         <div class="col-8">
-                            <select name="model" id="model" class="DropDown select2" style="width: 100%;">
+                            <select name="model" id="model" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$model"; ?>"><?php echo "$model"; ?>
                                 </option>
                                 <?php
@@ -281,7 +281,8 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Processor</div>
                         <div class="col-8">
-                            <select name="processor" id="processor" class="DropDown select2" style="width: 100%;">
+                            <select name="processor" id="processor" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected value="<?php echo "$processor"; ?>"><?php echo "$processor"; ?>
                                 </option>
                                 <?php
@@ -300,7 +301,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Core</div>
                         <div class="col-8">
-                            <select name="core" id="core" class="DropDown select2" style="width: 100%;">
+                            <select name="core" id="core" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$core"; ?>"><?php echo "$core"; ?></option>
                                 <?php
                                 $query = "SELECT  core FROM main_inventory_informations GROUP BY core ";
@@ -318,7 +319,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Gen</div>
                         <div class="col-8">
-                            <select name="gen" id="gen" class="DropDown select2" style="width: 100%;">
+                            <select name="gen" id="gen" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$gen"; ?>"><?php echo "$gen"; ?></option>
                                 <?php
                                 $query = "SELECT  generation FROM main_inventory_informations GROUP BY generation ";
@@ -335,7 +336,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Speed</div>
                         <div class="col-8">
-                            <select name="speed" id="speed" class="DropDown select2" style="width: 100%;">
+                            <select name="speed" id="speed" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$speed"; ?>"><?php echo "$speed"; ?>
                                 </option>
                                 <?php
@@ -354,7 +355,8 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">LCD Size</div>
                         <div class="col-8">
-                            <select name="lcd_size" id="lcd_size" class="DropDown select2" style="width: 100%;">
+                            <select name="lcd_size" id="lcd_size" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected value="<?php echo "$lcd_size"; ?>"><?php echo "$lcd_size"; ?>
                                 </option>
                                 <?php
@@ -372,7 +374,8 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Resolution</div>
                         <div class="col-8">
-                            <select name="resolution" id="resolution" class="DropDown select2" style="width: 100%;">
+                            <select name="resolution" id="resolution" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected value="<?php echo "$resolution"; ?>">
                                     <?php echo "$resolution"; ?>
                                 </option>
@@ -391,7 +394,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Battery</div>
                         <div class="col-8">
-                            <select name="battery" id="battery" class="DropDown select2" style="width: 100%;">
+                            <select name="battery" id="battery" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$battery"; ?>"><?php echo "$battery"; ?>
                                 </option>
                                 <?php if($battery == 'yes'){
@@ -408,7 +411,8 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Touch</div>
                         <div class="col-8">
-                            <select name="screen_type" id="touch" class="DropDown select2" style="width: 100%;">
+                            <select name="screen_type" id="touch" class="DropDown select2" style="width: 100%;"
+                                required>
                                 <option selected value="<?php echo "$screen_type"; ?>">
                                     <?php echo "$screen_type"; ?>
                                 </option>
@@ -426,7 +430,7 @@ while($row = mysqli_fetch_array($result)) {
                     <div class="row mb-1">
                         <div class="col-4 addLable">Opticle</div>
                         <div class="col-8">
-                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;">
+                            <select name="dvd" id="opticle" class="DropDown select2" style="width: 100%;" required>
                                 <option selected value="<?php echo "$optical"; ?>"><?php echo "$optical"; ?></option>
                                 <?php if($optical == 'yes'){
                                     echo "<option  value='no'>No</option>";
@@ -443,7 +447,7 @@ while($row = mysqli_fetch_array($result)) {
                         <div class="col-4 addLable">Keyboard Backlight</div>
                         <div class="col-8">
                             <select name="keyboard_backlight" id="keyboard_backlight" class="DropDown select2"
-                                style="width: 100%;">
+                                style="width: 100%;" required>
                                 <option selected></option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>

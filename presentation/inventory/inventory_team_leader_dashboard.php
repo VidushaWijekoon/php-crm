@@ -275,6 +275,14 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="btnCardLable"> Add Laptop</div>
                 </div>
             </a>
+            <a href="./inventory_out.php">
+                <div class="btnCard mr-3 mt-2 mb-1">
+                    <div class="btnCardIcon">
+                        <i class="fa-solid fa-plus" style="color: #168EB4;font-size: 15px;"></i>
+                    </div>
+                    <div class="btnCardLable"> Inventory Out</div>
+                </div>
+            </a>
             <!-- ////////////// -->
             <!-- Btn Card -->
             <a href="./inventory_update_laptop.php">
