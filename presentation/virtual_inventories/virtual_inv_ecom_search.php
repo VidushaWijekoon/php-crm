@@ -135,7 +135,7 @@ if (!isset($_SESSION['user_id'])) {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff !important;
+    /* color: #fff !important; */
 }
 
 .btnBox:hover+.hide {
@@ -189,16 +189,10 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-<div class="row mb-4 ml-1 pt-2 justify-content-between">
+<div class="row mb-4 ml-1 pt-2">
     <!-- <i class=" fa-solid fa-store"></i> -->
-    <div class="row">
-        <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
-        <h6 class="pageName pt-1"> E-commerce inventory</h6>
-    </div>
-    <div>
-        <a href="" class="btnTB mr-2">Stock Report</a>
-    </div>
-
+    <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
+    <h6 class="pageName pt-1"> E-commerce inventory</h6>
 </div>
 
 <div class="row virtualInvSec">
@@ -233,9 +227,8 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="col-3">
                     <input class="w-100" type="text">
                 </div>
-                <div class="col-1"> <a href="./virtual_inv_ecom_search.php">
-                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    </a>
+                <div class="col-1">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
             </div>
         </div>
@@ -257,18 +250,18 @@ if (!isset($_SESSION['user_id'])) {
 
             <!-- Full Rack eka Front -->
             <div class="rackSec w-100 m-3 text-center">
-                <p style="font-size: 15px; font-weight: 600;">Front-Side</p>
+                <p style="font-size: 15px; font-weight: 600;">Search Result</p>
                 <br>
                 <!-- Rack Eke Lable  -->
                 <div class="d-flex justify-content-center">
                     <div class="rackLbl">
-                        <div class="w-100">A</div>
-                        <div class="w-100">B</div>
-                        <div class="w-100">C</div>
-                        <div class="w-100">D</div>
-                        <div class="w-100">E</div>
-                        <div class="w-100">F</div>
-                        <div class="w-100">G</div>
+                        <!-- <div class="w-100">A</div> -->
+                        <!-- <div class="w-100">B</div> -->
+                        <!-- <div class="w-100">C</div> -->
+                        <!-- <div class="w-100">D</div> -->
+                        <!-- <div class="w-100">E</div> -->
+                        <!-- <div class="w-100">F</div> -->
+                        <!-- <div class="w-100">G</div> -->
                     </div>
                 </div>
 
@@ -293,57 +286,7 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- Rck eke Sturucter eka -->
 
 
-                    <div class=" rackSturcture">
 
-                        <!-- <div class="rackfull"> -->
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-                                    <!-- <span>A-1</span> -->
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
                     <div class=" rackSturcture">
                         <!-- Rack Layers T -->
                         <div class="rackLayer ">
@@ -353,8 +296,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-6">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>B-6</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -386,8 +329,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-5">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>B-5</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -419,8 +362,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-4">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>B-4</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -457,8 +400,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-6">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>C-6</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -490,8 +433,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-5">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>C-5</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -523,8 +466,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-4">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>C-4</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -554,190 +497,9 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
                     </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
 
 
-                        </div>
 
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
 
                 </div>
                 <div class="rackDwn">
@@ -758,12 +520,7 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- Rck eke Sturucter eka -->
 
 
-                    <div class=" rackSturcture">
 
-
-
-
-                    </div>
                     <div class=" rackSturcture">
 
                         <!-- Rack Layer B-3 -->
@@ -771,8 +528,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-3">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>B-3</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -804,8 +561,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-2">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>B-2</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -837,8 +594,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-1">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>B-1</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -875,8 +632,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-3">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>C-3</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -908,8 +665,8 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-2">
-                                    <div class="btnTB btnBox">
+                                <a href="./virtual_inv_ecom_add_remove">
+                                    <div class="btnT btnBox">
                                         <span>C-2</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
@@ -941,7 +698,7 @@ if (!isset($_SESSION['user_id'])) {
                             <!-- Box sec 1 -->
                             <div class="box border">
                                 <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-1">
+                                <a href="./virtual_inv_ecom_add_remove">
                                     <div class="btnTB btnBox">
                                         <span>C-1</span>
                                     </div>
@@ -972,14 +729,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
                     </div>
-                    <div class=" rackSturcture">
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
+
 
                 </div>
             </div>
