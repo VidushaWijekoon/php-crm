@@ -29,46 +29,46 @@ if (isset($_POST['add_new_item'])) {
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .virtualInvSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.virtualInvSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
-
-
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+}
 
 
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
+
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -105,7 +105,8 @@ if (isset($_POST['add_new_item'])) {
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> device</div>
                             <div class="col-lg-4 formInput">
-                                <select name="device" id="device" class="DropDown select2" style="border-radius: 5px; width: 100%">
+                                <select name="device" id="device" class="DropDown select2"
+                                    style="border-radius: 5px; width: 100%">
                                     <option selected value="">--Select Device--</option>
                                     <?php
                                     $query = "SELECT device FROM main_inventory_informations GROUP BY device ASC";
@@ -113,9 +114,9 @@ if (isset($_POST['add_new_item'])) {
 
                                     while ($xd = mysqli_fetch_array($result)) :;
                                     ?>
-                                        <option value="<?php echo $xd["device"]; ?>">
-                                            <?php echo strtoupper($xd["device"]); ?>
-                                        </option>
+                                    <option value="<?php echo $xd["device"]; ?>">
+                                        <?php echo strtoupper($xd["device"]); ?>
+                                    </option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
@@ -123,7 +124,8 @@ if (isset($_POST['add_new_item'])) {
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> Brand</div>
                             <div class="col-lg-4 formInput">
-                                <select name="brand" id="brand" class="DropDown select2" style="border-radius: 5px; width: 100%">
+                                <select name="brand" id="brand" class="DropDown select2"
+                                    style="border-radius: 5px; width: 100%">
                                 </select>
                             </div>
                         </div>
@@ -131,7 +133,8 @@ if (isset($_POST['add_new_item'])) {
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> Model</div>
                             <div class="col-lg-4 formInput">
-                                <select name="model" id="model" class="DropDown select2" style="border-radius: 5px; width: 100%">
+                                <select name="model" id="model" class="DropDown select2"
+                                    style="border-radius: 5px; width: 100%">
                                 </select>
                             </div>
                         </div>
@@ -150,7 +153,8 @@ if (isset($_POST['add_new_item'])) {
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> Rack</div>
                             <div class="col-lg-4 formInput">
-                                <input class="w-100" type="text" name="rack_number" disabled value="<?php echo $rack ?>">
+                                <input class="w-100" type="text" name="rack_number" disabled
+                                    value="<?php echo $rack ?>">
                             </div>
                         </div>
                     </div>
@@ -167,25 +171,25 @@ if (isset($_POST['add_new_item'])) {
 <script src="../../plugins/jquery/jquery.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $("#device").on("change", function() {
-            var device = $("#device").val();
-            var getURL = "./addNew/get_laptop_details.php?device=" + device;
-            $.get(getURL, function(data, status) {
-                $("#brand").html(data);
-            });
+$(document).ready(function() {
+    $("#device").on("change", function() {
+        var device = $("#device").val();
+        var getURL = "./addNew/get_laptop_details.php?device=" + device;
+        $.get(getURL, function(data, status) {
+            $("#brand").html(data);
         });
     });
+});
 
-    $(document).ready(function() {
-        $("#brand").on("change", function() {
-            var brand = $("#brand").val();
-            var getURL = "./addNew/get_laptop_details.php?brand=" + brand;
-            $.get(getURL, function(data, status) {
-                $("#model").html(data);
-            });
+$(document).ready(function() {
+    $("#brand").on("change", function() {
+        var brand = $("#brand").val();
+        var getURL = "./addNew/get_laptop_details.php?brand=" + brand;
+        $.get(getURL, function(data, status) {
+            $("#model").html(data);
         });
     });
+});
 </script>
 
 
