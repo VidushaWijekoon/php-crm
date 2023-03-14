@@ -89,7 +89,7 @@ if(mysqli_query($connection, $sql)){
     '$user_id',
     '$department_id',
     '$pallet_id',
-    'monitor add to pallet',
+    '16',
     '$start_date',
     '$start_date',
     '$brand',
@@ -146,6 +146,14 @@ if($save == 2){
     $department_id = $_SESSION['department_id'];
     $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
     $start_date = $date1->format('Y-m-d H:i:s');
+    if($category ==2){
+        $category="18 ";
+    }elseif($category ==3){
+        $category="19";
+    }elseif($category ==4){
+        $category="20";
+    }
+
     $query = " INSERT INTO `performance_records`(
     `user_id`,
     `department_id`,
