@@ -48,7 +48,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
 </div>
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2">
-        <button class="btn btn-xs btn-primary">Download Excel File</button>
+        <a href="stock_for_excel.php?brand=<?php echo $brand ?>" class="btn btn-xs btn-primary">Download Excel File</a>
     </div>
 </div>
 <div class="row">
@@ -83,7 +83,6 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                                 <th>In Stock</th>
                                 <th>Processing</th>
                                 <th>Dispatch</th>
-                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody class="table-body">
@@ -96,7 +95,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                                 $result = mysqli_query($connection, $query);
                             }
                             foreach ($result as $data) {
-                                $model = $data['model'];
+                                $model = strToUpper($data['model']);
                                 $core = $data['core'];
                                 $in_total = $data['in_total'];
                                 $i++;
@@ -122,7 +121,8 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                                 echo "<tr class='cell-1' data-toggle='collapse'   >
                                      <td>$i</td>
                                     <td>$brand</td>
-                                    <td>$model</td>
+                                    <td> <a href='model_view.php?model=$model&brand=$brand'>
+                                                $model</a></td>
                                     <td>$in_total</td>";
                                      echo "<td>";
                                         echo $in_stock;
@@ -135,26 +135,9 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                                         echo $dispatch;
                                         echo "
                                     </td>
-                                    <td class='text-center'>
-                                            <a class='btn btn-xs bg-primary '
-                                                href='model_view.php?model=$model&brand=$brand'><i class='fas fa-eye'></i>
-                                                </a>
-                                        </td>
                                         </tr>";
                             }
                             ?>
-                            <!-- <tr class="cell-1" data-toggle="collapse">
-
-                                <td>816</td>
-                                <td>0</td>
-                                <td>0
-                                </td>
-                                <td class="text-center">
-                                    <a class="" href="model_view.php">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </td>
-                            </tr> -->
                         </tbody>
                     </table>
                     <?php if ($search_value == 0) {?>

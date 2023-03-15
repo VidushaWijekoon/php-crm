@@ -27,7 +27,6 @@ $department_id = $_SESSION['department_id'];
  $beforetea=0;
  $after_tea=0;
  $dayend=0;
- echo $sql;
  foreach($sql_run2 as $data){
     if($data['schedule_id'] ==1){
     $morning=$data['schedule_time'];
@@ -603,7 +602,7 @@ input[type=text] {
                                             <div class="content-date" style="left: 0 !important;">
                                                 <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
                                             </div>
-                                            <div class="meta-date timeSec" id="time1">
+                                            <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
                                                     <?php echo $beforelunch ?>
                                                 </div>
@@ -614,7 +613,7 @@ input[type=text] {
                                             <div class="content-date" style="left: 0 !important;">
                                                 <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
                                             </div>
-                                            <div class="meta-date timeSec" id="time2">
+                                            <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
                                                     <?php echo $beforelunch ?>
                                                 </div>
@@ -641,7 +640,7 @@ input[type=text] {
                                             </div> -->
                                             <?php 
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
-                                            $session1_start = $date1->format("Y-m-d 15:05:00");
+                                            $session1_start = $date1->format("Y-m-d 15:00:00");
                                             $session1_end = $date1->format("Y-m-d 18:45:00");
                                             $scan_time=0;
                                             $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
