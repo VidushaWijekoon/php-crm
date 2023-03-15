@@ -24,28 +24,36 @@ $mfg = '';
 
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
-    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg' AND status ='0' AND rack = '$rack'";
+    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg' AND dispatch ='0' AND rack = '$rack'";
     echo $query;
-
+    $rows = 0;
     $quary_run = mysqli_query($connection, $query);
     print_r($quary_run);
+    $rows = mysqli_num_rows($quary_run);
 
-    while ($x = mysqli_fetch_assoc($quary_run)) {
-        $mfg = $x['mfg'];
-        $asin = $x['asin_sku'];
-        $device = $x['device'];
-        $brand = $x['brand'];
-        $model = $x['model'];
-        $qty = $x['qty'];
+    if ($rows == 0) {
+        echo "<script>
+        alert('This Laptop not in this Rack');
+        </script>";
+    } else {
+
+        while ($x = mysqli_fetch_assoc($quary_run)) {
+            $mfg = $x['mfg'];
+            $asin = $x['asin_sku'];
+            $device = $x['device'];
+            $brand = $x['brand'];
+            $model = $x['model'];
+            $qty = $x['qty'];
+        }
     }
 }
 
 if (isset($_POST['removeItem'])) {
     $mfg = $_POST['mfg'];
-    $query = "UPDATE `e_com_inventory` SET `status`='1' WHERE mfg ='$mfg'";
+    $query = "UPDATE `e_com_inventory` SET `dispatch`='1' WHERE mfg ='$mfg'";
     $query_run = mysqli_query($connection, $query);
-    if (empty($query_run)) {
-        echo "<script>alert('Removed From Inventory');</script>";
+    if (!empty($query_run)) {
+        echo "<script>alert('Dispatched From Inventory');</script>";
     }
 }
 
@@ -62,11 +70,6 @@ if (isset($_POST['removeItem'])) {
 
 
 ?>
-
-
-
-
-
 
 <style>
 .pageNameIcon {
@@ -115,8 +118,9 @@ if (isset($_POST['removeItem'])) {
 
 
 <div class="row pageNavigation pt-2 pl-2">
-    <a href="./virtual_inv_ecommerce.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
-        Inventory</a>
+    <a href="./virtual_inv_ecom_add_remove.php?rack=<?php echo $rack ?>"><i class="fa-solid fa-backward"></i>&nbsp;
+        &nbsp;Back to
+        Rack</a>
 </div>
 
 
@@ -158,6 +162,7 @@ if (isset($_POST['removeItem'])) {
 
                         <button type="submit" name="scanMfg" class="d-none"></button>
                     </form>
+                    <hr class="sectionUnderline w-75 mt-3">
                     <form action="" method="POST">
 
 

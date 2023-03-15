@@ -2,6 +2,8 @@
 session_start();
 require_once('../includes/header.php');
 
+require_once("../../functions/db_connection.php");
+
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
@@ -149,16 +151,17 @@ if (!isset($_SESSION['user_id'])) {
     position: absolute;
     /* width: 300px; */
     padding: 5px 10px;
-    height: 100px;
-    top: -105px;
+    /* height: 500px; */
+    /* top: -125px; */
     left: 20px;
+    z-index: 3;
 }
 
 /*  */
 
 .insideDetails {
     background-color: black;
-    opacity: 0.5;
+    opacity: 0.8;
     color: #ffffff;
     border-radius: 10px;
 }
@@ -176,6 +179,10 @@ if (!isset($_SESSION['user_id'])) {
     /* text-align: center; */
     font-weight: 600;
 
+}
+
+.virtualInvSec {
+    margin-bottom: 250px;
 }
 </style>
 
@@ -369,9 +376,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -402,9 +420,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -435,9 +464,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -473,9 +513,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -506,9 +557,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -539,9 +601,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -787,9 +860,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -820,9 +904,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -842,6 +937,8 @@ if (!isset($_SESSION['user_id'])) {
                                         <span>B-1</span>
                                     </div>
                                     <!-- hover details  Sec eka -->
+
+
                                     <div class="hide insideDetails">
                                         <div class="tableModel">
                                             <table>
@@ -853,14 +950,27 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
                                     </div>
                                     <!-- iwrai hover eka -->
+
+
                                 </a>
                             </div>
                             <!-- /// -->
@@ -891,9 +1001,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -924,9 +1045,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>
@@ -957,9 +1089,20 @@ if (!isset($_SESSION['user_id'])) {
                                                     </th>
                                                     <th>Qty</th>
                                                 </tr>
+                                                <?php
+                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
+                                                $query_run = mysqli_query($connection, $query);
+
+                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                    $tot = $data['tot_count'];
+                                                    $model = $data['model'];
+                                                ?>
                                                 <tr>
-                                                    <td>Latitude e2450</td>
-                                                    <td>10</td>
+                                                    <td><?php echo $model ?></td>
+                                                    <td><?php echo $tot ?></td>
+                                                    <?php
+                                                }
+                                                    ?>
                                                 </tr>
                                             </table>
                                         </div>

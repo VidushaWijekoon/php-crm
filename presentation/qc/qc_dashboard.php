@@ -806,6 +806,14 @@ input[type=text] {
                                         <div class="col-10">
                                             <div class="row mb-1">
                                                 <div class="col-3">
+                                                    ASIN/SKU
+                                                </div>
+                                                <div class="col-4">
+                                                    <input type="text" name="asin">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <div class="col-3">
                                                     Brand
                                                 </div>
                                                 <div class="col-4">
@@ -855,6 +863,22 @@ input[type=text] {
                                             <div class="row mb-1">
                                                 <div class="col-3">
                                                     Generation
+                                                </div>
+                                                <div class="col-4">
+                                                    <input type="text" name="gen">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <div class="col-3">
+                                                    Touch
+                                                </div>
+                                                <div class="col-4">
+                                                    <input type="text" name="gen">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <div class="col-3">
+                                                    Backlight Keyboard
                                                 </div>
                                                 <div class="col-4">
                                                     <input type="text" name="gen">
