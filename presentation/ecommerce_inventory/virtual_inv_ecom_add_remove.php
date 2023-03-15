@@ -117,7 +117,8 @@ $rack = $_GET['rack'];
                             <tr>
                                 <th>#</th>
                                 <th>MFG</th>
-                                <th>ASIN/SKUe</th>
+                                <th>ASIN Serial</th>
+                                <th>ASIN/SKU</th>
                                 <th>Device</th>
                                 <th>Brand</th>
                                 <th>Model</th>
@@ -128,10 +129,10 @@ $rack = $_GET['rack'];
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM e_com_inventory WHERE rack = '$rack' AND status ='0'";
+                            $query = "SELECT * FROM e_com_inventory WHERE rack = '$rack' AND dispatch ='0'";
                             $data = mysqli_query($connection, $query);
                             $i = 0;
-                            while ($x =                          mysqli_fetch_assoc($data)) {
+                            while ($x = mysqli_fetch_assoc($data)) {
                                 $i++;
                             ?>
 
@@ -141,6 +142,7 @@ $rack = $_GET['rack'];
                                 </td>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $x['mfg'] ?></td>
+                                <td><?php echo $x['asin_serial'] ?></td>
                                 <td><?php echo $x['asin_sku'] ?></td>
                                 <td><?php echo $x['device'] ?></td>
                                 <td><?php echo $x['brand'] ?></td>

@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $rack = $_GET['rack'];
 
-$mfg = '';
+$mfg = "";
 $alsakbqr = "";
 $asin = "";
 $device = "";
@@ -36,7 +36,11 @@ if (isset($_POST['scanMfg'])) {
         $asin = $x['asin'];
     }
 }
+
+
+
 if (isset($_POST['addNewItem'])) {
+
     // $alsakbQR = mysqli_real_escape_string($connection, $_POST['alsakbQR']);
     $mfg = mysqli_real_escape_string($connection, $_POST['mfg']);
     $asinSku = mysqli_real_escape_string($connection, $_POST['asinSku']);
@@ -45,22 +49,51 @@ if (isset($_POST['addNewItem'])) {
     $model = mysqli_real_escape_string($connection, $_POST['model']);
     $qty = mysqli_real_escape_string($connection, $_POST['qty']);
 
-    $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack)
-    VALUES('$mfg','$asinSku','$deviceType','$brand','$model','$qty','$rack')";
-
-    echo $query;
-
-    $data = mysqli_query($connection, $query);
-
-
-    if (empty($data)) {
-
-        echo "<script>alert('data not added');</script>";
+    echo $mfg;
+    if ($mfg == "") {
+        echo "<script>
+    alert('Please Scan/Enter MFG Number First');
+    </script>";
     } else {
-        echo "<script>alert('data added');</script>";
+
+        $queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
+        echo $queryS;
+        $rows = 0;
+        $query_run = mysqli_query($connection, $queryS);
+        $rows = mysqli_num_rows($query_run);
+        // print_r($query_run);
+
+
+        if ($rows == 0) {
+
+
+            $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack)
+        VALUES('$mfg','$asinSku','$deviceType','$brand','$model','$qty','$rack')";
+            $data = mysqli_query($connection, $query);
+
+            echo "insert waduna";
+            if (empty($data)) {
+
+                echo "<script>alert('data not added');</script>";
+            } else {
+                echo "<script>alert('data added');</script>";
+            }
+        } else {
+            $query = "UPDATE e_com_inventory SET dispatch ='0', rack = '$rack' WHERE mfg ='$mfg'";
+
+            $data = mysqli_query($connection, $query);
+
+            echo "update waduna";
+
+            if (empty($data)) {
+
+                echo "<script>alert('data not added');</script>";
+            } else {
+                echo "<script>alert('laptop Added Again');</script>";
+            }
+        }
     }
 }
-
 
 ?>
 
@@ -111,8 +144,9 @@ if (isset($_POST['addNewItem'])) {
 
 
 <div class="row pageNavigation pt-2 pl-2">
-    <a href="./virtual_inv_ecommerce.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
-        Inventory</a>
+    <a href="./virtual_inv_ecom_add_remove.php?rack=<?php echo $rack ?>"><i class="fa-solid fa-backward"></i>&nbsp;
+        &nbsp;Back to
+        Rack</a>
 </div>
 
 
@@ -155,11 +189,11 @@ if (isset($_POST['addNewItem'])) {
                         </div>
                     </div>
                 </form>
-
+                <hr class="sectionUnderline w-75 mt-3">
 
                 <form action="" method="POST">
 
-                    <input name="mfg" type="hidden" value="<?php echo $mfg ?>">
+                    <input name="mfg" type="hidden" value="<?php echo $mfg ?>" required>
 
                     <div class="row justify-content-center mb-1">
                         <div class="col-lg-2 formLable"> ASIN/SKU</div>

@@ -257,109 +257,27 @@ if (!isset($_SESSION['user_id'])) {
         <br>
         <br>
 
-        <div class="orderviewTableSec table-responsive">
-            <div class="tblName">Order Details</div>
-            <table class=" table table-hover text-center" style="width: 80%;">
-                <thead style="background-color: #fff;">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">S/O NO. </th>
-                        <th scope="col">Order Number</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Order Type</th>
-                        <th scope="col">Order Details</th>
-                        <!-- <th scope="col">Inventory Type</th>                        -->
-                        <th scope="col">Qty</th>
-                        <th scope="col">Packed Qty</th>
-                        <th scope="col">Created By</th>
-
-                        <!-- <th scope="col">Price</th> -->
-                        <!-- <th scope="col">Status</th> -->
-                        <th scope="col">Created Date</th>
-                        <th scope="col">DeadLine Date</th>
-                        <th scope="col">Remaining Time</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th style="color:black">1</th>
-                        <td><a href="./e_com_orderdetail_list.php" style="color:black;">ALSk1234</a></td>
-                        <td>S51231sD</td>
-                        <td>Noon</td>
-                        <td>FBN</td>
-                        <td>Thinkpad T460 </td>
-                        <!-- <td>E-Commerce</td>                            -->
-                        <td>10</td>
-                        <td>
-                            <span class="packedQty"> 5</span>
-                        </td>
-                        <td>Sales Person 1</td>
-                        <td>2022-10-02</td>
-                        <td>2022-10-31</td>
-                        <td>10 : 31 : 25</td>
-                    </tr>
-
-
-
-                </tbody>
-            </table>
-
-        </div>
-        <div class="orderviewTableSec table-responsive">
-            <div class="tblName">Order Laptop Details</div>
-            <table class=" table table-hover text-center" style="width: 80%;">
-                <thead style="background-color: #fff;">
-                    <tr>
-                        <th scope="col">Brand</th>
-                        <th scope="col">Model</th>
-                        <th scope="col">Processor</th>
-                        <th scope="col">Core</th>
-                        <th scope="col">Gen</th>
-                        <th scope="col">Speed</th>
-                        <th scope="col">Touch</th>
-                        <th scope="col">Screen Size</th>
-                        <th scope="col">RAM</th>
-                        <th scope="col">HDD</th>
-                        <th scope="col">OS</th>
-                        <th scope="col">Graphic Brand</th>
-                        <th scope="col">Graphic Capacity</th>
-                        <th scope="col">Charger</th>
-                        <th scope="col">Condition</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-
-                        <td>Dell</td>
-                        <td>Latitude e5480</td>
-                        <td>intell</td>
-                        <td>17-5280</td>
-                        <td>5</td>
-                        <td>2.90Ghz</td>
-                        <td>Yes</td>
-                        <td>14</td>
-                        <td>8GB</td>
-                        <td>256GB</td>
-                        <td>Windows 10</td>
-                        <td>nvidea</td>
-                        <td>6GB</td>
-                        <td>Charger</td>
-                        <td>Condition</td>
-
-                    </tr>
-
-
-
-                </tbody>
-            </table>
-
-        </div>
 
         <div class="scanDetailsSec">
 
             <div class="tblName mb-2">Scanned Laptop Details</div>
             <div class="scanDetails">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-md-5">
+                        <div class="row mt-1">
+                            <label class="col-5  lable1">ASIN</label>
+                            <input class="col-7" type="text">
+                            <!-- <div class="col-2"></div>    -->
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="row mt-1">
+                            <!-- <div class="col-3"></div> -->
+
+                        </div>
+                    </div>
+                </div>
                 <div class="row d-flex justify-content-between">
                     <div class="col-md-5">
                         <div class="row mt-1">
@@ -474,7 +392,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="col-md-5">
                         <div class="row mt-1">
                             <!-- <div class="col-3"></div> -->
-                            <label class="col-5  lable1">Inventory Location</label>
+                            <label class="col-5  lable1">Backlight Keyboard</label>
                             <input class="col-7" type="text">
                         </div>
                     </div>
@@ -575,353 +493,13 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <!-- Charger -->
 
-        <div class="chargingContentSec mt-3">
-            <div class="" style="width: 80%;">
-                <div class="">
-                    <div class="createListingHeading">
-                        Packing Charger
-                    </div>
-                </div>
-                <hr class="sectionUnderline">
 
-                <div class="row">
-                    <div class="packingHeader col-12 text-center mb-1">
-                        <p>65w Blue Pin Dell US Charger</p>
-
-                    </div>
-
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-3">
-                        <ul class="nav nav-tabs d-flex flex-column" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <div class="nav-link active text-danger" id="home-tab" data-toggle="tab" href="#home"
-                                    role="tab" aria-controls="home" aria-selected="true">
-                                    <span style="color: #AFAFAF; font-weight: 700;">Charger Type</span>
-                                </div>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <div class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
-                                <span style="color: #AFAFAF; font-weight: 700">Bulk Box</span>
-                                </div>
-                            </li>                        -->
-                        </ul>
-                    </div>
-
-                    <div class="tab-content tableSec1 col-9" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <!-- single box -->
-                            <div class="row text-center">
-                                <div class="col-4 border">
-                                    <!-- <div class="row"> -->
-                                    <p class="mt-1">Charger UK</p>
-                                    <!-- </div> -->
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/ukcharger.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-
-                                </div>
-                                <div class="col-4 border">
-                                    <p class="mt-1">Charger US</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/US charger2.jpeg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-4 border">
-                                    <p class="mt-1">Charger EU</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/EU charger2.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-            </div>
-
-
-        </div>
         <!-- Box -->
 
         <div class="packingStartContentSec mt-3">
             <div class="PackingSec" style="width: 80%;">
-                <div class="">
-                    <div class="createListingHeading">
-                        Packing Laptop
-                    </div>
-                </div>
+
                 <hr class="sectionUnderline">
-
-                <div class="row">
-                    <div class="packingHeader col-12 text-center mb-2">
-                        <p>Single Box Packing</p>
-                    </div>
-
-                </div>
-
-
-                <div class="row">
-                    <div class="col-3">
-                        <ul class="nav nav-tabs d-flex flex-column" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <div class="nav-link active" id="amazon-tab" data-toggle="tab" href="#amazon" role="tab"
-                                    aria-controls="home" aria-selected="true">
-                                    <span style="color: #AFAFAF; font-weight: 700;">Single Box-Amazon</span>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="nav-link" id="cartlow-tab" data-toggle="tab" href="#cartlow" role="tab"
-                                    aria-controls="home" aria-selected="true">
-                                    <span style="color: #AFAFAF; font-weight: 700;">Single Box-Cartlow</span>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="nav-link" id="noon-tab" data-toggle="tab" href="#noon" role="tab"
-                                    aria-controls="home" aria-selected="true">
-                                    <span style="color: #AFAFAF; font-weight: 700;">Single Box-Noon</span>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div class="nav-link" id="bulk-tab" data-toggle="tab" href="#bulk" role="tab"
-                                    aria-controls="profile" aria-selected="false">
-                                    <span style="color: #AFAFAF; font-weight: 700">Bulk Box</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-content tableSec1 col-9" id="myTabContent">
-                        <!-- Amazon -->
-                        <div class="tab-pane fade show active" id="amazon" role="tabpanel" aria-labelledby="amazon-tab">
-                            <!-- single box -->
-                            <div class="row d-flex flex-wrap text-center">
-                                <div class="col-3 border p-2">
-                                    <p>Cloth</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/clothkeybord.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bag</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/bag.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bubble</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/buble.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Mouse Pad with Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/mousepad.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Bubble Wrap with Charger and Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/charger.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Cartlow -->
-                        <div class="tab-pane fade show" id="cartlow" role="tabpanel" aria-labelledby="cartlow-tab">
-                            <!-- single box -->
-                            <div class="row d-flex flex-wrap text-center">
-                                <div class="col-3 border p-2">
-                                    <p>Cloth</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/clothkeybord.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bag</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/bag.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bubble</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/buble.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Mouse Pad with Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/mousepad.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Bubble Wrap with Charger and Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/charger.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Noon -->
-                        <div class="tab-pane fade show" id="noon" role="tabpanel" aria-labelledby="noon-tab">
-                            <!-- single box -->
-                            <div class="row d-flex flex-wrap text-center">
-                                <div class="col-3 border p-2">
-                                    <p>Cloth</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/clothkeybord.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bag</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/bag.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bubble</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/buble.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Mouse Pad with Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/mousepad.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Bubble Wrap with Charger and Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/charger.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bulk Box -->
-                        <div class="tab-pane fade show" id="bulk" role="tabpanel" aria-labelledby="bulk-tab">
-                            <!-- single box -->
-                            <div class="row d-flex flex-wrap text-center">
-                                <div class="col-3 border p-2">
-                                    <p>Cloth</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/clothkeybord.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bag</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/bag.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2">
-                                    <p>Bubble</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/buble.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Mouse Pad with Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/mousepad.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                                <div class="col-1 m-2 d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-circle-arrow-right" style="font-size:25px;"></i>
-                                </div>
-                                <div class="col-3 border p-2 mt-2">
-                                    <p>Bubble Wrap with Charger and Box</p>
-                                    <div class="row d-flex justify-content-center">
-                                        <img class="img-fluid" src="./images/charger.jpg" alt="" srcset=""
-                                            style="height: 150px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- /// -->
-                    </div>
-
-
-                </div>
 
                 <div class="row mt-4">
                     <div class="col-6">
@@ -942,10 +520,69 @@ if (!isset($_SESSION['user_id'])) {
 
             </div>
 
+
+
+
+
+            <div class="printingSec mt-4" style="width:80%">
+                <div class="">
+                    <div class="createListingHeading">
+                        Printing Packing Details
+                    </div>
+                </div>
+                <hr class="sectionUnderline">
+
+                <div class="packingSubSec">
+                    <div class="Lside">
+
+                        <h6>Final Product </h6>
+
+                        <div class="box1 border">
+
+                        </div>
+                        <!-- <div class="box1 mt-1 border">
+
+                        </div> -->
+
+
+                    </div>
+                    <div class="Rside">
+                        <h6>Printing Product </h6>
+
+                        <div class="box3 border">
+                            <p class="stikerHead">Microsoft Authorized Refurbisher</p>
+                            <p class="stikerDetails">Lenovo Thinkpad T460 Laptop</p>
+                            <p class="stikerDetails">intel i5-3100U 2.80Ghz processor</p>
+                            <p class="stikerDetails">Display 14 inch Diagonal LCD Display</p>
+                            <p class="stikerDetails">256GB SSD Disk</p>
+                            <p class="stikerDetails">8GB DDR4 RAM</p>
+                            <p class="stikerDetails">45W AC Adaptor</p>
+                            <p class="stikerDetails">Windows 10 Pro</p>
+                            <p class="stikerDetails">MFG - PCG12345</p>
+                            <p class="stikerDetails">ALSakb QR : <i class="fa-solid fa-qrcode"
+                                    style="font-size: 40px;"></i>
+                            </p>
+                            <p class="stikerDetails">ASIN - AS12345 &nbsp;&nbsp; <span>#5</span></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row w-100 mt-4 justify-content-end">
+                    <button class="btnTB" type="submit">
+                        Print & Complete
+                    </button>
+                </div>
+
+
+            </div>
             <div class="scanedLaptopList mt-4" style="width:80%">
                 <div class="">
                     <div class="createListingHeading">
-                        Scanned Laptop Details
+                        Printed Laptop Details
                     </div>
                 </div>
                 <hr class="sectionUnderline">
@@ -975,70 +612,12 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-center mt-2">
+                <!-- <div class="d-flex justify-content-center mt-2">
                     <button class="btnT mx-2">Confirm</button>
                     <button class="btnT mx-2">Print</button>
-                </div>
+                </div> -->
 
 
-
-
-            </div>
-
-
-
-            <div class="printingSec" style="width:80%">
-                <div class="">
-                    <div class="createListingHeading">
-                        Printing Packing Details
-                    </div>
-                </div>
-                <hr class="sectionUnderline">
-
-                <div class="packingSubSec">
-                    <div class="Lside">
-
-                        <h6>Final Product </h6>
-
-                        <div class="box1 border">
-
-                        </div>
-                        <div class="box1 mt-1 border">
-
-                        </div>
-
-
-                    </div>
-                    <div class="Rside">
-                        <h6>Printing Product </h6>
-
-                        <div class="box3 border">
-                            <p class="stikerHead">Microsoft Authorized Refurbisher</p>
-                            <p class="stikerDetails">Lenovo Thinkpad T460 Laptop</p>
-                            <p class="stikerDetails">intel i5-3100U 2.80Ghz processor</p>
-                            <p class="stikerDetails">Display 14 inch Diagonal LCD Display</p>
-                            <p class="stikerDetails">256GB SSD Disk</p>
-                            <p class="stikerDetails">8GB DDR4 RAM</p>
-                            <p class="stikerDetails">45W AC Adaptor</p>
-                            <p class="stikerDetails">Windows 10 Pro</p>
-                            <p class="stikerDetails">MFG - PCG12345</p>
-                            <p class="stikerDetails">ALSakb QR : <i class="fa-solid fa-qrcode"
-                                    style="font-size: 40px;"></i>
-                            </p>
-                            <p class="stikerDetails">ASIN - AS12345</p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="row w-100 mt-4 justify-content-end">
-                    <button class="btnTB" type="submit">
-                        Print & Complete
-                    </button>
-                </div>
 
 
             </div>
