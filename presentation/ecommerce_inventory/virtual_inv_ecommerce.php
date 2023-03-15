@@ -196,7 +196,7 @@ if (!isset($_SESSION['user_id'])) {
         <h6 class="pageName pt-1"> E-commerce inventory</h6>
     </div>
     <div>
-        <a href="" class="btnTB mr-2">Stock Report</a>
+        <a href="../ecommerce_stock_inventory/e_com_laptop_inventory.php" class="btnTB mr-2">Stock Report</a>
     </div>
 
 </div>
