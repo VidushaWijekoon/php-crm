@@ -8,9 +8,9 @@ $department_id=$_SESSION['department_id'];
 //check this pc already send to production or not 
 $sql="SELECT inventory_id FROM main_inventory_informations WHERE inventory_id='$inventory_id' AND  send_to_production='1' ";
 $sql_run=mysqli_query($connection,$sql);
-
 $exist=0;
 $exist=mysqli_num_rows($sql_run);
+
 if($exist ==0){
 
      echo '<script type="text/javascript">';
@@ -47,7 +47,6 @@ if($rows==1){
 
 }elseif($rows==0){
     $query="SELECT point FROM targets WHERE target_id =$job";
-    echo $query;
     $query_run=mysqli_query($connection,$query);
     $points=0;
     
