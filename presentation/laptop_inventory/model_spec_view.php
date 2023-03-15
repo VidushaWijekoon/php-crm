@@ -12,6 +12,11 @@ $brand=$_GET['brand'];
 $model=$_GET['model'];
 $core=$_GET['core'];
 $connection = mysqli_connect("localhost", "root", "", "main_project");
+$search_value ='pakaya';
+if(!empty($_GET['search_value'])){
+    $search_value=$_GET['search_value'];
+}
+if($search_value =='pakaya'){
 ?>
 <div class="row page-titles">
     <div class="col-md-5">
@@ -20,6 +25,7 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
         </a>
     </div>
 </div>
+<?php } ?>
 <div class="row">
     <div class="col col-sm-12 col-lg-12 justify-content-center mx-auto mt-2">
         <button onclick="exportToExcel('tblexportData', 'Available-stock-details')"

@@ -1,7 +1,7 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "main_project");
 require 'vendor/autoload.php';
-// $query = "SELECT * FROM `warehouse_information_sheet` GROUP BY core,model ORDER BY brand;";
+// $query = "SELECT * FROM `main_inventory_informations` GROUP BY core,model ORDER BY brand;";
 // $result_brand = mysqli_query($connection, $query);
 
 use PhpOffice\PhpSpreadsheet\IOFactory;

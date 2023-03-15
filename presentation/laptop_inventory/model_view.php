@@ -9,8 +9,12 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
 $brand=$_GET['brand'];
-$model =$_GET['model']
-
+$model =$_GET['model'];
+$search_value ='pakaya';
+if(!empty($_GET['search_value'])){
+    $search_value=$_GET['search_value'];
+}
+if($search_value =='pakaya'){
 ?>
 <div class="row page-titles">
     <div class="col-md-5">
@@ -19,12 +23,13 @@ $model =$_GET['model']
         </a>
     </div>
 </div>
+<?php } ?>
 <div class="row">
     <div class="col col-sm-11 col-lg-11 justify-content-center mx-auto mt-1">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <div class="mt-2">DELL LATITUDE E5480</div>
+                    <div class="mt-2"><?php echo $brand ." / ".$model?></div>
                 </div>
             </div>
             <div class="card-body">
@@ -123,7 +128,7 @@ $model =$_GET['model']
                                     <tr class='cell-1' data-toggle='collapse'   >
                                     <td>$i</td>
                                     <td>$brand</td>
-                                    <td>$model</td>
+                                    <td><a href='./model_spec_view.php?brand=$brand&model=$model&core=$core&search_value=$search_value'>$model</a></td>
                                     <td>$core</td>
                                     <td>$generation</td>
                                     <td>$in_total</td>
@@ -137,17 +142,13 @@ $model =$_GET['model']
                                     <td> $battery</td>
                                     ";
                                 echo "
-                                <td class='text-center'>
-                                    <a href='./model_spec_view.php?brand=$brand&model=$model&core=$core'>
-                                        <i class='fas fa-eye'></i>
-                                    </a>
-                                </td>
                                 </tr>";
                             }
                             ?>
 
                         </tbody>
                     </table>
+                    <?php if($search_value=='pakaya'){ ?>
                     <ul class="pagination">
                         <li><a href="?brand=<?php echo $brand; ?>&model=<?php echo $model ?>&pageno=1"
                                 class="btnTB mx-1">First</a></li>
@@ -164,6 +165,7 @@ $model =$_GET['model']
                         <li><a href="?brand=<?php echo $brand; ?>&model=<?php echo $model ?>&pageno=<?php echo $total_pages; ?>"
                                 class="btnTB mx-1">Last</a></li>
                     </ul>
+                    <?php } ?>
 
                 </div>
             </div>
