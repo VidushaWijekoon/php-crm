@@ -24,7 +24,7 @@ $qty = "";
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
 
-    $query = "SELECT mfg,device,brand,model,asin FROM packing_mfg WHERE mfg = '$mfg'";
+    $query = "SELECT * FROM packing_mfg WHERE mfg = '$mfg'";
     echo $query;
     $query_run = mysqli_query($connection, $query);
 
