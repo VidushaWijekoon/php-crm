@@ -43,9 +43,9 @@ if($search_value =='pakaya'){
                         <div class="mt-2 text-uppercase"><?php echo $brand." / ". $model." / ". $core ?></div>
                     </div>
 
-                    <div class=""><input type="text" class="mx-2" placeholder="Search">
+                    <!-- <div class=""><input type="text" class="mx-2" placeholder="Search">
                         <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="card-body">
