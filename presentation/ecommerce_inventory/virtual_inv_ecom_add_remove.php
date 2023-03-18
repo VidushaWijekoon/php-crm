@@ -149,12 +149,10 @@ $rack = $_GET['rack'];
                                 <td><?php echo $x['model'] ?></td>
                                 <td><?php echo $x['qty'] ?></td>
                                 <td><?php echo $x['rack'] ?></td>
-                                <?php
+                            </tr>
+                            <?php
                             }
                                 ?>
-
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>
