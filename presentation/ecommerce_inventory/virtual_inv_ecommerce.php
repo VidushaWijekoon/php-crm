@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require_once('../includes/header.php');
 
@@ -195,6 +196,36 @@ while ($data = mysqli_fetch_assoc($data_set)) {
 }
 </style>
 
+<?php
+$asin=0;
+       $mfg=0;
+       $model=0;
+$search_value ='0';
+    if(empty($_GET['search_value'])){}else{
+    $asin =$_GET['asin'];
+    $mfg=$_GET['mfg'];
+    $model=$_GET['model'];
+    $search_value=$_GET['search_value'];
+    }
+    if(isset($_POST['search'])){
+        
+       $asin=$_POST['asin'];
+       $mfg=$_POST['mfg'];
+       $model=$_POST['model'];
+       
+        if(!empty($asin)){
+             $mfg=0;
+            $model=0;
+        }elseif(!empty($mfg)){
+            $model=0;
+            $asin=0;
+        }elseif(!empty($model)){
+            $asin=0;
+             $mfg=0;
+        }
+        header("Location: virtual_inv_ecommerce.php?asin=$asin&model=$model&mfg=$mfg&search_value=1");
+    }
+?>
 
 
 
@@ -208,17 +239,19 @@ while ($data = mysqli_fetch_assoc($data_set)) {
 <div class="row mb-4 ml-1 pt-2 justify-content-between">
     <!-- <i class=" fa-solid fa-store"></i> -->
     <div class="row">
-        <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
-        <h6 class="pageName pt-1"> E-commerce inventory</h6>
+        <a href="virtual_inv_ecommerce.php">
+            <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
+            <h6 class="pageName pt-1"> E-commerce inventory</h6>
+        </a>
     </div>
     <div>
         <a href="../ecommerce_stock_inventory_new/e_com_laptop_inventory.php" class="btnTB mr-2">Stock Report</a>
     </div>
 
 </div>
-
 <div class="row virtualInvSec">
     <div class="cardContainer">
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
         <div class="ml-2">
             <div class="createListingHeading">
                 <span>
@@ -229,35 +262,67 @@ while ($data = mysqli_fetch_assoc($data_set)) {
         <hr class="sectionUnderline">
 
         <!-- Search Sec -->
-        <div class="SearchSec mb-4">
-            <div class="row text-center">
-                <!-- <div class="col-2"></div> -->
+        <form method="POST">
+            <div class="SearchSec mb-4">
+                <div class="row text-center">
+                    <!-- <div class="col-2"></div> -->
 
-                <div class="col-2">ASIN</div>
-                <div class="col-2">ALSAKB QR</div>
-                <div class="col-2">Model</div>
+                    <div class="col-2">ASIN</div>
+                    <div class="col-2">MFG</div>
+                    <div class="col-2">Model</div>
+                </div>
+                <div class="row">
+                    <!-- <div class="col-2">Search</div> -->
+
+                    <div class="col-2">
+                        <input class="w-100" type="text" name="asin">
+                    </div>
+                    <div class="col-2">
+                        <input class="w-100" type="text" name="mfg">
+                    </div>
+                    <div class="col-3">
+                        <input class="w-100" type="text" name="model">
+                    </div>
+                    <div class="col-1">
+                        <button type='submit' name='search'>
+                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                        </button>
+                    </div>
+
+                </div>
             </div>
-            <div class="row">
-                <!-- <div class="col-2">Search</div> -->
-
-                <div class="col-2">
-                    <input class="w-100" type="text">
-                </div>
-                <div class="col-2">
-                    <input class="w-100" type="text">
-                </div>
-                <div class="col-3">
-                    <input class="w-100" type="text">
-                </div>
-                <div class="col-1"> <a href="./virtual_inv_ecom_search.php">
-                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
+        </form>
         <!-- end Search -->
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <?php if($search_value !='0'){ 
+           ?>
+        <div class="addItemsSec mt-4">
+            <div class="row justify-content-center">
+                <div class="tableSec">
+                    <table class="table mx-3 table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>MFG</th>
+                                <th>ASIN Serial</th>
+                                <th>ASIN/SKU</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Available Qty</th>
+                                <th>Rack No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
+<<<<<<< HEAD
+                            <?php
+                            $query = "SELECT * FROM e_com_inventory WHERE (mfg = '$mfg' OR model = '$model' OR asin_sku = '$asin') AND dispatch ='0'";
+                            $query_run = mysqli_query($connection, $query);
+                            $i = 0;
+                            while ($data = mysqli_fetch_assoc($query_run)) {
+                                $i++;
+                            ?>
+=======
         <div class="ml-2">
             <div class="createListingHeading">
                 <span>
@@ -273,126 +338,162 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                 </span>
             </div>
         </div>
+>>>>>>> a11b9fed73d2cb276c63719c28da1c3dd7bfa3f2
 
-        <!-- Rack Design Sec -->
+                            <tr>
+                                <!-- <form action="" method="POST"> -->
+                                <td class="d-none"><input type="text" name="item_id" value="<?php echo $data['id'] ?>">
+                                </td>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $data['mfg'] ?></td>
+                                <td><?php echo $data['asin_serial'] ?></td>
+                                <td><?php echo $data['asin_sku'] ?></td>
+                                <td><?php echo $data['device'] ?></td>
+                                <td><?php echo $data['brand'] ?></td>
+                                <td><?php echo $data['model'] ?></td>
+                                <td><?php echo $data['qty'] ?></td>
+                                <td><a
+                                        href="virtual_inv_ecom_remove_items.php?rack=<?php echo $data['rack']?>&mfg=<?php echo $data['mfg'] ?>&model=<?php echo $model ?>&asin=<?php echo $asin ?>&search=1"><?php echo $data['rack'] ?></a>
+                                </td>
+                            </tr>
+                            <?php
+                            }
+                                ?>
 
-        <div class="row w-100">
-
-            <!-- Full Rack eka Front -->
-            <div class="rackSec w-100 m-3 text-center">
-                <p style="font-size: 15px; font-weight: 600;">Front-Side</p>
-                <br>
-                <!-- Rack Eke Lable  -->
-                <div class="d-flex justify-content-center">
-                    <div class="rackLbl">
-                        <div class="w-100">A</div>
-                        <div class="w-100">B</div>
-                        <div class="w-100">C</div>
-                        <div class="w-100">D</div>
-                        <div class="w-100">E</div>
-                        <div class="w-100">F</div>
-                        <div class="w-100">G</div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+            <?php }else{ ?>
+            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+            <div class="ml-2">
+                <div class="createListingHeading">
+                    <span>
+                        <p>Rack</p>
+                    </span>
+                </div>
+            </div>
+            <hr class="sectionUnderline">
 
-                <div class="rack">
-                    <!-- Patte Lable tika -->
-                    <div class="lableLeftSec">
-                        <div class="lableLayer">
-                            T
-                        </div>
+            <!-- Rack Design Sec -->
 
-                        <div class="lableLayer">
-                            6
-                        </div>
-                        <div class="lableLayer">
-                            5
-                        </div>
-                        <div class="lableLayer">
-                            4
+            <div class="row w-100">
+
+                <!-- Full Rack eka Front -->
+                <div class="rackSec w-100 m-3 text-center">
+                    <p style="font-size: 15px; font-weight: 600;">Front-Side</p>
+                    <br>
+                    <!-- Rack Eke Lable  -->
+                    <div class="d-flex justify-content-center">
+                        <div class="rackLbl">
+                            <div class="w-100">A</div>
+                            <div class="w-100">B</div>
+                            <div class="w-100">C</div>
+                            <div class="w-100">D</div>
+                            <div class="w-100">E</div>
+                            <div class="w-100">F</div>
+                            <div class="w-100">G</div>
                         </div>
                     </div>
 
-                    <!-- Rck eke Sturucter eka -->
+                    <div class="rack">
+                        <!-- Patte Lable tika -->
+                        <div class="lableLeftSec">
+                            <div class="lableLayer">
+                                T
+                            </div>
 
-
-                    <div class=" rackSturcture">
-
-                        <!-- <div class="rackfull"> -->
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
+                            <div class="lableLayer">
+                                6
+                            </div>
+                            <div class="lableLayer">
+                                5
+                            </div>
+                            <div class="lableLayer">
+                                4
+                            </div>
                         </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
 
-                                <div class="btnTBD btnBox">
-                                    <!-- <span>A-1</span> -->
-                                </div>
+                        <!-- Rck eke Sturucter eka -->
+
+
+                        <div class=" rackSturcture">
+
+                            <!-- <div class="rackfull"> -->
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
 
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
+                            <!-- Rack Layer C -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
 
-                                </div>
-                            </div>
-                            <!-- /// -->
-
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-                        </div>
-                        <!-- Rack Layer B-6 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-6">
-                                    <div class="btnTB btnBox">
-                                        <span>B-6</span>
+                                    <div class="btnTBD btnBox">
+                                        <!-- <span>A-1</span> -->
                                     </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer B -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+                                </div>
+                                <!-- /// -->
+
+                            </div>
+                            <!-- Rack Layer A -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /// -->
+
+
+                            </div>
+
+
+                        </div>
+                        <div class=" rackSturcture">
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
+                            </div>
+                            <!-- Rack Layer B-6 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=B-6">
+                                        <div class="btnTB btnBox">
+                                            <span>B-6</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -400,43 +501,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B-5 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-5">
-                                    <div class="btnTB btnBox">
-                                        <span>B-5</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer B-5 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=B-5">
+                                        <div class="btnTB btnBox">
+                                            <span>B-5</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -444,43 +545,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B-4 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-4">
-                                    <div class="btnTB btnBox">
-                                        <span>B-4</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer B-4 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=B-4">
+                                        <div class="btnTB btnBox">
+                                            <span>B-4</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -488,48 +589,48 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
                         </div>
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-                        </div>
-                        <!-- Rack Layer C-6 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-6">
-                                    <div class="btnTB btnBox">
-                                        <span>C-6</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                        <div class=" rackSturcture">
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
+                            </div>
+                            <!-- Rack Layer C-6 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=C-6">
+                                        <div class="btnTB btnBox">
+                                            <span>C-6</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -537,43 +638,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer c-5 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-5">
-                                    <div class="btnTB btnBox">
-                                        <span>C-5</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer c-5 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=C-5">
+                                        <div class="btnTB btnBox">
+                                            <span>C-5</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -581,43 +682,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer C-4 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-4">
-                                    <div class="btnTB btnBox">
-                                        <span>C-4</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer C-4 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=C-4">
+                                        <div class="btnTB btnBox">
+                                            <span>C-4</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -625,258 +726,258 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
+
+
+                            </div>
+                        </div>
+                        <div class=" rackSturcture">
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
+
+                            </div>
+                            <!-- Rack Layer C -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+
+                                    <div class="btnTBD btnBox">
+
                                     </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
 
                                 </div>
-
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
+                            <!-- Rack Layer B -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
 
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-                    <div class=" rackSturcture">
-                        <!-- Rack Layers T -->
-                        <div class="rackLayer ">
-
-                        </div>
-                        <!-- Rack Layer C -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-                            </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer A -->
-                        <div class="rackLayer">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <div class="btnTBD btnBox">
-
-                                </div>
-
-                            </div>
-                            <!-- /// -->
-
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-                <div class="rackDwn">
-                    <!-- Patte Lable tika -->
-                    <div class="lableLeftSec">
-
-                        <div class="lableLayer">
-                            3
-                        </div>
-                        <div class="lableLayer">
-                            2
-                        </div>
-                        <div class="lableLayer">
-                            1
-                        </div>
-                    </div>
-
-                    <!-- Rck eke Sturucter eka -->
-
-
-                    <div class=" rackSturcture">
-
-
-
-
-                    </div>
-                    <div class=" rackSturcture">
-
-                        <!-- Rack Layer B-3 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-3">
-                                    <div class="btnTB btnBox">
-                                        <span>B-3</span>
                                     </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer A -->
+                            <div class="rackLayer">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+
+
+                            </div>
+
+
+                        </div>
+                        <div class=" rackSturcture">
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
+
+                            </div>
+                            <!-- Rack Layer C -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer B -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer A -->
+                            <div class="rackLayer">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+
+
+                            </div>
+
+
+                        </div>
+                        <div class=" rackSturcture">
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
+
+                            </div>
+                            <!-- Rack Layer C -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer B -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer A -->
+                            <div class="rackLayer">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+
+
+                            </div>
+
+
+                        </div>
+                        <div class=" rackSturcture">
+                            <!-- Rack Layers T -->
+                            <div class="rackLayer ">
+
+                            </div>
+                            <!-- Rack Layer C -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer B -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+                                </div>
+                                <!-- /// -->
+                            </div>
+                            <!-- Rack Layer A -->
+                            <div class="rackLayer">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <div class="btnTBD btnBox">
+
+                                    </div>
+
+                                </div>
+                                <!-- /// -->
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="rackDwn">
+                        <!-- Patte Lable tika -->
+                        <div class="lableLeftSec">
+
+                            <div class="lableLayer">
+                                3
+                            </div>
+                            <div class="lableLayer">
+                                2
+                            </div>
+                            <div class="lableLayer">
+                                1
+                            </div>
+                        </div>
+
+                        <!-- Rck eke Sturucter eka -->
+
+
+                        <div class=" rackSturcture">
+
+
+
+
+                        </div>
+                        <div class=" rackSturcture">
+
+                            <!-- Rack Layer B-3 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=B-3">
+                                        <div class="btnTB btnBox">
+                                            <span>B-3</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -884,43 +985,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B-2 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-2">
-                                    <div class="btnTB btnBox">
-                                        <span>B-2</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer B-2 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=B-2">
+                                        <div class="btnTB btnBox">
+                                            <span>B-2</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -928,45 +1029,45 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer B-1 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=B-1">
-                                    <div class="btnTB btnBox">
-                                        <span>B-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
+                            <!-- Rack Layer B-1 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=B-1">
+                                        <div class="btnTB btnBox">
+                                            <span>B-1</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
 
 
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -974,50 +1075,50 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
+                                        <!-- iwrai hover eka -->
 
 
-                                </a>
+                                    </a>
+                                </div>
+                                <!-- /// -->
+
+
                             </div>
-                            <!-- /// -->
-
-
                         </div>
-                    </div>
-                    <div class=" rackSturcture">
+                        <div class=" rackSturcture">
 
-                        <!-- Rack Layer C-3 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-3">
-                                    <div class="btnTB btnBox">
-                                        <span>C-3</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer C-3 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=C-3">
+                                        <div class="btnTB btnBox">
+                                            <span>C-3</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -1025,43 +1126,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer C-2 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-2">
-                                    <div class="btnTB btnBox">
-                                        <span>C-2</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer C-2 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=C-2">
+                                        <div class="btnTB btnBox">
+                                            <span>C-2</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -1069,43 +1170,43 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
                             </div>
-                            <!-- /// -->
-                        </div>
-                        <!-- Rack Layer C-1 -->
-                        <div class="rackLayer ">
-                            <!-- Box sec 1 -->
-                            <div class="box border">
-                                <!-- Box BTn  -->
-                                <a href="./virtual_inv_ecom_add_remove?rack=C-1">
-                                    <div class="btnTB btnBox">
-                                        <span>C-1</span>
-                                    </div>
-                                    <!-- hover details  Sec eka -->
-                                    <div class="hide insideDetails">
-                                        <div class="tableModel">
-                                            <table>
-                                                <tr>
-                                                    <th>
-                                                        <div style="width:100px;">
-                                                            Models
-                                                        </div>
-                                                    </th>
-                                                    <th>Qty</th>
-                                                </tr>
-                                                <?php
+                            <!-- Rack Layer C-1 -->
+                            <div class="rackLayer ">
+                                <!-- Box sec 1 -->
+                                <div class="box border">
+                                    <!-- Box BTn  -->
+                                    <a href="./virtual_inv_ecom_add_remove?rack=C-1">
+                                        <div class="btnTB btnBox">
+                                            <span>C-1</span>
+                                        </div>
+                                        <!-- hover details  Sec eka -->
+                                        <div class="hide insideDetails">
+                                            <div class="tableModel">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="width:100px;">
+                                                                Models
+                                                            </div>
+                                                        </th>
+                                                        <th>Qty</th>
+                                                    </tr>
+                                                    <?php
                                                 $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
                                                 $query_run = mysqli_query($connection, $query);
 
@@ -1113,57 +1214,58 @@ while ($data = mysqli_fetch_assoc($data_set)) {
                                                     $tot = $data['tot_count'];
                                                     $model = $data['model'];
                                                 ?>
-                                                <tr>
-                                                    <td><?php echo $model ?></td>
-                                                    <td><?php echo $tot ?></td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?php echo $model ?></td>
+                                                        <td><?php echo $tot ?></td>
+                                                        <?php
                                                 }
                                                     ?>
-                                                </tr>
-                                            </table>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- iwrai hover eka -->
-                                </a>
+                                        <!-- iwrai hover eka -->
+                                    </a>
+                                </div>
+                                <!-- /// -->
+
+
                             </div>
-                            <!-- /// -->
-
-
                         </div>
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
-                    <div class=" rackSturcture">
-                    </div>
+                        <div class=" rackSturcture">
+                        </div>
+                        <div class=" rackSturcture">
+                        </div>
+                        <div class=" rackSturcture">
+                        </div>
+                        <div class=" rackSturcture">
+                        </div>
 
+                    </div>
                 </div>
+
+                <!-- /// -->
+
+                <!-- Full Rack eka Back -->
+
+
+
+                <!-- /// -->
+
+
             </div>
-
-            <!-- /// -->
-
-            <!-- Full Rack eka Back -->
+            <?php } ?>
 
 
 
-            <!-- /// -->
 
 
         </div>
-
-
-
-
-
     </div>
-</div>
 
 
 
-<?php
+    <?php
 require_once('../includes/footer.php')
 
 ?>

@@ -164,12 +164,10 @@ $rows = mysqli_num_rows($data_array);
                                 <td><?php echo $x['model'] ?></td>
                                 <td><?php echo $x['qty'] ?></td>
                                 <td><?php echo $x['rack'] ?></td>
-                                <?php
+                            </tr>
+                            <?php
                             }
                                 ?>
-
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>
