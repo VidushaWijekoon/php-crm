@@ -8,6 +8,15 @@ require_once("../../functions/db_connection.php");
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+
+$stock = 0;
+$query = "SELECT COUNT(id) as all_stock from e_com_inventory WHERE dispatch=0";
+$data_set = mysqli_query($connection, $query);
+
+while ($data = mysqli_fetch_assoc($data_set)) {
+    $stock = $data['all_stock'];
+}
+
 ?>
 
 <style>
@@ -257,6 +266,13 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
         <hr class="sectionUnderline">
+        <div class="row justify-content-end">
+            <div class="createListingHeading pr-4">
+                <span>
+                    <p>Total Laptops : <?php echo $stock; ?> </p>
+                </span>
+            </div>
+        </div>
 
         <!-- Rack Design Sec -->
 

@@ -141,9 +141,9 @@ if (isset($_POST['removeItem'])) {
                 </div>
 
                 <div>
-                    <a href="./virtual_view_items.php">
+                    <!-- <a href="./virtual_view_items.php">
                         <button class="btnT mr-3">View Slot Items</button>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>
