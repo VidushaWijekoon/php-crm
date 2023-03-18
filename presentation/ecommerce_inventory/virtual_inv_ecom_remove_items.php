@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require_once('../includes/header.php');
 
@@ -8,8 +9,11 @@ require_once("../../functions/db_connection.php");
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
-
+$mfg_r=0;
 $rack = $_GET['rack'];
+if(empty($_GET['mfg'])){}else{
+$mfg_r = $_GET['mfg'];
+}
 // $qr = $_GET['qr'];
 // echo $qr;
 
@@ -21,7 +25,21 @@ $model = "";
 $qty = "";
 $rackdb = "";
 $mfg = '';
+if($mfg_r !=0){
+    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg_r' AND dispatch ='0' AND rack = '$rack'";
+    $rows = 0;
+    $quary_run = mysqli_query($connection, $query);
+    $rows = mysqli_num_rows($quary_run);
 
+        while ($x = mysqli_fetch_assoc($quary_run)) {
+            $mfg = $x['mfg'];
+            $asin = $x['asin_sku'];
+            $device = $x['device'];
+            $brand = $x['brand'];
+            $model = $x['model'];
+            $qty = $x['qty'];
+        }
+}
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
     $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg' AND dispatch ='0' AND rack = '$rack'";
@@ -52,21 +70,12 @@ if (isset($_POST['removeItem'])) {
     $mfg = $_POST['mfg'];
     $query = "UPDATE `e_com_inventory` SET `dispatch`='1' WHERE mfg ='$mfg'";
     $query_run = mysqli_query($connection, $query);
-    if (!empty($query_run)) {
-        echo "<script>alert('Dispatched From Inventory');</script>";
-    }
+       if($mfg_r !=0){
+          header("Location: virtual_inv_ecommerce.php?mfg=$mfg_r&model=$model&asin=$asin&search_value=1");
+}else{
+header("Location: virtual_inv_ecom_add_remove.php?rack= $rack ");
 }
-
-
-// $query = "SELECT * FROM e_com_inventory WHERE alsakb_qr = '$qr' AND status ='0' AND rack = '$rack'";
-// echo $query;
-// $rows = 0;
-// $query_run = mysqli_query($connection, $query);
-// $rows = mysqli_num_rows($query_run);
-// if ($rows == 0) {
-//     echo "<script>alert('This Item Not in this Rack Add New');";
-//     echo "window.location.href='virtual_inv_ecom_add_remove";
-//     echo " </script>";
+}
 
 
 ?>
@@ -114,15 +123,23 @@ if (isset($_POST['removeItem'])) {
 }
 </style>
 
-
-
-
+<?php 
+if($mfg_r !=0){
+?>
+<div class="row pageNavigation pt-2 pl-2">
+    <a
+        href="virtual_inv_ecommerce.php?mfg=<?php echo $mfg_r ?>&model=<?php echo $model ?>&asin=<?php echo $asin ?>&search_value=1"><i
+            class="fa-solid fa-backward"></i>&nbsp;
+        &nbsp;Back to
+        Rack </a>
+</div>
+<?php }else{?>
 <div class="row pageNavigation pt-2 pl-2">
     <a href="./virtual_inv_ecom_add_remove.php?rack=<?php echo $rack ?>"><i class="fa-solid fa-backward"></i>&nbsp;
         &nbsp;Back to
         Rack</a>
 </div>
-
+<?php } ?>
 
 
 
