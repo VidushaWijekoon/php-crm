@@ -9,6 +9,15 @@ require_once("../../functions/db_connection.php");
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+
+$stock = 0;
+$query = "SELECT COUNT(id) as all_stock from e_com_inventory WHERE dispatch=0";
+$data_set = mysqli_query($connection, $query);
+
+while ($data = mysqli_fetch_assoc($data_set)) {
+    $stock = $data['all_stock'];
+}
+
 ?>
 
 <style>
@@ -305,6 +314,7 @@ $search_value ='0';
                         </thead>
                         <tbody>
 
+<<<<<<< HEAD
                             <?php
                             $query = "SELECT * FROM e_com_inventory WHERE (mfg = '$mfg' OR model = '$model' OR asin_sku = '$asin') AND dispatch ='0'";
                             $query_run = mysqli_query($connection, $query);
@@ -312,6 +322,23 @@ $search_value ='0';
                             while ($data = mysqli_fetch_assoc($query_run)) {
                                 $i++;
                             ?>
+=======
+        <div class="ml-2">
+            <div class="createListingHeading">
+                <span>
+                    <p>Rack</p>
+                </span>
+            </div>
+        </div>
+        <hr class="sectionUnderline">
+        <div class="row justify-content-end">
+            <div class="createListingHeading pr-4">
+                <span>
+                    <p>Total Laptops : <?php echo $stock; ?> </p>
+                </span>
+            </div>
+        </div>
+>>>>>>> a11b9fed73d2cb276c63719c28da1c3dd7bfa3f2
 
                             <tr>
                                 <!-- <form action="" method="POST"> -->

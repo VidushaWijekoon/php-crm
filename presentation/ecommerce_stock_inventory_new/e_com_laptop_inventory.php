@@ -20,10 +20,15 @@ if (isset($_POST['search'])) {
     header("Location: e_com_laptop_inventory?search_value=$search_value");
 }
 ?>
-<div class="row page-titles">
-    <div class="col-md-5">
+<div class="row page-titles justify-content-between">
+    <div class="ml-2">
         <a href="e_com_laptop_inventory.php">
             <i class="fa-regular fa-home fa-2x" style="color: #ced4da;"></i>
+        </a>
+    </div>
+    <div class="mt-2 mr-2">
+        <a href="../ecommerce_inventory/virtual_inv_ecommerce.php">
+            <button class="btnTB">Virtual Inventory</button>
         </a>
     </div>
 </div>

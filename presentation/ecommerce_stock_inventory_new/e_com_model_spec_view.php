@@ -8,10 +8,25 @@ require_once('../includes/header.php');
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 $brand = $_GET['brand'];
 $model = $_GET['model'];
 $core = $_GET['core'];
-$connection = mysqli_connect("localhost", "root", "", "main_project");
+
+// $device = "";
+// $cpu = "";
+// $generation = "";
+// $speed = "";
+// $screen_size = "";
+// $optical = "";
+// $processor = "";
+// $inventory_id = "";
+// $mfg = "";
+// $battery = "";
+// $asin = "";
+
+
+
 $search_value = 'pakaya';
 if (!empty($_GET['search_value'])) {
     $search_value = $_GET['search_value'];
@@ -76,24 +91,50 @@ if ($search_value == 'pakaya') {
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM e_com_inventory WHERE brand = '$brand' AND model='$model' AND core='$core' AND dispatch= '0' ";
-                            $result = mysqli_query($connection, $query);
+                            // $query = "SELECT * FROM e_com_inventory WHERE brand = '$brand' AND model='$model' AND core='$core' AND dispatch= '0' ";
+                            // $result = mysqli_query($connection, $query);
 
+
+                            // $query = "SELECT e_com_inventory.rack, main_inventory_informations.device, main_inventory_informations.touch_or_none_touch, main_inventory_informations.brand, main_inventory_informations.model,main_inventory_informations.processor, main_inventory_informations.core, main_inventory_informations.generation ,main_inventory_informations.speed,main_inventory_informations.lcd_size,main_inventory_informations.screen_resolution,main_inventory_informations.optical,main_inventory_informations.battery,main_inventory_informations.inventory_id,e_com_inventory.mfg,e_com_inventory.asin_sku FROM `e_com_inventory` LEFT JOIN main_inventory_informations ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE main_inventory_informations.brand='$brand' AND main_inventory_informations.model='$model' AND main_inventory_informations.core='$core'";
+
+                            $query = "SELECT
+                            e_com_inventory.mfg,
+                            e_com_inventory.rack, 
+                            main_inventory_informations.asin_sku,    
+                            main_inventory_informations.model,
+                            main_inventory_informations.processor,
+                            main_inventory_informations.core,
+                            main_inventory_informations.generation,
+                            main_inventory_informations.speed, 
+                            main_inventory_informations.lcd_size,
+                            main_inventory_informations.screen_resolution,
+                            main_inventory_informations.optical,
+                            main_inventory_informations.battery,
+                            main_inventory_informations.inventory_id
+    
+                            FROM
+                             e_com_inventory
+                            LEFT JOIN main_inventory_informations ON e_com_inventory.mfg = main_inventory_informations.mfg
+                            WHERE e_com_inventory.brand = '$brand' AND e_com_inventory.model='$model' AND e_com_inventory.core='$core' AND e_com_inventory.dispatch= '0' ";
+
+                            echo $query;
+                            $result = mysqli_query($connection, $query);
                             $i = 0;
+
                             foreach ($result as $data) {
-                                $device = $data['device'];
+                                // $device = $data['device'];
                                 $model = $data['model'];
                                 $cpu = $data['core'];
                                 $generation = $data['generation'];
                                 $speed = $data['speed'];
                                 $screen_size = $data['lcd_size'];
-                                $screen_type = $data['touch_or_none_touch'];
-                                $location = $data['location'];
+                                $screen_type = $data['screen_resolution'];
+                                // $location = $data['location'];
                                 // $series = $data['series'];
                                 $optical = $data['optical'];
                                 $processor = $data['processor'];
-                                $location = $data['location'];
-                                $inventory_id = $data['id'];
+                                $location = $data['rack'];
+                                $inventory_id = $data['inventory_id'];
                                 $mfg = $data['mfg'];
                                 $battery = $data['battery'];
                                 $asin = $data['asin_sku'];
@@ -176,7 +217,7 @@ function myFunction() {
     filter = input.value.toUpperCase();
     table = document.getElementById("tblexportData");
     tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
+    for (i = 0; tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];
         if (td) {
             txtValue = td.textContent || td.innerText;
