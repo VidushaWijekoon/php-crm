@@ -10,6 +10,26 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $rack = $_GET['rack'];
+/* Rack Qty */
+$qty = 0;
+$query = "SELECT * FROM e_com_inventory WHERE rack = '$rack' AND dispatch ='0'";
+// $query = "SELECT
+//     e_com_inventory.mfg,
+//     e_com_inventory.qty,
+//     e_com_inventory.rack,
+//     main_inventory_informations.asin_serial,
+//     main_inventory_informations.asin_sku,
+//     main_inventory_informations.device,
+//     main_inventory_informations.brand,
+//     main_inventory_informations.model
+// FROM
+//     e_com_inventory
+// LEFT JOIN main_inventory_informations ON e_com_inventory.mfg = main_inventory_informations.mfg
+// WHERE
+//      e_com_inventory.rack = '$rack' AND e_com_inventory.dispatch = '0'";
+
+$data_array = mysqli_query($connection, $query);
+$rows = mysqli_num_rows($data_array);
 ?>
 
 <style>
@@ -74,9 +94,7 @@ $rack = $_GET['rack'];
                     <p>Laptop List Items On Rack <span><?php echo $rack; ?></span> </p>
                 </div>
                 <div>
-                    <a href="./virtual_inv_battery_view_items">
-                        <!-- <button class="btnT mr-3">View Slot Items</button> -->
-                    </a>
+                    Qty : <?php echo $rows; ?>
                 </div>
             </div>
         </div>
@@ -129,18 +147,15 @@ $rack = $_GET['rack'];
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM e_com_inventory WHERE rack = '$rack' AND dispatch ='0'";
-                            $data = mysqli_query($connection, $query);
                             $i = 0;
-                            while ($x = mysqli_fetch_assoc($data)) {
-                                $i++;
+                            while ($x = mysqli_fetch_assoc($data_array)) {
                             ?>
 
                             <tr>
                                 <!-- <form action="" method="POST"> -->
                                 <td class="d-none"><input type="text" name="item_id" value="<?php echo $x['id'] ?>">
                                 </td>
-                                <td><?php echo $i; ?></td>
+                                <td><?php echo ++$i; ?></td>
                                 <td><?php echo $x['mfg'] ?></td>
                                 <td><?php echo $x['asin_serial'] ?></td>
                                 <td><?php echo $x['asin_sku'] ?></td>

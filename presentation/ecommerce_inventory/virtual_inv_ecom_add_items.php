@@ -19,12 +19,27 @@ $device = "";
 $brand = "";
 $model = "";
 $qty = "";
+$core = "";
+$gen = "";
 
 
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
 
     $query = "SELECT * FROM packing_mfg WHERE mfg = '$mfg'";
+    // $query = " SELECT
+    //     packing_mfg.mfg,
+    //     main_inventory_informations.device,
+    //     main_inventory_informations.brand,
+    //     main_inventory_informations.model,
+    //     main_inventory_informations.asin_sku,
+    //     main_inventory_informations.core,
+    //     main_inventory_informations.generation
+    // FROM
+    //     packing_mfg
+    // LEFT JOIN main_inventory_informations 
+    // ON packing_mfg.mfg = main_inventory_informations.mfg
+    // WHERE packing_mfg.mfg = '$mfg'";
     echo $query;
     $query_run = mysqli_query($connection, $query);
 
@@ -34,6 +49,8 @@ if (isset($_POST['scanMfg'])) {
         $brand = $x['brand'];
         $model = $x['model'];
         $asin = $x['asin'];
+        $core = $x['core'];
+        $gen = $x['generation'];
     }
 }
 
@@ -48,6 +65,8 @@ if (isset($_POST['addNewItem'])) {
     $brand = mysqli_real_escape_string($connection, $_POST['brand']);
     $model = mysqli_real_escape_string($connection, $_POST['model']);
     $qty = mysqli_real_escape_string($connection, $_POST['qty']);
+    $core = mysqli_real_escape_string($connection, $_POST['core']);
+    $gen = mysqli_real_escape_string($connection, $_POST['gen']);
 
     echo $mfg;
     if ($mfg == "") {
@@ -67,8 +86,8 @@ if (isset($_POST['addNewItem'])) {
         if ($rows == 0) {
 
 
-            $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack)
-        VALUES('$mfg','$asinSku','$deviceType','$brand','$model','$qty','$rack')";
+            $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation)
+        VALUES('$mfg','$asinSku','$deviceType','$brand','$model','$qty','$rack','$core','$gen')";
             $data = mysqli_query($connection, $query);
 
             echo "insert waduna";
@@ -167,9 +186,9 @@ if (isset($_POST['addNewItem'])) {
                 </div>
 
                 <div>
-                    <a href="./virtual_view_items.php">
+                    <!-- <a href="./virtual_view_items.php">
                         <button class="btnT mr-3">View Slot Items</button>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>
@@ -178,6 +197,7 @@ if (isset($_POST['addNewItem'])) {
         <div class="mt-4">
             <div class="">
                 <form action="" method="POST">
+
                     <div class="addFields ">
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable">Scan MFG</div>
@@ -194,6 +214,8 @@ if (isset($_POST['addNewItem'])) {
                 <form action="" method="POST">
 
                     <input name="mfg" type="hidden" value="<?php echo $mfg ?>" required>
+                    <input name="core" type="hidden" value="<?php echo $core ?>" required>
+                    <input name="gen" type="hidden" value="<?php echo $gen ?>" required>
 
                     <div class="row justify-content-center mb-1">
                         <div class="col-lg-2 formLable"> ASIN/SKU</div>
@@ -205,9 +227,7 @@ if (isset($_POST['addNewItem'])) {
                         <div class="col-lg-2 formLable"> Device Type</div>
                         <div class="col-lg-4 formInput">
                             <select name="deviceType" id="deviceType" class="w-100" required>
-
-                                <option>Select Device</option>
-                                <option value="<?php echo $device ?>">Laptop</option>
+                                <option value="<?php echo $device ?>" selected>Laptop</option>
 
                             </select>
                             <!-- <input name="deviceType" class="w-100" type="text"> -->
