@@ -324,48 +324,12 @@ input[type=text] {
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
                                     <?php 
-                                if ($department_id == 1 || $department_id == 13 || $department_id == 23 || $department_id == 22){ ?>
-                                    <option value="2">Clean </option>
-                                    <option value="3">Packing </option>
-                                    <option value="4">Full Painting Packing</option>
-                                    <option value="5">High Gen
-                                        Bodywork+Sanding+Taping
-                                    </option>
-                                    <option value="6">Low Gen
-                                        bodywork+sanding+taping
-                                    </option>
-                                    <option value="7">Bodywork+Sanding
-                                    </option>
-                                    <option value="8">Designing + Pasting </option>
-                                    <option value="Pasting">Pasting </option>
-                                    <?php if ($user_id == 280) {
-                                                    ?>
-                                    <option value="10">Low Generation</option>
-                                    <option value="11">Full Painting A+C+D</option>
-                                    <option value="12">Keyboard Lacker</option>
-                                    <option value="13">A Panel Paint</option>
+                                if ($department_id == 1){ ?>
+                                    <option value="14">Unlock </option>
+                                    <option value="15">Chargin </option>
                                     <?php
-                                }
-                                }elseif($department_id == 8){
-                                    ?>
-                                    <option value="10">Low Generation Painting</option>
-                                    <option value="11">Full Painting A+C+D</option>
-                                    <option value="12">Keyboard Lacker</option>
-                                    <option value="13">A Panel Paint</option>
-                                    <?php
-                                }elseif($department_id == 9){
-                                    ?>
-                                    <option value="29">BIOS Lock High Gen</option>
-                                    <option value="30">BIOS Lock Low Gen</option>
-                                    <option value="31">No
-                                        Power /
-                                        No
-                                        Display
-                                        /
-                                        Account Lock/ Ports Issue</option>
-                                    <?php
-                                } 
-                                    ?>
+                                } ?>
+
                                 </select>
                             </div>
                         </div>
@@ -473,8 +437,6 @@ input[type=text] {
             <div class="perfoTimeSec">
                 <div class="row">
                     <div class="col-lg-6">
-
-
                     </div>
                     <div class="col-lg-6">
                         <div class="row my-4">
@@ -959,9 +921,6 @@ input[type=text] {
                             <tr>
                                 <th>Job Description</th>
                                 <th>Scanned QR</th>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>Generation</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
                                 <th>Status</th>
@@ -993,8 +952,7 @@ input[type=text] {
                             $total_rows = mysqli_num_rows($result);
                             $total_pages = ceil($total_rows / $no_of_records_per_page);
                             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            $sql="SELECT qr_number,start_time,end_time,status,performance_records.target,main_inventory_informations.brand,main_inventory_informations.model,main_inventory_informations.generation,targets.job_description FROM performance_records
-                            LEFT JOIN main_inventory_informations ON main_inventory_informations.inventory_id =performance_records.qr_number
+                            $sql="SELECT qr_number,start_time,end_time,status,performance_records.target,targets.job_description FROM performance_records
                             LEFT JOIN targets ON targets.target_id=performance_records.job_description  WHERE user_id = '$user_id' AND start_time BETWEEN '$day_start' AND '$day_end' ORDER BY performance_id DESC LIMIT $offset, $no_of_records_per_page";
                             $sql_run=mysqli_query($connection,$sql);
                             
@@ -1003,12 +961,9 @@ input[type=text] {
                             <tr>
                                 <td><?php echo $data['job_description'] ?></td>
                                 <td><?php echo $data['qr_number'] ?></td>
-                                <td><?php echo $data['brand'] ?></td>
-                                <td><?php echo $data['model'] ?></td>
-                                <td><?php echo $data['generation'] ?></td>
                                 <td><?php echo $data['start_time'] ?></td>
                                 <td><?php echo $data['end_time'] ?></td>
-                                <td><?php echo $data['status'] ?></td>
+                                <td><?php if($data['status']==1){echo "Completed";}else{ echo "OnGoing"; }  ?></td>
                                 <td><?php echo $data['target'] ?></td>
                             </tr>
                             <?php
