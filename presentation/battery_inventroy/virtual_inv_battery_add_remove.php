@@ -48,60 +48,76 @@ if (isset($_POST['remove_items'])) {
     $sub =  $qty - $add_remove;
 
     if ($sub < 0) {
+
         echo "<script>
             alert('You cannot update qty less than 0 in this $rack');
             window.location.href='./virtual_inv_battery';
         </script>";
     }
-    if ($sub >= 0) {
+
+
+    if ($sub == 0) {
+        $add_s = "UPDATE battery_inventory SET removed_inv = '1', qty = '$sub'  WHERE id = '$item_id'";
+        $add_sub = mysqli_query($connection, $add_s);
+
+        echo "<script>
+            alert('all items removed from this $rack');
+            window.location.href='./virtual_inv_battery';
+        </script>";
+    }
+
+    if ($sub > 0) {
         $add_s = "UPDATE battery_inventory SET qty = '$sub'  WHERE id = '$item_id'";
         $add_sub = mysqli_query($connection, $add_s);
+        echo "<script>
+            alert('Removed $add_remove Items $rack');            
+        </script>";
     }
 }
 
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .virtualInvSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.virtualInvSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
-
-
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+}
 
 
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
+
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -147,43 +163,46 @@ if (isset($_POST['remove_items'])) {
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM battery_inventory WHERE rack_no = '$rack'";
+                            $query = "SELECT * FROM battery_inventory WHERE rack_no = '$rack' AND removed_inv = 0";
                             $result = mysqli_query($connection, $query);
                             while ($xd = mysqli_fetch_assoc($result)) {
                                 $id = $xd['id'];
                             ?>
 
-                                <tr>
-                                    <form action="" method="POST">
-                                        <td class="d-none"><input type="text" name="item_id" value="<?php echo $id ?>"></td>
-                                        <td class="text-capitalize"><?php echo $xd['device'] ?></td>
-                                        <td><?php echo ucfirst($xd['brand']) ?></td>
-                                        <td style="text-transform: capitalize;"><?php echo $xd['model'] ?></td>
-                                        <td><?php echo $xd['qty'] ?></td>
-                                        <td><?php echo $xd['rack_no'] ?></td>
-                                        <td>
-                                            <input class="w-100" type="number" min="1" name="add_remove">
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <button type="submit" name="add_items" style="background: transparent; border:none;">
-                                                    <i class="fa-solid fa-circle-plus fa-2x text-info"></i>
-                                                </button>
-                                                <button type="submit" name="remove_items" style="background: transparent; border:none;">
-                                                    <i class="fa-solid fa-circle-minus fa-2x text-danger"></i>
-                                                </button>
-                                            </div>
-                                        </td>
+                            <tr>
+                                <form action="" method="POST">
+                                    <td class="d-none"><input type="text" name="item_id" value="<?php echo $id ?>"></td>
+                                    <td class="text-capitalize"><?php echo $xd['device'] ?></td>
+                                    <td><?php echo ucfirst($xd['brand']) ?></td>
+                                    <td style="text-transform: capitalize;"><?php echo $xd['model'] ?></td>
+                                    <td><?php echo $xd['qty'] ?></td>
+                                    <td><?php echo $xd['rack_no'] ?></td>
+                                    <td>
+                                        <input class="w-100" type="number" min="1" name="add_remove">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <button type="submit" name="add_items"
+                                                style="background: transparent; border:none;">
+                                                <i class="fa-solid fa-circle-plus fa-2x text-info"></i>
+                                            </button>
+                                            <button type="submit" name="remove_items"
+                                                style="background: transparent; border:none;">
+                                                <i class="fa-solid fa-circle-minus fa-2x text-danger"></i>
+                                            </button>
+                                        </div>
+                                    </td>
 
-                                    </form>
-                                </tr>
+                                </form>
+                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <a href="./virtual_inv_battery_add_new_item?rack=<?php echo $rack; ?>" name="remove_items" type="submit" class="btnT mr-2">Add New Item</a>
+                <a href="./virtual_inv_battery_add_new_item?rack=<?php echo $rack; ?>" name="remove_items" type="submit"
+                    class="btnT mr-2">Add New Item</a>
             </div>
         </div>
     </div>

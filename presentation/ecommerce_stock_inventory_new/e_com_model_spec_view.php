@@ -8,11 +8,16 @@ require_once('../includes/header.php');
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+
 $connection = mysqli_connect("localhost", "root", "", "main_project");
 $brand = $_GET['brand'];
 $model = $_GET['model'];
-$core = $_GET['core'];
-
+$asin = $_GET['asin'];
+if (empty($_GET['from'])) {
+    $from = 0;
+} else {
+    $from = $_GET['from'];
+}
 // $device = "";
 // $cpu = "";
 // $generation = "";
@@ -35,9 +40,21 @@ if ($search_value == 'pakaya') {
 ?>
 <div class="row page-titles">
     <div class="col-md-5">
-        <a href="e_com_model_view.php?brand=<?php echo $brand ?>&model=<?php echo $model ?>&core=<?php echo $core ?>">
+        <?php
+            if ($from == 'asinPage') {
+                echo '<a href="e_com_asin_view.php"><i
+            class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i> </a>';
+            } else {
+                // echo "pakaya";
+                echo "<a href='e_com_model_view.php?brand=$brand&model=$model&asin=$asin'>
+        <i class='fa-regular fa-circle-left fa-2x' style='color: #ced4da;'></i>
+        </a>";
+            }
+
+            ?>
+        <!-- <a href="e_com_model_view.php?brand=<?php echo $brand ?>&model=<?php echo $model ?>&asin=<?php echo $asin ?>">
             <i class="fa-regular fa-circle-left fa-2x" style="color: #ced4da;"></i>
-        </a>
+        </a> -->
     </div>
 </div>
 <?php } ?>
@@ -55,7 +72,7 @@ if ($search_value == 'pakaya') {
                 <div class="d-flex justify-content-between">
                     <div>
                         <!-- <div>ASIN : <span>####</span></div> -->
-                        <div class="mt-2 text-uppercase"><?php echo $brand . "  " . $model . "  " . $core ?></div>
+                        <div class="mt-2 text-uppercase"><?php echo $brand . "  " . $model . "  " . $asin ?></div>
                     </div>
 
                     <div class=""><input type="text" class="mx-2" placeholder="Search">
@@ -70,6 +87,8 @@ if ($search_value == 'pakaya') {
                             <tr>
                                 <th>No</th>
                                 <!-- <th>Device</th> -->
+                                <th>ASIN</th>
+                                <th>MFG</th>
                                 <th>Brand</th>
                                 <!-- <th>Series</th> -->
                                 <th>Model</th>
@@ -85,8 +104,7 @@ if ($search_value == 'pakaya') {
                                     <th>HDD</th> -->
                                 <th>Location</th>
                                 <th>Inventory ID</th>
-                                <th>MFG</th>
-                                <th>ASIN</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -100,7 +118,7 @@ if ($search_value == 'pakaya') {
                             $query = "SELECT
                             e_com_inventory.mfg,
                             e_com_inventory.rack, 
-                            main_inventory_informations.asin_sku,    
+                            e_com_inventory.asin_sku,    
                             main_inventory_informations.model,
                             main_inventory_informations.processor,
                             main_inventory_informations.core,
@@ -115,9 +133,11 @@ if ($search_value == 'pakaya') {
                             FROM
                              e_com_inventory
                             LEFT JOIN main_inventory_informations ON e_com_inventory.mfg = main_inventory_informations.mfg
-                            WHERE e_com_inventory.brand = '$brand' AND e_com_inventory.model='$model' AND e_com_inventory.core='$core' AND e_com_inventory.dispatch= '0' ";
+                            WHERE e_com_inventory.asin_sku = '$asin' AND e_com_inventory.dispatch = '0' ";
 
-                            echo $query;
+                            /*     WHERE e_com_inventory.brand = '$brand' AND e_com_inventory.model='$model' AND e_com_inventory.core='$core' AND e_com_inventory.dispatch= '0' ";
+                            */
+                            // echo $query;
                             $result = mysqli_query($connection, $query);
                             $i = 0;
 
@@ -141,6 +161,8 @@ if ($search_value == 'pakaya') {
                                 $i++; ?>
                             <tr>
                                 <td><?php echo $i ?></td>
+                                <td><?php echo $asin ?></td>
+                                <td><?php echo $mfg ?></td>
                                 <!-- <td><?php echo $device ?></td> -->
                                 <td><?php echo $brand ?></td>
                                 <!-- <td><?php echo $series ?></td> -->
@@ -157,8 +179,7 @@ if ($search_value == 'pakaya') {
                                     <td>256GB</td> -->
                                 <td><?php echo $location ?></td>
                                 <td><?php echo "ALSAKB" . $inventory_id ?></td>
-                                <td><?php echo $mfg ?></td>
-                                <td><?php echo $asin ?></td>
+
                             </tr>
                             <?php } ?>
 

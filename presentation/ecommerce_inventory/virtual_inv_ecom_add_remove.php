@@ -13,20 +13,7 @@ $rack = $_GET['rack'];
 /* Rack Qty */
 $qty = 0;
 $query = "SELECT * FROM e_com_inventory WHERE rack = '$rack' AND dispatch ='0'";
-// $query = "SELECT
-//     e_com_inventory.mfg,
-//     e_com_inventory.qty,
-//     e_com_inventory.rack,
-//     main_inventory_informations.asin_serial,
-//     main_inventory_informations.asin_sku,
-//     main_inventory_informations.device,
-//     main_inventory_informations.brand,
-//     main_inventory_informations.model
-// FROM
-//     e_com_inventory
-// LEFT JOIN main_inventory_informations ON e_com_inventory.mfg = main_inventory_informations.mfg
-// WHERE
-//      e_com_inventory.rack = '$rack' AND e_com_inventory.dispatch = '0'";
+
 
 $data_array = mysqli_query($connection, $query);
 $rows = mysqli_num_rows($data_array);
@@ -167,7 +154,7 @@ $rows = mysqli_num_rows($data_array);
                             </tr>
                             <?php
                             }
-                                ?>
+                            ?>
                         </tbody>
                     </table>
                 </div>

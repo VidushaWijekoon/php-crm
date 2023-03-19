@@ -9,10 +9,11 @@ require_once("../../functions/db_connection.php");
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
-$mfg_r=0;
+$mfg_r = 0;
 $rack = $_GET['rack'];
-if(empty($_GET['mfg'])){}else{
-$mfg_r = $_GET['mfg'];
+if (empty($_GET['mfg'])) {
+} else {
+    $mfg_r = $_GET['mfg'];
 }
 // $qr = $_GET['qr'];
 // echo $qr;
@@ -25,24 +26,24 @@ $model = "";
 $qty = "";
 $rackdb = "";
 $mfg = '';
-if($mfg_r !=0){
+if ($mfg_r != 0) {
     $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg_r' AND dispatch ='0' AND rack = '$rack'";
     $rows = 0;
     $quary_run = mysqli_query($connection, $query);
     $rows = mysqli_num_rows($quary_run);
 
-        while ($x = mysqli_fetch_assoc($quary_run)) {
-            $mfg = $x['mfg'];
-            $asin = $x['asin_sku'];
-            $device = $x['device'];
-            $brand = $x['brand'];
-            $model = $x['model'];
-            $qty = $x['qty'];
-        }
+    while ($x = mysqli_fetch_assoc($quary_run)) {
+        $mfg = $x['mfg'];
+        $asin = $x['asin_sku'];
+        $device = $x['device'];
+        $brand = $x['brand'];
+        $model = $x['model'];
+        $qty = $x['qty'];
+    }
 }
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
-    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg' AND dispatch ='0' AND rack = '$rack'";
+    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg' AND dispatch ='0' AND rack = '$rack' ";
     echo $query;
     $rows = 0;
     $quary_run = mysqli_query($connection, $query);
@@ -70,11 +71,11 @@ if (isset($_POST['removeItem'])) {
     $mfg = $_POST['mfg'];
     $query = "UPDATE `e_com_inventory` SET `dispatch`='1' WHERE mfg ='$mfg'";
     $query_run = mysqli_query($connection, $query);
-       if($mfg_r !=0){
-          header("Location: virtual_inv_ecommerce.php?mfg=$mfg_r&model=$model&asin=$asin&search_value=1");
-}else{
-header("Location: virtual_inv_ecom_add_remove.php?rack= $rack ");
-}
+    if ($mfg_r != 0) {
+        header("Location: virtual_inv_ecommerce.php?mfg=$mfg_r&model=$model&asin=$asin&search_value=1");
+    } else {
+        header("Location: virtual_inv_ecom_add_remove.php?rack=$rack");
+    }
 }
 
 
@@ -123,8 +124,8 @@ header("Location: virtual_inv_ecom_add_remove.php?rack= $rack ");
 }
 </style>
 
-<?php 
-if($mfg_r !=0){
+<?php
+if ($mfg_r != 0) {
 ?>
 <div class="row pageNavigation pt-2 pl-2">
     <a
@@ -133,7 +134,7 @@ if($mfg_r !=0){
         &nbsp;Back to
         Rack </a>
 </div>
-<?php }else{?>
+<?php } else { ?>
 <div class="row pageNavigation pt-2 pl-2">
     <a href="./virtual_inv_ecom_add_remove.php?rack=<?php echo $rack ?>"><i class="fa-solid fa-backward"></i>&nbsp;
         &nbsp;Back to
@@ -171,7 +172,7 @@ if($mfg_r !=0){
                 <div class="addFields ">
                     <form action="" method="POST">
                         <div class="row justify-content-center mb-1">
-                            <div class="col-lg-2 formLable">Scan MFG</div>
+                            <div class="col-lg-2 formLable">Scan MFG/Alsakb QR</div>
                             <div class="col-lg-4 formInput">
                                 <input name="mfg" class="w-100" type="text" value="<?php echo $mfg; ?>">
                             </div>
@@ -248,7 +249,11 @@ if($mfg_r !=0){
     </div>
 </div>
 
-
+<script>
+let mfgbar = document.querySelector('input[name="mfg"]');
+mfgbar.focus();
+// text.value = '';
+</script>
 
 <?php
 require_once('../includes/footer.php')

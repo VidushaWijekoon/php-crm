@@ -12,7 +12,7 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
 $search_value = 0;
 if (!empty($_GET['search_value'])) {
     $search_value = $_GET['search_value'];
-    $sql = "SELECT * FROM e_com_inventory WHERE model like '%$search_value%'GROUP BY model,core";
+    $sql = "SELECT * FROM e_com_inventory WHERE model like '%$search_value%' OR asin_sku like '%$search_value%' GROUP BY asin_sku";
     $sql_run_search = mysqli_query($connection, $sql);
 }
 if (isset($_POST['search'])) {
@@ -46,7 +46,13 @@ if ($search_value == 0) {
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <div class="mt-2">Laptop Stock Report</div>
+                    <div class="row">
+                        <!-- mt-2 mr-2 -->
+                        <div class="py-1 px-3 border">Laptop Stock Report</div>
+                        <a href="./e_com_asin_view.php">
+                            <div class="py-1 px-3 border">Laptop Stock Report All</div>
+                        </a>
+                    </div>
                     <div class="">
                         <form method="POST">
                             <input type="text" name="search_value" class="mx-2" placeholder="Search By Model">
@@ -127,6 +133,7 @@ if ($search_value == 0) {
                     <table id="" class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>ASIN</th>
                                 <th>Brand</th>
                                 <th>Model</th>
                                 <th>In Total</th>
@@ -137,19 +144,21 @@ if ($search_value == 0) {
                         </thead>
                         <tbody class="table-body">
                             <?php
-                            $query = "SELECT brand, model,core,COUNT(id) as in_total FROM `e_com_inventory` WHERE model like'%$search_value%' GROUP BY  model ORDER BY in_total DESC";
+                            // $query = "SELECT brand, model,core,COUNT(id) as in_total FROM `e_com_inventory` WHERE model like'%$search_value%' GROUP BY  model ORDER BY in_total DESC";
+                            $query = "SELECT asin_sku, brand, model,COUNT(id) as in_total FROM `e_com_inventory` WHERE model like'%$search_value%' OR asin_sku like'%$search_value%' GROUP BY  asin_sku ORDER BY in_total DESC";
                             $result = mysqli_query($connection, $query);
                             foreach ($result as $data) {
+                                $asin = strToUpper($data['asin_sku']);
                                 $brand = strToUpper($data['brand']);
                                 $model = strToUpper($data['model']);
-                                $core = $data['core'];
+                                // $core = $data['core'];
                                 $in_total = $data['in_total'];
-                                $query = "SELECT COUNT(id)as in_stock FROM `e_com_inventory` WHERE brand = '$brand' AND model='$model'AND dispatch='0'";
+                                $query = "SELECT COUNT(id)as in_stock FROM `e_com_inventory` WHERE asin_sku = '$asin' AND brand = '$brand' AND model='$model'AND dispatch='0'";
                                 $result = mysqli_query($connection, $query);
                                 foreach ($result as $data) {
                                     $in_stock = $data['in_stock'];
                                 }
-                                $query = "SELECT COUNT(id)as dispatch FROM `e_com_inventory` WHERE brand = '$brand' AND model='$model'AND dispatch='1'";
+                                $query = "SELECT COUNT(id)as dispatch FROM `e_com_inventory` WHERE asin_sku = '$asin' AND brand = '$brand' AND model='$model'AND dispatch='1'";
                                 $result = mysqli_query($connection, $query);
                                 foreach ($result as $data) {
                                     $dispatch = $data['dispatch'];
@@ -162,6 +171,8 @@ if ($search_value == 0) {
                                 // }
                                 // $processing = $processing - $dispatch;
                                 echo "<tr class='cell-1' data-toggle='collapse'>
+                                    <td><a href='e_com_model_spec_view.php?model=$model&brand=$brand&asin=$asin&search_value=$search_value'>
+                                                $asin</a></td>
                                     <td>$brand</td>
                                     <td> <a href='e_com_model_view.php?model=$model&brand=$brand&search_value=$search_value'>
                                                 $model</a></td>

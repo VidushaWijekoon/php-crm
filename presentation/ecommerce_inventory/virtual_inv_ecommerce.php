@@ -197,34 +197,35 @@ while ($data = mysqli_fetch_assoc($data_set)) {
 </style>
 
 <?php
-$asin=0;
-       $mfg=0;
-       $model=0;
-$search_value ='0';
-    if(empty($_GET['search_value'])){}else{
-    $asin =$_GET['asin'];
-    $mfg=$_GET['mfg'];
-    $model=$_GET['model'];
-    $search_value=$_GET['search_value'];
+$asin = 0;
+$mfg = 0;
+$model = 0;
+$search_value = '0';
+if (empty($_GET['search_value'])) {
+} else {
+    $asin = $_GET['asin'];
+    $mfg = $_GET['mfg'];
+    $model = $_GET['model'];
+    $search_value = $_GET['search_value'];
+}
+if (isset($_POST['search'])) {
+
+    $asin = trim($_POST['asin']);
+    $mfg = trim($_POST['mfg']);
+    $model = trim($_POST['model']);
+
+    if (!empty($asin)) {
+        $mfg = 0;
+        $model = 0;
+    } elseif (!empty($mfg)) {
+        $model = 0;
+        $asin = 0;
+    } elseif (!empty($model)) {
+        $asin = 0;
+        $mfg = 0;
     }
-    if(isset($_POST['search'])){
-        
-       $asin=$_POST['asin'];
-       $mfg=$_POST['mfg'];
-       $model=$_POST['model'];
-       
-        if(!empty($asin)){
-             $mfg=0;
-            $model=0;
-        }elseif(!empty($mfg)){
-            $model=0;
-            $asin=0;
-        }elseif(!empty($model)){
-            $asin=0;
-             $mfg=0;
-        }
-        header("Location: virtual_inv_ecommerce.php?asin=$asin&model=$model&mfg=$mfg&search_value=1");
-    }
+    header("Location: virtual_inv_ecommerce.php?asin=$asin&model=$model&mfg=$mfg&search_value=1");
+}
 ?>
 
 
@@ -239,9 +240,12 @@ $search_value ='0';
 <div class="row mb-4 ml-1 pt-2 justify-content-between">
     <!-- <i class=" fa-solid fa-store"></i> -->
     <div class="row">
-        <a href="virtual_inv_ecommerce.php">
-            <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
-            <h6 class="pageName pt-1"> E-commerce inventory</h6>
+        <a href="./virtual_inv_ecommerce.php" style="color: #0c2e5b;">
+            <div class="row ml-2">
+                <i class="pageNameIcon fa-sharp fa-solid fa-layer-plus"></i>
+                <h6 class="pageName pt-1"> E-commerce inventory</h6>
+
+            </div>
         </a>
     </div>
     <div>
@@ -284,7 +288,7 @@ $search_value ='0';
                         <input class="w-100" type="text" name="model">
                     </div>
                     <div class="col-1">
-                        <button type='submit' name='search'>
+                        <button class="btn p-0" type='submit' name='search'>
                             <span><i class="fa-solid fa-magnifying-glass"></i></span>
                         </button>
                     </div>
@@ -294,8 +298,8 @@ $search_value ='0';
         </form>
         <!-- end Search -->
         <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-        <?php if($search_value !='0'){ 
-           ?>
+        <?php if ($search_value != '0') {
+        ?>
         <div class="addItemsSec mt-4">
             <div class="row justify-content-center">
                 <div class="tableSec">
@@ -313,32 +317,24 @@ $search_value ='0';
                             </tr>
                         </thead>
                         <tbody>
+                            <div class="ml-2">
+                                <div class="createListingHeading">
+                                    <span>
+                                        <p>Results</p>
+                                    </span>
+                                </div>
+                            </div>
+                            <hr class="sectionUnderline">
 
-<<<<<<< HEAD
                             <?php
-                            $query = "SELECT * FROM e_com_inventory WHERE (mfg = '$mfg' OR model = '$model' OR asin_sku = '$asin') AND dispatch ='0'";
-                            $query_run = mysqli_query($connection, $query);
-                            $i = 0;
-                            while ($data = mysqli_fetch_assoc($query_run)) {
-                                $i++;
-                            ?>
-=======
-        <div class="ml-2">
-            <div class="createListingHeading">
-                <span>
-                    <p>Rack</p>
-                </span>
-            </div>
-        </div>
-        <hr class="sectionUnderline">
-        <div class="row justify-content-end">
-            <div class="createListingHeading pr-4">
-                <span>
-                    <p>Total Laptops : <?php echo $stock; ?> </p>
-                </span>
-            </div>
-        </div>
->>>>>>> a11b9fed73d2cb276c63719c28da1c3dd7bfa3f2
+                                $query = "SELECT * FROM e_com_inventory WHERE (mfg = '$mfg' OR model = '$model' OR asin_sku = '$asin') AND dispatch ='0'";
+                                $query_run = mysqli_query($connection, $query);
+                                $i = 0;
+                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                    $i++;
+                                ?>
+
+
 
                             <tr>
                                 <!-- <form action="" method="POST"> -->
@@ -348,24 +344,25 @@ $search_value ='0';
                                 <td><?php echo $data['mfg'] ?></td>
                                 <td><?php echo $data['asin_serial'] ?></td>
                                 <td><?php echo $data['asin_sku'] ?></td>
-                                <td><?php echo $data['device'] ?></td>
+                                <!-- <td><?php echo $data['device'] ?></td> -->
                                 <td><?php echo $data['brand'] ?></td>
                                 <td><?php echo $data['model'] ?></td>
                                 <td><?php echo $data['qty'] ?></td>
                                 <td><a
-                                        href="virtual_inv_ecom_remove_items.php?rack=<?php echo $data['rack']?>&mfg=<?php echo $data['mfg'] ?>&model=<?php echo $model ?>&asin=<?php echo $asin ?>&search=1"><?php echo $data['rack'] ?></a>
+                                        href="virtual_inv_ecom_remove_items.php?rack=<?php echo $data['rack'] ?>&mfg=<?php echo $data['mfg'] ?>&model=<?php echo $model ?>&asin=<?php echo $asin ?>&search=1"><?php echo $data['rack'] ?></a>
                                 </td>
                             </tr>
                             <?php
-                            }
+                                }
                                 ?>
 
                         </tbody>
                     </table>
                 </div>
             </div>
-            <?php }else{ ?>
+            <?php } else { ?>
             <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
             <div class="ml-2">
                 <div class="createListingHeading">
                     <span>
@@ -374,6 +371,14 @@ $search_value ='0';
                 </div>
             </div>
             <hr class="sectionUnderline">
+            <div class="row justify-content-end">
+                <div class="createListingHeading pr-4">
+                    <span>
+                        <p>Total Laptops : <?php echo $stock; ?> </p>
+                    </span>
+                </div>
+            </div>
+
 
             <!-- Rack Design Sec -->
 
@@ -494,19 +499,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -538,19 +543,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -582,19 +587,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -631,19 +636,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -675,19 +680,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -719,19 +724,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -978,19 +983,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1022,19 +1027,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1068,19 +1073,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1119,19 +1124,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1163,19 +1168,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1207,19 +1212,19 @@ $search_value ='0';
                                                         <th>Qty</th>
                                                     </tr>
                                                     <?php
-                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
-                                                $query_run = mysqli_query($connection, $query);
+                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
+                                                        $query_run = mysqli_query($connection, $query);
 
-                                                while ($data = mysqli_fetch_assoc($query_run)) {
-                                                    $tot = $data['tot_count'];
-                                                    $model = $data['model'];
-                                                ?>
+                                                        while ($data = mysqli_fetch_assoc($query_run)) {
+                                                            $tot = $data['tot_count'];
+                                                            $model = $data['model'];
+                                                        ?>
                                                     <tr>
                                                         <td><?php echo $model ?></td>
                                                         <td><?php echo $tot ?></td>
                                                         <?php
-                                                }
-                                                    ?>
+                                                        }
+                                                            ?>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1266,6 +1271,6 @@ $search_value ='0';
 
 
     <?php
-require_once('../includes/footer.php')
+    require_once('../includes/footer.php')
 
-?>
+    ?>

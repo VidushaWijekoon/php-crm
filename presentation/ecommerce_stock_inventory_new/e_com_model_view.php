@@ -38,20 +38,20 @@ if ($search_value == 'pakaya') {
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
+                                <th>ASIN</th>
                                 <th>Brand</th>
                                 <th>Model</th>
-                                <th>core</th>
                                 <th>Generation</th>
                                 <th>In Total</th>
                                 <th>In Stock</th>
                                 <!-- <th>Processing</th> -->
                                 <th>Dispatch</th>
-                                <th>Touch Screen Count</th>
-                                <th>Non Touch Count</th>
+                                <!-- <th>Touch Screen Count</th>
+                                <th>Non Touch Count</th> -->
                                 <!-- <th>Touch Wholesale Price</th> -->
                                 <!-- <th>Non Touch Wholesale Price</th> -->
-                                <th>No Battery Count</th>
-                                <th>&nbsp;</th>
+                                <!-- <th>No Battery Count</th> -->
+                                <!-- <th>&nbsp;</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -72,18 +72,22 @@ if ($search_value == 'pakaya') {
                                 die();
                             }
 
-                            $total_pages_sql = "SELECT COUNT(id) as inventory FROM e_com_inventory  WHERE brand='$brand' AND model='$model' GROUP BY core";
+                            $total_pages_sql = "SELECT COUNT(id) as inventory FROM e_com_inventory  WHERE brand='$brand' AND model='$model' GROUP BY asin_sku";
                             $result = mysqli_query($conn, $total_pages_sql);
                             $total_rows = mysqli_num_rows($result);
                             $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                            $sql = "SELECT generation,core, COUNT(id) as in_total FROM e_com_inventory WHERE brand='$brand' AND model='$model' GROUP BY core LIMIT $offset, $no_of_records_per_page";
+                            // $sql = "SELECT generation,core, COUNT(id) as in_total FROM e_com_inventory WHERE brand='$brand' AND model='$model' GROUP BY core LIMIT $offset, $no_of_records_per_page";
+                            $sql = "SELECT asin_sku,generation,core, COUNT(id) as in_total FROM e_com_inventory WHERE brand='$brand' AND model='$model' GROUP BY asin_sku LIMIT $offset, $no_of_records_per_page";
                             $result = mysqli_query($connection, $sql);
+                            // echo $sql;
                             $i = 0;
                             foreach ($result as $data) {
+
+                                $asin = $data['asin_sku'];
+                                $in_total = $data['in_total'];
                                 $core = $data['core'];
                                 $generation = $data['generation'];
-                                $in_total = $data['in_total'];
                                 $i++;
                                 $stock = 0;
                                 $processing = 0;
@@ -92,7 +96,7 @@ if ($search_value == 'pakaya') {
                                 $none_touch_count = 0;
                                 $battery = 0;
                                 $touch_wholesale_price = 0;
-                                $sql_1 = "SELECT COUNT(id) as in_stock FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='0'";
+                                $sql_1 = "SELECT COUNT(id) as in_stock FROM e_com_inventory WHERE asin_sku='$asin' AND model='$model' AND dispatch='0'";
                                 $result_1 = mysqli_query($connection, $sql_1);
                                 foreach ($result_1 as $a) {
                                     $stock = $a['in_stock'];
@@ -107,16 +111,16 @@ if ($search_value == 'pakaya') {
                                 foreach ($result_1 as $c) {
                                     $dispatch = $c['dispatch'];
                                 }
-                                $sql_2 = "SELECT COUNT(touch_or_none_touch)as touch_or_none_touch FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='0' AND touch_or_none_touch='no'";
-                                $result_1 = mysqli_query($connection, $sql_2);
-                                foreach ($result_1 as $d) {
-                                    $none_touch_count = $d['touch_or_none_touch'];
-                                }
-                                $sql_2 = "SELECT  COUNT(battery)as battery FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='0' AND battery='no'";
-                                $result_1 = mysqli_query($connection, $sql_2);
-                                foreach ($result_1 as $d) {
-                                    $battery = $d['battery'];
-                                }
+                                // $sql_2 = "SELECT COUNT(touch_or_none_touch)as touch_or_none_touch FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='0' AND touch_or_none_touch='no'";
+                                // $result_1 = mysqli_query($connection, $sql_2);
+                                // foreach ($result_1 as $d) {
+                                //     $none_touch_count = $d['touch_or_none_touch'];
+                                // }
+                                // $sql_2 = "SELECT  COUNT(battery)as battery FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='0' AND battery='no'";
+                                // $result_1 = mysqli_query($connection, $sql_2);
+                                // foreach ($result_1 as $d) {
+                                //     $battery = $d['battery'];
+                                // }
                                 // $sql_2 = "SELECT touch_wholesale_price,non_touch_wholesale_price  FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='0'";
                                 // $result_1 = mysqli_query($connection, $sql_2);
                                 // foreach ($result_1 as $d) {
@@ -127,16 +131,14 @@ if ($search_value == 'pakaya') {
                                 echo "
                                     <tr class='cell-1' data-toggle='collapse'>
                                     <td>$i</td>
+                                    <td><a href='./e_com_model_spec_view.php?brand=$brand&model=$model&asin=$asin&search_value=$search_value'>$asin</a></td>
                                     <td>$brand</td>
-                                    <td><a href='./e_com_model_spec_view.php?brand=$brand&model=$model&core=$core&search_value=$search_value'>$model</a></td>
-                                    <td>$core</td>
+                                    <td>$model</td>
                                     <td>$generation</td>
                                     <td>$in_total</td>
                                     <td>$stock</td>
                                     <td>$dispatch</td>
-                                    <td>$touch_count</td>
-                                    <td>$none_touch_count</td>
-                                    <td>$battery</td>
+                                   
                                     ";
                                 echo "
                                 </tr>";
