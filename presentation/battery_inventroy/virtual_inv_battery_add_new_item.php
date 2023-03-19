@@ -107,7 +107,7 @@ if (isset($_POST['add_new_item'])) {
                             <div class="col-lg-4 formInput">
                                 <select name="device" id="device" class="DropDown select2"
                                     style="border-radius: 5px; width: 100%">
-                                    <option selected value="">--Select Device--</option>
+                                    <option selected value="battery">Battery</option>
                                     <?php
                                     $query = "SELECT device FROM main_inventory_informations GROUP BY device ASC";
                                     $result = mysqli_query($connection, $query);
@@ -121,12 +121,26 @@ if (isset($_POST['add_new_item'])) {
                                 </select>
                             </div>
                         </div>
+
+
+
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> Brand</div>
                             <div class="col-lg-4 formInput">
+
                                 <select name="brand" id="brand" class="DropDown select2"
                                     style="border-radius: 5px; width: 100%">
+                                    <?php
+                                    $query = "SELECT brand FROM main_inventory_informations GROUP BY brand ASC";
+                                    $result = mysqli_query($connection, $query);
+                                    while ($data = mysqli_fetch_array($result)) {
+                                    ?>
+                                    <option value="<?php echo $data["brand"]; ?>">
+                                        <?php echo strtoupper($data["brand"]); ?>
+                                    </option>
+                                    <?php } ?>
                                 </select>
+
                             </div>
                         </div>
 
