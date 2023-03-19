@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("../../inventory/printing/phpqrcode/qrlib.php");
 $connection = mysqli_connect("localhost", "root", "", "main_project");
 $performance_id=$_POST['performance_id'];
 $inventory_id=$_POST['inventory_id'];
@@ -69,6 +70,59 @@ SET
                  `status`=1
              WHERE performance_id = $performance_id";
              $query_run = mysqli_query($connection, $query_performance);
-                 header("Location: ../qc_dashboard_new.php");
+            $tempDir = 'tempmfg/';
+            $filename = $mfg;
+            $codeContents = $mfg;
+
+            QRcode::png($codeContents, $tempDir . '' . $filename . '.png', QR_ECLEVEL_L, 5, 1);
+        //    header("Location: print_mfg.php?mfg=$mfg");
+
+                    ?>
+<div class="box3 border" style="display: flex; justify-content: center; align-items: center;" id="printableArea">
+
+    <div class="stikerHead" style="font-weight:600; text-align:center;  margin-top: 0.7cm;">MFG</div>
+
+    <div class="stikerDetails" style="margin-left: 0.4cm; margin-top: 0.2cm; margin-bottom: 0.2cm;"> <img
+            style="width: 1.3cm;height: 1.3cm;" src="tempmfg/<?php echo $mfg ?>.png">
+    </div>
+    <div class="stikerDetails" style="text-align:center;"><?php echo $mfg ?>
+    </div>
+
+
+</div>
+<!-- </div> -->
+
+</div>
+<?php 
+// header("Location: ../qc_dashboard_new.php");
 
 ?>
+<script>
+var int = setInterval('check()', 300);
+
+function check() {
+    if (chobj('div') == true) {
+        printDiv('printableArea')
+        // window.alert('true');
+        int = window.clearInterval(int);
+    } else {
+        // document.write('<p>false</p>');
+    }
+}
+
+function chobj(printableArea) {
+    return (document.getElementById('printableArea')) ? true : false;
+}
+document.getElementById("printableArea").innerHTML = x;
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    window.location.href = '../qc_dashboard_new.php';
+}
+</script>

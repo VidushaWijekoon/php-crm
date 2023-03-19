@@ -727,7 +727,7 @@ input[type=text] {
                                                 $time=250;
                                             }else{
                                             foreach($sql_run as $data){
-                                                $scan_time=$data['start_time'];
+                                                $scan_time=$data['end_time'];
                                             }
                                             $session1_start = new DateTime($session1_cutof);
                                             $scan_time = new DateTime($scan_time);
