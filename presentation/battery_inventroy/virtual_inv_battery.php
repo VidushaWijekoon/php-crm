@@ -329,7 +329,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3'";
+                                                    $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3' AND removed_inv = '0'";
                                                     $a_3_r = mysqli_query($connection, $a_3_q);
                                                     while ($a_3_x = mysqli_fetch_assoc($a_3_r)) {
 

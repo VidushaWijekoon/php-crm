@@ -69,6 +69,11 @@ if (isset($_POST['add_new_item'])) {
     border-top: 2px solid #DBDBDB;
     margin-top: 0px;
 }
+
+.select2-selection__rendered {
+    line-height: 17px !important;
+    padding-left: 0px !important;
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -108,16 +113,16 @@ if (isset($_POST['add_new_item'])) {
                                 <select name="device" id="device" class="DropDown select2"
                                     style="border-radius: 5px; width: 100%">
                                     <option selected value="battery">Battery</option>
-                                    <?php
-                                    $query = "SELECT device FROM main_inventory_informations GROUP BY device ASC";
-                                    $result = mysqli_query($connection, $query);
+                                    <!-- <?php
+                                            $query = "SELECT device FROM main_inventory_informations GROUP BY device ASC";
+                                            $result = mysqli_query($connection, $query);
 
-                                    while ($xd = mysqli_fetch_array($result)) :;
-                                    ?>
+                                            while ($xd = mysqli_fetch_array($result)) :;
+                                            ?>
                                     <option value="<?php echo $xd["device"]; ?>">
                                         <?php echo strtoupper($xd["device"]); ?>
                                     </option>
-                                    <?php endwhile; ?>
+                                    <?php endwhile; ?> -->
                                 </select>
                             </div>
                         </div>
@@ -129,7 +134,7 @@ if (isset($_POST['add_new_item'])) {
                             <div class="col-lg-4 formInput">
 
                                 <select name="brand" id="brand" class="DropDown select2"
-                                    style="border-radius: 5px; width: 100%">
+                                    style="border-radius: 5px; width: 100%" required>
                                     <?php
                                     $query = "SELECT brand FROM main_inventory_informations GROUP BY brand ASC";
                                     $result = mysqli_query($connection, $query);
@@ -148,20 +153,20 @@ if (isset($_POST['add_new_item'])) {
                             <div class="col-lg-2 formLable"> Model</div>
                             <div class="col-lg-4 formInput">
                                 <select name="model" id="model" class="DropDown select2"
-                                    style="border-radius: 5px; width: 100%">
+                                    style="border-radius: 5px; width: 100%" required>
                                 </select>
                             </div>
                         </div>
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> Qty</div>
                             <div class="col-lg-4 formInput">
-                                <input class="w-100" type="number" min="1" name="add_qty">
+                                <input class="w-100" type="number" min="1" name="add_qty" required>
                             </div>
                         </div>
                         <div class="row justify-content-center mb-1">
                             <div class="col-lg-2 formLable"> Capacity</div>
                             <div class="col-lg-4 formInput">
-                                <input class="w-100" type="text" name="capacity">
+                                <input class="w-100" type="text" name="capacity" required>
                             </div>
                         </div>
                         <div class="row justify-content-center mb-1">
@@ -182,9 +187,23 @@ if (isset($_POST['add_new_item'])) {
     </div>
 </div>
 
+
 <script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
 
 <script>
+$(function() {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+
+})
+
+
 $(document).ready(function() {
     $("#device").on("change", function() {
         var device = $("#device").val();

@@ -9,12 +9,11 @@ require_once("../../functions/db_connection.php");
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
-
 $rack = $_GET['rack'];
 
 $mfg = "";
 $alsakbqr = "";
-$asin = "";
+$asinSku = "";
 $device = "";
 $brand = "";
 $model = "";
@@ -22,97 +21,75 @@ $qty = "";
 $core = "";
 $gen = "";
 
-
+$isDataADD = 0;
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
-
-    $query = "SELECT * FROM packing_mfg WHERE mfg = '$mfg'";
-    // $query = " SELECT
-    //     packing_mfg.mfg,
-    //     main_inventory_informations.device,
-    //     main_inventory_informations.brand,
-    //     main_inventory_informations.model,
-    //     main_inventory_informations.asin_sku,
-    //     main_inventory_informations.core,
-    //     main_inventory_informations.generation
-    // FROM
-    //     packing_mfg
-    // LEFT JOIN main_inventory_informations 
-    // ON packing_mfg.mfg = main_inventory_informations.mfg
-    // WHERE packing_mfg.mfg = '$mfg'";
-    echo $query;
-    $query_run = mysqli_query($connection, $query);
-
-    while ($x = mysqli_fetch_assoc($query_run)) {
-        $mfg = $x['mfg'];
-        $device = $x['device'];
-        $brand = $x['brand'];
-        $model = $x['model'];
-        $asin = $x['asin'];
-        $core = $x['core'];
-        $gen = $x['generation'];
-    }
-}
-
-
-
-if (isset($_POST['addNewItem'])) {
-
-    // $alsakbQR = mysqli_real_escape_string($connection, $_POST['alsakbQR']);
-    $mfg = mysqli_real_escape_string($connection, $_POST['mfg']);
-    $asinSku = mysqli_real_escape_string($connection, $_POST['asinSku']);
-    $deviceType = mysqli_real_escape_string($connection, $_POST['deviceType']);
-    $brand = mysqli_real_escape_string($connection, $_POST['brand']);
-    $model = mysqli_real_escape_string($connection, $_POST['model']);
-    $qty = mysqli_real_escape_string($connection, $_POST['qty']);
-    $core = mysqli_real_escape_string($connection, $_POST['core']);
-    $gen = mysqli_real_escape_string($connection, $_POST['gen']);
-
-    echo $mfg;
     if ($mfg == "") {
         echo "<script>
     alert('Please Scan/Enter MFG Number First');
     </script>";
     } else {
 
-        $queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
-        echo $queryS;
-        $rows = 0;
-        $query_run = mysqli_query($connection, $queryS);
-        $rows = mysqli_num_rows($query_run);
-        // print_r($query_run);
+        $query = "SELECT * FROM packing_mfg WHERE mfg = '$mfg'";
+
+        echo $query;
+        $query_run = mysqli_query($connection, $query);
+        $rowsPac = mysqli_num_rows($query_run);
+        // packing Mfg data tynwnm,
+        if ($rowsPac > 0) {
+
+            while ($x = mysqli_fetch_assoc($query_run)) {
+                $mfg = $x['mfg'];
+                $device = $x['device'];
+                $brand = $x['brand'];
+                $model = $x['model'];
+                $core = $x['core'];
+                $gen = $x['generation'];
+                $asinSku = $x['asin_sku'];
+                $qty = '1';
+            }
+            $queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
+            echo $queryS;
+            $rows = 0;
+            $query_run = mysqli_query($connection, $queryS);
+            $rows = mysqli_num_rows($query_run);
+
+            // ecommerce_inventory eke data natnm,
+            if ($rows == 0) {
+                echo "ecommerce_inventory eke data natnm";
 
 
-        if ($rows == 0) {
+                $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation)
+                VALUES('$mfg','$asinSku','$device','$brand','$model','$qty','$rack','$core','$gen')";
+                $data = mysqli_query($connection, $query);
+
+                $isDataADD = 1;
 
 
-            $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation)
-        VALUES('$mfg','$asinSku','$deviceType','$brand','$model','$qty','$rack','$core','$gen')";
-            $data = mysqli_query($connection, $query);
 
-            echo "insert waduna";
-            if (empty($data)) {
-
-                echo "<script>alert('data not added');</script>";
+                // header("Location: virtual_inv_ecom_add_items?mfg=$mfg&rack=$rack");
             } else {
-                echo "<script>alert('data added');</script>";
+                // ecommrce eke data tynwnm
+                echo "ecommerce_inventory eke data tynwa";
+
+                $query = "UPDATE e_com_inventory SET dispatch ='0', rack = '$rack' WHERE mfg ='$mfg'";
+                $data = mysqli_query($connection, $query);
+                echo $query;
+
+                echo "<script>alert('laptop Added Again');</script>";
+                $isDataADD = 1;
             }
         } else {
-            $query = "UPDATE e_com_inventory SET dispatch ='0', rack = '$rack' WHERE mfg ='$mfg'";
+            // packing mfg data natnm,
 
-            $data = mysqli_query($connection, $query);
+            echo "<script>alert('this laptop not in database');</script>";
 
-            echo "update waduna";
-
-            if (empty($data)) {
-
-                echo "<script>alert('data not added');</script>";
-            } else {
-                echo "<script>alert('laptop Added Again');</script>";
-            }
+            // header("Location: virtual_inv_ecom_add_items?rack=$rack");
         }
     }
+    $_POST['scanMfg'] = '';
 }
+
 
 ?>
 
@@ -196,13 +173,13 @@ if (isset($_POST['addNewItem'])) {
 
         <div class="mt-4">
             <div class="">
-                <form action="" method="POST">
+                <form method="POST">
 
                     <div class="addFields ">
                         <div class="row justify-content-center mb-1">
-                            <div class="col-lg-2 formLable">Scan MFG</div>
+                            <div class="col-lg-2 formLable">Scan MFG / Alsakb No</div>
                             <div class="col-lg-4 formInput">
-                                <input name="mfg" class="w-100" type="text" value="<?php echo $mfg; ?>">
+                                <input name="mfg" class="w-100" type="text">
                             </div>
                             <button type="submit" name="scanMfg" class="d-none"></button>
 
@@ -211,65 +188,70 @@ if (isset($_POST['addNewItem'])) {
                 </form>
                 <hr class="sectionUnderline w-75 mt-3">
 
-                <form action="" method="POST">
-
-                    <input name="mfg" type="hidden" value="<?php echo $mfg ?>" required>
-                    <input name="core" type="hidden" value="<?php echo $core ?>" required>
-                    <input name="gen" type="hidden" value="<?php echo $gen ?>" required>
-
-                    <div class="row justify-content-center mb-1">
-                        <div class="col-lg-2 formLable"> ASIN/SKU</div>
-                        <div class="col-lg-4 formInput">
-                            <input name="asinSku" class="w-100" type="text" value="<?php echo $asin ?>">
-                        </div>
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> ASIN/SKU</div>
+                    <div class="col-lg-4 formInput">
+                        <input name="asinSku" class="w-100" type="text" value="<?php echo $asinSku ?>">
                     </div>
-                    <div class="row justify-content-center mb-1">
-                        <div class="col-lg-2 formLable"> Device Type</div>
-                        <div class="col-lg-4 formInput">
-                            <select name="deviceType" id="deviceType" class="w-100" required>
-                                <option value="<?php echo $device ?>" selected>Laptop</option>
+                </div>
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> Device Type</div>
+                    <div class="col-lg-4 formInput">
+                        <select name="deviceType" id="deviceType" class="w-100" required>
+                            <option value="<?php echo $device ?>" selected>Laptop</option>
 
-                            </select>
-                            <!-- <input name="deviceType" class="w-100" type="text"> -->
-                        </div>
+                        </select>
+                        <!-- <input name="deviceType" class="w-100" type="text"> -->
                     </div>
+                </div>
 
-                    <div class="row justify-content-center mb-1">
-                        <div class="col-lg-2 formLable"> Brand</div>
-                        <div class="col-lg-4 formInput">
-                            <!-- <select name="brand" id="brand" class="w-100">
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> Brand</div>
+                    <div class="col-lg-4 formInput">
+                        <!-- <select name="brand" id="brand" class="w-100">
                                 <option value="dell">Dell</option>
                             </select> -->
-                            <input name="brand" value="<?php echo $brand ?>" class="w-100" type="text" required>
-                        </div>
+                        <input name="brand" value="<?php echo $brand ?>" class="w-100" type="text" required>
                     </div>
-                    <div class="row justify-content-center mb-1">
-                        <div class="col-lg-2 formLable"> Model</div>
-                        <div class="col-lg-4 formInput">
-                            <!-- <select name="model" id="model" class="w-100">
+                </div>
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> Model</div>
+                    <div class="col-lg-4 formInput">
+                        <!-- <select name="model" id="model" class="w-100">
                                 <option value="model">model</option>
                             </select> -->
-                            <input name="model" class="w-100" type="text" value="<?php echo $model ?>" required>
-                        </div>
+                        <input name="model" class="w-100" type="text" value="<?php echo $model ?>" required>
                     </div>
+                </div>
 
-                    <div class="row justify-content-center mb-1">
-                        <div class="col-lg-2 formLable"> Qty</div>
-                        <div class="col-lg-4 formInput">
-                            <input name="qty" class="w-100" type="text" value="1" required>
-                        </div>
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> Qty</div>
+                    <div class="col-lg-4 formInput">
+                        <input name="qty" class="w-100" type="text" value="1" required>
                     </div>
+                </div>
 
-                    <div class="row justify-content-center mb-1">
-                        <div class="col-lg-2 formLable"> Rack</div>
-                        <div class="col-lg-4 formInput">
-                            <input name="rackName" class="w-100" type="text" value="<?php echo $rack; ?>" disabled>
-                        </div>
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> Rack</div>
+                    <div class="col-lg-4 formInput">
+                        <input name="rackName" class="w-100" type="text" value="<?php echo $rack; ?>" disabled>
                     </div>
-                    <div class="row justify-content-center mt-4">
-                        <button type="submit" name="addNewItem" class="btnTB mr-2 px-4">Add</button>
-                    </div>
-                </form>
+                </div>
+                <div class="row justify-content-center mb-1 mt-2">
+                    <!-- <button>Succecss</button> -->
+
+                    <?php
+                    if ($isDataADD == 1) {
+                        echo "<h6 class = 'text-info' > $mfg Added Success!!</h6>";
+                    } else {
+                    }
+
+                    ?>
+                </div>
+
+
+
+
             </div>
 
         </div>
@@ -279,6 +261,12 @@ if (isset($_POST['addNewItem'])) {
 
 
 </div>
+
+<script>
+let mfgbar = document.querySelector('input[name="mfg"]');
+mfgbar.focus();
+// text.value = '';
+</script>
 
 
 
