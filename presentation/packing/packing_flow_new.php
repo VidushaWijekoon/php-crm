@@ -303,13 +303,21 @@ WHERE
                 $start_print=0;
                 if(isset($_POST['submit'])){
                     $mfg =$_POST['mfg'];
-                    $start_print=1;
                     $sales_type=$_POST['sales_type'];
+                    $petti_anke =$_POST['petti_anke'];
+                    if($sales_type==1){
+                        $start_print=1;
+                        $petti_anke=0;
+                    }elseif($sales_type==2){
+                        $start_print=0;
+                        $petti_anke=$_POST['petti_anke'];
+                    }
                     $sql="INSERT INTO packing_mfg (mfg,packing_by,sales_type)
                     values('$mfg','$sales_type','$sales_type')";
                     $sql_run=mysqli_query($connection,$sql);
                     $sql="UPDATE main_inventory_informations SET dispatch='1' WHERE mfg='$mfg' ";
                     $sql_run=mysqli_query($connection,$sql);
+                    
                 }
    
 ?>
@@ -554,9 +562,10 @@ WHERE
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
-                        <div class="row mt-1">
-                            <!-- <div class="col-3"></div> -->
-                            <form method="POST">
+                        <form method="POST">
+                            <div class="row mt-1">
+                                <!-- <div class="col-3"></div> -->
+
                                 <label class="col-5  lable1">Sales type</label>
                                 <select class="col-7" id='sales_type' name='sales_type'>
                                     <?php if($sales_type ==1){ ?>
@@ -568,14 +577,14 @@ WHERE
                                     <?php } ?>
 
                                 </select>
-                        </div>
+                            </div>
                     </div>
                 </div>
                 <div class="row d-flex justify-content-between">
                     <div class="col-md-5">
                         <div class="row mt-1">
-                            <!-- <label class="col-5  lable1">Packing Type</label>
-                            <input class="col-7" type="text"> -->
+                            <label class="col-5  lable1">Box Number</label>
+                            <input class="col-7" type="text" name='petti_anke'>
                             <!-- <div class="col-2"></div>    -->
                         </div>
                     </div>
@@ -708,15 +717,15 @@ WHERE
                     </button>
                 </div>
 
-
+                </form>
             </div>
             <div class="scanedLaptopList mt-4">
                 <div class="">
                     <div class="createListingHeading">
-                        Printed Laptop Details
+                        <!-- Printed Laptop Details -->
                     </div>
                 </div>
-                <hr class="sectionUnderline">
+                <!-- <hr class="sectionUnderline">
 
                 <div class="scannedLaptopSub">
                     <div class="packedItem mb-1">
@@ -740,10 +749,10 @@ WHERE
                             <p>8GB RAM</p> &nbsp;&nbsp;
                             <p>256GB SSD</p>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+            </div>
 
-                <!-- <div class="d-flex justify-content-center mt-2">
+            <!-- <div class="d-flex justify-content-center mt-2">
                     <button class="btnT mx-2">Confirm</button>
                     <button class="btnT mx-2">Print</button>
                 </div> -->
@@ -751,15 +760,15 @@ WHERE
 
 
 
-            </div>
         </div>
+    </div>
 
 
-        <br>
-        <br>
-        <!-- Next Btn Sectiom -->
+    <br>
+    <br>
+    <!-- Next Btn Sectiom -->
 
-        <!-- <div class="row btnNextSec">
+    <!-- <div class="row btnNextSec">
             <a href="./e_com_packing_next.php">
                 <div class="btnTB" style="width: 200px;">
                     Next
@@ -767,14 +776,14 @@ WHERE
             </a>
         </div> -->
 
-        <!-- Printing Sec -->
+    <!-- Printing Sec -->
 
 
 
 
 
 
-    </div>
+</div>
 </div>
 
 

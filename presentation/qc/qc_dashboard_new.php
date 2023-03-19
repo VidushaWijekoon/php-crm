@@ -7,6 +7,8 @@ $connection = mysqli_connect("localhost", "root", "", "main_project");
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+?>
+<?php
 $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
@@ -46,6 +48,8 @@ $department_id = $_SESSION['department_id'];
     $timestamp = time();
     $day_start = date("Y-m-d 00:00:00");
     $day_end = date("Y-m-d 23:59:00");
+
+   
 ?>
 
 
@@ -258,10 +262,21 @@ input[type=text] {
 }
 
 /* // */
+
+.label_values {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.radioLbl {
+    font-size: 10px;
+    padding-top: 6px;
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
-    <a href="../inventory/inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back to
+    <a href="../inventory/inventory_team_leader_dashboard.php"><i class="fa-solid fa-backward"></i>&nbsp; &nbsp;Back
+        to
         Dashboard</a>
 </div>
 
@@ -290,6 +305,8 @@ input[type=text] {
                         <div class="userName">Department :
                             <span><?php echo $department_id ?></span>
                         </div>
+                        <div class="empNo">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -299,9 +316,7 @@ input[type=text] {
         <!-- Performance Details -->
 
         <div class="empDetails mb-3 mx-3 mt-3">
-
-            <!-- Detail Sec -->
-            <form method="POST" action="insert/performance_save.php">
+            <form method="POST" action="insert/qc_dashboard_new_save.php">
                 <div class="col-12">
                     <div class="row mx-4  justify-content-between">
 
@@ -324,47 +339,16 @@ input[type=text] {
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
                                     <?php 
-                                if ($department_id == 1 || $department_id == 13 || $department_id == 23 || $department_id == 22){ ?>
-                                    <option value="2">Clean </option>
-                                    <option value="3">Packing </option>
-                                    <option value="4">Full Painting Packing</option>
-                                    <option value="5">High Gen
-                                        Bodywork+Sanding+Taping
+                                if ($department_id == 1){ ?>
+                                    <option value="24">High Gen Functional Test + MFG </option>
+                                    <option value="25">High Gen Functional Test </option>
+                                    <option value="26">Low Gen Functional Test</option>
+                                    <option value="27">Windows Instalation
                                     </option>
-                                    <option value="6">Low Gen
-                                        bodywork+sanding+taping
+                                    <option value="28">Combine
                                     </option>
-                                    <option value="7">Bodywork+Sanding
-                                    </option>
-                                    <option value="8">Designing + Pasting </option>
-                                    <option value="Pasting">Pasting </option>
-                                    <?php if ($user_id == 280) {
-                                                    ?>
-                                    <option value="10">Low Generation</option>
-                                    <option value="11">Full Painting A+C+D</option>
-                                    <option value="12">Keyboard Lacker</option>
-                                    <option value="13">A Panel Paint</option>
                                     <?php
                                 }
-                                }elseif($department_id == 8){
-                                    ?>
-                                    <option value="10">Low Generation Painting</option>
-                                    <option value="11">Full Painting A+C+D</option>
-                                    <option value="12">Keyboard Lacker</option>
-                                    <option value="13">A Panel Paint</option>
-                                    <?php
-                                }elseif($department_id == 9){
-                                    ?>
-                                    <option value="29">BIOS Lock High Gen</option>
-                                    <option value="30">BIOS Lock Low Gen</option>
-                                    <option value="31">No
-                                        Power /
-                                        No
-                                        Display
-                                        /
-                                        Account Lock/ Ports Issue</option>
-                                    <?php
-                                } 
                                     ?>
                                 </select>
                             </div>
@@ -463,18 +447,9 @@ input[type=text] {
                     </div>
                 </div>
             </div>
-            <!-- ///////////////// -->
-
-            <!-- TIME SEC -->
-
-            <!-- <a href="./timeline.php">
-                <button>time</button>
-            </a> -->
             <div class="perfoTimeSec">
                 <div class="row">
                     <div class="col-lg-6">
-
-
                     </div>
                     <div class="col-lg-6">
                         <div class="row my-4">
@@ -491,7 +466,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 13:55:00");
                                              $session1_cutof = $date1->format("Y-m-d 09:05:00");
                                             $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql="SELECT start_time FROM performance_records WHERE user_id = '$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -522,7 +497,8 @@ input[type=text] {
                                                    $status=0;
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -534,7 +510,8 @@ input[type=text] {
                                                 $status=1;
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
@@ -543,7 +520,7 @@ input[type=text] {
                                             </div>
                                             <?php
                                             }else{ ?>
-                                            <div class="meta-date timeSec" id="time1">
+                                            <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $morning ?>
                                                 </div>
@@ -579,11 +556,11 @@ input[type=text] {
                                         <div class="timeline-article timeline-article-top">
                                             <?php 
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
-                                            $session1_start = $date1->format("Y-m-d 13:00:00");
+                                            $session1_start = $date1->format("Y-m-d 13:30:00");
                                             $session1_end = $date1->format("Y-m-d 14:30:00");
                                             $session1_cutof = $date1->format("Y-m-d 13:55:00");
                                             $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql="SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -606,7 +583,8 @@ input[type=text] {
                                             <?php 
                                             if($time>=0){ ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -617,7 +595,8 @@ input[type=text] {
                                             }elseif($time < 0 && $time>-100){
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
@@ -649,7 +628,7 @@ input[type=text] {
                                             $session1_start = $date1->format("Y-m-d 15:00:00");
                                             $session1_end = $date1->format("Y-m-d 18:45:00");
                                             $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql="SELECT start_time FROM performance_records WHERE user_id='$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -675,7 +654,8 @@ input[type=text] {
                                                 $status=0;
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -687,7 +667,8 @@ input[type=text] {
                                                 $status=1;
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
@@ -737,7 +718,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 19:15:00");
                                             $session1_cutof = $date1->format("Y-m-d 18:45:00");
                                             $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql="SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -761,7 +742,8 @@ input[type=text] {
                                             if($time>=0 && $time<240){ 
                                                  ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -772,7 +754,8 @@ input[type=text] {
                                             }elseif($time<0){
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -796,7 +779,7 @@ input[type=text] {
                                             $session1_start = $date1->format("Y-m-d 19:15:00");
                                             $session1_end = $date1->format("Y-m-d 19:45:00");
                                             $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql="SELECT start_time FROM performance_records WHERE user_id = '$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -822,7 +805,8 @@ input[type=text] {
                                             if($time<=5 && $time>=0){ 
                                                 $status=0;?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
@@ -834,7 +818,8 @@ input[type=text] {
                                                 $status=1;
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -885,7 +870,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 21:15:00");
                                             $session1_cutof = $date1->format("Y-m-d 20:55:00");
                                             $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql="SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -908,7 +893,8 @@ input[type=text] {
                                             if($time>=0 && $time!=150){ 
                                                  ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
@@ -920,7 +906,8 @@ input[type=text] {
                                                
                                                 ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
+                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
                                                 <div class="time">
@@ -945,31 +932,31 @@ input[type=text] {
 
                     </div>
                 </div>
-            </div>
 
 
-            <!-- ////////// -->
+                <!-- ////////// -->
 
 
-            <!-- Table Sec -->
-            <div class="performDetailTableSec mt-4">
-                <div class="tableSec">
-                    <table class="table mx-3 table-hover text-center">
-                        <thead>
-                            <tr>
-                                <th>Job Description</th>
-                                <th>Scanned QR</th>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>Generation</th>
-                                <th>Start Time</th>
-                                <th>End Time</th>
-                                <th>Status</th>
-                                <th>Target</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
+                <!-- Table Sec -->
+                <div class="performDetailTableSec mt-4">
+                    <div class="tableSec">
+                        <table class="table mx-3 table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>Job Description</th>
+                                    <th>Scanned QR</th>
+                                    <th>Brand</th>
+                                    <th>Model</th>
+                                    <th>Generation</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Task Status</th>
+                                    <th>Target</th>
+                                    <th>Reject Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
                             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                            
                             if (isset($_GET['pageno'])) {
@@ -993,57 +980,228 @@ input[type=text] {
                             $total_rows = mysqli_num_rows($result);
                             $total_pages = ceil($total_rows / $no_of_records_per_page);
                             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            $sql="SELECT qr_number,start_time,end_time,status,performance_records.target,main_inventory_informations.brand,main_inventory_informations.model,main_inventory_informations.generation,targets.job_description FROM performance_records
-                            LEFT JOIN main_inventory_informations ON main_inventory_informations.inventory_id =performance_records.qr_number
-                            LEFT JOIN targets ON targets.target_id=performance_records.job_description  WHERE user_id = '$user_id' AND start_time BETWEEN '$day_start' AND '$day_end' ORDER BY performance_id DESC LIMIT $offset, $no_of_records_per_page";
+                            $sql="SELECT
+                                        performance_records.qr_number as performance_qr,
+                                        performance_records.start_time,
+                                        performance_records.end_time,
+                                        performance_records.status as task_status,
+                                        performance_records.target,
+                                        main_inventory_informations.brand,
+                                        main_inventory_informations.model,
+                                        main_inventory_informations.generation,
+                                        targets.job_description,
+                                        qc_forms.*,
+                                        qc_forms.qc_form_id
+                                    FROM
+                                        performance_records
+                                    LEFT JOIN main_inventory_informations ON main_inventory_informations.inventory_id = performance_records.qr_number
+                                    LEFT JOIN targets ON targets.target_id = performance_records.job_description
+                                    LEFT JOIN qc_forms ON qc_forms.performance_id = performance_records.performance_id
+                                    WHERE
+                                        performance_records.user_id = '11' AND start_time BETWEEN '2023-03-19 00:00:00' AND '2023-03-19 23:59:00'
+                                    ORDER BY
+                                        performance_records.performance_id
+                                    DESC LIMIT $offset, $no_of_records_per_page";
+                                    
                             $sql_run=mysqli_query($connection,$sql);
-                            
                             foreach($sql_run as $data){
+                                $bios_lock_hp = $data['bios_lock_hp'];
+                                            $bios_lock_dell = $data['bios_lock_dell'];
+                                            $bios_lock_lenovo = $data['bios_lock_lenovo'];
+                                            $bios_lock_other = $data['bios_lock_other'];
+
+                                            $computrace_hp = $data['computrace_hp'];
+                                            $computrace_dell = $data['computrace_dell'];
+                                            $computrace_lenovo = $data['computrace_lenovo'];
+                                            $computrace_other = $data['computrace_other'];
+
+                                            $me_region_lock_hp = $data['me_region_lock_hp'];
+                                            $tpm_lock_dell = $data['tpm_lock_dell'];
+                                            $other_error_lenovo = $data['other_error_lenovo'];
+                                            $other_error_other_brand = $data['other_error_other_brand'];
+
+                                            $no_power = $data['power'];
+                                            $no_display = $data['mb_display'];
+                                            $other_issue = $data['mb_other_issue'];
+                                            $bodywork = $data['bodywork'];
+                                            $sanding = $data['sanding'];
+
+                                            $a_top = $data['a_top'];
+                                            $b_bazel = $data['b_bazel'];
+                                            $c_palmrest = $data['c_palmrest'];
+                                            $d_back_cover = $data['d_back_cover'];
+                                            $keyboard = $data['keyboard'];
+                                            $lcd = $data['lcd'];
+                                            $webcam = $data['webcam'];
+                                            $mousepad_button = $data['mousepad_button'];
+                                            $mic = $data['mic'];
+                                            $speaker = $data['speaker'];
+                                            $wi_fi_connection = $data['wi_fi_connection'];
+                                            $usb = $data['usb'];
+                                            $battery = $data['battery'];
+                                            $hinges_cover = $data['hinges_cover'];
+                                            $ram = $data['ram'];
+                                            $hdd_boot = $data['hard_disk_boot'];
+                                            $qc_form_id = $data['qc_form_id'];
+                                            $keyboard_backlight = $data['keyboard_backlight'];
                                 ?>
-                            <tr>
-                                <td><?php echo $data['job_description'] ?></td>
-                                <td><?php echo $data['qr_number'] ?></td>
-                                <td><?php echo $data['brand'] ?></td>
-                                <td><?php echo $data['model'] ?></td>
-                                <td><?php echo $data['generation'] ?></td>
-                                <td><?php echo $data['start_time'] ?></td>
-                                <td><?php echo $data['end_time'] ?></td>
-                                <td><?php echo $data['status'] ?></td>
-                                <td><?php echo $data['target'] ?></td>
-                            </tr>
-                            <?php
+                                <tr>
+                                    <td><?php echo $data['job_description'] ?></td>
+                                    <td><?php echo $data['performance_qr'] ?></td>
+                                    <td><?php echo $data['brand'] ?></td>
+                                    <td><?php echo $data['model'] ?></td>
+                                    <td><?php echo $data['generation'] ?></td>
+                                    <td><?php echo $data['start_time'] ?></td>
+                                    <td><?php echo $data['end_time'] ?></td>
+                                    <td><?php if($data['task_status'] == 1){
+                                        echo "completed";
+                                    }else{
+                                        echo "On Going";
+                                    } ?></td>
+                                    <td><?php echo $data['target'] ?></td>
+                                    <td><?php
+                                    if(!empty($qc_form_id)){
+                                            
+                                            if ($bios_lock_hp == 'lock') {
+                                                echo "Bios Lock </br>";
+                                            }
+                                            if ($bios_lock_dell == 'lock') {
+                                                echo "Bios Lock </br>";
+                                            }
+                                            if ($bios_lock_lenovo == 'lock') {
+                                                echo "Bios Lock</br>";
+                                            }
+                                            if ($bios_lock_other == 'lock') {
+                                                echo "Bios Lock</br>";
+                                            }
+                                            if ($computrace_hp == 'active') {
+                                                echo "Computrace Lock</br>";
+                                            }
+                                            if ($computrace_dell == 'activated' || $computrace_dell == 'disable') {
+                                                echo "Computrace Lock</br>";
+                                            }
+                                            if ($computrace_lenovo == 'lock') {
+                                                echo "Computrace Lock</br>";
+                                            }
+                                            if ($computrace_other == 'lock') {
+                                                echo "Computrace Lock</br>";
+                                            }
+                                            if ($me_region_lock_hp == 'lock') {
+                                                echo "ME Region Lock</br>";
+                                            }
+                                            if ($tpm_lock_dell == 'not ok') {
+                                                echo "TPM Lock</br>";
+                                            }
+                                            if ($other_error_lenovo == 'have') {
+                                                echo "Other Error Lenovo</br>";
+                                            }
+                                            if ($other_error_other_brand == 'no') {
+                                                echo "Other Error</br>";
+                                            }
+                                            if ($no_power == 'reject') {
+                                                echo "No Power</br>";
+                                            }
+                                            if ($no_display == 'reject') {
+                                                echo "No Display Issue</br>";
+                                            }
+                                            if ($other_issue == 'have') {
+                                                echo "Motherboard other Error</br>";
+                                            }
+                                            if ($a_top == 'reject') {
+                                                echo "A/Top Cover(Scratch/Broken/Dent)</br>";
+                                            }
+                                            if ($b_bazel == 'b_bazel') {
+                                                echo "B/bazel(Scratch/Brocken/Logo/Color)</br>";
+                                            }
+                                            if ($c_palmrest == 'reject') {
+                                                echo "C/Palmrest (Scratch/Broken/Dent)</br>";
+                                            }
+                                            if ($d_back_cover == 'reject') {
+                                                echo "D/Back Cover (Scratch/Broken/Dent)</br>";
+                                            }
+                                            if ($keyboard == 'reject') {
+                                                echo "Keyboard(Function/ Key missing / Color)</br>";
+                                            }
+                                            if ($lcd == 'reject') {
+                                                echo "LCD (Whitespot/Scratch/Broken/Line/Yellow shadow)</br>";
+                                            }
+                                            if ($webcam == 'reject') {
+                                                echo "Webcam</br>";
+                                            }
+                                            if ($mousepad_button == 'reject') {
+                                                echo "Mousepad & Button</br>";
+                                            }
+                                            if ($mic == 'reject') {
+                                                echo "Microphone (MIC)</br>";
+                                            }
+                                            if ($speaker == 'reject') {
+                                                echo "Speaker / Sound</br>";
+                                            }
+                                            if ($wi_fi_connection == 'reject') {
+                                                echo "Wi-Fi Connection</br>";
+                                            }
+                                            if ($usb == 'reject') {
+                                                echo "USB Port</br>";
+                                            }
+                                            if ($battery == 'bad') {
+                                                echo "Battery Health</br>";
+                                            }
+                                            if ($hinges_cover == 'reject') {
+                                                echo "Hinges Cover</br>";
+                                            }
+                                            if ($bodywork == 'reject') {
+                                                echo "Bodywork</br>";
+                                            }
+                                            if ($sanding == 'reject') {
+                                                echo "Sanding</br>";
+                                            }
+                                            if ($ram == 'not match') {
+                                                echo "Ram missed match</br>";
+                                            }
+                                            if ($hdd_boot == 'not ok') {
+                                                echo "HDD is not booting</br>";
+                                            }
+                                             if ($keyboard_backlight == 'not ok') {
+                                                echo "Kyeboard Backlight not match with sales order</br>";
+                                            }
+                                        }else{
+                                            echo "pass";
+                                        }
+                                            ?>
+
+
+                                </tr>
+                                <?php
                             }
                             ?>
-                        </tbody>
-                    </table>
-                    <ul class="pagination">
-                        <li><a href="?pageno=1" class="btnTB mx-1">First</a></li>
-                        <li class="<?php if ($pageno <= 1) {echo 'disabled';}?>">
-                            <a href="<?php if ($pageno <= 1) {echo '#';} else {echo "?pageno=" . ($pageno - 1);}?>"
-                                class="btnTB mx-1">Prev</a>
-                        </li>
-                        <li class="<?php if ($pageno >= $total_pages) {echo 'disabled';}?>">
-                            <a href="<?php if ($pageno >= $total_pages) {echo '#';} else {echo "?pageno=" . ($pageno + 1);}?>"
-                                class="btnTB mx-1">Next</a>
-                        </li>
-                        <li><a href="?pageno=<?php echo $total_pages; ?>" class="btnTB mx-1">Last</a></li>
-                    </ul>
+                            </tbody>
+                        </table>
+                        <ul class="pagination">
+                            <li><a href="?pageno=1" class="btnTB mx-1">First</a></li>
+                            <li class="<?php if ($pageno <= 1) {echo 'disabled';}?>">
+                                <a href="<?php if ($pageno <= 1) {echo '#';} else {echo "?pageno=" . ($pageno - 1);}?>"
+                                    class="btnTB mx-1">Prev</a>
+                            </li>
+                            <li class="<?php if ($pageno >= $total_pages) {echo 'disabled';}?>">
+                                <a href="<?php if ($pageno >= $total_pages) {echo '#';} else {echo "?pageno=" . ($pageno + 1);}?>"
+                                    class="btnTB mx-1">Next</a>
+                            </li>
+                            <li><a href="?pageno=<?php echo $total_pages; ?>" class="btnTB mx-1">Last</a></li>
+                        </ul>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
-
-
-
     </div>
 </div>
+<?php
+require_once('../includes/footer.php')
+
+?>
 <script>
 let searchbar = document.querySelector('input[name="scan_qr"]');
 searchbar.focus();
 search.value = '';
 </script>
-<?php
-require_once('../includes/footer.php')
-
-?>
