@@ -1,6 +1,6 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "main_project");
-require 'vendor/autoload.php';
+require './presentation/laptop_inventory/vendor/autoload.php';
 $query = "SELECT * FROM `main_inventory_informations` GROUP BY model,core ORDER BY brand,model;";
 $result_brand = mysqli_query($connection, $query);
 
@@ -47,10 +47,12 @@ foreach ($result_brand as $row) {
     $generation = $row['generation'];
     $touch_price = $row['touch_wholesale_price'];
     $non_touch_price = $row['non_touch_wholesale_price'];
-    if (empty($touch_price)) {} else {
+    if (empty($touch_price)) {
+    } else {
         $touch_price = "$" . $touch_price;
     }
-    if (empty($touch_price)) {} else {
+    if (empty($touch_price)) {
+    } else {
         $non_touch_price = "$" . $non_touch_price;
     }
 
@@ -89,7 +91,6 @@ foreach ($result_brand as $row) {
         ->setCellValue("J$i", "$touch_price");
     $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue("K$i", "$non_touch_price");
-
 }
 $spreadsheet->getActiveSheet()->setTitle('Stock Summery');
 
@@ -101,7 +102,7 @@ foreach ($result_brand_group as $row) {
 
     $brand1 = $row['brand'];
     $spreadsheet->createSheet();
-// Add some data
+    // Add some data
     $spreadsheet->setActiveSheetIndex($k)
         ->setCellValue('A1', 'Brand');
     $spreadsheet->setActiveSheetIndex($k)
@@ -133,10 +134,12 @@ foreach ($result_brand_group as $row) {
         $generation = $spec['generation'];
         $touch_price1 = $spec['touch_wholesale_price'];
         $non_touch_price1 = $spec['non_touch_wholesale_price'];
-        if (empty($touch_price1)) {} else {
+        if (empty($touch_price1)) {
+        } else {
             $touch_price1 = "$" . $touch_price1;
         }
-        if (empty($non_touch_price1)) {} else {
+        if (empty($non_touch_price1)) {
+        } else {
             $non_touch_price1 = "$" . $non_touch_price1;
         }
         $b++;

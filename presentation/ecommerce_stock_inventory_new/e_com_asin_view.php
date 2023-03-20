@@ -40,9 +40,9 @@ if ($search_value == 'pakaya') {
                 <div class="row">
                     <!-- <div class="mt-2">ALL ASIN Details</div> -->
                     <a href="./e_com_laptop_inventory.php">
-                        <div class="py-1 px-3 border">Laptop Stock Report</div>
+                        <div class="py-1 px-3 border">Stock Report-Model</div>
                     </a>
-                    <div class="py-1 px-3 border">Laptop Stock Report All</div>
+                    <div class="py-1 px-3 border">Stock Report-ASIN</div>
 
                 </div>
             </div>

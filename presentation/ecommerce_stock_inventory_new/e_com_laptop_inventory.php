@@ -48,9 +48,9 @@ if ($search_value == 0) {
                 <div class="d-flex justify-content-between">
                     <div class="row">
                         <!-- mt-2 mr-2 -->
-                        <div class="py-1 px-3 border">Laptop Stock Report</div>
+                        <div class="py-1 px-3 border">Stock Report-Model</div>
                         <a href="./e_com_asin_view.php">
-                            <div class="py-1 px-3 border">Laptop Stock Report All</div>
+                            <div class="py-1 px-3 border">Stock Report-ASIN</div>
                         </a>
                     </div>
                     <div class="">

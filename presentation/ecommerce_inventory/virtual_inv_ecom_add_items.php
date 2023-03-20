@@ -20,6 +20,7 @@ $model = "";
 $qty = "";
 $core = "";
 $gen = "";
+$asinSerial = "";
 
 $isDataADD = 0;
 if (isset($_POST['scanMfg'])) {
@@ -46,6 +47,7 @@ if (isset($_POST['scanMfg'])) {
                 $core = $x['core'];
                 $gen = $x['generation'];
                 $asinSku = $x['asin_sku'];
+                $asinSerial = $x['asin_serial'];
                 $qty = '1';
             }
             $queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
@@ -59,8 +61,8 @@ if (isset($_POST['scanMfg'])) {
                 echo "ecommerce_inventory eke data natnm";
 
 
-                $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation)
-                VALUES('$mfg','$asinSku','$device','$brand','$model','$qty','$rack','$core','$gen')";
+                $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation,asin_serial)
+                VALUES('$mfg','$asinSku','$device','$brand','$model','$qty','$rack','$core','$gen',$asinSerial)";
                 $data = mysqli_query($connection, $query);
 
                 $isDataADD = 1;
@@ -192,6 +194,12 @@ if (isset($_POST['scanMfg'])) {
                     <div class="col-lg-2 formLable"> ASIN/SKU</div>
                     <div class="col-lg-4 formInput">
                         <input name="asinSku" class="w-100" type="text" value="<?php echo $asinSku ?>">
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-1">
+                    <div class="col-lg-2 formLable"> ASIN/Serial</div>
+                    <div class="col-lg-4 formInput">
+                        <input name="asinSerial" class="w-100" type="text" value="<?php echo $asinSerial ?>">
                     </div>
                 </div>
                 <div class="row justify-content-center mb-1">

@@ -15,44 +15,44 @@ if (!isset($_SESSION['user_id'])) {
 $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
-$inventory_id=$_GET['inventory_id'];
-$performance_id=$_GET['performance_id'];
+$inventory_id = $_GET['inventory_id'];
+$performance_id = $_GET['performance_id'];
 ////////////////////////////////////////////////////////////////////////////////
-         echo "<script>
+echo "<script>
          $(window).load(function() {
             $('#exampleModal2').modal('show');
                             });
                             </script>";
 //////////////////////////////////////////////////////////////////////////////////
-$sql="SELECT mfg,brand,model,processor,core,generation,speed,lcd_size,screen_resolution,graphic_brand,graphic_capacity,touch_or_none_touch FROM main_inventory_informations WHERE inventory_id='$inventory_id'";
-$sql_run=mysqli_query($connection,$sql);
-$mfg='';
-$brand='';
-$model='';
-$processor='';
-$core='';
-$gen='';
-$speed='';
-$screen_size='';
-$screen_resolution='';
-$graphic_brand='';
-$graphic_capacity='';
-$touch_or_none_touch='';
+$sql = "SELECT mfg,brand,model,processor,core,generation,speed,lcd_size,screen_resolution,graphic_brand,graphic_capacity,touch_or_none_touch FROM main_inventory_informations WHERE inventory_id='$inventory_id'";
+$sql_run = mysqli_query($connection, $sql);
+$mfg = '';
+$brand = '';
+$model = '';
+$processor = '';
+$core = '';
+$gen = '';
+$speed = '';
+$screen_size = '';
+$screen_resolution = '';
+$graphic_brand = '';
+$graphic_capacity = '';
+$touch_or_none_touch = '';
 
 
-foreach($sql_run as $data){
-$mfg=$data['mfg'];
-$brand=$data['brand'];
-$model=$data['model'];
-$processor=$data['processor'];
-$core=$data['core'];
-$gen=$data['generation'];
-$speed=$data['speed'];
-$screen_size=$data['lcd_size'];
-$screen_resolution=$data['screen_resolution'];
-$graphic_brand=$data['graphic_brand'];
-$graphic_capacity=$data['graphic_capacity'];
-$touch_or_none_touch=$data['touch_or_none_touch'];
+foreach ($sql_run as $data) {
+    $mfg = $data['mfg'];
+    $brand = $data['brand'];
+    $model = $data['model'];
+    $processor = $data['processor'];
+    $core = $data['core'];
+    $gen = $data['generation'];
+    $speed = $data['speed'];
+    $screen_size = $data['lcd_size'];
+    $screen_resolution = $data['screen_resolution'];
+    $graphic_brand = $data['graphic_brand'];
+    $graphic_capacity = $data['graphic_capacity'];
+    $touch_or_none_touch = $data['touch_or_none_touch'];
 }
 
 
@@ -277,6 +277,7 @@ input[type=text] {
 .radioLbl {
     font-size: 10px;
     padding-top: 6px;
+    margin-left: 25px;
 }
 </style>
 
@@ -666,8 +667,8 @@ input[type=text] {
                                 </div>
 
                         </div>
-                        <input type="hidden" name="performance_id" value="<?php echo $performance_id?>">
-                        <input type="hidden" name="inventory_id" value="<?php echo $inventory_id?>">
+                        <input type="hidden" name="performance_id" value="<?php echo $performance_id ?>">
+                        <input type="hidden" name="inventory_id" value="<?php echo $inventory_id ?>">
                         <div class="modal-footer">
                             <button type="submit" name="submit" id="submit" class="btnTC btn-next float-right">
                                 Confirm
@@ -681,6 +682,6 @@ input[type=text] {
 
             <!--  -->
             <?php
-require_once('../includes/footer.php')
+            require_once('../includes/footer.php')
 
-?>
+            ?>

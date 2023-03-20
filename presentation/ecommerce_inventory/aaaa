@@ -1,0 +1,65 @@
+if (isset($_POST['addNewItem'])) {
+
+// $alsakbQR = mysqli_real_escape_string($connection, $_POST['alsakbQR']);
+$mfg = mysqli_real_escape_string($connection, $_POST['mfg']);
+$asinSku = mysqli_real_escape_string($connection, $_POST['asinSku']);
+$deviceType = mysqli_real_escape_string($connection, $_POST['deviceType']);
+$brand = mysqli_real_escape_string($connection, $_POST['brand']);
+$model = mysqli_real_escape_string($connection, $_POST['model']);
+$qty = mysqli_real_escape_string($connection, $_POST['qty']);
+$core = mysqli_real_escape_string($connection, $_POST['core']);
+$gen = mysqli_real_escape_string($connection, $_POST['gen']);
+
+echo $mfg;
+if ($mfg == "") {
+echo "<script>
+alert('Please Scan/Enter MFG Number First');
+</script>";
+} else {
+
+$queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
+echo $queryS;
+$rows = 0;
+$query_run = mysqli_query($connection, $queryS);
+$rows = mysqli_num_rows($query_run);
+// print_r($query_run);
+
+
+if ($rows == 0) {
+
+
+// $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation)
+// VALUES('$mfg','$asinSku','$deviceType','$brand','$model','$qty','$rack','$core','$gen')";
+$data = mysqli_query($connection, $query);
+
+echo "insert waduna";
+if (empty($data)) {
+
+echo "<script>
+alert('data not added');
+</script>";
+} else {
+echo "<script>
+alert('data added');
+</script>";
+}
+} else {
+$query = "UPDATE e_com_inventory SET dispatch ='0', rack = '$rack' WHERE mfg ='$mfg'";
+
+$data = mysqli_query($connection, $query);
+
+echo "update waduna";
+
+if (empty($data)) {
+
+echo "<script>
+alert('data not added');
+</script>";
+} else {
+echo "<script>
+alert('laptop Added Again');
+</script>";
+}
+}
+}
+}
