@@ -11,13 +11,18 @@ $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
  $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
- $sql="SELECT full_name,employees.emp_id FROM employees LEFT JOIN users ON users.emp_id=employees.emp_id WHERE user_id='$user_id' ";
+ $sql="SELECT full_name,employees.emp_id,department_name FROM employees 
+ LEFT JOIN users ON users.emp_id=employees.emp_id 
+ LEFT JOIN departments ON departments.department_id=employees.department_id
+ WHERE user_id='$user_id' ";
  $sql_run_name=mysqli_query($connection,$sql);
  $name=0;
  $emp_id=0;
+ $department_name=0;
  foreach($sql_run_name as $data){
     $name=$data['full_name'];
     $emp_id=$data['emp_id'];
+    $department_name=$data['department_name'];
  }
  $sql="SELECT schedule_time,schedule_id FROM `day_schedules`";
  $sql_run2=mysqli_query($connection,$sql);
@@ -288,7 +293,7 @@ input[type=text] {
                 <div class="col-12 mt-1 mb-1">
                     <div class="row mx-4  justify-content-between">
                         <div class="userName">Department :
-                            <span><?php echo $department_id ?></span>
+                            <span><?php echo $department_name ?></span>
                         </div>
                     </div>
                 </div>
@@ -324,7 +329,7 @@ input[type=text] {
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
                                     <?php 
-                                if ($department_id == 1 || $department_id == 13 || $department_id == 23 || $department_id == 22){ ?>
+                                if ($department_id == 7 || $department_id == 13 || $department_id == 23 || $department_id == 22){ ?>
                                     <option value="2">Clean </option>
                                     <option value="3">Packing </option>
                                     <option value="4">Full Painting Packing</option>
@@ -491,7 +496,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 13:55:00");
                                              $session1_cutof = $date1->format("Y-m-d 09:05:00");
                                             $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql="SELECT start_time FROM performance_records WHERE user_id='$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -543,7 +548,7 @@ input[type=text] {
                                             </div>
                                             <?php
                                             }else{ ?>
-                                            <div class="meta-date timeSec" id="time1">
+                                            <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $morning ?>
                                                 </div>
@@ -583,7 +588,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 14:30:00");
                                             $session1_cutof = $date1->format("Y-m-d 13:55:00");
                                             $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql="SELECT end_time FROM performance_records WHERE user_id='$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -648,8 +653,9 @@ input[type=text] {
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 15:00:00");
                                             $session1_end = $date1->format("Y-m-d 18:45:00");
+                                             $session1_cutof = $date1->format("Y-m-d 15:05:00");
                                             $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql="SELECT start_time FROM performance_records WHERE user_id='$user_id' AND  start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -660,7 +666,7 @@ input[type=text] {
                                             foreach($sql_run as $data){
                                                 $scan_time=$data['start_time'];
                                             }
-                                            $session1_start = new DateTime($session1_start);
+                                            $session1_start = new DateTime($session1_cutof);
                                             $scan_time = new DateTime($scan_time);
                                             $diff = $session1_start->diff($scan_time);
                                             $hours   = $diff->format('%h'); 
@@ -737,7 +743,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 19:15:00");
                                             $session1_cutof = $date1->format("Y-m-d 18:45:00");
                                             $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql="SELECT end_time FROM performance_records WHERE user_id='$user_id' AND  end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -763,7 +769,7 @@ input[type=text] {
                                             <div class="content-date" style="left: 0 !important;">
                                                 <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?></div>
                                             </div>
-                                            <div class="meta-date timeSec" id="time2">
+                                            <div class="meta-date timeSec" id="time1">
                                                 <div class="time">
                                                     <?php echo $beforetea ?>
                                                 </div>
@@ -796,7 +802,7 @@ input[type=text] {
                                             $session1_start = $date1->format("Y-m-d 19:15:00");
                                             $session1_end = $date1->format("Y-m-d 19:45:00");
                                             $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql="SELECT start_time FROM performance_records WHERE user_id='$user_id' AND  start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
@@ -885,7 +891,7 @@ input[type=text] {
                                             $session1_end = $date1->format("Y-m-d 21:15:00");
                                             $session1_cutof = $date1->format("Y-m-d 20:55:00");
                                             $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql="SELECT end_time FROM performance_records WHERE user_id='$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
                                             $sql_run=mysqli_query($connection,$sql);
                                             $rows=mysqli_num_rows($sql_run);
                                             if($rows==0){
