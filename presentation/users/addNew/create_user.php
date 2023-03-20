@@ -13,7 +13,7 @@ if (isset($_POST['create_user'])) {
 
     // password change into sha1
     $hashed_password = sha1($password);
-
+    $sql="UPDATE employees SET department_id='$department',role_id='$role'";
     $query = "INSERT INTO users(emp_id, user_name, user_password, is_active, user_created_date, created_by) 
                 VALUES('$emp_id', '$username', '$hashed_password', '1', NOW(), '$created_by')";
     $query_run = mysqli_query($connection, $query);
