@@ -78,56 +78,56 @@ if (isset($_POST['login'])) {
 
 
 <style>
-    .background-radial-gradient {
-        background-color: hsl(218, 41%, 15%);
-        background-image: radial-gradient(650px circle at 0% 0%,
-                hsl(218, 41%, 35%) 15%,
-                hsl(218, 41%, 30%) 35%,
-                hsl(218, 41%, 20%) 75%,
-                hsl(218, 41%, 19%) 80%,
-                transparent 100%),
-            radial-gradient(1250px circle at 100% 100%,
-                hsl(218, 41%, 45%) 15%,
-                hsl(218, 41%, 30%) 35%,
-                hsl(218, 41%, 20%) 75%,
-                hsl(218, 41%, 19%) 80%,
-                transparent 100%);
-    }
+.background-radial-gradient {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+}
 
-    #radius-shape-1 {
-        height: 220px;
-        width: 220px;
-        top: -20px;
-        left: -130px;
-        background: radial-gradient(#44006b, #ad1fff);
-        overflow: hidden;
-    }
+#radius-shape-1 {
+    height: 220px;
+    width: 220px;
+    top: -20px;
+    left: -130px;
+    background: radial-gradient(#44006b, #ad1fff);
+    overflow: hidden;
+}
 
-    #radius-shape-2 {
-        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-        bottom: -60px;
-        right: -110px;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(#44006b, #ad1fff);
-        overflow: hidden;
-    }
+#radius-shape-2 {
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    bottom: -60px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(#44006b, #ad1fff);
+    overflow: hidden;
+}
 
-    .bg-glass {
-        background-color: hsla(0, 0%, 100%, 0.9) !important;
-        backdrop-filter: saturate(200%) blur(25px);
-    }
+.bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+}
 
-    .loginBody {
-        height: 100vh;
-    }
+.loginBody {
+    height: 100vh;
+}
 
-    .LoginSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    }
+.LoginSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 </style>
 
 <body>
@@ -150,18 +150,20 @@ if (isset($_POST['login'])) {
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
-                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <form method="POST">
 
                                 <!-- Login input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3">Username</label>
-                                    <input type="text" name="username" id="form3Example3" class="form-control" placeholder="Username" />
+                                    <input type="text" name="username" id="form3Example3" class="form-control"
+                                        placeholder="Username" />
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Password</label>
-                                    <input type="password" name="password" id="form3Example4" class="form-control" placeholder="Password" />
+                                    <input type="password" name="password" id="form3Example4" class="form-control"
+                                        placeholder="Password" />
                                 </div>
 
                                 <div class="d-flex">

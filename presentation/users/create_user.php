@@ -29,25 +29,29 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="col-md-3">
                             <p class="card-text">Employee ID <span style="color: red">*</span></p>
                         </div>
-                        <input type='text' name="emp_id" id='emp_id' class="w-50" placeholder='Enter user id' onkeyup="GetDetail(this.value)">
+                        <input type='text' name="emp_id" id='emp_id' class="w-50" placeholder='Enter user id'
+                            onkeyup="GetDetail(this.value)">
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">First Name<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="first_name" class="text-capitalize w-50" id="first_name" placeholder='First Name'>
+                        <input type="text" name="first_name" class="text-capitalize w-50" id="first_name"
+                            placeholder='First Name'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Last Name<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="last_name" class="text-capitalize w-50" id="last_name" placeholder='Last Name'>
+                        <input type="text" name="last_name" class="text-capitalize w-50" id="last_name"
+                            placeholder='Last Name'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <p class="card-text">Department<span style="color: red">*</span></p>
                         </div>
-                        <input type="text" name="department" class="text-capitalize w-50" id="department" placeholder='Department'>
+                        <input type="text" name="department" class="text-capitalize w-50" id="department"
+                            placeholder='Department'>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
@@ -77,7 +81,8 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                     </div>
                     <div class="row">
-                        <button type="submit" name="create_user" class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
+                        <button type="submit" name="create_user"
+                            class="btn btn-xs btn-success mx-auto mb-3">Submit</button>
                     </div>
                 </fieldset>
             </form>
@@ -86,63 +91,63 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <script>
-    // Show password
-    const showPassword = () => {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
+// Show password
+const showPassword = () => {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
     }
+}
 
-    // onkeyup event will occur when the user
-    // release the key and calls the function
-    // assigned to this event
-    const GetDetail = (str) => {
-        if (str.length == 0) {
-            document.getElementById("first_name").value = "";
-            document.getElementById("last_name").value = "";
-            document.getElementById("department").value = "";
-            document.getElementById("role").value = "";
-            return;
-        } else {
+// onkeyup event will occur when the user
+// release the key and calls the function
+// assigned to this event
+const GetDetail = (str) => {
+    if (str.length == 0) {
+        document.getElementById("first_name").value = "";
+        document.getElementById("last_name").value = "";
+        document.getElementById("department").value = "";
+        document.getElementById("role").value = "";
+        return;
+    } else {
 
-            // Creates a new XMLHttpRequest object
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+        // Creates a new XMLHttpRequest object
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
 
-                // Defines a function to be called when
-                // the readyState property changes
-                if (this.readyState == 4 &&
-                    this.status == 200) {
+            // Defines a function to be called when
+            // the readyState property changes
+            if (this.readyState == 4 &&
+                this.status == 200) {
 
-                    // Typical action to be performed
-                    // when the document is ready
-                    var myObj = JSON.parse(this.responseText);
+                // Typical action to be performed
+                // when the document is ready
+                var myObj = JSON.parse(this.responseText);
 
-                    // Returns the response data as a
-                    // string and store this array in
-                    // a variable assign the value
-                    // received to first name input field
+                // Returns the response data as a
+                // string and store this array in
+                // a variable assign the value
+                // received to first name input field
 
-                    document.getElementById("first_name").value = myObj[0];
+                document.getElementById("first_name").value = myObj[0];
 
-                    // Assign the value received to
-                    // last name input field
-                    document.getElementById("last_name").value = myObj[1];
-                    document.getElementById("department").value = myObj[2];
-                    document.getElementById("role").value = myObj[3];
-                }
-            };
+                // Assign the value received to
+                // last name input field
+                document.getElementById("last_name").value = myObj[1];
+                document.getElementById("department").value = myObj[2];
+                document.getElementById("role").value = myObj[3];
+            }
+        };
 
-            // xhttp.open("GET", "filename", true);
-            xmlhttp.open("GET", "load_user_details.php?emp_id=" + str, true);
+        // xhttp.open("GET", "filename", true);
+        xmlhttp.open("GET", "load_user_details.php?emp_id=" + str, true);
 
-            // Sends the request to the server
-            xmlhttp.send();
-        }
+        // Sends the request to the server
+        xmlhttp.send();
     }
+}
 </script>
 
 <?php require_once('../includes/footer.php') ?>

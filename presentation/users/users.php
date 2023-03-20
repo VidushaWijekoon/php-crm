@@ -7,7 +7,7 @@ $role_id = $_SESSION['role_id'];
 $department_id = $_SESSION['department_id'];
 
 // User Authentication
-if ($role_id = 1 && $department_id == 1) {
+if ($role_id = 1 && $department_id == 11) {
 
     // checking if a user is logged in
     if (!isset($_SESSION['user_id'])) {
@@ -18,72 +18,72 @@ if ($role_id = 1 && $department_id == 1) {
     include_once('../../functions/db_connection.php');
 
 ?>
-    <style>
-        .pagination {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
+<style>
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-        }
+}
 
-        .page-item .active .page-link {
-            background-color: #168EB4;
-            border-color: #168EB4;
-        }
+.page-item .active .page-link {
+    background-color: #168EB4;
+    border-color: #168EB4;
+}
 
-        .pagination a {
-            font-weight: bold;
-            color: black;
-            float: left;
-            padding: 8px 16px;
-            text-decoration: none;
-            /* border: 1px solid black; */
-        }
+.pagination a {
+    font-weight: bold;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    /* border: 1px solid black; */
+}
 
-        .pagination a.active {
-            background-color: #168EB4;
-            color: #fff;
-        }
+.pagination a.active {
+    background-color: #168EB4;
+    color: #fff;
+}
 
-        .pagination a:hover:not(.active) {
-            background-color: skyblue;
-        }
-    </style>
+.pagination a:hover:not(.active) {
+    background-color: skyblue;
+}
+</style>
 
-    <div class="row">
-        <div class="col-md-5">
-            <a href="./admin_dashboard">
-                <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
-            </a>
-        </div>
+<div class="row">
+    <div class="col-md-5">
+        <a href="./admin_dashboard">
+            <i class="fa-regular fa-circle-left fa-2x" style="color: #0c2e5b;"></i>
+        </a>
     </div>
-    <div class="row">
-        <div class="col-lg-10 justify-content-center mx-auto mt-2">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="">Users</h5>
-                        <div class="">
-                            <input type="text" class="mx-2 w-75" placeholder="Search Users">
-                        </div>
+</div>
+<div class="row">
+    <div class="col-lg-10 justify-content-center mx-auto mt-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <h5 class="">Users</h5>
+                    <div class="">
+                        <input type="text" class="mx-2 w-75" placeholder="Search Users">
                     </div>
                 </div>
-                <div class="card-body table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Emp ID</th>
-                                <th>First name</th>
-                                <th>Last name</th>
-                                <th>Username</th>
-                                <th>Department</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Emp ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Username</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
                             $user_id = 0;
                             $per_page_record = 10;
@@ -121,26 +121,26 @@ if ($role_id = 1 && $department_id == 1) {
                                 $username = $row['user_name'];
                                 $is_active = $row['is_active'];
                             ?>
-                                <tr>
-                                    <td>
-                                        <a href="<?php echo "update_user_password?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
-                                        </a>
-                                    </td>
-                                    <td> <?php echo $row['first_name'] ?> </td>
-                                    <td><?php echo $row['last_name'] ?></td>
-                                    <td><?php echo $row['user_name'] ?></td>
-                                    <td><?php echo $row['department_name'] ?></td>
-                                    <td><?php echo $row['role_name'] ?></td>
-                                    <td>
-                                        <?php if ($is_active == 0) { ?>
-                                            <span class="badge badge-danger">In-Active User</span>
-                                        <?php }
+                        <tr>
+                            <td>
+                                <a href="<?php echo "update_user_password?user_id={$row['user_id']}"  ?>"><?php echo $row['emp_id'] ?>
+                                </a>
+                            </td>
+                            <td> <?php echo $row['first_name'] ?> </td>
+                            <td><?php echo $row['last_name'] ?></td>
+                            <td><?php echo $row['user_name'] ?></td>
+                            <td><?php echo $row['department_name'] ?></td>
+                            <td><?php echo $row['role_name'] ?></td>
+                            <td>
+                                <?php if ($is_active == 0) { ?>
+                                <span class="badge badge-danger">In-Active User</span>
+                                <?php }
                                         if ($is_active == 1) { ?>
-                                            <span class="badge badge-success">Active User</span>
-                                        <?php } ?>
-                                    </td>
-                                    <td>
-                                        <?php
+                                <span class="badge badge-success">Active User</span>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <?php
                                         if ($is_active == 0) {
                                             echo "<a class='btn btn-xs mx-1' href=\"./addNew/activate_user?user_id={$row['user_id']}\" 
                                         onclick=\"return confirm('Are you sure $username want active this user?');\">
@@ -157,12 +157,12 @@ if ($role_id = 1 && $department_id == 1) {
                                         <i class='fa-solid fa-eye' style='color: #168eb4;'></i>
                                   </a>";
                                         ?>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                    <?php
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <?php
 
                     $pagLink = "";
                     $query = "SELECT COUNT(*) FROM users";
@@ -176,13 +176,14 @@ if ($role_id = 1 && $department_id == 1) {
                     $pagLink = "";
 
                     ?>
-                    <div class="row">
-                        <div class="col">
-                            <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?> Entries</p>
-                        </div>
-                        <div class="col">
-                            <div class="pagination">
-                                <?php
+                <div class="row">
+                    <div class="col">
+                        <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?>
+                            Entries</p>
+                    </div>
+                    <div class="col">
+                        <div class="pagination">
+                            <?php
 
                                 if ($page >= 2) {
                                     echo "<a class='page-link' href='users.php?page=" . ($page - 1) . "'>  Prev </a>";
@@ -203,22 +204,22 @@ if ($role_id = 1 && $department_id == 1) {
                                 }
 
                                 ?>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        function go2Page() {
-            var page = document.getElementById("page").value;
-            var user_id = document.getElementById("page").value;
-            page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
-            window.location.href = 'users.php?page=' + page;
-        }
-    </script>
+<script>
+function go2Page() {
+    var page = document.getElementById("page").value;
+    var user_id = document.getElementById("page").value;
+    page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
+    window.location.href = 'users.php?page=' + page;
+}
+</script>
 
 <?php include_once('../includes/footer.php');
 } else {

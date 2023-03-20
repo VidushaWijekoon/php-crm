@@ -2,7 +2,7 @@
          <aside class="main-sidebar sidebar-dark-primary elevation-4">
              <!-- Brand Logo -->
              <?php
-                if ($department_id == 1 && $role_id == 1) { ?>
+                if ($department_id == 11 && $role_id == 1) { ?>
              <a href="../includes/main" class="brand-link text-center mx-auto d-flex justify-content-center">
                  <img src="../../dist/img/alsakb logo1.jpg" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
@@ -34,7 +34,7 @@
                          <!-- Home Pages  -->
                          <!-- ============================================================== -->
                          <?php
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1) { ?>
                          <li class="nav-item menu-open">
                              <a href="../includes/main" class="nav-link active">
                                  <i class="nav-icon fas fa-home"></i>
@@ -61,7 +61,7 @@
                          <!-- ============================================================== -->
                          <!-- Admin & User Department  -->
                          <!-- ============================================================== -->
-                         <?php if ($department_id == 1 && $role_id == 1) { ?>
+                         <?php if ($department_id == 11 && $role_id == 1) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fas fa-lock"></i>
@@ -81,7 +81,7 @@
                          <!-- HR Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1) { ?>
 
                          <li class="nav-item">
                              <a href="#" class="nav-link">
@@ -105,7 +105,7 @@
                          <!-- Sales Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-receipt"></i>
@@ -145,7 +145,7 @@
                          <!-- E-Commerce Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa-brands brands fa-amazon"></i>
@@ -162,7 +162,7 @@
                              </ul>
                          </li>
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1) { ?>
 
                          <!-- ============================================================== -->
                          <!-- Accounts Department  -->
@@ -187,7 +187,7 @@
                          <!-- Inventory Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 2 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fas fa-warehouse"></i>
@@ -214,7 +214,7 @@
                          <!-- Production Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 1 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa-solid fa-screwdriver"></i>
@@ -230,7 +230,7 @@
                                  </li>
 
                                  <li class="nav-item">
-                                     <a href="../production/production_technician_dashboard" class="nav-link">
+                                     <a href="../performance/performance" class="nav-link">
                                          <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                          <p> Technician </p>
                                      </a>
@@ -243,7 +243,7 @@
                          <!-- Part Inventory Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 ) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-screwdriver-wrench"></i>
@@ -272,7 +272,7 @@
                          <!-- Motherboard Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 9 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fas fa-keyboard"></i>
@@ -281,7 +281,7 @@
                              <ul class="nav nav-treeview">
 
                                  <li class="nav-item">
-                                     <a href="../motherboard/motherboard_dashboard" class="nav-link">
+                                     <a href="../performance/performance" class="nav-link">
                                          <i class="fa-solid fa-user-pen nav-icon" style="font-size: 12px;"></i>
                                          <p>Motherboard</p>
                                      </a>
@@ -293,7 +293,7 @@
                          <!-- LCD Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 10 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-tv"></i>
@@ -309,7 +309,7 @@
                                  </li>
 
                                  <li class="nav-item">
-                                     <a href="../bodywork/bodywork_member_dashboard" class="nav-link">
+                                     <a href="../performance/performance" class="nav-link">
                                          <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                          <p> Member </p>
                                      </a>
@@ -321,7 +321,7 @@
                          <!-- Bodywork Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1|| $department_id == 7 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-laptop"></i>
@@ -337,7 +337,7 @@
                                  </li>
 
                                  <li class="nav-item">
-                                     <a href="../bodywork/bodywork_member_dashboard" class="nav-link">
+                                     <a href="../performance/performance" class="nav-link">
                                          <i class="fa fa-chalkboard-user nav-icon" style="font-size: 12px;"></i>
                                          <p> Member </p>
                                      </a>
@@ -350,7 +350,7 @@
                          <!-- Battery Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 14 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-battery"></i>
@@ -359,7 +359,7 @@
                              <ul class="nav nav-treeview">
 
                                  <li class="nav-item">
-                                     <a href="../battery/battery_dashboard" class="nav-link">
+                                     <a href="../battery/performance_battery" class="nav-link">
                                          <i class="fa fa-battery nav-icon" style="font-size: 12px;"></i>
                                          <p> Battery </p>
                                      </a>
@@ -372,7 +372,7 @@
                          <!-- Painting Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 8 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-spray-can"></i>
@@ -381,7 +381,7 @@
                              <ul class="nav nav-treeview">
 
                                  <li class="nav-item">
-                                     <a href="../paint/paint_dashboard" class="nav-link">
+                                     <a href="../performance/performance" class="nav-link">
                                          <i class="fa fa-spray-can nav-icon" style="font-size: 12px;"></i>
                                          <p> Painting </p>
                                      </a>
@@ -394,7 +394,7 @@
                          <!-- QC Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 19 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fas fa-stethoscope"></i>
@@ -403,7 +403,7 @@
                              <ul class="nav nav-treeview">
 
                                  <li class="nav-item">
-                                     <a href="../qc/qc_dashboard" class="nav-link">
+                                     <a href="../qc/qc_dashboard_new" class="nav-link">
                                          <i class="fa fa-stethoscope nav-icon" style="font-size: 12px;"></i>
                                          <p> QC </p>
                                      </a>
@@ -416,7 +416,7 @@
                          <!-- Packing Department  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if ($department_id == 1 && $role_id == 1) { ?>
+                            if ($department_id == 11 && $role_id == 1 || $department_id == 13 && $role_id == 4) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fas fa-boxes"></i>
@@ -425,7 +425,7 @@
                              <ul class="nav nav-treeview">
 
                                  <li class="nav-item">
-                                     <a href="../packing/packing_dashboard" class="nav-link">
+                                     <a href="../packing/packing_flow_new" class="nav-link">
                                          <i class="fa fa-boxes nav-icon" style="font-size: 12px;"></i>
                                          <p> Packing </p>
                                      </a>
@@ -437,7 +437,7 @@
                          <!-- Management  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="nav-icon fa fa-right-to-bracket"></i>
@@ -455,9 +455,9 @@
                              </ul>
                          </li>
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
                          <li class="nav-item">
-                             <a href="../performance/performance_inventory" class="nav-link">
+                             <a href="../performance/performance" class="nav-link">
                                  <i class="fa fa-clock nav-icon" style="font-size: 12px;"></i>
                                  <p>Performance</p>
                              </a>
@@ -468,7 +468,7 @@
                          <!-- Laptop Inventory & Laptop Stock Count  -->
                          <!-- ============================================================== -->
                          <?php
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4) || ($department_id == 18 && $role_id == 12)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 2 && $role_id == 4) || ($department_id == 18 && $role_id == 12)) { ?>
                          <li class="nav-item">
                              <a href="../laptop_inventory/laptop_inventory" class="nav-link">
                                  <i class="fas fa-laptop nav-icon" style="font-size: 12px;"></i>
@@ -480,7 +480,7 @@
                          <!-- E-Commerce Inventory  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 4 && $role_id == 4)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 5 && $role_id == 4)) { ?>
                          <li class="nav-item">
                              <a href="../ecommerce_inventory/virtual_inv_ecommerce.php" class="nav-link">
                                  <i class="fa-brands fa-amazon nav-icon" style="font-size: 12px;"></i>
@@ -491,7 +491,7 @@
                          <!-- Part Stock Report  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="fa fa-cubes nav-icon" style="font-size: 12px;"></i>
@@ -502,7 +502,7 @@
                          <!-- Battery  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                          <li class="nav-item">
                              <a href="../battery_inventroy/virtual_inv_battery" class="nav-link">
                                  <i class="fa fa-battery-bolt nav-icon" style="font-size: 12px;"></i>
@@ -513,7 +513,7 @@
                          <!-- LCD  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                          <li class="nav-item">
                              <a href="../virtual_inventory/virtual_inv_lcd" class="nav-link">
                                  <i class="fa fa-tv nav-icon" style="font-size: 12px;"></i>
@@ -524,7 +524,7 @@
                          <!-- Charger  -->
                          <!-- ============================================================== -->
                          <?php }
-                            if (($department_id == 1 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
+                            if (($department_id == 11 && $role_id == 1) || ($department_id == 18 && $role_id == 12)) { ?>
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <i class="fa fa-plug nav-icon" style="font-size: 12px;"></i>
