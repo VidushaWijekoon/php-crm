@@ -13,46 +13,46 @@ $id = mysqli_real_escape_string($connection, $_GET['id']);
 ?>
 
 <style>
-    .pageNameIcon {
-        font-size: 25px;
-        margin-right: 05px;
-    }
+.pageNameIcon {
+    font-size: 25px;
+    margin-right: 05px;
+}
 
-    .pageName {
-        font-size: 20px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
+.pageName {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
 
-    .virtualInvSec {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.virtualInvSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    }
-
-
-    .cardContainer {
-        width: 99%;
-        background-color: #ffffff;
-        padding: 10px 5px;
-    }
+}
 
 
-    .pageNavigation a {
-        color: #168EB4;
-        font-weight: 600;
-    }
+.cardContainer {
+    width: 99%;
+    background-color: #ffffff;
+    padding: 10px 5px;
+}
 
-    .createListingHeading {
-        font-weight: 600;
-        font-size: 15px;
-    }
 
-    .sectionUnderline {
-        border-top: 2px solid #DBDBDB;
-        margin-top: 0px;
-    }
+.pageNavigation a {
+    color: #168EB4;
+    font-weight: 600;
+}
+
+.createListingHeading {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.sectionUnderline {
+    border-top: 2px solid #DBDBDB;
+    margin-top: 0px;
+}
 </style>
 
 

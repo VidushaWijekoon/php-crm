@@ -17,12 +17,27 @@ if (isset($_POST['add_new_item'])) {
     $model = mysqli_real_escape_string($connection, $_POST['model']);
     $add_qty = mysqli_real_escape_string($connection, $_POST['add_qty']);
     $capacity = mysqli_real_escape_string($connection, $_POST['capacity']);
+    $box_nu = mysqli_real_escape_string($connection, $_POST['box_nu']);
 
-    $query = "INSERT INTO battery_inventory(device, brand, model, rack_no, qty, capacity) 
-            VALUES ('$device', '$brand', '$model', '$rack', '$add_qty', '$capacity')";
+
+    $query = "SELECT * from battery_inventory where box_nu='$box_nu'";
     $run = mysqli_query($connection, $query);
-    if ($run) {
-        header("Location: ./virtual_inv_battery");
+    $rows = mysqli_fetch_row($run);
+
+    if ($rows) {
+        $query = "UPDATE battery_inventory SET device=' $device',brand = '$brand', model ='$model', rack_no='$rack',qty='$add_qty',capacity ='$capacity',removed_inv='0' WHERE box_nu = '$box_nu' ";
+        $run = mysqli_query($connection, $query);
+        if ($run) {
+            header("Location: ./virtual_inv_battery");
+        }
+    } else {
+
+        $query = "INSERT INTO battery_inventory(device, brand, model, rack_no, qty, capacity,box_nu) 
+            VALUES ('$device', '$brand', '$model', '$rack', '$add_qty', '$capacity','$box_nu')";
+        $run = mysqli_query($connection, $query);
+        if ($run) {
+            header("Location: ./virtual_inv_battery");
+        }
     }
 }
 
@@ -92,7 +107,7 @@ if (isset($_POST['add_new_item'])) {
         <div class="ml-2">
             <div class="createListingHeading d-flex w-100 justify-content-between">
                 <div>
-                    <p>Add Items to Rack</p>
+                    <p>Add Items to Rack <?php echo strtoupper($rack) ?></p>
                 </div>
 
                 <div>
@@ -155,6 +170,42 @@ if (isset($_POST['add_new_item'])) {
                                 <select name="model" id="model" class="DropDown select2"
                                     style="border-radius: 5px; width: 100%" required>
                                 </select>
+                            </div>
+                        </div>
+
+                        <?php
+                        $next_box_id = '';
+                        $box_id = '';
+                        $query =  "SELECT box_nu as lastID from battery_inventory ORDER BY box_nu DESC LIMIT 1";
+                        $sql = mysqli_query($connection, $query);
+
+                        while ($data = mysqli_fetch_assoc($sql)) {
+                            $box_id = $data['lastID'];
+                        }
+                        $next_box_id = ++$box_id;
+
+
+
+                        ?>
+                        <div class="row justify-content-center mb-1">
+                            <div class="col-lg-2 formLable"> Box Number</div>
+                            <div class="col-lg-4 formInput">
+                                <!-- <input class="w-100" type="number" min="1" name="box_nu" required> -->
+                                <select name="box_nu" id="box_nu" class="DropDown select2 w-100">
+                                    <option value="<?php echo $next_box_id; ?>"> <?php echo $next_box_id ?></option>
+                                    <?php
+                                    $query1 = "SELECT box_nu FROM battery_inventory WHERE qty = '0'";
+                                    $sql1 = mysqli_query($connection, $query1);
+                                    while ($data1 = mysqli_fetch_assoc($sql1)) {
+                                        $availablebox = $data1['box_nu'];
+                                        echo $availablebox;
+                                    ?>
+                                    <option value="<?php echo $availablebox; ?>"> <?php echo $availablebox; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+
                             </div>
                         </div>
                         <div class="row justify-content-center mb-1">
