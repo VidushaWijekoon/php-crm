@@ -57,7 +57,7 @@ if (isset($_POST['remove_items'])) {
 
 
     if ($sub == 0) {
-        $add_s = "UPDATE battery_inventory SET removed_inv = '1', qty = '$sub'  WHERE id = '$item_id'";
+        $add_s = "UPDATE battery_inventory SET removed_inv = '1', qty = '$sub' WHERE id = '$item_id'";
         $add_sub = mysqli_query($connection, $add_s);
 
         echo "<script>
@@ -118,6 +118,15 @@ if (isset($_POST['remove_items'])) {
     border-top: 2px solid #DBDBDB;
     margin-top: 0px;
 }
+
+.roundBoxNu {
+    border-radius: 50%;
+    background-color: #168EB4;
+    padding: 4px 8px;
+    color: #ffffff;
+
+
+}
 </style>
 
 <div class="row pageNavigation pt-2 pl-2">
@@ -153,6 +162,7 @@ if (isset($_POST['remove_items'])) {
                     <table class="table mx-3 table-hover text-center">
                         <thead>
                             <tr>
+                                <th>Box Number</th>
                                 <th>Item Device</th>
                                 <th>Item Brand</th>
                                 <th>Item Model</th>
@@ -172,6 +182,7 @@ if (isset($_POST['remove_items'])) {
                             <tr>
                                 <form action="" method="POST">
                                     <td class="d-none"><input type="text" name="item_id" value="<?php echo $id ?>"></td>
+                                    <td><b class="roundBoxNu"><?php echo $xd['box_nu'] ?></b></td>
                                     <td class="text-capitalize"><?php echo $xd['device'] ?></td>
                                     <td><?php echo ucfirst($xd['brand']) ?></td>
                                     <td style="text-transform: capitalize;"><?php echo $xd['model'] ?></td>

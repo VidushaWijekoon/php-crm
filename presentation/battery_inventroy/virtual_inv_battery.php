@@ -11,14 +11,14 @@ if (!isset($_SESSION['user_id'])) {
 $rack_no = null;
 $qty = null;
 
-$q_r = "SELECT *, SUM(qty) Total_qty FROM battery_inventory WHERE rack_no = 'b-2' GROUP BY rack_no";
-$q = mysqli_query($connection, $q_r);
-while ($xd = mysqli_fetch_assoc($q)) {
-    $rack_no = $xd['rack_no'];
-    $qty = $xd['qty'];
-    $total_qty = $xd['Total_qty'];
-}
-
+// $q_r = "SELECT *, SUM(qty) Total_qty FROM battery_inventory WHERE rack_no = 'b-2' GROUP BY rack_no";
+// $q = mysqli_query($connection, $q_r);
+// while ($xd = mysqli_fetch_assoc($q)) {
+//     $rack_no = $xd['rack_no'];
+//     $qty = $xd['qty'];
+//     $total_qty = $xd['Total_qty'];
+// }
+// 
 ?>
 
 <style>
@@ -329,7 +329,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3' AND removed_inv = '0'";
+                                                    $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no ='a-3' AND removed_inv = '0'";
                                                     $a_3_r = mysqli_query($connection, $a_3_q);
                                                     while ($a_3_x = mysqli_fetch_assoc($a_3_r)) {
 
@@ -364,7 +364,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3'";
+                                                    $a_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-3' AND removed_inv = '0'";
                                                     $a_3_r = mysqli_query($connection, $a_3_q);
                                                     while ($a_3_x = mysqli_fetch_assoc($a_3_r)) {
 
@@ -420,7 +420,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-2'";
+                                                    $a_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-2' AND removed_inv= '0'";
                                                     $a_2_r = mysqli_query($connection, $a_2_q);
                                                     while ($a_2_x = mysqli_fetch_assoc($a_2_r)) {
 
@@ -455,7 +455,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-2'";
+                                                    $a_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-2' AND removed_inv = '0'";
                                                     $a_2_r = mysqli_query($connection, $a_2_q);
                                                     while ($a_2_x = mysqli_fetch_assoc($a_2_r)) {
 
@@ -511,7 +511,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'";
+                                                    $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1' AND removed_inv = '0'";
                                                     $a_1_r = mysqli_query($connection, $a_1_q);
                                                     while ($a_1_x = mysqli_fetch_assoc($a_1_r)) {
 
@@ -546,7 +546,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'";
+                                                    $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'AND removed_inv = '0'";
                                                     $a_1_r = mysqli_query($connection, $a_1_q);
                                                     while ($a_1_x = mysqli_fetch_assoc($a_1_r)) {
 
@@ -614,7 +614,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $b_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-3'";
+                                                    $b_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-3' AND removed_inv = '0'";
                                                     $b_3_r = mysqli_query($connection, $b_3_q);
                                                     while ($b_3_x = mysqli_fetch_assoc($b_3_r)) {
 
@@ -649,7 +649,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $b_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-3'";
+                                                    $b_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-3' AND removed_inv = '0'";
                                                     $b_3_r = mysqli_query($connection, $b_3_q);
                                                     while ($b_3_x = mysqli_fetch_assoc($b_3_r)) {
 
@@ -706,7 +706,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $b_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-2'";
+                                                    $b_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-2' AND removed_inv = '0'";
                                                     $b_2_r = mysqli_query($connection, $b_2_q);
                                                     while ($b_2_x = mysqli_fetch_assoc($b_2_r)) {
 
@@ -741,7 +741,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $b_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-2'";
+                                                    $b_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-2' AND removed_inv = '0'";
                                                     $b_2_r = mysqli_query($connection, $b_2_q);
                                                     while ($b_2_x = mysqli_fetch_assoc($b_2_r)) {
 
@@ -798,7 +798,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $b_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-1'";
+                                                    $b_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-1' AND removed_inv = '0'";
                                                     $b_1_r = mysqli_query($connection, $b_1_q);
                                                     while ($b_1_x = mysqli_fetch_assoc($b_1_r)) {
 
@@ -833,7 +833,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $b_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-1'";
+                                                    $b_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'b-1' AND removed_inv = '0'";
                                                     $b_1_r = mysqli_query($connection, $b_1_q);
                                                     while ($b_1_x = mysqli_fetch_assoc($b_1_r)) {
 
@@ -899,7 +899,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $c_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-3'";
+                                                    $c_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-3' AND removed_inv = '0'";
                                                     $c_3_r = mysqli_query($connection, $c_3_q);
                                                     while ($c_3_x = mysqli_fetch_assoc($c_3_r)) {
 
@@ -934,7 +934,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $c_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-3'";
+                                                    $c_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-3' AND removed_inv = '0'";
                                                     $c_3_r = mysqli_query($connection, $c_3_q);
                                                     while ($c_3_x = mysqli_fetch_assoc($c_3_r)) {
 
@@ -990,7 +990,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $c_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-2'";
+                                                    $c_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-2' AND removed_inv = '0'";
                                                     $c_2_r = mysqli_query($connection, $c_2_q);
                                                     while ($c_2_x = mysqli_fetch_assoc($c_2_r)) {
 
@@ -1025,7 +1025,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1'";
+                                                    $a_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'a-1' AND removed_inv = '0'";
                                                     $a_1_r = mysqli_query($connection, $a_1_q);
                                                     while ($a_1_x = mysqli_fetch_assoc($a_1_r)) {
 
@@ -1081,7 +1081,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $c_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-1'";
+                                                    $c_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-1' AND removed_inv = '0'";
                                                     $c_1_r = mysqli_query($connection, $c_1_q);
                                                     while ($c_1_x = mysqli_fetch_assoc($c_1_r)) {
 
@@ -1116,7 +1116,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $c_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-1'";
+                                                    $c_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'c-1' AND removed_inv = '0'";
                                                     $c_1_r = mysqli_query($connection, $c_1_q);
                                                     while ($c_1_x = mysqli_fetch_assoc($c_1_r)) {
 
@@ -1181,7 +1181,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $d_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-3'";
+                                                    $d_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-3' AND removed_inv = '0'";
                                                     $d_3_r = mysqli_query($connection, $d_3_q);
                                                     while ($d_3_x = mysqli_fetch_assoc($d_3_r)) {
 
@@ -1216,7 +1216,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $d_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-3'";
+                                                    $d_3_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-3' AND removed_inv = '0'";
                                                     $d_3_r = mysqli_query($connection, $d_3_q);
                                                     while ($d_3_x = mysqli_fetch_assoc($d_3_r)) {
 
@@ -1272,7 +1272,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $d_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-2'";
+                                                    $d_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-2' AND removed_inv = '0'";
                                                     $d_2_q = mysqli_query($connection, $d_2_q);
                                                     while ($d_2_x = mysqli_fetch_assoc($d_2_q)) {
 
@@ -1307,7 +1307,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $d_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-2'";
+                                                    $d_2_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-2' AND removed_inv = '0'";
                                                     $d_2_q = mysqli_query($connection, $d_2_q);
                                                     while ($d_2_x = mysqli_fetch_assoc($d_2_q)) {
 
@@ -1363,7 +1363,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $d_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-1'";
+                                                    $d_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-1' AND removed_inv = '0'";
                                                     $d_1_r = mysqli_query($connection, $d_1_q);
                                                     while ($d_1_x = mysqli_fetch_assoc($d_1_r)) {
 
@@ -1398,7 +1398,7 @@ while ($xd = mysqli_fetch_assoc($q)) {
                                                 </tr>
 
                                                 <?php
-                                                    $d_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-1'";
+                                                    $d_1_q = "SELECT model, qty FROM battery_inventory WHERE rack_no = 'd-1' AND removed_inv = '0'";
                                                     $d_1_r = mysqli_query($connection, $d_1_q);
                                                     while ($d_1_x = mysqli_fetch_assoc($d_1_r)) {
 
