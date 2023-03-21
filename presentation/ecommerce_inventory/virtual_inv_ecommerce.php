@@ -473,32 +473,50 @@ if (isset($_POST['search'])) {
 
 
                         </div>
-                        <?php 
-                            $sql="SELECT COUNT(dispatch) as dispatch, rack FROM `e_com_inventory` where dispatch='0' GROUP BY rack;";
-                            $sql_run=mysqli_query($connection,$sql);
-                            $b1=0;
-                            $b2=0;
-                            $b3=0;
-                            $b4=0;
-                            $b5=0;
-                            $b6=0;
-                            foreach($sql_run as $data){
-                                if($data['rack'] == 'B-1'){
-                                        $b1=1;
-                                }elseif($data['rack'] == 'B-2'){
-                                        $b2=1;
-                                }elseif($data['rack'] == 'B-3'){
-                                        $b3=1;
-                                }elseif($data['rack'] == 'B-4'){
-                                        $b5=1;
-                                }elseif($data['rack'] == 'B-5'){
-                                        $b5=1;
-                                }elseif($data['rack'] == 'B-6'){
-                                        $b6=1;
+                        <?php
+                            $sql = "SELECT COUNT(dispatch) as dispatch, rack FROM `e_com_inventory` where dispatch='0' GROUP BY rack;";
+                            $sql_run = mysqli_query($connection, $sql);
+                            $b1 = 0;
+                            $b2 = 0;
+                            $b3 = 0;
+                            $b4 = 0;
+                            $b5 = 0;
+                            $b6 = 0;
+                            $c1 = 0;
+                            $c2 = 0;
+                            $c3 = 0;
+                            $c4 = 0;
+                            $c5 = 0;
+                            $c6 = 0;
+                            foreach ($sql_run as $data) {
+                                if ($data['rack'] == 'B-1') {
+                                    $b1 = 1;
+                                } elseif ($data['rack'] == 'B-2') {
+                                    $b2 = 1;
+                                } elseif ($data['rack'] == 'B-3') {
+                                    $b3 = 1;
+                                } elseif ($data['rack'] == 'B-4') {
+                                    $b4 = 1;
+                                } elseif ($data['rack'] == 'B-5') {
+                                    $b5 = 1;
+                                } elseif ($data['rack'] == 'B-6') {
+                                    $b6 = 1;
+                                } elseif ($data['rack'] == 'C-1') {
+                                    $c1 = 1;
+                                } elseif ($data['rack'] == 'C-2') {
+                                    $c2 = 1;
+                                } elseif ($data['rack'] == 'C-3') {
+                                    $c3 = 1;
+                                } elseif ($data['rack'] == 'C-4') {
+                                    $c4 = 1;
+                                } elseif ($data['rack'] == 'C-5') {
+                                    $c5 = 1;
+                                } elseif ($data['rack'] == 'C-6') {
+                                    $c6 = 1;
                                 }
                             }
 
-                        ?>
+                            ?>
                         <div class=" rackSturcture">
                             <!-- Rack Layers T -->
                             <div class="rackLayer ">
@@ -509,10 +527,10 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-6">
-                                        <?php if($b6== 0){ 
+                                        <?php if ($b6 == 0) {
                                             ?>
-                                        <div class="btnTC btnBox">
-                                            <?php  }elseif($b6==1){ 
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($b6 == 1) {
                                                 ?>
                                             <div class="btnTB btnBox">
                                                 <?php } ?>
@@ -531,19 +549,19 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
 
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
                                                         <tr>
                                                             <td><?php echo $model ?></td>
                                                             <td><?php echo $tot ?></td>
                                                             <?php
-                                                        }
-                                                            ?>
+                                                                }
+                                                                    ?>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -559,40 +577,47 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-5">
-                                        <div class="btnTB btnBox">
-                                            <span>B-5</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
+                                        <?php if ($b5 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($b5 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>B-5</span>
 
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -603,40 +628,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-4">
-                                        <div class="btnTB btnBox">
-                                            <span>B-4</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($b4 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($b4 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>B-4</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -652,40 +683,47 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=C-6">
-                                        <div class="btnTB btnBox">
-                                            <span>C-6</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
 
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($c6 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($c6 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>C-6</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -696,40 +734,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=C-5">
-                                        <div class="btnTB btnBox">
-                                            <span>C-5</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($c5 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($c5 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>C-5</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -740,40 +784,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=C-4">
-                                        <div class="btnTB btnBox">
-                                            <span>C-4</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($c4 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($c4 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>C-4</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -999,40 +1049,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-3">
-                                        <div class="btnTB btnBox">
-                                            <span>B-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($b3 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($b3 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>B-3</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -1043,40 +1099,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-2">
-                                        <div class="btnTB btnBox">
-                                            <span>B-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($b2 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($b2 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>B-2</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -1087,42 +1149,48 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-1">
-                                        <div class="btnTB btnBox">
-                                            <span>B-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-
-
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($b1 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($b1 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>B-1</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+
+
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
 
 
                                     </a>
@@ -1140,40 +1208,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=C-3">
-                                        <div class="btnTB btnBox">
-                                            <span>C-3</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($c3 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($c3 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>C-3</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -1184,40 +1258,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=C-2">
-                                        <div class="btnTB btnBox">
-                                            <span>C-2</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($c2 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($c2 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>C-2</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
@@ -1228,40 +1308,46 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=C-1">
-                                        <div class="btnTB btnBox">
-                                            <span>C-1</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
-                                                        $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
-                                                        $query_run = mysqli_query($connection, $query);
-
-                                                        while ($data = mysqli_fetch_assoc($query_run)) {
-                                                            $tot = $data['tot_count'];
-                                                            $model = $data['model'];
-                                                        ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
-                                                        }
-                                                            ?>
-                                                    </tr>
-                                                </table>
+                                        <?php if ($c1 == 0) {
+                                            ?>
+                                        <div class="btnEmpty btnBox">
+                                            <?php  } elseif ($c1 == 1) {
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>C-1</span>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
+                                                                $query_run = mysqli_query($connection, $query);
+
+                                                                while ($data = mysqli_fetch_assoc($query_run)) {
+                                                                    $tot = $data['tot_count'];
+                                                                    $model = $data['model'];
+                                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
+                                                                }
+                                                                    ?>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->

@@ -295,7 +295,7 @@ input[type=text] {
     <div>
         <div class="row">
             <i class="pageNameIcon fa-solid fa-check-to-slot"></i>
-            <h6 class="pageName">Production Team Leader</h6>
+            <h6 class="pageName">Distributor</h6>
         </div>
     </div>
     <div>
@@ -592,17 +592,17 @@ input[type=text] {
                         <table class="table mx-3 table-hover text-center">
                             <thead>
                                 <tr>
-                                    <th>TECHNICIAN NAME</th>
-                                    <th>QTY</th>
-                                    <th>COMPLETED QTY</th>
-                                    <th>NOT COMPLETED QTY</th>
+                                    <th>Name</th>
+                                    <th>LCD Completed</th>
+                                    <th>Bodywork Completed</th>
+                                    <th>Remaning qty</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><a href="" data-toggle="modal" data-target="#exampleModal">pro252</a></td>
+                                    <td>2023-12-12</td>
                                     <td>
-                                        1
+                                        62136jhbh
                                     </td>
                                     <td>4</td>
                                     <td>3</td>
@@ -619,22 +619,20 @@ input[type=text] {
                             <table class="table mx-3 table-hover text-center">
                                 <thead>
                                     <tr>
-                                        <th>PREPARED QTY FROM INVENTORY</th>
-                                        <th>TEAM LEADER STATUS</th>
-                                        <th>TECHNICIAN STATUS</th>
-                                        <th>TECHNICIAN ID</th>
-                                        <th>COLLECTED</th>
+                                        <th>Date</th>
+                                        <th>Completed From Production</th>
+                                        <th>LCD Rack</th>
+                                        <th>Body Work Rack</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td> 12</td>
+                                        <td>2023-12-12</td>
                                         <td>
-                                            ON Going
+                                            62136jhbh
                                         </td>
-                                        <td>jdsjd</td>
-                                        <td>dfs</td>
-                                        <td>jxj</td>
+                                        <td>4</td>
+                                        <td>3</td>
 
                                     </tr>
 
@@ -653,28 +651,6 @@ input[type=text] {
 
 
 
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
     </div>
 </div>
 
