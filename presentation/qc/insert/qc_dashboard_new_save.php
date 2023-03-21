@@ -55,6 +55,7 @@ if($rows==1){
 
 }elseif($rows==0){
     $query="SELECT point FROM targets WHERE target_id =$job";
+    
     $query_run=mysqli_query($connection,$query);
     $points=0;
     
