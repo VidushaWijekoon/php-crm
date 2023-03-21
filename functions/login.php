@@ -24,7 +24,7 @@ function Login($role_id, $department_id)
     //<!--- Production --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 1) {
-        header('Location: presentation/performance/performance');
+        header('Location: presentation/production/production_technician_dashboard');
     }
     //<!-- ============================================================== -->//
     //<!--- Motherboard --->
