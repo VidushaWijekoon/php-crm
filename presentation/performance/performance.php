@@ -369,7 +369,7 @@ input[type=text] {
                                         /
                                         Account Lock/ Ports Issue</option>
                                     <?php
-                                } 
+                                }
                                     ?>
                                 </select>
                             </div>
