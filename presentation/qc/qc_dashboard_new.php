@@ -12,44 +12,44 @@ if (!isset($_SESSION['user_id'])) {
 $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
- $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
- $sql="SELECT full_name,employees.emp_id FROM employees LEFT JOIN users ON users.emp_id=employees.emp_id WHERE user_id='$user_id' ";
- $sql_run_name=mysqli_query($connection,$sql);
- $name=0;
- $emp_id=0;
- foreach($sql_run_name as $data){
-    $name=$data['full_name'];
-    $emp_id=$data['emp_id'];
- }
- $sql="SELECT schedule_time,schedule_id FROM `day_schedules`";
- $sql_run2=mysqli_query($connection,$sql);
- $morning=0; 
- $beforelunch =0;
- $afterlunch=0;
- $beforetea=0;
- $after_tea=0;
- $dayend=0;
- foreach($sql_run2 as $data){
-    if($data['schedule_id'] ==1){
-    $morning=$data['schedule_time'];
-    }else if($data['schedule_id'] ==2){
-    $beforelunch =$data['schedule_time'];
-     }else if($data['schedule_id'] ==3){
-    $afterlunch=$data['schedule_time'];
-     }else if($data['schedule_id'] ==4){
-    $beforetea=$data['schedule_time'];
-     }else if($data['schedule_id'] ==5){
-    $after_tea=$data['schedule_time'];
-     }else if($data['schedule_id'] ==6){
-    $dayend=$data['schedule_time'];
-     }
- }
-    date_default_timezone_set('Asia/dubai');
-    $timestamp = time();
-    $day_start = date("Y-m-d 00:00:00");
-    $day_end = date("Y-m-d 23:59:00");
+$date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+$sql = "SELECT full_name,employees.emp_id FROM employees LEFT JOIN users ON users.emp_id=employees.emp_id WHERE user_id='$user_id' ";
+$sql_run_name = mysqli_query($connection, $sql);
+$name = 0;
+$emp_id = 0;
+foreach ($sql_run_name as $data) {
+    $name = $data['full_name'];
+    $emp_id = $data['emp_id'];
+}
+$sql = "SELECT schedule_time,schedule_id FROM `day_schedules`";
+$sql_run2 = mysqli_query($connection, $sql);
+$morning = 0;
+$beforelunch = 0;
+$afterlunch = 0;
+$beforetea = 0;
+$after_tea = 0;
+$dayend = 0;
+foreach ($sql_run2 as $data) {
+    if ($data['schedule_id'] == 1) {
+        $morning = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 2) {
+        $beforelunch = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 3) {
+        $afterlunch = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 4) {
+        $beforetea = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 5) {
+        $after_tea = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 6) {
+        $dayend = $data['schedule_time'];
+    }
+}
+date_default_timezone_set('Asia/dubai');
+$timestamp = time();
+$day_start = date("Y-m-d 00:00:00");
+$day_end = date("Y-m-d 23:59:00");
 
-   
+
 ?>
 
 
@@ -326,20 +326,20 @@ input[type=text] {
                             </div>
                             <div class="userinput col-7">
                                 <?php
-                                $sql="SELECT targets.job_description,targets.target_id FROM targets LEFT JOIN performance_records ON performance_records.job_description = targets.target_id WHERE user_id='$user_id' ORDER BY performance_id DESC LIMIT 1";
-                                $sql_run=mysqli_query($connection,$sql);
-                                $job="please select";
-                                if(!empty($sql_run)){
-                                foreach($sql_run as $data){
-                                    $job=$data['job_description'];
-                                     $job_id=$data['target_id'];
+                                $sql = "SELECT targets.job_description,targets.target_id FROM targets LEFT JOIN performance_records ON performance_records.job_description = targets.target_id WHERE user_id='$user_id' ORDER BY performance_id DESC LIMIT 1";
+                                $sql_run = mysqli_query($connection, $sql);
+                                $job = "please select";
+                                if (!empty($sql_run)) {
+                                    foreach ($sql_run as $data) {
+                                        $job = $data['job_description'];
+                                        $job_id = $data['target_id'];
                                     }
                                 }
                                 ?>
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
-                                    <?php 
-                                if ($department_id == 1){ ?>
+                                    <?php
+                                    if ($department_id == 19) { ?>
                                     <option value="24">High Gen Functional Test + MFG </option>
                                     <option value="25">High Gen Functional Test </option>
                                     <option value="26">Low Gen Functional Test</option>
@@ -348,7 +348,7 @@ input[type=text] {
                                     <option value="28">Combine
                                     </option>
                                     <?php
-                                }
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -380,19 +380,19 @@ input[type=text] {
                                 Today Achived Points
                             </div>
                             <div class="userinput col-7">
-                                <?php 
-                                $sql="SELECT SUM(target) as points FROM performance_records WHERE user_id='$user_id' AND end_time BETWEEN '$day_start' AND '$day_end'"; 
-                                $sql_run=mysqli_query($connection,$sql);
-                                $points=0;
-                                $remaining_points=0;
-                                $extra_points=0;
-                                foreach($sql_run as $data){
-                                    $points=$data['points'];
+                                <?php
+                                $sql = "SELECT SUM(target) as points FROM performance_records WHERE user_id='$user_id' AND end_time BETWEEN '$day_start' AND '$day_end'";
+                                $sql_run = mysqli_query($connection, $sql);
+                                $points = 0;
+                                $remaining_points = 0;
+                                $extra_points = 0;
+                                foreach ($sql_run as $data) {
+                                    $points = $data['points'];
                                 }
-                                if($points <=100){
-                                    $remaining_points=100-$points;
-                                }else{
-                                     $extra_points=$points-100;
+                                if ($points <= 100) {
+                                    $remaining_points = 100 - $points;
+                                } else {
+                                    $extra_points = $points - 100;
                                 }
                                 ?>
                                 <input class="w-100 pl-2" type="text" placeholder='<?php echo $points ?>' readonly>
@@ -460,44 +460,44 @@ input[type=text] {
                                     <div class="conference-timeline-content">
                                         <!-- ///////////////////////////////////////////////////////////// -->
                                         <div class="timeline-article timeline-article-bottom">
-                                            <?php 
+                                            <?php
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 09:00:00");
                                             $session1_end = $date1->format("Y-m-d 13:55:00");
-                                             $session1_cutof = $date1->format("Y-m-d 09:05:00");
-                                            $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE user_id = '$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
-                                            $sql_run=mysqli_query($connection,$sql);
-                                            $rows=mysqli_num_rows($sql_run);
-                                            if($rows==0){
-                                                $hours='00';
-                                                $minutes='00';
-                                                $time=-1;
-                                            }else{
-                                            foreach($sql_run as $data){
-                                                $scan_time=$data['start_time'];
+                                            $session1_cutof = $date1->format("Y-m-d 09:05:00");
+                                            $scan_time = 0;
+                                            $sql = "SELECT start_time FROM performance_records WHERE user_id = '$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql_run = mysqli_query($connection, $sql);
+                                            $rows = mysqli_num_rows($sql_run);
+                                            if ($rows == 0) {
+                                                $hours = '00';
+                                                $minutes = '00';
+                                                $time = -1;
+                                            } else {
+                                                foreach ($sql_run as $data) {
+                                                    $scan_time = $data['start_time'];
+                                                }
+                                                $session1_start = new DateTime($session1_cutof);
+                                                $scan_time = new DateTime($scan_time);
+                                                $diff = $session1_start->diff($scan_time);
+                                                $hours   = $diff->format('%h');
+                                                $minutes = $diff->format('%i');
+                                                $sec = $diff->format('%s');
+                                                $time = ($hours * 60) + $minutes;
+                                                $delay = "$hours:$minutes:$sec";
+                                                // $hours1   = $scan_time->format('h'); 
+                                                // $minutes1 = $scan_time->format('i');
+                                                // echo $hours1 . ":" . $minutes1;
                                             }
-                                            $session1_start = new DateTime($session1_cutof);
-                                            $scan_time = new DateTime($scan_time);
-                                            $diff = $session1_start->diff($scan_time);
-                                            $hours   = $diff->format('%h'); 
-                                            $minutes = $diff->format('%i');
-                                            $sec = $diff->format('%s');
-                                            $time=($hours*60)+$minutes;
-                                            $delay= "$hours:$minutes:$sec";
-                                            // $hours1   = $scan_time->format('h'); 
-                                            // $minutes1 = $scan_time->format('i');
-                                            // echo $hours1 . ":" . $minutes1;
-                                            }
-                                            $status=0;
+                                            $status = 0;
                                             ?>
 
-                                            <?php 
-                                            if($time<=5 && $time>0){ 
-                                                   $status=0;
-                                                ?>
+                                            <?php
+                                            if ($time <= 5 && $time > 0) {
+                                                $status = 0;
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -506,11 +506,11 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }elseif($time>5){
-                                                $status=1;
-                                                ?>
+                                            } elseif ($time > 5) {
+                                                $status = 1;
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
@@ -519,22 +519,22 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }else{ ?>
+                                            } else { ?>
                                             <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $morning ?>
                                                 </div>
                                             </div>
                                             <?php }
-                                            if($time >=0 ){
-                                            $session1_start = $date1->format("Y-m-d 09:00:00");
-                                            $session1_end = $date1->format("Y-m-d 13:55:00");
-                                            $query="SELECT time FROM time_trakings WHERE user_id='$user_id' AND session_id='1'AND work_date BETWEEN '$session1_start' AND '$session1_end' ";
-                                            $query_run=mysqli_query($connection,$query);
-                                            $rows=0;
-                                            $rows=mysqli_num_rows($query_run);
-                                            if($rows==0){
-                                                $squry="INSERT INTO `time_trakings`(
+                                            if ($time >= 0) {
+                                                $session1_start = $date1->format("Y-m-d 09:00:00");
+                                                $session1_end = $date1->format("Y-m-d 13:55:00");
+                                                $query = "SELECT time FROM time_trakings WHERE user_id='$user_id' AND session_id='1'AND work_date BETWEEN '$session1_start' AND '$session1_end' ";
+                                                $query_run = mysqli_query($connection, $query);
+                                                $rows = 0;
+                                                $rows = mysqli_num_rows($query_run);
+                                                if ($rows == 0) {
+                                                    $squry = "INSERT INTO `time_trakings`(
                                                                     `user_id`,
                                                                     `session_id`,
                                                                     `time`,
@@ -546,44 +546,43 @@ input[type=text] {
                                                                     '$delay',
                                                                     '$status'
                                                                 )";
-                                                                $query_run=mysqli_query($connection,$squry);
-                                                                
-                                            }    
+                                                    $query_run = mysqli_query($connection, $squry);
+                                                }
                                             }
                                             ?>
                                         </div>
                                         <!-- ////////////////////////////////////////////////////// -->
                                         <div class="timeline-article timeline-article-top">
-                                            <?php 
+                                            <?php
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 13:30:00");
                                             $session1_end = $date1->format("Y-m-d 14:30:00");
                                             $session1_cutof = $date1->format("Y-m-d 13:55:00");
-                                            $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
-                                            $sql_run=mysqli_query($connection,$sql);
-                                            $rows=mysqli_num_rows($sql_run);
-                                            if($rows==0){
-                                                $hours='00';
-                                                $minutes='00';
-                                                $time=-100;
-                                            }else{
-                                            foreach($sql_run as $data){
-                                                $scan_time=$data['end_time'];
-                                            }
-                                            $session1_start = new DateTime($session1_cutof);
-                                            $scan_time = new DateTime($scan_time);
-                                            $diff = $session1_start->diff($scan_time);
-                                            $hours   = $diff->format('%h'); 
-                                            $minutes = $diff->format('%i');
-                                            $time=($hours*60)+$minutes;
+                                            $scan_time = 0;
+                                            $sql = "SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql_run = mysqli_query($connection, $sql);
+                                            $rows = mysqli_num_rows($sql_run);
+                                            if ($rows == 0) {
+                                                $hours = '00';
+                                                $minutes = '00';
+                                                $time = -100;
+                                            } else {
+                                                foreach ($sql_run as $data) {
+                                                    $scan_time = $data['end_time'];
+                                                }
+                                                $session1_start = new DateTime($session1_cutof);
+                                                $scan_time = new DateTime($scan_time);
+                                                $diff = $session1_start->diff($scan_time);
+                                                $hours   = $diff->format('%h');
+                                                $minutes = $diff->format('%i');
+                                                $time = ($hours * 60) + $minutes;
                                             }
                                             ?>
 
-                                            <?php 
-                                            if($time>=0){ ?>
+                                            <?php
+                                            if ($time >= 0) { ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -592,10 +591,10 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }elseif($time < 0 && $time>-100){
-                                                ?>
+                                            } elseif ($time < 0 && $time > -100) {
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
@@ -604,14 +603,14 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }else{ ?>
+                                            } else { ?>
                                             <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $beforelunch ?>
                                                 </div>
                                             </div>
                                             <?php }
-                                           
+
                                             ?>
                                         </div>
                                         <div class="timeline-article timeline-article-bottom">
@@ -623,38 +622,38 @@ input[type=text] {
                                                     3.05
                                                 </div>
                                             </div> -->
-                                            <?php 
+                                            <?php
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 15:00:00");
                                             $session1_end = $date1->format("Y-m-d 18:45:00");
-                                            $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE user_id='$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
-                                            $sql_run=mysqli_query($connection,$sql);
-                                            $rows=mysqli_num_rows($sql_run);
-                                            if($rows==0){
-                                                $hours='00';
-                                                $minutes='00';
-                                                $time=-1;
-                                            }else{
-                                            foreach($sql_run as $data){
-                                                $scan_time=$data['start_time'];
-                                            }
-                                            $session1_start = new DateTime($session1_start);
-                                            $scan_time = new DateTime($scan_time);
-                                            $diff = $session1_start->diff($scan_time);
-                                            $hours   = $diff->format('%h'); 
-                                            $minutes = $diff->format('%i');
-                                            $sec = $diff->format('%s');
-                                            $time=($hours*60)+$minutes;
-                                            $delay= "$hours:$minutes:$sec";
+                                            $scan_time = 0;
+                                            $sql = "SELECT start_time FROM performance_records WHERE user_id='$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql_run = mysqli_query($connection, $sql);
+                                            $rows = mysqli_num_rows($sql_run);
+                                            if ($rows == 0) {
+                                                $hours = '00';
+                                                $minutes = '00';
+                                                $time = -1;
+                                            } else {
+                                                foreach ($sql_run as $data) {
+                                                    $scan_time = $data['start_time'];
+                                                }
+                                                $session1_start = new DateTime($session1_start);
+                                                $scan_time = new DateTime($scan_time);
+                                                $diff = $session1_start->diff($scan_time);
+                                                $hours   = $diff->format('%h');
+                                                $minutes = $diff->format('%i');
+                                                $sec = $diff->format('%s');
+                                                $time = ($hours * 60) + $minutes;
+                                                $delay = "$hours:$minutes:$sec";
                                             }
                                             ?>
-                                            <?php 
-                                            if($time<=5 && $time>=0){ 
-                                                $status=0;
-                                                ?>
+                                            <?php
+                                            if ($time <= 5 && $time >= 0) {
+                                                $status = 0;
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -663,11 +662,11 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }elseif($time>5){
-                                                $status=1;
-                                                ?>
+                                            } elseif ($time > 5) {
+                                                $status = 1;
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
@@ -676,23 +675,23 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }else{ ?>
+                                            } else { ?>
                                             <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $afterlunch ?>
                                                 </div>
                                             </div>
                                             <?php }
-                                              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                            if($time >=0 ){
-                                            $session1_start = $date1->format("Y-m-d 03:00:00");
-                                            $session1_end = $date1->format("Y-m-d 06:45:00");
-                                            $query="SELECT time FROM time_trakings WHERE user_id='$user_id' AND session_id='2'AND work_date BETWEEN '$session1_start' AND '$session1_end' ";
-                                            $query_run=mysqli_query($connection,$query);
-                                            $rows=0;
-                                            $rows=mysqli_num_rows($query_run);
-                                            if($rows==0){
-                                                $squry="INSERT INTO `time_trakings`(
+                                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                            if ($time >= 0) {
+                                                $session1_start = $date1->format("Y-m-d 03:00:00");
+                                                $session1_end = $date1->format("Y-m-d 06:45:00");
+                                                $query = "SELECT time FROM time_trakings WHERE user_id='$user_id' AND session_id='2'AND work_date BETWEEN '$session1_start' AND '$session1_end' ";
+                                                $query_run = mysqli_query($connection, $query);
+                                                $rows = 0;
+                                                $rows = mysqli_num_rows($query_run);
+                                                if ($rows == 0) {
+                                                    $squry = "INSERT INTO `time_trakings`(
                                                                     `user_id`,
                                                                     `session_id`,
                                                                     `time`,
@@ -704,45 +703,44 @@ input[type=text] {
                                                                     '$delay',
                                                                     '$status'
                                                                 )";
-                                                                $query_run=mysqli_query($connection,$squry);
-                                                                
-                                            }    
+                                                    $query_run = mysqli_query($connection, $squry);
+                                                }
                                             }
                                             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                             ?>
                                         </div>
                                         <div class="timeline-article timeline-article-top">
-                                            <?php 
+                                            <?php
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 18:00:00");
                                             $session1_end = $date1->format("Y-m-d 19:15:00");
                                             $session1_cutof = $date1->format("Y-m-d 18:45:00");
-                                            $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
-                                            $sql_run=mysqli_query($connection,$sql);
-                                            $rows=mysqli_num_rows($sql_run);
-                                            if($rows==0){
-                                                $hours='00';
-                                                $minutes='00';
-                                                $time=250;
-                                            }else{
-                                            foreach($sql_run as $data){
-                                                $scan_time=$data['end_time'];
-                                            }
-                                            $session1_start = new DateTime($session1_cutof);
-                                            $scan_time = new DateTime($scan_time);
-                                            $diff = $session1_start->diff($scan_time);
-                                            $hours   = $diff->format('%h'); 
-                                            $minutes = $diff->format('%i');
-                                            $time=($hours*60)+$minutes;
+                                            $scan_time = 0;
+                                            $sql = "SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql_run = mysqli_query($connection, $sql);
+                                            $rows = mysqli_num_rows($sql_run);
+                                            if ($rows == 0) {
+                                                $hours = '00';
+                                                $minutes = '00';
+                                                $time = 250;
+                                            } else {
+                                                foreach ($sql_run as $data) {
+                                                    $scan_time = $data['end_time'];
+                                                }
+                                                $session1_start = new DateTime($session1_cutof);
+                                                $scan_time = new DateTime($scan_time);
+                                                $diff = $session1_start->diff($scan_time);
+                                                $hours   = $diff->format('%h');
+                                                $minutes = $diff->format('%i');
+                                                $time = ($hours * 60) + $minutes;
                                             }
                                             ?>
 
-                                            <?php 
-                                            if($time>=0 && $time<240){ 
-                                                 ?>
+                                            <?php
+                                            if ($time >= 0 && $time < 240) {
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -751,10 +749,10 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }elseif($time<0){
-                                                ?>
+                                            } elseif ($time < 0) {
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -763,7 +761,7 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }else{ ?>
+                                            } else { ?>
                                             <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $beforetea ?>
@@ -774,38 +772,38 @@ input[type=text] {
                                             ?>
                                         </div>
                                         <div class="timeline-article timeline-article-bottom">
-                                            <?php 
+                                            <?php
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 19:15:00");
                                             $session1_end = $date1->format("Y-m-d 19:45:00");
-                                            $scan_time=0;
-                                            $sql="SELECT start_time FROM performance_records WHERE user_id = '$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
-                                            $sql_run=mysqli_query($connection,$sql);
-                                            $rows=mysqli_num_rows($sql_run);
-                                            if($rows==0){
-                                                $hours='00';
-                                                $minutes='00';
-                                                $time=-1;
-                                            }else{
-                                            foreach($sql_run as $data){
-                                                $scan_time=$data['start_time'];
-                                            }
-                                            $session1_start = new DateTime($session1_start);
-                                            $scan_time = new DateTime($scan_time);
-                                            $diff = $session1_start->diff($scan_time);
-                                            $hours   = $diff->format('%h'); 
-                                            $minutes = $diff->format('%i');
-                                            $sec = $diff->format('%s');
-                                            $time=($hours*60)+$minutes;
-                                            $delay= "$hours:$minutes:$sec";
+                                            $scan_time = 0;
+                                            $sql = "SELECT start_time FROM performance_records WHERE user_id = '$user_id' AND start_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY start_time ASC LIMIT 1";
+                                            $sql_run = mysqli_query($connection, $sql);
+                                            $rows = mysqli_num_rows($sql_run);
+                                            if ($rows == 0) {
+                                                $hours = '00';
+                                                $minutes = '00';
+                                                $time = -1;
+                                            } else {
+                                                foreach ($sql_run as $data) {
+                                                    $scan_time = $data['start_time'];
+                                                }
+                                                $session1_start = new DateTime($session1_start);
+                                                $scan_time = new DateTime($scan_time);
+                                                $diff = $session1_start->diff($scan_time);
+                                                $hours   = $diff->format('%h');
+                                                $minutes = $diff->format('%i');
+                                                $sec = $diff->format('%s');
+                                                $time = ($hours * 60) + $minutes;
+                                                $delay = "$hours:$minutes:$sec";
                                             }
                                             ?>
 
-                                            <?php 
-                                            if($time<=5 && $time>=0){ 
-                                                $status=0;?>
+                                            <?php
+                                            if ($time <= 5 && $time >= 0) {
+                                                $status = 0; ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
@@ -814,11 +812,11 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }elseif($time>5){
-                                                $status=1;
-                                                ?>
+                                            } elseif ($time > 5) {
+                                                $status = 1;
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -827,23 +825,23 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }else{ ?>
+                                            } else { ?>
                                             <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $after_tea ?>
                                                 </div>
                                             </div>
                                             <?php }
-                                             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                            if($time >=0 ){
-                                            $session1_start = $date1->format("Y-m-d 19:15:00");
-                                            $session1_end = $date1->format("Y-m-d 20:00:00");
-                                            $query="SELECT time FROM time_trakings WHERE user_id='$user_id' AND session_id='2'AND work_date BETWEEN '$session1_start' AND '$session1_end' ";
-                                            $query_run=mysqli_query($connection,$query);
-                                            $rows=0;
-                                            $rows=mysqli_num_rows($query_run);
-                                            if($rows==0){
-                                                $squry="INSERT INTO `time_trakings`(
+                                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                            if ($time >= 0) {
+                                                $session1_start = $date1->format("Y-m-d 19:15:00");
+                                                $session1_end = $date1->format("Y-m-d 20:00:00");
+                                                $query = "SELECT time FROM time_trakings WHERE user_id='$user_id' AND session_id='2'AND work_date BETWEEN '$session1_start' AND '$session1_end' ";
+                                                $query_run = mysqli_query($connection, $query);
+                                                $rows = 0;
+                                                $rows = mysqli_num_rows($query_run);
+                                                if ($rows == 0) {
+                                                    $squry = "INSERT INTO `time_trakings`(
                                                                     `user_id`,
                                                                     `session_id`,
                                                                     `time`,
@@ -855,45 +853,44 @@ input[type=text] {
                                                                     '$delay',
                                                                     '$status'
                                                                 )";
-                                                                $query_run=mysqli_query($connection,$squry);
-                                                                
-                                            }    
+                                                    $query_run = mysqli_query($connection, $squry);
+                                                }
                                             }
                                             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                            
+
                                             ?>
                                         </div>
                                         <div class="timeline-article timeline-article-top">
-                                            <?php 
+                                            <?php
                                             $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
                                             $session1_start = $date1->format("Y-m-d 20:00:00");
                                             $session1_end = $date1->format("Y-m-d 21:15:00");
                                             $session1_cutof = $date1->format("Y-m-d 20:55:00");
-                                            $scan_time=0;
-                                            $sql="SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
-                                            $sql_run=mysqli_query($connection,$sql);
-                                            $rows=mysqli_num_rows($sql_run);
-                                            if($rows==0){
-                                                $hours='00';
-                                                $minutes='00';
-                                                $time=150;
-                                            }else{
-                                            foreach($sql_run as $data){
-                                                $scan_time=$data['end_time'];
-                                            }
-                                            $session1_start = new DateTime($session1_cutof);
-                                            $scan_time = new DateTime($scan_time);
-                                            $diff = $session1_start->diff($scan_time);
-                                            $hours   = $diff->format('%h'); 
-                                            $minutes = $diff->format('%i');
-                                            $time=($hours*60)+$minutes;
+                                            $scan_time = 0;
+                                            $sql = "SELECT end_time FROM performance_records WHERE user_id = '$user_id' AND end_time BETWEEN '$session1_start'AND'$session1_end' ORDER BY end_time DESC LIMIT 1";
+                                            $sql_run = mysqli_query($connection, $sql);
+                                            $rows = mysqli_num_rows($sql_run);
+                                            if ($rows == 0) {
+                                                $hours = '00';
+                                                $minutes = '00';
+                                                $time = 150;
+                                            } else {
+                                                foreach ($sql_run as $data) {
+                                                    $scan_time = $data['end_time'];
+                                                }
+                                                $session1_start = new DateTime($session1_cutof);
+                                                $scan_time = new DateTime($scan_time);
+                                                $diff = $session1_start->diff($scan_time);
+                                                $hours   = $diff->format('%h');
+                                                $minutes = $diff->format('%i');
+                                                $time = ($hours * 60) + $minutes;
                                             }
                                             ?>
-                                            <?php 
-                                            if($time>=0 && $time!=150){ 
-                                                 ?>
+                                            <?php
+                                            if ($time >= 0 && $time != 150) {
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time1">
@@ -902,11 +899,11 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }elseif($time<0 ){
-                                               
-                                                ?>
+                                            } elseif ($time < 0) {
+
+                                            ?>
                                             <div class="content-date" style="left: 0 !important;">
-                                                <div class="lateTime"><?php  echo $hours .":". $minutes."HH:MM";?>
+                                                <div class="lateTime"><?php echo $hours . ":" . $minutes . "HH:MM"; ?>
                                                 </div>
                                             </div>
                                             <div class="meta-date timeSec" id="time2">
@@ -915,7 +912,7 @@ input[type=text] {
                                                 </div>
                                             </div>
                                             <?php
-                                            }else{ ?>
+                                            } else { ?>
                                             <div class="meta-date timeSec" id="">
                                                 <div class="time">
                                                     <?php echo $dayend ?>
@@ -956,31 +953,31 @@ input[type=text] {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                           
-                            if (isset($_GET['pageno'])) {
-                                $pageno = $_GET['pageno'];
-                                $i = 50 * ($pageno - 1);
-                            } else {
-                                $pageno = 1;
-                                $i = 0;
-                            }
-                            $no_of_records_per_page = 20;
-                            $offset = ($pageno - 1) * $no_of_records_per_page;
-                            $conn = $connection;
-                            // Check connection
-                            if (mysqli_connect_errno()) {
-                                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                                die();
-                            }
+                                <?php
+                                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                            $total_pages_sql = "SELECT performance_id FROM performance_records  WHERE user_id = '$user_id' AND start_time BETWEEN '$day_start' AND '$day_end'  ORDER BY performance_id DESC";
-                            $result = mysqli_query($conn, $total_pages_sql);
-                            $total_rows = mysqli_num_rows($result);
-                            $total_pages = ceil($total_rows / $no_of_records_per_page);
-                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            $sql="SELECT
+                                if (isset($_GET['pageno'])) {
+                                    $pageno = $_GET['pageno'];
+                                    $i = 50 * ($pageno - 1);
+                                } else {
+                                    $pageno = 1;
+                                    $i = 0;
+                                }
+                                $no_of_records_per_page = 20;
+                                $offset = ($pageno - 1) * $no_of_records_per_page;
+                                $conn = $connection;
+                                // Check connection
+                                if (mysqli_connect_errno()) {
+                                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                    die();
+                                }
+
+                                $total_pages_sql = "SELECT performance_id FROM performance_records  WHERE user_id = '$user_id' AND start_time BETWEEN '$day_start' AND '$day_end'  ORDER BY performance_id DESC";
+                                $result = mysqli_query($conn, $total_pages_sql);
+                                $total_rows = mysqli_num_rows($result);
+                                $total_pages = ceil($total_rows / $no_of_records_per_page);
+                                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                $sql = "SELECT
                                         performance_records.qr_number as performance_qr,
                                         performance_records.start_time,
                                         performance_records.end_time,
@@ -988,6 +985,7 @@ input[type=text] {
                                         performance_records.target,
                                         main_inventory_informations.brand,
                                         main_inventory_informations.model,
+                                        main_inventory_informations.keyboard_backlight,
                                         main_inventory_informations.generation,
                                         targets.job_description,
                                         qc_forms.*,
@@ -998,52 +996,52 @@ input[type=text] {
                                     LEFT JOIN targets ON targets.target_id = performance_records.job_description
                                     LEFT JOIN qc_forms ON qc_forms.performance_id = performance_records.performance_id
                                     WHERE
-                                        performance_records.user_id = '11' AND start_time BETWEEN '2023-03-19 00:00:00' AND '2023-03-19 23:59:00'
+                                        performance_records.user_id = '$user_id' AND start_time BETWEEN '$day_start' AND '$day_end'
                                     ORDER BY
                                         performance_records.performance_id
                                     DESC LIMIT $offset, $no_of_records_per_page";
-                                    
-                            $sql_run=mysqli_query($connection,$sql);
-                            foreach($sql_run as $data){
-                                $bios_lock_hp = $data['bios_lock_hp'];
-                                            $bios_lock_dell = $data['bios_lock_dell'];
-                                            $bios_lock_lenovo = $data['bios_lock_lenovo'];
-                                            $bios_lock_other = $data['bios_lock_other'];
 
-                                            $computrace_hp = $data['computrace_hp'];
-                                            $computrace_dell = $data['computrace_dell'];
-                                            $computrace_lenovo = $data['computrace_lenovo'];
-                                            $computrace_other = $data['computrace_other'];
+                                $sql_run = mysqli_query($connection, $sql);
+                                foreach ($sql_run as $data) {
+                                    $bios_lock_hp = $data['bios_lock_hp'];
+                                    $bios_lock_dell = $data['bios_lock_dell'];
+                                    $bios_lock_lenovo = $data['bios_lock_lenovo'];
+                                    $bios_lock_other = $data['bios_lock_other'];
 
-                                            $me_region_lock_hp = $data['me_region_lock_hp'];
-                                            $tpm_lock_dell = $data['tpm_lock_dell'];
-                                            $other_error_lenovo = $data['other_error_lenovo'];
-                                            $other_error_other_brand = $data['other_error_other_brand'];
+                                    $computrace_hp = $data['computrace_hp'];
+                                    $computrace_dell = $data['computrace_dell'];
+                                    $computrace_lenovo = $data['computrace_lenovo'];
+                                    $computrace_other = $data['computrace_other'];
 
-                                            $no_power = $data['power'];
-                                            $no_display = $data['mb_display'];
-                                            $other_issue = $data['mb_other_issue'];
-                                            $bodywork = $data['bodywork'];
-                                            $sanding = $data['sanding'];
+                                    $me_region_lock_hp = $data['me_region_lock_hp'];
+                                    $tpm_lock_dell = $data['tpm_lock_dell'];
+                                    $other_error_lenovo = $data['other_error_lenovo'];
+                                    $other_error_other_brand = $data['other_error_other_brand'];
 
-                                            $a_top = $data['a_top'];
-                                            $b_bazel = $data['b_bazel'];
-                                            $c_palmrest = $data['c_palmrest'];
-                                            $d_back_cover = $data['d_back_cover'];
-                                            $keyboard = $data['keyboard'];
-                                            $lcd = $data['lcd'];
-                                            $webcam = $data['webcam'];
-                                            $mousepad_button = $data['mousepad_button'];
-                                            $mic = $data['mic'];
-                                            $speaker = $data['speaker'];
-                                            $wi_fi_connection = $data['wi_fi_connection'];
-                                            $usb = $data['usb'];
-                                            $battery = $data['battery'];
-                                            $hinges_cover = $data['hinges_cover'];
-                                            $ram = $data['ram'];
-                                            $hdd_boot = $data['hard_disk_boot'];
-                                            $qc_form_id = $data['qc_form_id'];
-                                            $keyboard_backlight = $data['keyboard_backlight'];
+                                    $no_power = $data['power'];
+                                    $no_display = $data['mb_display'];
+                                    $other_issue = $data['mb_other_issue'];
+                                    $bodywork = $data['bodywork'];
+                                    $sanding = $data['sanding'];
+
+                                    $a_top = $data['a_top'];
+                                    $b_bazel = $data['b_bazel'];
+                                    $c_palmrest = $data['c_palmrest'];
+                                    $d_back_cover = $data['d_back_cover'];
+                                    $keyboard = $data['keyboard'];
+                                    $lcd = $data['lcd'];
+                                    $webcam = $data['webcam'];
+                                    $mousepad_button = $data['mousepad_button'];
+                                    $mic = $data['mic'];
+                                    $speaker = $data['speaker'];
+                                    $wi_fi_connection = $data['wi_fi_connection'];
+                                    $usb = $data['usb'];
+                                    $battery = $data['battery'];
+                                    $hinges_cover = $data['hinges_cover'];
+                                    $ram = $data['ram'];
+                                    $hdd_boot = $data['hard_disk_boot'];
+                                    $qc_form_id = $data['qc_form_id'];
+                                    $keyboard_backlight = $data['keyboard_backlight'];
                                 ?>
                                 <tr>
                                     <td><?php echo $data['job_description'] ?></td>
@@ -1053,138 +1051,146 @@ input[type=text] {
                                     <td><?php echo $data['generation'] ?></td>
                                     <td><?php echo $data['start_time'] ?></td>
                                     <td><?php echo $data['end_time'] ?></td>
-                                    <td><?php if($data['task_status'] == 1){
-                                        echo "completed";
-                                    }else{
-                                        echo "On Going";
-                                    } ?></td>
+                                    <td><?php if ($data['task_status'] == 1) {
+                                                echo "completed";
+                                            } else {
+                                                echo "On Going";
+                                            } ?></td>
                                     <td><?php echo $data['target'] ?></td>
                                     <td><?php
-                                    if(!empty($qc_form_id)){
-                                            
-                                            if ($bios_lock_hp == 'lock') {
-                                                echo "Bios Lock </br>";
+                                            if (!empty($qc_form_id)) {
+
+                                                if ($bios_lock_hp == 'lock') {
+                                                    echo "Bios Lock </br>";
+                                                }
+                                                if ($bios_lock_dell == 'lock') {
+                                                    echo "Bios Lock </br>";
+                                                }
+                                                if ($bios_lock_lenovo == 'lock') {
+                                                    echo "Bios Lock</br>";
+                                                }
+                                                if ($bios_lock_other == 'lock') {
+                                                    echo "Bios Lock</br>";
+                                                }
+                                                if ($computrace_hp == 'active') {
+                                                    echo "Computrace Lock</br>";
+                                                }
+                                                if ($computrace_dell == 'activated' || $computrace_dell == 'disable') {
+                                                    echo "Computrace Lock</br>";
+                                                }
+                                                if ($computrace_lenovo == 'lock') {
+                                                    echo "Computrace Lock</br>";
+                                                }
+                                                if ($computrace_other == 'lock') {
+                                                    echo "Computrace Lock</br>";
+                                                }
+                                                if ($me_region_lock_hp == 'lock') {
+                                                    echo "ME Region Lock</br>";
+                                                }
+                                                if ($tpm_lock_dell == 'not ok') {
+                                                    echo "TPM Lock</br>";
+                                                }
+                                                if ($other_error_lenovo == 'have') {
+                                                    echo "Other Error Lenovo</br>";
+                                                }
+                                                if ($other_error_other_brand == 'no') {
+                                                    echo "Other Error</br>";
+                                                }
+                                                if ($no_power == 'reject') {
+                                                    echo "No Power</br>";
+                                                }
+                                                if ($no_display == 'reject') {
+                                                    echo "No Display Issue</br>";
+                                                }
+                                                if ($other_issue == 'have') {
+                                                    echo "Motherboard other Error</br>";
+                                                }
+                                                if ($a_top == 'reject') {
+                                                    echo "A/Top Cover(Scratch/Broken/Dent)</br>";
+                                                }
+                                                if ($b_bazel == 'b_bazel') {
+                                                    echo "B/bazel(Scratch/Brocken/Logo/Color)</br>";
+                                                }
+                                                if ($c_palmrest == 'reject') {
+                                                    echo "C/Palmrest (Scratch/Broken/Dent)</br>";
+                                                }
+                                                if ($d_back_cover == 'reject') {
+                                                    echo "D/Back Cover (Scratch/Broken/Dent)</br>";
+                                                }
+                                                if ($keyboard == 'reject') {
+                                                    echo "Keyboard(Function/ Key missing / Color)</br>";
+                                                }
+                                                if ($lcd == 'reject') {
+                                                    echo "LCD (Whitespot/Scratch/Broken/Line/Yellow shadow)</br>";
+                                                }
+                                                if ($webcam == 'reject') {
+                                                    echo "Webcam</br>";
+                                                }
+                                                if ($mousepad_button == 'reject') {
+                                                    echo "Mousepad & Button</br>";
+                                                }
+                                                if ($mic == 'reject') {
+                                                    echo "Microphone (MIC)</br>";
+                                                }
+                                                if ($speaker == 'reject') {
+                                                    echo "Speaker / Sound</br>";
+                                                }
+                                                if ($wi_fi_connection == 'reject') {
+                                                    echo "Wi-Fi Connection</br>";
+                                                }
+                                                if ($usb == 'reject') {
+                                                    echo "USB Port</br>";
+                                                }
+                                                if ($battery == 'bad') {
+                                                    echo "Battery Health</br>";
+                                                }
+                                                if ($hinges_cover == 'reject') {
+                                                    echo "Hinges Cover</br>";
+                                                }
+                                                if ($bodywork == 'reject') {
+                                                    echo "Bodywork</br>";
+                                                }
+                                                if ($sanding == 'reject') {
+                                                    echo "Sanding</br>";
+                                                }
+                                                if ($ram == 'not match') {
+                                                    echo "Ram missed match</br>";
+                                                }
+                                                if ($hdd_boot == 'not ok') {
+                                                    echo "HDD is not booting</br>";
+                                                }
+                                                if ($keyboard_backlight == 'not ok') {
+                                                    echo "Kyeboard Backlight not match with sales order</br>";
+                                                }
+                                            } else {
+                                                echo "pass";
                                             }
-                                            if ($bios_lock_dell == 'lock') {
-                                                echo "Bios Lock </br>";
-                                            }
-                                            if ($bios_lock_lenovo == 'lock') {
-                                                echo "Bios Lock</br>";
-                                            }
-                                            if ($bios_lock_other == 'lock') {
-                                                echo "Bios Lock</br>";
-                                            }
-                                            if ($computrace_hp == 'active') {
-                                                echo "Computrace Lock</br>";
-                                            }
-                                            if ($computrace_dell == 'activated' || $computrace_dell == 'disable') {
-                                                echo "Computrace Lock</br>";
-                                            }
-                                            if ($computrace_lenovo == 'lock') {
-                                                echo "Computrace Lock</br>";
-                                            }
-                                            if ($computrace_other == 'lock') {
-                                                echo "Computrace Lock</br>";
-                                            }
-                                            if ($me_region_lock_hp == 'lock') {
-                                                echo "ME Region Lock</br>";
-                                            }
-                                            if ($tpm_lock_dell == 'not ok') {
-                                                echo "TPM Lock</br>";
-                                            }
-                                            if ($other_error_lenovo == 'have') {
-                                                echo "Other Error Lenovo</br>";
-                                            }
-                                            if ($other_error_other_brand == 'no') {
-                                                echo "Other Error</br>";
-                                            }
-                                            if ($no_power == 'reject') {
-                                                echo "No Power</br>";
-                                            }
-                                            if ($no_display == 'reject') {
-                                                echo "No Display Issue</br>";
-                                            }
-                                            if ($other_issue == 'have') {
-                                                echo "Motherboard other Error</br>";
-                                            }
-                                            if ($a_top == 'reject') {
-                                                echo "A/Top Cover(Scratch/Broken/Dent)</br>";
-                                            }
-                                            if ($b_bazel == 'b_bazel') {
-                                                echo "B/bazel(Scratch/Brocken/Logo/Color)</br>";
-                                            }
-                                            if ($c_palmrest == 'reject') {
-                                                echo "C/Palmrest (Scratch/Broken/Dent)</br>";
-                                            }
-                                            if ($d_back_cover == 'reject') {
-                                                echo "D/Back Cover (Scratch/Broken/Dent)</br>";
-                                            }
-                                            if ($keyboard == 'reject') {
-                                                echo "Keyboard(Function/ Key missing / Color)</br>";
-                                            }
-                                            if ($lcd == 'reject') {
-                                                echo "LCD (Whitespot/Scratch/Broken/Line/Yellow shadow)</br>";
-                                            }
-                                            if ($webcam == 'reject') {
-                                                echo "Webcam</br>";
-                                            }
-                                            if ($mousepad_button == 'reject') {
-                                                echo "Mousepad & Button</br>";
-                                            }
-                                            if ($mic == 'reject') {
-                                                echo "Microphone (MIC)</br>";
-                                            }
-                                            if ($speaker == 'reject') {
-                                                echo "Speaker / Sound</br>";
-                                            }
-                                            if ($wi_fi_connection == 'reject') {
-                                                echo "Wi-Fi Connection</br>";
-                                            }
-                                            if ($usb == 'reject') {
-                                                echo "USB Port</br>";
-                                            }
-                                            if ($battery == 'bad') {
-                                                echo "Battery Health</br>";
-                                            }
-                                            if ($hinges_cover == 'reject') {
-                                                echo "Hinges Cover</br>";
-                                            }
-                                            if ($bodywork == 'reject') {
-                                                echo "Bodywork</br>";
-                                            }
-                                            if ($sanding == 'reject') {
-                                                echo "Sanding</br>";
-                                            }
-                                            if ($ram == 'not match') {
-                                                echo "Ram missed match</br>";
-                                            }
-                                            if ($hdd_boot == 'not ok') {
-                                                echo "HDD is not booting</br>";
-                                            }
-                                             if ($keyboard_backlight == 'not ok') {
-                                                echo "Kyeboard Backlight not match with sales order</br>";
-                                            }
-                                        }else{
-                                            echo "pass";
-                                        }
                                             ?>
-
-
                                 </tr>
                                 <?php
-                            }
-                            ?>
+                                }
+                                ?>
                             </tbody>
                         </table>
                         <ul class="pagination">
                             <li><a href="?pageno=1" class="btnTB mx-1">First</a></li>
-                            <li class="<?php if ($pageno <= 1) {echo 'disabled';}?>">
-                                <a href="<?php if ($pageno <= 1) {echo '#';} else {echo "?pageno=" . ($pageno - 1);}?>"
-                                    class="btnTB mx-1">Prev</a>
+                            <li class="<?php if ($pageno <= 1) {
+                                            echo 'disabled';
+                                        } ?>">
+                                <a href="<?php if ($pageno <= 1) {
+                                                echo '#';
+                                            } else {
+                                                echo "?pageno=" . ($pageno - 1);
+                                            } ?>" class="btnTB mx-1">Prev</a>
                             </li>
-                            <li class="<?php if ($pageno >= $total_pages) {echo 'disabled';}?>">
-                                <a href="<?php if ($pageno >= $total_pages) {echo '#';} else {echo "?pageno=" . ($pageno + 1);}?>"
-                                    class="btnTB mx-1">Next</a>
+                            <li class="<?php if ($pageno >= $total_pages) {
+                                            echo 'disabled';
+                                        } ?>">
+                                <a href="<?php if ($pageno >= $total_pages) {
+                                                echo '#';
+                                            } else {
+                                                echo "?pageno=" . ($pageno + 1);
+                                            } ?>" class="btnTB mx-1">Next</a>
                             </li>
                             <li><a href="?pageno=<?php echo $total_pages; ?>" class="btnTB mx-1">Last</a></li>
                         </ul>
