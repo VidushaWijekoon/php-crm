@@ -45,35 +45,41 @@ function Login($role_id, $department_id)
     if ($role_id == 4 && $department_id == 2) {
         header('Location: presentation/inventory/inventory_team_leader_dashboard');
     }
-     //<!-- ============================================================== -->//
+    //<!-- ============================================================== -->//
     //<!--- Painting --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 8) {
-       header('Location: presentation/performance/performance');
+        header('Location: presentation/performance/performance');
     }
     //<!-- ============================================================== -->//
     //<!--- battery --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 14) {
-       header('Location: presentation/battery/performance_battery');
+        header('Location: presentation/battery/performance_battery');
     }
-     //<!-- ============================================================== -->//
+    //<!-- ============================================================== -->//
     //<!--- Sticker --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 22) {
-       header('Location: presentation/performance/performance');
+        header('Location: presentation/performance/performance');
     }
-     //<!-- ============================================================== -->//
+    //<!-- ============================================================== -->//
     //<!--- cleaning --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 23) {
-       header('Location: presentation/performance/performance');
+        header('Location: presentation/performance/performance');
     }
-     //<!-- ============================================================== -->//
+    //<!-- ============================================================== -->//
     //<!--- Packing --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 13) {
-       header('Location: presentation/packing/packing_flow_new');
+        header('Location: presentation/packing/packing_flow_new');
+    }
+    //<!-- ============================================================== -->//
+    //<!--- QC --->
+    //<!-- ============================================================== -->//
+    if ($role_id == 4 && $department_id == 19) {
+        header('Location: presentation/qc/qc_dashboard_new');
     }
      //<!-- ============================================================== -->//
     //<!--- QC --->
