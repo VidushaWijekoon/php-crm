@@ -1,11 +1,29 @@
 <?php
 session_start();
 require_once('../includes/header.php');
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
+$username = $_SESSION['username'];
+$user_id = $_SESSION['user_id'];
+$department_id = $_SESSION['department_id'];
+ $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+ $sql="SELECT full_name,employees.emp_id,department_name FROM employees 
+ LEFT JOIN users ON users.emp_id=employees.emp_id 
+ LEFT JOIN departments ON departments.department_id=employees.department_id
+ WHERE user_id='$user_id' ";
+ $sql_run_name=mysqli_query($connection,$sql);
+ $name=0;
+ $emp_id=0;
+ $department_name=0;
+ foreach($sql_run_name as $data){
+    $name=$data['full_name'];
+    $emp_id=$data['emp_id'];
+    $department_name=$data['department_name'];
+ }
 ?>
 
 
