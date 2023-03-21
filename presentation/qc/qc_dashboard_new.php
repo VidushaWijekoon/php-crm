@@ -13,13 +13,18 @@ $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
  $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
- $sql="SELECT full_name,employees.emp_id FROM employees LEFT JOIN users ON users.emp_id=employees.emp_id WHERE user_id='$user_id' ";
+$sql="SELECT full_name,employees.emp_id,department_name FROM employees 
+ LEFT JOIN users ON users.emp_id=employees.emp_id 
+ LEFT JOIN departments ON departments.department_id=employees.department_id
+ WHERE user_id='$user_id' ";
  $sql_run_name=mysqli_query($connection,$sql);
  $name=0;
  $emp_id=0;
+ $department_name=0;
  foreach($sql_run_name as $data){
     $name=$data['full_name'];
     $emp_id=$data['emp_id'];
+    $department_name=$data['department_name'];
  }
  $sql="SELECT schedule_time,schedule_id FROM `day_schedules`";
  $sql_run2=mysqli_query($connection,$sql);
@@ -303,7 +308,7 @@ input[type=text] {
                 <div class="col-12 mt-1 mb-1">
                     <div class="row mx-4  justify-content-between">
                         <div class="userName">Department :
-                            <span><?php echo $department_id ?></span>
+                            <span><?php echo $department_name ?></span>
                         </div>
                         <div class="empNo">
                         </div>
@@ -339,7 +344,7 @@ input[type=text] {
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
                                     <?php 
-                                if ($department_id == 1){ ?>
+                                if ($department_id == 19){ ?>
                                     <option value="24">High Gen Functional Test + MFG </option>
                                     <option value="25">High Gen Functional Test </option>
                                     <option value="26">Low Gen Functional Test</option>
@@ -989,6 +994,7 @@ input[type=text] {
                                         main_inventory_informations.brand,
                                         main_inventory_informations.model,
                                         main_inventory_informations.generation,
+                                        main_inventory_informations.keyboard_backlight,
                                         targets.job_description,
                                         qc_forms.*,
                                         qc_forms.qc_form_id
@@ -998,11 +1004,10 @@ input[type=text] {
                                     LEFT JOIN targets ON targets.target_id = performance_records.job_description
                                     LEFT JOIN qc_forms ON qc_forms.performance_id = performance_records.performance_id
                                     WHERE
-                                        performance_records.user_id = '11' AND start_time BETWEEN '2023-03-19 00:00:00' AND '2023-03-19 23:59:00'
+                                        performance_records.user_id = '$user_id' AND start_time BETWEEN '$day_start' AND '$day_end'
                                     ORDER BY
                                         performance_records.performance_id
                                     DESC LIMIT $offset, $no_of_records_per_page";
-                                    
                             $sql_run=mysqli_query($connection,$sql);
                             foreach($sql_run as $data){
                                 $bios_lock_hp = $data['bios_lock_hp'];

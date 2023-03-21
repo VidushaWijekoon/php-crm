@@ -1014,7 +1014,7 @@ input[type=text] {
                                 <td><?php echo $data['generation'] ?></td>
                                 <td><?php echo $data['start_time'] ?></td>
                                 <td><?php echo $data['end_time'] ?></td>
-                                <td><?php echo $data['status'] ?></td>
+                                <td><?php if($data['status']==1){echo "Completed";}else{echo "OnGoing";} ?></td>
                                 <td><?php echo $data['target'] ?></td>
                             </tr>
                             <?php
