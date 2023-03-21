@@ -343,8 +343,7 @@ input[type=text] {
                                 ?>
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
-                                    <?php
-                                    if ($department_id == 19) { ?>
+
                                     <?php 
                                 if ($department_id == 19){ ?>
                                     <option value="24">High Gen Functional Test + MFG </option>

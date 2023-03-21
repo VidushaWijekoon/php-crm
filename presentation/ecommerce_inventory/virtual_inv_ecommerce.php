@@ -473,6 +473,32 @@ if (isset($_POST['search'])) {
 
 
                         </div>
+                        <?php 
+                            $sql="SELECT COUNT(dispatch) as dispatch, rack FROM `e_com_inventory` where dispatch='0' GROUP BY rack;";
+                            $sql_run=mysqli_query($connection,$sql);
+                            $b1=0;
+                            $b2=0;
+                            $b3=0;
+                            $b4=0;
+                            $b5=0;
+                            $b6=0;
+                            foreach($sql_run as $data){
+                                if($data['rack'] == 'B-1'){
+                                        $b1=1;
+                                }elseif($data['rack'] == 'B-2'){
+                                        $b2=1;
+                                }elseif($data['rack'] == 'B-3'){
+                                        $b3=1;
+                                }elseif($data['rack'] == 'B-4'){
+                                        $b5=1;
+                                }elseif($data['rack'] == 'B-5'){
+                                        $b5=1;
+                                }elseif($data['rack'] == 'B-6'){
+                                        $b6=1;
+                                }
+                            }
+
+                        ?>
                         <div class=" rackSturcture">
                             <!-- Rack Layers T -->
                             <div class="rackLayer ">
@@ -483,22 +509,28 @@ if (isset($_POST['search'])) {
                                 <div class="box border">
                                     <!-- Box BTn  -->
                                     <a href="./virtual_inv_ecom_add_remove?rack=B-6">
-                                        <div class="btnTB btnBox">
-                                            <span>B-6</span>
-                                        </div>
-                                        <!-- hover details  Sec eka -->
-                                        <div class="hide insideDetails">
-                                            <div class="tableModel">
-                                                <table>
-                                                    <tr>
-                                                        <th>
-                                                            <div style="width:100px;">
-                                                                Models
-                                                            </div>
-                                                        </th>
-                                                        <th>Qty</th>
-                                                    </tr>
-                                                    <?php
+                                        <?php if($b6== 0){ 
+                                            ?>
+                                        <div class="btnTC btnBox">
+                                            <?php  }elseif($b6==1){ 
+                                                ?>
+                                            <div class="btnTB btnBox">
+                                                <?php } ?>
+                                                <span>B-6</span>
+                                            </div>
+                                            <!-- hover details  Sec eka -->
+                                            <div class="hide insideDetails">
+                                                <div class="tableModel">
+                                                    <table>
+                                                        <tr>
+                                                            <th>
+                                                                <div style="width:100px;">
+                                                                    Models
+                                                                </div>
+                                                            </th>
+                                                            <th>Qty</th>
+                                                        </tr>
+                                                        <?php
                                                         $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
                                                         $query_run = mysqli_query($connection, $query);
 
@@ -506,17 +538,17 @@ if (isset($_POST['search'])) {
                                                             $tot = $data['tot_count'];
                                                             $model = $data['model'];
                                                         ?>
-                                                    <tr>
-                                                        <td><?php echo $model ?></td>
-                                                        <td><?php echo $tot ?></td>
-                                                        <?php
+                                                        <tr>
+                                                            <td><?php echo $model ?></td>
+                                                            <td><?php echo $tot ?></td>
+                                                            <?php
                                                         }
                                                             ?>
-                                                    </tr>
-                                                </table>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- iwrai hover eka -->
+                                            <!-- iwrai hover eka -->
                                     </a>
                                 </div>
                                 <!-- /// -->
