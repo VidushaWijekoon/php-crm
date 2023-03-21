@@ -12,49 +12,49 @@ if (!isset($_SESSION['user_id'])) {
 $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
- $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
-$sql="SELECT full_name,employees.emp_id,department_name FROM employees 
+$date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+$sql = "SELECT full_name,employees.emp_id,department_name FROM employees 
  LEFT JOIN users ON users.emp_id=employees.emp_id 
  LEFT JOIN departments ON departments.department_id=employees.department_id
  WHERE user_id='$user_id' ";
- $sql_run_name=mysqli_query($connection,$sql);
- $name=0;
- $emp_id=0;
- $department_name=0;
- foreach($sql_run_name as $data){
-    $name=$data['full_name'];
-    $emp_id=$data['emp_id'];
-    $department_name=$data['department_name'];
- }
- $sql="SELECT schedule_time,schedule_id FROM `day_schedules`";
- $sql_run2=mysqli_query($connection,$sql);
- $morning=0; 
- $beforelunch =0;
- $afterlunch=0;
- $beforetea=0;
- $after_tea=0;
- $dayend=0;
- foreach($sql_run2 as $data){
-    if($data['schedule_id'] ==1){
-    $morning=$data['schedule_time'];
-    }else if($data['schedule_id'] ==2){
-    $beforelunch =$data['schedule_time'];
-     }else if($data['schedule_id'] ==3){
-    $afterlunch=$data['schedule_time'];
-     }else if($data['schedule_id'] ==4){
-    $beforetea=$data['schedule_time'];
-     }else if($data['schedule_id'] ==5){
-    $after_tea=$data['schedule_time'];
-     }else if($data['schedule_id'] ==6){
-    $dayend=$data['schedule_time'];
-     }
- }
-    date_default_timezone_set('Asia/dubai');
-    $timestamp = time();
-    $day_start = date("Y-m-d 00:00:00");
-    $day_end = date("Y-m-d 23:59:00");
+$sql_run_name = mysqli_query($connection, $sql);
+$name = 0;
+$emp_id = 0;
+$department_name = 0;
+foreach ($sql_run_name as $data) {
+    $name = $data['full_name'];
+    $emp_id = $data['emp_id'];
+    $department_name = $data['department_name'];
+}
+$sql = "SELECT schedule_time,schedule_id FROM `day_schedules`";
+$sql_run2 = mysqli_query($connection, $sql);
+$morning = 0;
+$beforelunch = 0;
+$afterlunch = 0;
+$beforetea = 0;
+$after_tea = 0;
+$dayend = 0;
+foreach ($sql_run2 as $data) {
+    if ($data['schedule_id'] == 1) {
+        $morning = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 2) {
+        $beforelunch = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 3) {
+        $afterlunch = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 4) {
+        $beforetea = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 5) {
+        $after_tea = $data['schedule_time'];
+    } else if ($data['schedule_id'] == 6) {
+        $dayend = $data['schedule_time'];
+    }
+}
+date_default_timezone_set('Asia/dubai');
+$timestamp = time();
+$day_start = date("Y-m-d 00:00:00");
+$day_end = date("Y-m-d 23:59:00");
 
-   
+
 ?>
 
 
@@ -343,10 +343,9 @@ input[type=text] {
                                 ?>
                                 <select class="DropDown" name="job">
                                     <option selected value="<?php echo $job_id ?>"><?php echo $job ?></option>
+
                                     <?php
                                     if ($department_id == 19) { ?>
-                                    <?php 
-                                if ($department_id == 19){ ?>
                                     <option value="24">High Gen Functional Test + MFG </option>
                                     <option value="25">High Gen Functional Test </option>
                                     <option value="26">Low Gen Functional Test</option>
@@ -1008,12 +1007,12 @@ input[type=text] {
                                     ORDER BY
                                         performance_records.performance_id
                                     DESC LIMIT $offset, $no_of_records_per_page";
-                            $sql_run=mysqli_query($connection,$sql);
-                            foreach($sql_run as $data){
-                                $bios_lock_hp = $data['bios_lock_hp'];
-                                            $bios_lock_dell = $data['bios_lock_dell'];
-                                            $bios_lock_lenovo = $data['bios_lock_lenovo'];
-                                            $bios_lock_other = $data['bios_lock_other'];
+                                $sql_run = mysqli_query($connection, $sql);
+                                foreach ($sql_run as $data) {
+                                    $bios_lock_hp = $data['bios_lock_hp'];
+                                    $bios_lock_dell = $data['bios_lock_dell'];
+                                    $bios_lock_lenovo = $data['bios_lock_lenovo'];
+                                    $bios_lock_other = $data['bios_lock_other'];
 
                                     $computrace_hp = $data['computrace_hp'];
                                     $computrace_dell = $data['computrace_dell'];
@@ -1175,8 +1174,9 @@ input[type=text] {
                                             ?>
                                 </tr>
                                 <?php
-                            }
-                            ?>
+
+                                }
+                                ?>
                             </tbody>
                         </table>
                         <ul class="pagination">
