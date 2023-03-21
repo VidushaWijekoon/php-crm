@@ -31,9 +31,12 @@ if (isset($_POST['scanMfg'])) {
     </script>";
     } else {
 
-        $query = "SELECT * FROM packing_mfg WHERE mfg = '$mfg'";
+        $query = "SELECT packing_mfg.asin_sku,packing_mfg.asin_serial,packing_mfg.mfg,
+        device,brand,model,core,generation
+         FROM packing_mfg LEFT JOIN main_inventory_informations ON main_inventory_informations.mfg = packing_mfg.mfg
+           WHERE packing_mfg.mfg = '$mfg'";
 
-        echo $query;
+
         $query_run = mysqli_query($connection, $query);
         $rowsPac = mysqli_num_rows($query_run);
         // packing Mfg data tynwnm,
@@ -51,7 +54,7 @@ if (isset($_POST['scanMfg'])) {
                 $qty = '1';
             }
             $queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
-            echo $queryS;
+
             $rows = 0;
             $query_run = mysqli_query($connection, $queryS);
             $rows = mysqli_num_rows($query_run);
@@ -59,12 +62,34 @@ if (isset($_POST['scanMfg'])) {
             // ecommerce_inventory eke data natnm,
             if ($rows == 0) {
                 echo "ecommerce_inventory eke data natnm";
-
-
-                $query = "INSERT INTO e_com_inventory(mfg,asin_sku,device,brand,model,qty,rack,core,generation,asin_serial)
-                VALUES('$mfg','$asinSku','$device','$brand','$model','$qty','$rack','$core','$gen',$asinSerial)";
+                $query = "INSERT INTO e_com_inventory(
+    mfg,
+    asin_sku,
+    device,
+    brand,
+    model,
+    qty,
+    rack,
+    core,
+    generation,
+    asin_serial
+)
+VALUES(
+    '$mfg',
+    '$asinSku',
+    '$device',
+    '$brand',
+    '$model',
+    '$qty',
+    '$rack',
+    '$core',
+    '$gen',
+    '$asinSerial'
+)";
                 $data = mysqli_query($connection, $query);
+                echo $query;
 
+                // add una kiyla yatin pennnanna
                 $isDataADD = 1;
 
 
@@ -76,7 +101,6 @@ if (isset($_POST['scanMfg'])) {
 
                 $query = "UPDATE e_com_inventory SET dispatch ='0', rack = '$rack' WHERE mfg ='$mfg'";
                 $data = mysqli_query($connection, $query);
-                echo $query;
 
                 echo "<script>alert('laptop Added Again');</script>";
                 $isDataADD = 1;
