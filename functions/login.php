@@ -87,4 +87,10 @@ function Login($role_id, $department_id)
     if ($role_id == 4 && $department_id == 19) {
        header('Location: presentation/qc/qc_dashboard_new');
     }
+     //<!-- ============================================================== -->//
+    //<!--- LCD --->
+    //<!-- ============================================================== -->//
+    if ($role_id == 4 && $department_id == 10) {
+       header('Location: presentation/lcd/lcd_dashboard');
+    }
 }
