@@ -331,15 +331,15 @@ input[type=text] {
                                     <?php 
                                     if ($department_id == 1) {
                                     if ($_SESSION['role_id'] == 33) { ?>
-                                    <option value="Hard Disk Copy">Hard Disk Copy
+                                    <option value="32">Hard Disk Copy
                                     </option>
-                                    <option value="Put RAM + Hard Disk + Test">Put RAM + Hard Disk + Test
+                                    <option value="33">Put RAM + Hard Disk + Test
                                     </option>
-                                    <option value="Combine+ Test">Combine + Test </option>
+                                    <option value="34">Combine + Test </option>
                                     <?php } else { ?>
-                                    <option value="Put RAM + Hard Disk + Test">Put RAM + Hard Disk + Test
+                                    <option value="33">Put RAM + Hard Disk + Test
                                     </option>
-                                    <option value="Combine+ Test">Combine + Test </option>
+                                    <option value="34">Combine + Test </option>
                                     <?php }
                                                 } 
                                     ?>
