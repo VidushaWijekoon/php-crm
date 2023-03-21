@@ -52,7 +52,7 @@ function Login($role_id, $department_id)
         header('Location: presentation/performance/performance');
     }
     //<!-- ============================================================== -->//
-    //<!--- Painting --->
+    //<!--- battery --->
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 14) {
         header('Location: presentation/battery/performance_battery');
@@ -80,5 +80,11 @@ function Login($role_id, $department_id)
     //<!-- ============================================================== -->//
     if ($role_id == 4 && $department_id == 19) {
         header('Location: presentation/qc/qc_dashboard_new');
+    }
+     //<!-- ============================================================== -->//
+    //<!--- QC --->
+    //<!-- ============================================================== -->//
+    if ($role_id == 4 && $department_id == 19) {
+       header('Location: presentation/qc/qc_dashboard_new');
     }
 }
