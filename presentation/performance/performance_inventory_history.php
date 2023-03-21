@@ -245,7 +245,7 @@ input[type=text] {
 
 <div class="row mb-4 ml-1 pt-2">
     <i class="pageNameIcon fa-solid fa-check-to-slot"></i>
-    <h6 class="pageName">Performance Page</h6>
+    <h6 class="pageName">History Page</h6>
 </div>
 
 <div class="row performanceBodySec my-5">
@@ -256,17 +256,19 @@ input[type=text] {
                 <div class="col-12">
                     <div class="row mx-4  justify-content-between">
                         <div class="userName">Name :
-                            <span>John Doe</span>
+                            <span><?php echo $name ?></span>
                         </div>
                         <div class="empNo">Emp No :
-                            <span> Inv 202</span>
+                            <span><?php echo $emp_id ?></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 mt-1 mb-1">
                     <div class="row mx-4  justify-content-between">
                         <div class="userName">Department :
-                            <span>Inventory</span>
+                            <span><?php echo $department_name ?></span>
+                        </div>
+                        <div class="empNo">
                         </div>
                     </div>
                 </div>
@@ -278,17 +280,30 @@ input[type=text] {
 
         <div class="empDetails mb-3 mx-3 mt-3">
 
-            <div class="row">
-                <div class="col-lg-2 ml-4">
-                    <p>Select Date</p>
-                </div>
-                <div class="col-lg-3">
-                    <input class="w-100" type="date" name="" id="">
-                </div>
-                <div class="col-lg-3">
-                    <input class="w-100" type="date" name="" id="">
-                </div>
+            <div class="row w-100 float-right">
+                <form action="" method="POST">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="datetime-local" name="from_date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="datetime-local" name="to_date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-xs btn-primary px-3"
+                                    style=" font-size: 10px; margin-top: 4px; border-radius: 7px; letter-spacing: 1px;">Search
+                                    Date</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+
 
 
             <!-- Table Sec -->
@@ -303,11 +318,41 @@ input[type=text] {
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                $date = date('Y-m-d 00:00:00');
+                                $date2 = date('Y-m-d 23:59:59');
+                                $i = -1;
+                                $y = 0;
+                                $from_date = 0;
+                                $to_date = 0;
+                                if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
+
+                                    $from_date = $_POST['from_date'];
+                                    $to_date = $_POST['to_date'];
+                                }
+                                if ($from_date != 0) {
+                                    $query = "SELECT COUNT(qr_number)as qr_number,start_time,SUM(target)as target FROM performance_records WHERE user_id=$user_id AND start_time between '$from_date'AND '$to_date'GROUP BY CAST(start_time AS DATE)";
+                                    $query_run = mysqli_query($connection, $query);
+                                    // $row = mysqli_num_rows($query_run);
+                                    $total = 0;
+                                    $total1 = 0;
+                                    foreach ($query_run as $data) {
+                                        $target = $data['target'] / $data['qr_number'];
+                                        $total1 = $data['qr_number'];
+                                        $total = $total + $total1;
+                                        ?>
                             <tr>
-                                <td>2022-01-23</td>
-                                <td>97</td>
-                                <td>100</td>
+                                <td><?php echo $data['start_time'] ?></td>
+                                <td><?php echo $data['qr_number'] ?></td>
+                                <td><?php echo round($target) ?></td>
                             </tr>
+                            <?php }?>
+                            <tr>
+                                <td>Total Count</td>
+                                <td><?php echo $total ?></td>
+                            </tr>
+                            <?php }
+?>
 
                         </tbody>
                     </table>
