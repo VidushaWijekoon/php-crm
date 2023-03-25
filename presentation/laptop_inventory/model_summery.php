@@ -11,9 +11,10 @@ if (!isset($_SESSION['user_id'])) {
 $brand=$_GET['brand'];
 $role_id = $_SESSION['role_id'];
 $department = $_SESSION['department_id'];
-$search_value = 0;
+$search_value = '0';
 if (isset($_POST['submit'])) {
     $search_value = $_POST['search_value'];
+    
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (isset($_GET['pageno'])) {
@@ -87,12 +88,15 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                         </thead>
                         <tbody class="table-body">
                             <?php
-                            if ($search_value == 0) {
+                            
+                            if ($search_value == '0') {
                                 $query = "SELECT model,core,COUNT(inventory_id) as in_total FROM `main_inventory_informations` WHERE brand = '$brand' GROUP BY  model ORDER BY in_total DESC LIMIT $offset, $no_of_records_per_page";
                                 $result = mysqli_query($connection, $query);
-                            } else {
+                            }elseif($search_value != '0'){
+                                echo $search_value;
                                 $query = "SELECT model,core,COUNT(inventory_id) as in_total FROM `main_inventory_informations` WHERE brand = '$brand' AND model like'%$search_value%' GROUP BY  model ORDER BY in_total DESC";
                                 $result = mysqli_query($connection, $query);
+                                echo $query;
                             }
                             foreach ($result as $data) {
                                 $model = strToUpper($data['model']);

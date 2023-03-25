@@ -31,17 +31,16 @@ if (isset($_POST['scanMfg'])) {
     </script>";
     } else {
 
-        $query = "SELECT packing_mfg.asin_sku,packing_mfg.asin_serial,packing_mfg.mfg,
-        device,brand,model,core,generation
+        $query = "SELECT packing_mfg.asin_sku,main_inventory_informations.asin_serial,packing_mfg.mfg,
+        device,brand,model,core,generation,main_inventory_informations.inventory_id
          FROM packing_mfg LEFT JOIN main_inventory_informations ON main_inventory_informations.mfg = packing_mfg.mfg
            WHERE packing_mfg.mfg = '$mfg'";
-
 
         $query_run = mysqli_query($connection, $query);
         $rowsPac = mysqli_num_rows($query_run);
         // packing Mfg data tynwnm,
         if ($rowsPac > 0) {
-
+            $inventory_id=0;
             while ($x = mysqli_fetch_assoc($query_run)) {
                 $mfg = $x['mfg'];
                 $device = $x['device'];
@@ -52,6 +51,7 @@ if (isset($_POST['scanMfg'])) {
                 $asinSku = $x['asin_sku'];
                 $asinSerial = $x['asin_serial'];
                 $qty = '1';
+                $inventory_id = $x['inventory_id'];
             }
             $queryS = "SELECT * FROM e_com_inventory WHERE mfg ='$mfg' ";
 
@@ -63,31 +63,23 @@ if (isset($_POST['scanMfg'])) {
             if ($rows == 0) {
                 echo "ecommerce_inventory eke data natnm";
                 $query = "INSERT INTO e_com_inventory(
-    mfg,
-    asin_sku,
-    device,
-    brand,
-    model,
-    qty,
-    rack,
-    core,
-    generation,
-    asin_serial
-)
-VALUES(
-    '$mfg',
-    '$asinSku',
-    '$device',
-    '$brand',
-    '$model',
-    '$qty',
-    '$rack',
-    '$core',
-    '$gen',
-    '$asinSerial'
-)";
+                                mfg,
+                                asin_sku,
+                                qty,
+                                rack,
+                                asin_serial
+                            )
+                            VALUES(
+                                '$mfg',
+                                '$asinSku',
+                                '$qty',
+                                '$rack',
+                                '$asinSerial'
+                            )";
                 $data = mysqli_query($connection, $query);
-                echo $query;
+              
+                $sql="UPDATE main_inventory_informations SET ecom = 1 WHERE inventory_id='$inventory_id'";
+                $sql_run=mysqli_query($connection,$sql);
 
                 // add una kiyla yatin pennnanna
                 $isDataADD = 1;

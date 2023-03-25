@@ -3,7 +3,6 @@
   session_start();
   $user_id=0;
   $user_id=$_SESSION['user_id'];
-  $inventory=$_GET['inventory'];
   
   include 'WebClientPrint.php';
   use Neodynamic\SDK\Web\WebClientPrint;
@@ -59,8 +58,7 @@
                         </select>
                         <br />
 
-                        <body
-                            onload="javascript:jsWebClientPrint.print('useDefaultPrinter=' + $('#useDefaultPrinter').attr('checked') + '&printerName=' + encodeURIComponent($('#installedPrinterName').val()) + '&filetype=' + $('#ddlFileType').val());">
+                        <body>
                             <!-- <a class="btn btn-success btn-lg"
                                 onClick="javascript:jsWebClientPrint.print('useDefaultPrinter=' + $('#useDefaultPrinter').attr('checked') + '&printerName=' + encodeURIComponent($('#installedPrinterName').val()) + '&filetype=' + $('#ddlFileType').val());">Print
                                 File...</a> -->
@@ -112,18 +110,86 @@
 
   $script = ob_get_contents();
   ob_clean();
-  if(empty($inventory)){
-     echo"<script>";
-  echo" setInterval(() => {";
-  echo"window.location.href = '../inventory_add_laptop.php';";
-  echo "}, 1000);";
-  echo"</script>";
+  if(empty($_GET['inventory'])){
+    ?>
+<div class="box3 border" style="display: flex; justify-content: center; align-items: center;" id="printableArea">
+
+    <div class="stikerDetails"> <img style="width: 2.0cm;height: 1.3cm;" src="files/demo22.png">
+        <img style="width: 2.0cm;height: 1.3cm;" src="files/demo22.png">
+    </div>
+
+
+</div>
+
+<script>
+var int = setInterval('check()', 1000);
+
+function check() {
+    if (chobj('div') == true) {
+        printDiv('printableArea')
+        // window.alert('true');
+        int = window.clearInterval(int);
+    } else {
+        // document.write('<p>false</p>');
+    }
+}
+
+function chobj(printableArea) {
+    return (document.getElementById('printableArea')) ? true : false;
+}
+document.getElementById("printableArea").innerHTML = x;
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    window.location.href = '../inventory_add_laptop';
+}
+</script>
+<?php
+//      echo"<script>";
+//   echo" setInterval(() => {";
+//   echo"window.location.href = '../inventory_add_laptop.php';";
+//   echo "}, 1000);";
+//   echo"</script>";
   }else{
-     echo"<script>";
-  echo" setInterval(() => {";
-  echo"window.location.href = '../inventory_update_laptop.php';";
-  echo "}, 1000);";
-  echo"</script>";
+    ?>
+<div class="box3 border" style="display: flex; justify-content: center; align-items: center;" id="print">
+
+    <div class="stikerDetails"> <img src="files/demo22.png">
+    </div>
+</div>
+<script>
+var int = setInterval('check()', 300);
+
+function check() {
+    if (chobj('div') == true) {
+        printDiv('print')
+        // window.alert('true');
+        int = window.clearInterval(int);
+    } else {
+        // document.write('<p>false</p>');
+    }
+}
+
+function chobj(printableArea1) {
+    return (document.getElementById('print')) ? true : false;
+}
+document.getElementById("print").innerHTML = x;
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    window.location.href = '../inventory_update_laptop.php';
+}
+</script>
+<?php
   }
  
    include("template.php");
