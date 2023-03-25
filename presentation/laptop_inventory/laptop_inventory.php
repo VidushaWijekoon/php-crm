@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ../../index.php');
 }
 $connection = mysqli_connect("localhost", "root", "", "main_project");
-$search_value=0;
+$search_value='0';
 if(!empty($_GET['search_value'])){
     $search_value=$_GET['search_value'];
     $sql="SELECT * FROM main_inventory_informations WHERE model like '%$search_value%'GROUP BY model,core";
@@ -35,7 +35,7 @@ if(isset($_POST['search'])){
     </div>
 </div>
 <?php 
-if($search_value ==0){
+if($search_value =='0'){
 ?>
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2">
@@ -65,7 +65,7 @@ if($search_value ==0){
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $sql="SELECT brand,COUNT(inventory_id)as in_total FROM main_inventory_informations GROUP BY brand";
+                            <?php $sql="SELECT brand,COUNT(inventory_id)as in_total FROM main_inventory_informations GROUP BY brand ORDER BY in_total DESC";
                             $sql_run=mysqli_query($connection,$sql);
                             $i=0;
                             foreach($sql_run as $data){

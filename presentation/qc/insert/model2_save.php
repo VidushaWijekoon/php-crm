@@ -71,7 +71,7 @@ SET
              WHERE performance_id = $performance_id";
              $query_run = mysqli_query($connection, $query_performance);
             $tempDir = 'tempmfg/';
-            $filename = $mfg;
+            $filename = $mfg; 
             $codeContents = $mfg;
 
             QRcode::png($codeContents, $tempDir . '' . $filename . '.png', QR_ECLEVEL_L, 5, 1);
