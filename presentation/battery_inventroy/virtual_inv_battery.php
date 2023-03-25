@@ -193,11 +193,17 @@ $qty = null;
 
 <div class="row virtualInvSec">
     <div class="cardContainer">
-        <div class="ml-2">
+        <div class="ml-2 d-flex justify-content-between">
             <div class="createListingHeading">
                 <span>
                     <p>Search</p>
                 </span>
+            </div>
+
+            <div>
+                <a href="./virtual_inv_battery_stock.php">
+                    <button>Stock</button>
+                </a>
             </div>
         </div>
         <hr class="sectionUnderline">
@@ -1413,6 +1419,7 @@ $qty = null;
                                         </div>
                                     </div>
                                     <!-- iwrai hover eka -->
+
                                 </a>
                                 <?php } ?>
                             </div>

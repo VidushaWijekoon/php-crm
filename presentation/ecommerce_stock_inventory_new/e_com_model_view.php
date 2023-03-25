@@ -131,9 +131,9 @@ if ($search_value == 'pakaya') {
                                 echo "
                                     <tr class='cell-1' data-toggle='collapse'>
                                     <td>$i</td>
-                                    <td><a href='./e_com_model_spec_view.php?brand=$brand&model=$model&asin=$asin&search_value=$search_value'>$asin</a></td>
+                                    <td>$asin</td>
                                     <td>$brand</td>
-                                    <td>$model</td>
+                                    <td><a href='./e_com_model_spec_view.php?brand=$brand&model=$model&asin=$asin&search_value=$search_value'>$model</a></td>
                                     <td>$generation</td>
                                     <td>$in_total</td>
                                     <td>$stock</td>

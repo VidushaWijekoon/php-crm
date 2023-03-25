@@ -166,6 +166,8 @@ if (isset($_POST['remove_items'])) {
                                 <th>Item Device</th>
                                 <th>Item Brand</th>
                                 <th>Item Model</th>
+                                <th>Item Type</th>
+                                <th>Item Status</th>
                                 <th>Available Qty</th>
                                 <th>Rack No</th>
                                 <th>Qty</th>
@@ -186,6 +188,8 @@ if (isset($_POST['remove_items'])) {
                                     <td class="text-capitalize"><?php echo $xd['device'] ?></td>
                                     <td><?php echo ucfirst($xd['brand']) ?></td>
                                     <td style="text-transform: capitalize;"><?php echo $xd['model'] ?></td>
+                                    <td><?php echo $xd['battery_type'] ?></td>
+                                    <td><?php echo $xd['battery_status'] ?></td>
                                     <td><?php echo $xd['qty'] ?></td>
                                     <td><?php echo $xd['rack_no'] ?></td>
                                     <td>
