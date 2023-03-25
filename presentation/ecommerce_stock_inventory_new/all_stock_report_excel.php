@@ -1,7 +1,7 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "main_project");
-require './presentation/laptop_inventory/vendor/autoload.php';
-$query = "SELECT * FROM `main_inventory_informations` GROUP BY model,core ORDER BY brand,model;";
+require '../laptop_inventory/vendor/autoload.php';
+$query = "SELECT * FROM `main_inventory_informations` WHERE ecom='1' GROUP BY model,core ORDER BY brand,model;";
 $result_brand = mysqli_query($connection, $query);
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -15,7 +15,7 @@ $spreadsheet->getProperties()->setCreator('PhpOffice')
     ->setDescription('PhpOffice')
     ->setKeywords('PhpOffice')
     ->setCategory('PhpOffice');
-$i = 1;
+$i = 1; 
 $b = 1;
 $spreadsheet->setActiveSheetIndex(0)
     ->setCellValue("A$i", "brand");
@@ -68,13 +68,13 @@ foreach ($result_brand as $row) {
         ->setCellValue("E$i", "8GB");
     $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue("F$i", "256GB");
-    $query_stock = "SELECT COUNT(inventory_id)as in_stock FROM `main_inventory_informations` WHERE brand = '$brand' AND model='$model' AND core='$core' AND dispatch='0'";
+    $query_stock = "SELECT COUNT(inventory_id)as in_stock FROM `main_inventory_informations` WHERE brand = '$brand' AND model='$model' AND core='$core' AND ecom='1'";
     $result_stock = mysqli_query($connection, $query_stock);
     $in_stock = 0;
     foreach ($result_stock as $data) {
         $in_stock = $data['in_stock'];
     }
-    $query_touch = "SELECT COUNT(inventory_id)as touch_count FROM `main_inventory_informations` WHERE brand = '$brand' AND model='$model' AND core='$core' AND dispatch='0'AND touch_or_none_touch='yes'";
+    $query_touch = "SELECT COUNT(inventory_id)as touch_count FROM `main_inventory_informations` WHERE brand = '$brand' AND model='$model' AND core='$core' AND ecom='1'AND touch_or_none_touch='yes'";
     $result_touch = mysqli_query($connection, $query_touch);
     $touch_stock = 0;
     foreach ($result_touch as $data1) {
@@ -94,7 +94,7 @@ foreach ($result_brand as $row) {
 }
 $spreadsheet->getActiveSheet()->setTitle('Stock Summery');
 
-$query = "SELECT brand FROM `main_inventory_informations` GROUP BY brand;";
+$query = "SELECT brand FROM `main_inventory_informations` WHERE ecom='1' GROUP BY brand;";
 $result_brand_group = mysqli_query($connection, $query);
 $k = 0;
 foreach ($result_brand_group as $row) {
@@ -125,7 +125,7 @@ foreach ($result_brand_group as $row) {
         ->setCellValue("J1", 'Touch Screen Price');
     $spreadsheet->setActiveSheetIndex($k)
         ->setCellValue("K1", 'Non Touch Screen Price');
-    $query_model = "SELECT * FROM `main_inventory_informations` WHERE brand='$brand1' GROUP BY model,core ORDER BY model ";
+    $query_model = "SELECT * FROM `main_inventory_informations` WHERE ecom='1' AND brand='$brand1' GROUP BY model,core ORDER BY model ";
     $result_model = mysqli_query($connection, $query_model);
     $b = 1;
     foreach ($result_model as $spec) {
@@ -159,15 +159,16 @@ foreach ($result_brand_group as $row) {
 
         $spreadsheet->setActiveSheetIndex($k)
             ->setCellValue("F$b", "256GB");
-        $query = "SELECT COUNT(inventory_id)as touch_count FROM `main_inventory_informations` WHERE brand = '$brand1' AND model='$model' AND core='$core'AND touch_or_none_touch='yes' AND dispatch='0'";
+        $query = "SELECT COUNT(inventory_id)as touch_count FROM `main_inventory_informations` WHERE ecom='1' AND brand = '$brand1' AND model='$model' AND core='$core'AND touch_or_none_touch='yes'";
         $result = mysqli_query($connection, $query);
+       
         $touch_count = 0;
         foreach ($result as $data) {
             $touch_count = $data['touch_count'];
         }
         $spreadsheet->setActiveSheetIndex($k)
             ->setCellValue("G$b", "$touch_count");
-        $query = "SELECT COUNT(inventory_id)as in_stock FROM `main_inventory_informations` WHERE brand = '$brand1' AND model='$model'AND core='$core' AND dispatch='0'";
+        $query = "SELECT COUNT(inventory_id)as in_stock FROM `main_inventory_informations` WHERE ecom='1' AND brand = '$brand1' AND model='$model'AND core='$core'";
         $result = mysqli_query($connection, $query);
         $in_stock = 0;
         foreach ($result as $data) {

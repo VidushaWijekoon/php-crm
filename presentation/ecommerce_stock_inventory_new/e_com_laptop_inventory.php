@@ -35,7 +35,7 @@ if (isset($_POST['search'])) {
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-5">
         <a class="btn btn-xs btn-primary" href="all_stock_report_excel.php">Download Excel File</a>
-        <a class="btn btn-xs btn-primary" href="unit_by_unit.php">Download All Unit Excel File</a>
+        <!-- <a class="btn btn-xs btn-primary" href="unit_by_unit.php">Download All Unit Excel File</a> -->
     </div>
 </div>
 <?php
@@ -75,7 +75,8 @@ if ($search_value == 0) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $sql = "SELECT brand,COUNT(id)as in_total FROM e_com_inventory GROUP BY brand";
+                            <?php $sql = "SELECT brand,COUNT(inventory_id)as in_total FROM main_inventory_informations WHERE ecom=1 GROUP BY brand";
+                           
                                 $sql_run = mysqli_query($connection, $sql);
                                 $i = 0;
                                 foreach ($sql_run as $data) {
@@ -87,7 +88,7 @@ if ($search_value == 0) {
                                         <?php echo strToUpper($data['brand']) ?> </a> </td>
                                 <td> <?php echo $data['in_total'] ?></td>
                                 <td>
-                                    <?php $sql = "SELECT COUNT(id)as in_stock FROM e_com_inventory WHERE dispatch ='0' AND brand='{$data['brand']}'";
+                                    <?php $sql = "SELECT COUNT(inventory_id)as in_stock FROM main_inventory_informations WHERE ecom ='1' AND brand='{$data['brand']}'";
                                             $sql_run = mysqli_query($connection, $sql);
                                             foreach ($sql_run as $stock) {
                                                 echo $stock['in_stock'];
@@ -96,7 +97,7 @@ if ($search_value == 0) {
                                 </td>
 
                                 <td>
-                                    <?php $sql = "SELECT COUNT(id)as dispatch FROM e_com_inventory WHERE dispatch='1' AND brand='{$data['brand']}'";
+                                    <?php $sql = "SELECT COUNT(inventory_id)as dispatch FROM main_inventory_informations WHERE dispatch='1' AND ecom=2 AND brand='{$data['brand']}'";
                                             $sql_run = mysqli_query($connection, $sql);
                                             foreach ($sql_run as $stock) {
                                                 echo $stock['dispatch'];

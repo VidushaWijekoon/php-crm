@@ -1,6 +1,6 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "main_project");
-require 'vendor/autoload.php';
+require '../laptop_inventory/vendor/autoload.php';
 // $query = "SELECT * FROM `main_inventory_informations` GROUP BY core,model ORDER BY brand;";
 // $result_brand = mysqli_query($connection, $query);
 
