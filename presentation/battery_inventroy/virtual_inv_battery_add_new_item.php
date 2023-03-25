@@ -18,6 +18,8 @@ if (isset($_POST['add_new_item'])) {
     $add_qty = mysqli_real_escape_string($connection, $_POST['add_qty']);
     $capacity = mysqli_real_escape_string($connection, $_POST['capacity']);
     $box_nu = mysqli_real_escape_string($connection, $_POST['box_nu']);
+    $battery_type = mysqli_real_escape_string($connection, $_POST['battery_type']);
+    $battery_status = mysqli_real_escape_string($connection, $_POST['battery_status']);
 
 
     $query = "SELECT * from battery_inventory where box_nu='$box_nu'";
@@ -25,18 +27,19 @@ if (isset($_POST['add_new_item'])) {
     $rows = mysqli_fetch_row($run);
 
     if ($rows) {
-        $query = "UPDATE battery_inventory SET device=' $device',brand = '$brand', model ='$model', rack_no='$rack',qty='$add_qty',capacity ='$capacity',removed_inv='0' WHERE box_nu = '$box_nu' ";
+        $query = "UPDATE battery_inventory SET device=' $device',brand = '$brand', model ='$model', rack_no='$rack',qty='$add_qty',capacity ='$capacity',battery_status ='$battery_status',battery_type='$battery_type',removed_inv='0' WHERE box_nu = '$box_nu' ";
         $run = mysqli_query($connection, $query);
         if ($run) {
-            header("Location: ./virtual_inv_battery");
+            // header("Location: ./virtual_inv_battery");
         }
     } else {
 
-        $query = "INSERT INTO battery_inventory(device, brand, model, rack_no, qty, capacity,box_nu) 
-            VALUES ('$device', '$brand', '$model', '$rack', '$add_qty', '$capacity','$box_nu')";
+        $query = "INSERT INTO battery_inventory(device, brand, model, rack_no, qty, capacity,box_nu,battery_status,battery_type) 
+            VALUES ('$device', '$brand', '$model', '$rack', '$add_qty', '$capacity','$box_nu','$battery_status','$battery_type')";
         $run = mysqli_query($connection, $query);
+        echo $query;
         if ($run) {
-            header("Location: ./virtual_inv_battery");
+            // header("Location: ./virtual_inv_battery");
         }
     }
 }
@@ -206,6 +209,28 @@ if (isset($_POST['add_new_item'])) {
                                     ?>
                                 </select>
 
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mb-1">
+                            <div class="col-lg-2 formLable"> Type</div>
+                            <div class="col-lg-4 formInput">
+                                <select name="battery_type" id="battery_type" class="select2 w-100">
+                                    <option>Select Battery Type</option>
+                                    <option value="oem_china">OEM China</option>
+                                    <option value="original">Original</option>
+                                    <option value="new">New</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mb-1">
+                            <div class="col-lg-2 formLable"> Status</div>
+                            <div class="col-lg-4 formInput">
+                                <select name="battery_status" id="" class="select2 w-100">
+                                    <option>Select Status</option>
+                                    <option value="tested">Tested</option>
+                                    <option value="un-tested">Un Tested</option>
+                                    <option value="damage">Damage - No Use</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row justify-content-center mb-1">
