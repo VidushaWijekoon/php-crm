@@ -2,7 +2,8 @@
 ob_start();
 session_start();
 require_once('../includes/header.php');
-require_once("../../functions/db_connection.php");
+$connection = mysqli_connect("localhost", "root", "", "main_project");
+
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
@@ -12,8 +13,8 @@ if (!isset($_SESSION['user_id'])) {
 $rack = $_GET['rack'];
 /* Rack Qty */
 $qty = 0;
-$query = "SELECT * FROM e_com_inventory WHERE rack = '$rack' AND dispatch ='0'";
-
+$query = "SELECT e_com_inventory.asin_sku,e_com_inventory.qty,e_com_inventory.rack,e_com_inventory.asin_serial, e_com_inventory.mfg,device,brand ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg  WHERE rack = '$rack' AND ecom ='1'";
 
 $data_array = mysqli_query($connection, $query);
 $rows = mysqli_num_rows($data_array);

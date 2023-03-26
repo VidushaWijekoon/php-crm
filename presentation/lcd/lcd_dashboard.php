@@ -334,8 +334,7 @@ input[type=text] {
                                     </option>
                                     <option value="36">Install LCD
                                     </option>
-                                    <option value="37">Remove Polization Film</option>
-                                    <option value="38">Clean+Glue+Install Polization Film
+                                    <option value="39">Fix LCD Issue</option>
                                     </option>
                                     <?php }
                                     ?>

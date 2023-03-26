@@ -28,18 +28,21 @@ if (!isset($_SESSION['user_id'])) {
                         <fieldset class="mt-2">
                             <legend>Personal Information</legend>
                             <div class="row">
-                                <label class="col-sm-4 col-form-label">First Name <span style="color: red">*</span></label>
+                                <label class="col-sm-4 col-form-label">First Name <span
+                                        style="color: red">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="w-100" required placeholder="First Name" name="first_name">
+                                    <input type="text" class="w-100" required placeholder="First Name"
+                                        name="first_name">
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-4 col-form-label">Last Name <span style="color: red">*</span></label>
+                                <label class="col-sm-4 col-form-label">Last Name <span
+                                        style="color: red">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="w-100" required placeholder="Last Name" name="last_name">
                                 </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <label class="col-sm-4 col-form-label">Full Name <span style="color: red">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="w-100" required placeholder="Full Name" name="full_name">
@@ -109,11 +112,11 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="col-sm-8">
                                     <input type="number" class="w-100" min="0" placeholder="Contact Number" name="contact_number">
                                 </div>
-                            </div>
+                            </div> -->
 
-                        </fieldset>
+                            <!-- </fieldset> -->
 
-                        <fieldset class="mt-2 mb-3">
+                            <!-- <fieldset class="mt-2 mb-3">
                             <legend class="reset">Living Information</legend>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Current Address</label>
@@ -152,26 +155,27 @@ if (!isset($_SESSION['user_id'])) {
                                     <input type="number" class="w-100" min="1" placeholder="Emergency Contact Number" name="emergency_contact">
                                 </div>
                             </div>
-                        </fieldset>
-                    </div>
+                        </fieldset> -->
+                            <!-- </div> -->
 
 
-                    <!-- /.col (LEFT) -->
-                    <div class="col-md-6">
-                        <!-- LINE CHART -->
-                        <fieldset class="mt-2">
+                            <!-- /.col (LEFT) -->
+                            <!-- <div class="col-md-6"> -->
+                            <!-- LINE CHART -->
+                            <!-- <fieldset class="mt-2">
                             <legend class="reset">Image</legend>
                             <picture class="d-flex">
                                 <source srcset="../../dist/img/1.jpg" type="image/svg+xml">
                                 <img src="../../dist/img/1.jpg" class="img-fluid img-thumbnail" alt="..." width="25%">
                                 <input type="file" class="-file" id="exampleFormControlFile1" name="profile_photo" style="border: none;">
                             </picture>
-                        </fieldset>
+                        </fieldset> -->
 
-                        <fieldset class="reset">
+                            <!-- <fieldset class="reset"> -->
                             <legend class="reset">Company Information</legend>
                             <div class="row">
-                                <label class="col-sm-4 col-form-label">Department <span style="color: red">*</span></label>
+                                <label class="col-sm-4 col-form-label">Department <span
+                                        style="color: red">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="department" class="w-100" required style="border-radius: 5px;">
                                         <option selected>--Select Department--</option>
@@ -180,15 +184,16 @@ if (!isset($_SESSION['user_id'])) {
                                         $result = mysqli_query($connection, $query);
 
                                         while ($x = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                            <option value="<?php echo $x["department_id"]; ?>">
-                                                <?php echo strtoupper($x["department_name"]); ?>
-                                            </option>
+                                        <option value="<?php echo $x["department_id"]; ?>">
+                                            <?php echo strtoupper($x["department_name"]); ?>
+                                        </option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-sm-4 col-form-label">Labour Category <span style="color: red">*</span></label>
+                                <label class="col-sm-4 col-form-label">Labour Category <span
+                                        style="color: red">*</span></label>
                                 <div class="col-sm-8">
                                     <select name="role" class="w-100" required style="border-radius: 5px;">
                                         <option selected>--Select Role--</option>
@@ -197,16 +202,17 @@ if (!isset($_SESSION['user_id'])) {
                                         $result = mysqli_query($connection, $query);
 
                                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                                            <option value="<?php echo $row["role_id"]; ?>">
-                                                <?php echo strtoupper($row["role_name"]); ?>
-                                            </option>
+                                        <option value="<?php echo $row["role_id"]; ?>">
+                                            <?php echo strtoupper($row["role_name"]); ?>
+                                        </option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-4 col-form-label">Join Date <span style="color: red">*</span></label>
+                                <label class="col-sm-4 col-form-label">Join Date <span
+                                        style="color: red">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="date" class="w-100" required name="join_date" />
                                 </div>
@@ -214,17 +220,20 @@ if (!isset($_SESSION['user_id'])) {
 
                         </fieldset>
 
-                        <fieldset class="reset">
+                        <!-- <fieldset class="reset">
                             <legend class="reset">Special Note</legend>
                             <div class="mb-3">
-                                <textarea class="w-75" id="exampleFormControlTextarea1" rows="3" placeholder="About Employee " name="note"></textarea>
+                                <textarea class="w-75" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="About Employee " name="note"></textarea>
                             </div>
-                        </fieldset>
+                        </fieldset> -->
 
 
                         <div class="mt-3 mb-3 text-center">
-                            <button type="submit" name="create_employee" class="btn btn-xs btn-success mx-2"><i class="fa-solid fa-floppy-disk mx-1"></i>Save</button>
-                            <a href="hr_dashboard.php" class="btn btn-xs btn-danger mx-2"><i class="fa-solid fa-xmark mx-1"></i>Back</a>
+                            <button type="submit" name="create_employee" class="btn btn-xs btn-success mx-2"><i
+                                    class="fa-solid fa-floppy-disk mx-1"></i>Save</button>
+                            <a href="hr_dashboard.php" class="btn btn-xs btn-danger mx-2"><i
+                                    class="fa-solid fa-xmark mx-1"></i>Back</a>
                         </div>
                     </div>
 

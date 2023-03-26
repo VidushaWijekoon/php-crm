@@ -32,7 +32,7 @@ if (mysqli_connect_errno()) {
     die();
 }
 
-$total_pages_sql = "SELECT COUNT(id) as inventory FROM e_com_inventory  WHERE brand = '$brand' GROUP BY  model ORDER BY id DESC";
+$total_pages_sql = "SELECT COUNT(inventory_id) as inventory FROM main_inventory_informations  WHERE ecom=1 AND  brand = '$brand' GROUP BY  model ORDER BY inventory_id DESC";
 $result = mysqli_query($conn, $total_pages_sql);
 $total_rows = mysqli_num_rows($result);
 $total_pages = ceil($total_rows / $no_of_records_per_page);
@@ -46,11 +46,11 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
         </a>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2">
         <a href="stock_for_excel.php?brand=<?php echo $brand ?>" class="btn btn-xs btn-primary">Download Excel File</a>
     </div>
-</div>
+</div> -->
 <div class="row">
     <div class="col col-sm-10 col-lg-10 justify-content-center mx-auto mt-2 mb-4">
         <div class="card">
@@ -88,10 +88,10 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                         <tbody class="table-body">
                             <?php
                             if ($search_value == 0) {
-                                $query = "SELECT model,core,COUNT(id) as in_total FROM `e_com_inventory` WHERE brand = '$brand' GROUP BY  model ORDER BY in_total DESC LIMIT $offset, $no_of_records_per_page";
+                                $query = "SELECT model,core,COUNT(inventory_id) as in_total FROM `main_inventory_informations` WHERE ecom='1' AND brand = '$brand' GROUP BY  model ORDER BY in_total DESC LIMIT $offset, $no_of_records_per_page";
                                 $result = mysqli_query($connection, $query);
                             } else {
-                                $query = "SELECT model,core,COUNT(id) as in_total FROM `e_com_inventory` WHERE brand = '$brand' AND model like'%$search_value%' GROUP BY  model ORDER BY in_total DESC";
+                                $query = "SELECT model,core,COUNT(inventory_id) as in_total FROM `main_inventory_informations` WHERE ecom='1' AND brand = '$brand' AND model like'%$search_value%' GROUP BY  model ORDER BY in_total DESC";
                                 $result = mysqli_query($connection, $query);
                             }
                             foreach ($result as $data) {
@@ -99,12 +99,12 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
                                 $core = $data['core'];
                                 $in_total = $data['in_total'];
                                 $i++;
-                                $query = "SELECT COUNT(id)as in_stock FROM `e_com_inventory` WHERE brand = '$brand' AND model='$model'AND dispatch='0'";
+                                $query = "SELECT COUNT(inventory_id)as in_stock FROM `main_inventory_informations` WHERE ecom='1' AND brand = '$brand' AND model='$model'AND dispatch='0'";
                                 $result = mysqli_query($connection, $query);
                                 foreach ($result as $data) {
                                     $in_stock = $data['in_stock'];
                                 }
-                                $query = "SELECT COUNT(id)as dispatch FROM `e_com_inventory` WHERE brand = '$brand' AND model='$model'AND dispatch='1'";
+                                $query = "SELECT COUNT(inventory_id)as dispatch FROM `main_inventory_informations` WHERE ecom='1' AND brand = '$brand' AND model='$model'AND dispatch='1'";
                                 $result = mysqli_query($connection, $query);
                                 foreach ($result as $data) {
                                     $dispatch = $data['dispatch'];

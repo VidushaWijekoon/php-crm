@@ -72,13 +72,13 @@ if ($search_value == 'pakaya') {
                                 die();
                             }
 
-                            $total_pages_sql = "SELECT COUNT(id) as inventory FROM e_com_inventory  WHERE brand='$brand' AND model='$model' GROUP BY asin_sku";
+                            $total_pages_sql = "SELECT COUNT(inventory_id) as inventory FROM main_inventory_informations  WHERE ecom='1' AND brand='$brand' AND model='$model' GROUP BY asin_sku";
                             $result = mysqli_query($conn, $total_pages_sql);
                             $total_rows = mysqli_num_rows($result);
                             $total_pages = ceil($total_rows / $no_of_records_per_page);
 
                             // $sql = "SELECT generation,core, COUNT(id) as in_total FROM e_com_inventory WHERE brand='$brand' AND model='$model' GROUP BY core LIMIT $offset, $no_of_records_per_page";
-                            $sql = "SELECT asin_sku,generation,core, COUNT(id) as in_total FROM e_com_inventory WHERE brand='$brand' AND model='$model' GROUP BY asin_sku LIMIT $offset, $no_of_records_per_page";
+                            $sql = "SELECT asin_sku,generation,core, COUNT(inventory_id) as in_total FROM main_inventory_informations WHERE ecom=1 AND brand='$brand' AND model='$model' GROUP BY asin_sku LIMIT $offset, $no_of_records_per_page";
                             $result = mysqli_query($connection, $sql);
                             // echo $sql;
                             $i = 0;
@@ -96,7 +96,7 @@ if ($search_value == 'pakaya') {
                                 $none_touch_count = 0;
                                 $battery = 0;
                                 $touch_wholesale_price = 0;
-                                $sql_1 = "SELECT COUNT(id) as in_stock FROM e_com_inventory WHERE asin_sku='$asin' AND model='$model' AND dispatch='0'";
+                                $sql_1 = "SELECT COUNT(inventory_id) as in_stock FROM main_inventory_informations WHERE ecom=1 AND asin_sku='$asin' AND model='$model' AND dispatch='1'";
                                 $result_1 = mysqli_query($connection, $sql_1);
                                 foreach ($result_1 as $a) {
                                     $stock = $a['in_stock'];
@@ -106,7 +106,7 @@ if ($search_value == 'pakaya') {
                                 // foreach($result_1 as $b){
                                 //     $processing=$b['processing'];
                                 // }
-                                $sql_1 = "SELECT COUNT(id) as dispatch FROM e_com_inventory WHERE brand='$brand' AND model='$model' AND core='$core' AND dispatch='1'";
+                                $sql_1 = "SELECT COUNT(inventory_id) as dispatch FROM main_inventory_informations WHERE ecom=2 AND brand='$brand' AND model='$model' AND core='$core' AND dispatch='1'";
                                 $result_1 = mysqli_query($connection, $sql_1);
                                 foreach ($result_1 as $c) {
                                     $dispatch = $c['dispatch'];
@@ -138,7 +138,6 @@ if ($search_value == 'pakaya') {
                                     <td>$in_total</td>
                                     <td>$stock</td>
                                     <td>$dispatch</td>
-                                   
                                     ";
                                 echo "
                                 </tr>";
