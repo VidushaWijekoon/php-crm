@@ -3,7 +3,8 @@ ob_start();
 session_start();
 require_once('../includes/header.php');
 
-require_once("../../functions/db_connection.php");
+// require_once("../../functions/db_connection.php");
+$connection = mysqli_connect("localhost", "root", "", "main_project");
 
 // Check User Login  
 if (!isset($_SESSION['user_id'])) {
@@ -13,7 +14,6 @@ if (!isset($_SESSION['user_id'])) {
 $stock = 0;
 $query = "SELECT COUNT(id) as all_stock from e_com_inventory WHERE dispatch=0";
 $data_set = mysqli_query($connection, $query);
-
 while ($data = mysqli_fetch_assoc($data_set)) {
     $stock = $data['all_stock'];
 }
@@ -327,7 +327,9 @@ if (isset($_POST['search'])) {
                             <hr class="sectionUnderline">
 
                             <?php
-                                $query = "SELECT * FROM e_com_inventory WHERE (mfg = '$mfg' OR model = '$model' OR asin_sku = '$asin') AND dispatch ='0'";
+                                $query = "SELECT e_com_inventory.mfg,e_com_inventory.asin_serial,e_com_inventory.asin_sku,e_com_inventory.qty,e_com_inventory.rack,device,model,brand FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                ON main_inventory_informations.mfg=e_com_inventory.mfg
+                                 WHERE (e_com_inventory.mfg = '$mfg' OR model = '$model' OR e_com_inventory.asin_sku = '$asin') AND ecom ='1'";
                                 $query_run = mysqli_query($connection, $query);
                                 $i = 0;
                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -549,9 +551,10 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-6' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory  LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg
+                                                                  WHERE rack = 'B-6' AND ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
-
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
                                                                     $tot = $data['tot_count'];
                                                                     $model = $data['model'];
@@ -600,7 +603,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-5' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'B-5' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -650,7 +654,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-4' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'B-4' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -706,7 +711,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-6' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'C-6' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -756,7 +762,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-5' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'C-5' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -806,7 +813,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-4' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'C-4' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -1071,7 +1079,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-3' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'B-3' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -1121,7 +1130,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-2' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'B-2' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -1173,7 +1183,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'B-1' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'B-1' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -1230,7 +1241,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-3' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'C-3' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -1280,7 +1292,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'c-2' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'c-2' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {
@@ -1330,7 +1343,8 @@ if (isset($_POST['search'])) {
                                                             <th>Qty</th>
                                                         </tr>
                                                         <?php
-                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory WHERE rack = 'C-1' AND dispatch = '0' GROUP BY model";
+                                                                $query = "SELECT COUNT(id) as tot_count ,model FROM e_com_inventory LEFT JOIN main_inventory_informations
+                                                                ON main_inventory_informations.mfg = e_com_inventory.mfg WHERE rack = 'C-1' AND  ecom = '1' GROUP BY model";
                                                                 $query_run = mysqli_query($connection, $query);
 
                                                                 while ($data = mysqli_fetch_assoc($query_run)) {

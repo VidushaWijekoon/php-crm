@@ -27,7 +27,7 @@ $qty = "";
 $rackdb = "";
 $mfg = '';
 if ($mfg_r != 0) {
-    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg_r' AND dispatch ='0' AND rack = '$rack'";
+    $query = "SELECT model,brand,device,e_com_inventory.asin_sku,e_com_inventory.mfg,e_com_inventory.qty FROM e_com_inventory LEFT JOIN main_inventory_informations ON main_inventory_informations.mfg = e_com_inventory.mfg  WHERE main_inventory_informations.mfg = '$mfg_r' AND ecom ='1' AND rack = '$rack'";
     $rows = 0;
     $quary_run = mysqli_query($connection, $query);
     $rows = mysqli_num_rows($quary_run);
@@ -43,11 +43,9 @@ if ($mfg_r != 0) {
 }
 if (isset($_POST['scanMfg'])) {
     $mfg = $_POST['mfg'];
-    $query = "SELECT * FROM e_com_inventory WHERE mfg = '$mfg' AND dispatch ='0' AND rack = '$rack' ";
-    echo $query;
+    $query = "SELECT model,brand,device,e_com_inventory.asin_sku,e_com_inventory.mfg,e_com_inventory.qty FROM e_com_inventory LEFT JOIN main_inventory_informations ON main_inventory_informations.mfg = e_com_inventory.mfg  WHERE main_inventory_informations.mfg = '$mfg' AND ecom ='1' AND rack = '$rack' ";
     $rows = 0;
     $quary_run = mysqli_query($connection, $query);
-    print_r($quary_run);
     $rows = mysqli_num_rows($quary_run);
 
     if ($rows == 0) {
@@ -70,6 +68,8 @@ if (isset($_POST['scanMfg'])) {
 if (isset($_POST['removeItem'])) {
     $mfg = $_POST['mfg'];
     $query = "UPDATE `e_com_inventory` SET `dispatch`='1' WHERE mfg ='$mfg'";
+    $query_run = mysqli_query($connection, $query);
+     $query = "UPDATE `main_inventory_informations` SET `ecom`='2' WHERE mfg ='$mfg'";
     $query_run = mysqli_query($connection, $query);
     if ($mfg_r != 0) {
         header("Location: virtual_inv_ecommerce.php?mfg=$mfg_r&model=$model&asin=$asin&search_value=1");

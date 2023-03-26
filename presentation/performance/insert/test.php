@@ -245,22 +245,22 @@ $sql_run=mysqli_query($connection,$query);
  // performance_record_table to performance_records                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////'
 
-$query="SELECT
-    main_inventory_informations.mfg,
-    main_inventory_informations.brand,
-    main_inventory_informations.model,
-    main_inventory_informations.processor,
-    main_inventory_informations.core,
-    main_inventory_informations.generation,
-    main_inventory_informations.speed,
-    main_inventory_informations.lcd_size,
-    main_inventory_informations.screen_resolution,
-    main_inventory_informations.touch_or_none_touch,
-    main_inventory_informations.hdd_capacity,
-    main_inventory_informations.ram,
-    main_inventory_informations.keyboard_backlight
-FROM
-    main_inventory_informations
-LEFT JOIN e_com_inventory ON e_com_inventory.mfg = main_inventory_informations.mfg
- GROUP BY e_com_inventory.mfg;";
+// $query="SELECT
+//     main_inventory_informations.mfg,
+//     main_inventory_informations.brand,
+//     main_inventory_informations.model,
+//     main_inventory_informations.processor,
+//     main_inventory_informations.core,
+//     main_inventory_informations.generation,
+//     main_inventory_informations.speed,
+//     main_inventory_informations.lcd_size,
+//     main_inventory_informations.screen_resolution,
+//     main_inventory_informations.touch_or_none_touch,
+//     main_inventory_informations.hdd_capacity,
+//     main_inventory_informations.ram,
+//     main_inventory_informations.keyboard_backlight
+// FROM
+//     main_inventory_informations
+// LEFT JOIN e_com_inventory ON e_com_inventory.mfg = main_inventory_informations.mfg
+//  GROUP BY e_com_inventory.mfg;";
 ?>

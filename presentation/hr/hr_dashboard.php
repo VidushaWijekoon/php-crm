@@ -30,6 +30,9 @@ if (!isset($_SESSION['user_id'])) {
         <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="#">
             <i class="fa-solid fa-bars"></i><span class="mx-1">HR Assistant</span>
         </a>
+        <a class="btn btn-xs mr-2 text-text-black dahsboard_btn px-2 py-1" href="report">
+            <i class="fa-solid fa-bars"></i><span class="mx-1">All Employee Records</span>
+        </a>
     </div>
 </div>
 <?php require_once('../includes/footer.php') ?>

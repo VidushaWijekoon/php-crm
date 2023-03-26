@@ -11,35 +11,35 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <style>
-    .pagination {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-    }
+}
 
-    .page-item .active .page-link {
-        background-color: #168EB4;
-        border-color: #168EB4;
-    }
+.page-item .active .page-link {
+    background-color: #168EB4;
+    border-color: #168EB4;
+}
 
-    .pagination a {
-        font-weight: bold;
-        color: black;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        /* border: 1px solid black; */
-    }
+.pagination a {
+    font-weight: bold;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    /* border: 1px solid black; */
+}
 
-    .pagination a.active {
-        background-color: #168EB4;
-        color: #fff;
-    }
+.pagination a.active {
+    background-color: #168EB4;
+    color: #fff;
+}
 
-    .pagination a:hover:not(.active) {
-        background-color: skyblue;
-    }
+.pagination a:hover:not(.active) {
+    background-color: skyblue;
+}
 </style>
 
 <div class="row">
@@ -66,7 +66,7 @@ if (!isset($_SESSION['user_id'])) {
                             <th>Full name</th>
                             <th>Department</th>
                             <th>Role</th>
-                            <th>Country</th>
+                            <!-- <th>Country</th> -->
                             <th>Status</th>
                             <th>Join Date</th>
                             <th>&nbsp;</th>
@@ -94,7 +94,7 @@ if (!isset($_SESSION['user_id'])) {
                         $query_run = mysqli_query($connection, $query);
                         while ($row = mysqli_fetch_array($query_run)) {
                             $emp_id = $row['emp_id'];
-                            $resident_country = $row['resident_country'];
+                            // $resident_country = $row['resident_country'];
                             $first_name = $row['first_name'];
                             $full_name = $row['full_name'];
                             $join_date = $row['join_date'];
@@ -102,20 +102,20 @@ if (!isset($_SESSION['user_id'])) {
                             $role = $row['role_name'];
 
                         ?>
-                            <tr>
-                                <td>
-                                    <?php echo "<a href=\"view_employee?emp_id={$row['emp_id']}\">$emp_id</a>" ?>
-                                </td>
-                                <td class="text-capitalize"><?php echo $full_name ?></td>
-                                <td><?php echo $department ?></td>
-                                <td><?php echo $role ?></td>
-                                <td class="text-capitalize"><?php echo $resident_country ?></td>
-                                <td>
-                                    <span class="badge badge-success px-2 p-1">Active</span>
-                                </td>
-                                <td><?php echo $join_date ?></td>
-                                <td>
-                                    <?php
+                        <tr>
+                            <td>
+                                <?php echo "<a href=\"view_employee?emp_id={$row['emp_id']}\">$emp_id</a>" ?>
+                            </td>
+                            <td class="text-capitalize"><?php echo $full_name ?></td>
+                            <td><?php echo $department ?></td>
+                            <td><?php echo $role ?></td>
+                            <!-- <td class="text-capitalize"><?php echo $resident_country ?></td> -->
+                            <td>
+                                <span class="badge badge-success px-2 p-1">Active</span>
+                            </td>
+                            <td><?php echo $join_date ?></td>
+                            <td>
+                                <?php
 
                                     echo "<a class='btn btn-xs mx-1 text-danger' href=\"./addNew/remove_employee?emp_id={$row['emp_id']}\"
                                     onclick=\"return confirm('Are you sure you want to remove this $emp_id employee?');\">
@@ -127,8 +127,8 @@ if (!isset($_SESSION['user_id'])) {
                                     </a>";
 
                                     ?>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -147,7 +147,8 @@ if (!isset($_SESSION['user_id'])) {
                 ?>
                 <div class="row">
                     <div class="col">
-                        <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?> Entries</p>
+                        <p class="">Showing <?php echo $page ?>/<?php echo $total_pages ?> of <?php echo $total_pages ?>
+                            Entries</p>
                     </div>
                     <div class="col">
                         <div class="pagination">
@@ -181,12 +182,12 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <script>
-    function go2Page() {
-        var page = document.getElementById("page").value;
-        var user_id = document.getElementById("page").value;
-        page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
-        window.location.href = 'employees.php?page=' + page;
-    }
+function go2Page() {
+    var page = document.getElementById("page").value;
+    var user_id = document.getElementById("page").value;
+    page = ((page > <?php echo $total_pages; ?>) ? <?php echo $total_pages; ?> : ((page < 1) ? 1 : page));
+    window.location.href = 'employees.php?page=' + page;
+}
 </script>
 
 <?php require_once('../includes/footer.php') ?>
