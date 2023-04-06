@@ -145,7 +145,7 @@ if(isset($_POST['open'])){
                                 <tbody>
                                     <?php 
                                         $sql="SELECT order_created_time,sales_order_id,reference,order_status,shipping_date,user_name,packing_status,invoice_status,payment_status,shipping_status,order_shipping_method 
-                                        FROM sales_order_items  LEFT JOIN users ON users.user_id = sales_order_items.order_created_by GROUP BY sales_order_id";
+                                        FROM sales_order_items  LEFT JOIN users ON users.user_id = sales_order_items.order_created_by  WHERE sales_order_items.approve ='1'GROUP BY sales_order_id";
                                         $sql_run=mysqli_query($connection,$sql);
                                         $i=0;
                                         foreach($sql_run as $data){

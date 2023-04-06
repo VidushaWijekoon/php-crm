@@ -94,6 +94,39 @@ input[type=text] {
     font-weight: 600;
 }
 </style>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+    window.onload = function() {
+        console.log("im here");
+        brand = $("#brand").val();
+        model = $("#model").val();
+        core = $("#core").val();
+        speed = $("#speed").val();
+        screen_type = $("#touch_or_non_touch").val();
+        console.log(brand);
+        var getURL = "utils/get_asin.php?brand=" + brand + "&model=" + model + "&core=" + core;
+        console.log(getURL);
+        $.get(getURL, function(data, status) {
+            $("#asin").html(data);
+        });
+
+        asin.onchange = function() {
+            asin = $("#asin").val();
+            var strArray = asin.split("-");
+            asin = strArray[1];
+            var getURL = "utils/get_asin.php?asin=" + asin;
+            console.log(getURL);
+            $.get(getURL, function(data, status) {
+                $("#note").html(data);
+            });
+        }
+    }
+    </script>
+
+</head>
 <?php 
 $query = "SELECT DISTINCT brand,series,model,processor,core,generation,speed,lcd_size,screen_resolution FROM main_inventory_informations ";
 $result_set = mysqli_query($connection, $query);
@@ -171,7 +204,7 @@ while($row = mysqli_fetch_array($result)) {
             <div class="row scanSec mt-4">
                 <div class="col-lg-4 col-sm-12">
                     <div class="row">
-                        <div class="col-5">Scan Supplier Barcode</div>
+                        <div class="col-5">Scan Alsakb Barcode</div>
                         <div class="col-7">
                             <input type="text" name="name">
                         </div>
@@ -204,12 +237,7 @@ while($row = mysqli_fetch_array($result)) {
                                 class="d-none" value="<?php echo "$inventory_id"; ?>">
                         </div>
                     </div>
-                    <div class="row mb-1">
-                        <div class="col-4 addLable">ASIN</div>
-                        <div class="col-8">
-                            <input type="text" placeholder="" style="width: 100%;">
-                        </div>
-                    </div>
+
                     <div class="row mb-1">
                         <div class="col-4 addLable">Device</div>
                         <div class="col-8">
@@ -454,6 +482,19 @@ while($row = mysqli_fetch_array($result)) {
                             </select>
                         </div>
                     </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN</div>
+                        <div class="col-8">
+                            <select class="w-100" name="asin" id="asin" style="border-radius: 5px;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN Description</div>
+                        <div class="col-8">
+                            <p id="note"></p>
+                        </div>
+                    </div>
                     <div class="row justify-content-center mt-3 mb-5">
                         <div class="">
                             <button class="btnT" type="submit"><i class="fa-solid fa-qrcode mr-1"
@@ -470,7 +511,6 @@ while($row = mysqli_fetch_array($result)) {
 
 <!-- <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script> -->
-
 <script>
 $(function() {
     //Initialize Select2 Elements

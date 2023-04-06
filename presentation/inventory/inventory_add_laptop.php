@@ -213,13 +213,6 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                         </div>
                     </div>
                     <div class="row mb-1">
-                        <div class="col-4 addLable">ASIN</div>
-                        <div class="col-8">
-                            <input type="text" placeholder="" style="width: 100%;" name=""
-                                value="<?php echo "still not complete"; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-1">
                         <div class="col-4 addLable">Device</div>
                         <div class="col-8">
                             <select name="device" id="device" class="DropDown select2" style="width: 100%;" required>
@@ -359,6 +352,19 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                             </select>
                         </div>
                     </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN</div>
+                        <div class="col-8">
+                            <select class="w-100" name="asin" id="asin" style="border-radius: 5px;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN Description</div>
+                        <div class="col-8">
+                            <p id="note"></p>
+                        </div>
+                    </div>
                     <div class="row justify-content-center mt-3 mb-5">
                         <div class="">
                             <button class="btnT" type="submit"><i class="fa-solid fa-qrcode mr-1"
@@ -390,13 +396,6 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                                 value="<?php echo "$mfg"; ?>" required>
                             <input type="text" placeholder="For Manual Enter" name="machine_id" style="width: 100%;"
                                 class="d-none" value="<?php echo "$machine_id"; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-1">
-                        <div class="col-4 addLable">ASIN</div>
-                        <div class="col-8">
-                            <input type="text" placeholder="" style="width: 100%;" name=""
-                                value="<?php echo "still not complete"; ?>">
                         </div>
                     </div>
                     <div class="row mb-1">
@@ -638,6 +637,19 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                             </select>
                         </div>
                     </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN</div>
+                        <div class="col-8">
+                            <select class="w-100" name="asin" id="asin" style="border-radius: 5px;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN Description</div>
+                        <div class="col-8">
+                            <p id="note"></p>
+                        </div>
+                    </div>
                     <div class="row justify-content-center mt-3 mb-5">
                         <div class="">
                             <button class="btnT" type="submit"><i class="fa-solid fa-qrcode mr-1"
@@ -667,13 +679,6 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                         <div class="col-4 addLable">MFG Number</div>
                         <div class="col-8">
                             <input type="text" placeholder="For Manual Enter" name="mfg" style="width: 100%;" required>
-                        </div>
-                    </div>
-                    <div class="row mb-1">
-                        <div class="col-4 addLable">ASIN</div>
-                        <div class="col-8">
-                            <input type="text" placeholder="" style="width: 100%;" name=""
-                                value="<?php echo "still not complete"; ?>">
                         </div>
                     </div>
                     <div class="row mb-1">
@@ -780,6 +785,20 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                         </div>
                     </div>
                     <div class="row mb-1">
+                        <div class="col-4 addLable">Resolution Type</div>
+                        <div class="col-8">
+                            <select name="resolution_type" id="resolution_type" class="DropDown select2"
+                                style="width: 100%;" required>
+                                <option value="">Select Resolution Type</option>
+                                <option value="HD">HD</option>
+                                <option value="FHD">FHD</option>
+                                <option value="QHD">QHD</option>
+                                <option value="2K">2K</option>
+                                <option value="4K">4K</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
                         <div class="col-4 addLable">Battery</div>
                         <div class="col-8">
                             <select name="battery" id="battery" class="DropDown select2" style="width: 100%;" required>
@@ -820,6 +839,19 @@ if(isset($_POST['submit'])|| isset($_POST['mfg'])){
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN</div>
+                        <div class="col-8">
+                            <select class="w-100" name="asin" id="asin" style="border-radius: 5px;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-4 addLable">ASIN Description</div>
+                        <div class="col-8">
+                            <p id="note"></p>
                         </div>
                     </div>
                     <div class="row justify-content-center mt-3 mb-5">
@@ -971,4 +1003,24 @@ $(document).ready(function() {
         });
     });
 });
+
+$(document).ready(function() {
+    $("#keyboard_backlight").on("change", function() {
+        var getURL = "utils/get_asin.php?brand=" + brand + "&model=" + model + "&core=" + core;
+        console.log(getURL);
+        $.get(getURL, function(data, status) {
+            $("#asin").html(data);
+        });
+    });
+});
+asin.onchange = function() {
+    asin = $("#asin").val();
+    var strArray = asin.split("-");
+    asin = strArray[1];
+    var getURL = "utils/get_asin.php?asin=" + asin;
+    console.log(getURL);
+    $.get(getURL, function(data, status) {
+        $("#note").html(data);
+    });
+}
 </script>

@@ -167,7 +167,7 @@ table th {
                                     <td><?php echo $x['order_created_time'] ?></td>
                                     <td>
                                         <a
-                                            href="./order_view.php?order_id= <?php echo $x['sales_order_id'] ?>">SO-<?php echo $x['sales_order_id'] ?></a>
+                                            href="./manager_order_view.php?order_id=<?php echo $x['sales_order_id'] ?>">SO-<?php echo $x['sales_order_id'] ?></a>
                                     </td>
                                     <td><?php echo $x['reference'] ?></td>
                                     <td><?php echo $x['customer_fname'] . " " . $x['customer_lname'] ?></td>
@@ -454,6 +454,7 @@ table th {
                                                 order_created_time
                                         FROM sales_order_items
                                         INNER JOIN sales_customer_infomations ON sales_customer_infomations.customer_id = sales_order_items.customer_id
+                                        WHERE sales_order_items.approve ='1'
                                         GROUP BY sales_order_id";
                                 $run = mysqli_query($connection, $query);
                                 while ($x = mysqli_fetch_assoc($run)) {

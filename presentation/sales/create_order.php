@@ -51,8 +51,10 @@ if (isset($_POST['create_order'])) {
     $unit_price = mysqli_real_escape_string($connection, $_POST['unit_price']);
     $discount = mysqli_real_escape_string($connection, $_POST['discount']);
     $total_price = mysqli_real_escape_string($connection, $_POST['total_price']);
+    $so = mysqli_real_escape_string($connection, $_POST['so']);
 
     $query = "INSERT INTO `sales_order_items`(
+     sales_order_id,
     `customer_id`,
     `reference`,
     `shipping_date`,
@@ -91,6 +93,7 @@ if (isset($_POST['create_order'])) {
     `order_created_time`
     )
     VALUES(
+        '$so',
         '$get_customer_id',
         '$reference',
         '$shipping_date',
@@ -389,7 +392,7 @@ input[type="date"] {
                                 $sales_order_id = $m['sales_order_id'];
                             }
                             ?>
-                            <input type="text" disabled value="SO-<?php $sales_order_id++;
+                            <input type="text" name="so" disabled value="SO-<?php $sales_order_id++;
                                                                     echo $sales_order_id ?>" style="width:100%;"
                                 required>
                         </div>
@@ -686,7 +689,7 @@ input[type="date"] {
                     <p class="required">HDD Capacity</p>
                 </div>
                 <div class="inputSec col-9">
-                    <input type="text" value="256 GB" required name="hdd_capacity">
+                    <input type="text" required name="hdd_capacity">
                 </div>
             </div>
         </div>
@@ -701,8 +704,8 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="hdd_type" id="hdd_type" onchange="" required>
                         <option value="" selected>Select Storage Type</option>
-                        <option value="1">SSD</option>
-                        <option value="2">SATA</option>
+                        <option value="SSD">SSD</option>
+                        <option value="SATA">SATA</option>
                     </select>
                 </div>
             </div>
@@ -741,9 +744,9 @@ input[type="date"] {
                 <select class="DropDown" name="os" id="os" required>
                     <!-- <option value="">Select Operating System</option> -->
                     <option selected value="0">Original Windows 10 Pro</option>
-                    <option value="1">Chrome OS</option>
-                    <option value="2">Linux</option>
-                    <option value="3">Mac OS</option>
+                    <option value="Chrome OS">Chrome OS</option>
+                    <option value="Linux">Linux</option>
+                    <option value="Mac OS">Mac OS</option>
                 </select>
             </div>
         </div>
@@ -758,8 +761,8 @@ input[type="date"] {
             <div class="inputSec col-9">
                 <select class="DropDown " name="inventory_location" required>
                     <option selected="">--Select Inventory--</option>
-                    <option value="1">E-Commerce Inventory</option>
-                    <option value="2">Big Inventory</option>
+                    <option value="E-Commerce Inventory">E-Commerce Inventory</option>
+                    <option value="Big Inventory">Big Inventory</option>
                 </select>
             </div>
         </div>
@@ -790,12 +793,12 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="keybord_language" id="keybord_language" onchange="" required>
                         <option>Select Language </option>
-                        <option value="1" selected>US</option>
-                        <option value="2">UK</option>
-                        <option value="3">FRENCH</option>
-                        <option value="4">ARABIC</option>
-                        <option value="5">DANISH</option>
-                        <option value="6">DUTCH</option>
+                        <option value="US" selected>US</option>
+                        <option value="UK">UK</option>
+                        <option value="FRENCH">FRENCH</option>
+                        <option value="ARABIC">ARABIC</option>
+                        <option value="DANISH">DANISH</option>
+                        <option value="DUTCH">DUTCH</option>
                     </select>
                 </div>
             </div>
@@ -826,10 +829,10 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="graphic_type" required>
                         <option selected>--Select Graphic Type--</option>
-                        <option value="1">Intel</option>
-                        <option value="2">Amd</option>
-                        <option value="3">nVidia</option>
-                        <option value="4">Mix</option>
+                        <option value="Intel">Intel</option>
+                        <option value="Amd">Amd</option>
+                        <option value="nVidia">nVidia</option>
+                        <option value="Mix">Mix</option>
                     </select>
                 </div>
             </div>
@@ -850,8 +853,8 @@ input[type="date"] {
                         <option value="4">4GB</option>
                         <option value="6">6GB</option>
                         <option value="8">8GB</option>
-                        <option value="10">Mix</option>
-                        <option value="0">N/A</option>
+                        <option value="mix">Mix</option>
+                        <option value="n/a">N/A</option>
                     </select>
 
                 </div>
@@ -867,10 +870,10 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="charger" required>
                         <option selected="">--Select Charger Type--</option>
-                        <option value="1">US Standard</option>
-                        <option value="2">UK Standard</option>
-                        <option value="3">EU Standard</option>
-                        <option value="4">No Charger</option>
+                        <option value="US Standard">US Standard</option>
+                        <option value="UK Standard">UK Standard</option>
+                        <option value="EU Standard">EU Standard</option>
+                        <option value="No Charger">No Charger</option>
                     </select>
                 </div>
             </div>
@@ -906,9 +909,9 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="charger_color" required>
                         <option selected>--Select Pin Colour--</option>
-                        <option value="1">blue</option>
-                        <option value="2">Yellow</option>
-                        <option value="3">white</option>
+                        <option value="blue">blue</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="white">white</option>
                     </select>
                 </div>
             </div>
@@ -924,10 +927,12 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="condition" required>
                         <option selected="">--Select Condition--</option>
-                        <option value="1" title="A B C D Painting, LCD No Scratch, Battery Health 80%">
+                        <option value="A B C D Painting, LCD No Scratch, Battery Health 80%"
+                            title="A B C D Painting, LCD No Scratch, Battery Health 80%">
                             Fully Refurbished-A B C D Painting, LCD No Scratch, Battery Health
                             80%</option>
-                        <option value="2" title="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%">
+                        <option value="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%"
+                            title="A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%">
                             A Grade-A B C D Small Scratch, No Dent, LCD Small Scratch, Battery
                             Health 60%</option>
                     </select>
@@ -944,8 +949,8 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" required name="packing_type">
                         <option selected="">--Select Packing Type--</option>
-                        <option value="1">Single Box</option>
-                        <option value="2">Bulk Packing</option>
+                        <option value="Single Box">Single Box</option>
+                        <option value="Bulk Packing">Bulk Packing</option>
                     </select>
                 </div>
             </div>
@@ -961,11 +966,11 @@ input[type="date"] {
                 <div class="inputSec col-9">
                     <select class="DropDown" name="shipping_method" id="shipping_method" required>
                         <option selected>--Select Shipping Method--</option>
-                        <option value="1">Local Pickup</option>
-                        <option value="2">DHL</option>
-                        <option value="3">Fedex</option>
-                        <option value="4">UPS</option>
-                        <option value="5">Other</option>
+                        <option value="Local Pickup">Local Pickup</option>
+                        <option value="DHL">DHL</option>
+                        <option value="Fedex">Fedex</option>
+                        <option value="UPS">UPS</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -1107,113 +1112,19 @@ input[type="date"] {
                                     echo $order_screen_size . ", ";
                                     echo $order_resolution . ", ";
                                     echo $order_hdd_capacity . ", ";
-                                    if ($order_hdd_type == 0) {
-                                        echo "SSD" . ", ";
-                                    }
-                                    if ($order_hdd_type == 1) {
-                                        echo "SATA" . ", ";
-                                    };
-
+                                    echo $order_hdd_type . ", ";
                                     echo $order_ram . "GB" . ", ";
-                                    if ($order_os == 0) {
-                                        echo "Windows" . ", ";
-                                    }
-                                    if ($order_os == 1) {
-                                        echo "Chrome OS" . ", ";
-                                    }
-                                    if ($order_os == 2) {
-                                        echo "Linux" . ", ";
-                                    }
-                                    if ($order_os == 3) {
-                                        echo "Mac OS" . ", ";
-                                    };
-                                    if ($order_keyboard_language == 1) {
-                                        echo "US" . ", ";
-                                    }
-                                    if ($order_keyboard_language == 2) {
-                                        echo "UK" . ", ";
-                                    }
-                                    if ($order_keyboard_language == 3) {
-                                        echo "Franch" . ", ";
-                                    }
-                                    if ($order_keyboard_language == 4) {
-                                        echo "Arabic" . ", ";
-                                    }
-                                    if ($order_keyboard_language == 5) {
-                                        echo "Danish" . ", ";
-                                    }
-                                    if ($order_keyboard_language == 6) {
-                                        echo "Dutch" . ", ";
-                                    };
-                                    if ($order_keyboard_backlight == 0) {
-                                        echo "yes" . ", ";
-                                    } else {
-                                        echo "no" . ", ";
-                                    };
-                                    if ($order_graphic_type == 1) {
-                                        echo "Intel" . ", ";
-                                    }
-                                    if ($order_graphic_type == 2) {
-                                        echo "Amd" . ", ";
-                                    }
-                                    if ($order_graphic_type == 3) {
-                                        echo "Nvidia" . ", ";
-                                    }
-                                    if ($order_graphic_type == 4) {
-                                        echo "Mix" . ", ";
-                                    };
+                                    echo $order_os . ", ";
+                                    echo $order_keyboard_language  . ", ";
+                                    echo $order_keyboard_backlight . ", ";
+                                    echo $order_graphic_type . ", ";
                                     echo $order_graphic_capacity . "GB" . ", ";
-                                    if ($order_charger_type == 1) {
-                                        echo "US Standard" . ", ";
-                                    }
-                                    if ($order_charger_type == 2) {
-                                        echo "UK Standard" . ", ";
-                                    }
-                                    if ($order_charger_type == 3) {
-                                        echo "EU Standard" . ", ";
-                                    }
-                                    if ($order_charger_type == 4) {
-                                        echo "Without Charger" . ", ";
-                                    };
-                                    if ($order_charger_watt == 1) {
-                                        echo "65W" . ", ";
-                                    };
-                                    if ($charging_pin_color == 1) {
-                                        echo "Blue" . ", ";
-                                    }
-                                    if ($charging_pin_color == 2) {
-                                        echo "Yellow" . ", ";
-                                    }
-                                    if ($charging_pin_color == 3) {
-                                        echo "White" . ", ";
-                                    };
-                                    if ($order_condition == 1) {
-                                        echo "Fully Refurbished-A B C D Painting, LCD No Scratch, Battery Health 80%" . ", ";
-                                    }
-                                    if ($order_condition == 2) {
-                                        echo " A Grade-A B C D Small Scratch, No Dent, LCD Small Scratch, Battery Health 60%" . ", ";
-                                    };
-                                    if ($order_packing_type == 1) {
-                                        echo "Single Box" . ", ";
-                                    }
-                                    if ($order_packing_type == 2) {
-                                        echo "Bulk Packing" . ", ";
-                                    };
-                                    if ($order_shipping_method == 1) {
-                                        echo "Local Pickup" . ", ";
-                                    }
-                                    if ($order_shipping_method == 2) {
-                                        echo "DHL" . ", ";
-                                    }
-                                    if ($order_shipping_method == 3) {
-                                        echo "Fedex" . ", ";
-                                    }
-                                    if ($order_shipping_method == 4) {
-                                        echo "UPS" . ", ";
-                                    }
-                                    if ($order_shipping_method == 5) {
-                                        echo "UPS" . ", ";
-                                    };
+                                    echo $order_charger_type . ", ";
+                                    echo $order_charger_watt . ", ";
+                                    echo $charging_pin_color . ", ";
+                                    echo $order_condition . ", ";
+                                    echo $order_packing_type . ", ";
+                                    echo $order_shipping_method;
                                     ?>
 
                             </b>

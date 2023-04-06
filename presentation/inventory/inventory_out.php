@@ -11,6 +11,20 @@ $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 $department_id = $_SESSION['department_id'];
  $date1 = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+
+ $sql="SELECT full_name,employees.emp_id,department_name FROM employees 
+ LEFT JOIN users ON users.emp_id=employees.emp_id 
+ LEFT JOIN departments ON departments.department_id=employees.department_id
+ WHERE user_id='$user_id' ";
+ $sql_run_name=mysqli_query($connection,$sql);
+ $name=0;
+ $emp_id=0;
+ $department_name=0;
+ foreach($sql_run_name as $data){
+    $name=$data['full_name'];
+    $emp_id=$data['emp_id'];
+    $department_name=$data['department_name'];
+ }
 ?>
 
 
@@ -243,17 +257,17 @@ input[type=text] {
                 <div class="col-12">
                     <div class="row mx-4  justify-content-between">
                         <div class="userName">Name :
-                            <span>John Doe</span>
+                            <span><?php echo $name ?></span>
                         </div>
                         <div class="empNo">Emp No :
-                            <span> <?php echo $username ?></span>
+                            <span> <?php echo $emp_id ?></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 mt-1 mb-1">
                     <div class="row mx-4  justify-content-between">
                         <div class="userName">Department :
-                            <span><?php echo $department_id ?></span>
+                            <span><?php echo $department_name ?></span>
                         </div>
                     </div>
                 </div>
@@ -325,7 +339,7 @@ input[type=text] {
                                     <th>Model</th>
                                     <th>core</th>
                                     <th>Generation</th>
-                                    <th>Screen Type)</th>
+                                    <th>Screen Type</th>
                                     <th>MFG</th>
                                 </tr>
                             </thead>
